@@ -1,0 +1,18 @@
+XML immutability check:
+- Before SHA-256: 5980e907671d2abff4b481e72a2affbfb9f368f9a5f9e0f2111ef40b71dc97d5
+- After SHA-256:  5980e907671d2abff4b481e72a2affbfb9f368f9a5f9e0f2111ef40b71dc97d5
+- Result: PASS
+HTML QA file: output/final_report_files/xml_to_html/reconnecting_dunhuang.html
+Source TEI file: output/final_report_files/tei_xml/reconnecting_dunhuang.xml
+Source sections: body=6/6, back=5/5
+Source structure: paragraphs rendered; nested Non-Buddhist list preserved; figure captions=8/8
+References: numbered bibliography entries=34/34; internal citation links=36; all checked for resolution
+Quotation rendering: cit -> blockquote.tei-cit; quote -> span.tei-quote; HTML q unused; Waley attribution -> span.tei-attribution
+Inline annotation links: 65 entity anchors checked for #entity-* resolution; concepts use data-ana
+Semantic layer: entity cards=26/26 from standOff; event nodes=7/7
+Relation layer: canonical=16/16; conceptual=30/30; R16 Enriched visible; R2 source/target display and symmetric @mutual note checked; R15/R16 Digital Surrogate target checked
+Semantic data provenance: entity card IDs and displayed relation IDs exactly match TEI standOff records; no extra semantic records detected
+HTML semantics: no cite used for Waley attribution; bibliography title cite elements allowed; no redundant data-target/data-when attributes
+No RDF export was attempted.
+
+HTML QA PASS

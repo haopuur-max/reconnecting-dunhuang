@@ -1,0 +1,28 @@
+=== Reconnecting Dunhuang — TEI to RDF QA report ===
+
+1. Core conceptual assertions (cr1-cr30, formal ontology edges):
+   30/30
+
+2. Authority reconciliation layer (CIDOC CRM identifier pattern, not owl:sameAs):
+   - <idno> elements converted: 41
+   - distinct identifier schemes encountered: 7 (fast, fast-control-number, lc, lcsh, viaf, wikidata, worldcat-entity)
+   - authority reconciliation triples (E42_Identifier typing + P190 + P2_has_type + P1_is_identified_by + E55_Type scheme-node typing/labels): 178
+
+3. Statement provenance / reification layer (metadata ABOUT the 30 core assertions above; adds no new core assertions):
+   - reified statement nodes (rdf:Statement, one per cr1-cr30): 30
+   - reification triples (rdf:type + rdf:subject + rdf:predicate + rdf:object + dcterms:relation + dcterms:type, 6 per statement): 180
+   - resource:canonical-relation/rN rdfs:label triples: 16
+   - resource:evidence/{direct|enriched} rdfs:label triples: 2
+   - dm:locatedNear owl:SymmetricProperty declaration: 1
+   - provenance-layer subtotal: 199
+
+4. Total RDF triple count: 459
+   (breakdown: 52 entity rdf:type/rdfs:label + 30 core conceptual assertions + 178 authority-reconciliation triples + 199 provenance/reification triples = 459)
+   Recomputed from in-memory graph length: 459 (matches breakdown sum: True)
+
+=== Post-generation independent validation ===
+A complete expected RDF dataset (all layers: entity typing/labels, core conceptual assertions, authority reconciliation, statement provenance/reification) is independently rebuilt straight from reconnecting_dunhuang.xml, then compared for EXACT triple-set equality (expected-actual and actual-expected must both be empty — not merely "does each expected triple exist") plus graph isomorphism, against the serialized .ttl, the serialized .rdf, and the in-memory graph produced this run. This full-graph diff catches both a triple whose content is wrong (e.g. a corrupted identifier value) and any unexpected extra triple, neither of which an existence-only check can see. The validator does not call any Converter method, and rebuilds the predicate for each dm:-only relation directly from the XML rather than reusing the DM_PROPERTIES lookup table, which reduces the risk that a shared mapping bug goes undetected. It still shares generic namespace constants, XML/URI helpers, and the SCHEME_LABELS text lookup with the converter, since those encode no project-specific structural mapping decision.
+
+POST-GENERATION VALIDATION: PASS — the independently rebuilt expected graph (26 independently rebuilt entities covering 52 rdf:type/rdfs:label triples, 30 core conceptual assertions, 41 authority-reconciliation identifiers across 178 triples, and a 199-triple statement provenance/reification layer — 459 triples total) is EXACTLY equal (missing=0, extra=0) to the serialized TTL, the serialized RDF/XML, and the in-memory graph produced this run, and all three are pairwise graph-isomorphic.
+
+No owl:sameAs used anywhere. No domain entities, relations, or identifiers were invented beyond what is present in reconnecting_dunhuang.xml. The RDF structural scaffolding that does not correspond 1:1 to a TEI element (E42_Identifier nodes, E55_Type scheme nodes, rdf:Statement reification nodes) is mechanically generated from that XML data and does not assert any fact not already present in the source.

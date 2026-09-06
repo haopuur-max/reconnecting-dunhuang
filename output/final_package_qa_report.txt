@@ -1,0 +1,79 @@
+Reconnecting Dunhuang Final Package QA Report
+
+QA Scope
+- Package entry: output/index.html
+- Encoded implementation source: output/final_report_files/tei_xml/reconnecting_dunhuang.xml
+- Technical HTML: output/final_report_files/xml_to_html/reconnecting_dunhuang.html
+- Turtle: output/final_report_files/xml_to_rdf/reconnecting_dunhuang.ttl
+- RDF/XML: output/final_report_files/xml_to_rdf/reconnecting_dunhuang.rdf
+
+Regenerated Files
+- output/final_report_files/xml_to_html/reconnecting_dunhuang.html
+- output/final_report_files/xml_to_html/html_qa_report.txt
+- output/final_report_files/xml_to_rdf/reconnecting_dunhuang.ttl
+- output/final_report_files/xml_to_rdf/reconnecting_dunhuang.rdf
+- output/final_report_files/xml_to_rdf/rdf_qa_report.txt
+- output/view_turtle.html (now regenerated automatically by transform_tei_to_rdf.py on every run)
+- output/view_rdfxml.html (now regenerated automatically by transform_tei_to_rdf.py on every run)
+
+Added / Renamed Final Package Files
+- README.md
+- output/index.html
+- output/final_package_qa_report.txt
+- output/final_package_changelog.txt
+
+Semantic Lock Checks
+- PASS: 16 / 16 canonical relations.
+- PASS: 30 / 30 conceptual edges.
+- PASS: R1-R15 = Direct; R16 = Enriched.
+- PASS: R16 is not frozen Wikipedia Direct evidence; it is an Enriched project interpretation supported by an additional authoritative source (International Dunhuang Programme, "About - International Dunhuang Programme", The British Library, https://idp.bl.uk/about/, verified by direct fetch).
+- PASS: R1 = Dunhuang -> dm:partOfNetwork -> Silk Road.
+- PASS: Silk Road is encoded as crm:E53_Place with theoretical role Historical / Cultural Network.
+- PASS: R2 remains one core assertion; symmetry is property semantics; Technical HTML no longer displays pseudo-source "mutual".
+- PASS: R9-R12 use crm:P50_has_current_keeper.
+- PASS: R13 keeps crm:P15_was_influenced_by -> Luo Zhenyu; no crm:P14_carried_out_by assertion points to Luo Zhenyu.
+- PASS: R15 and R16 resolve through the same Digital Surrogate in the conceptual model.
+- PASS: The four project-specific dm: properties are partOfNetwork, locatedNear, providesDigitalAccessTo, and virtuallyBringsTogether.
+- PASS: No owl:sameAs statements are used.
+- PASS: Turtle = 459 triples; RDF/XML = 459 triples; graphs are isomorphic.
+- PASS: 30 / 30 core conceptual assertions are present.
+- PASS: 41 authority identifiers and 7 identifier schemes are present.
+- PASS: The P25/E78 range tension is documented as a known modelling limitation; the locked ontology was not automatically changed.
+
+Web / Package QA
+- PASS: The main entry is output/index.html and opens from the extracted package directory.
+- PASS: All local href and src targets referenced by the final Web Report and RDF viewer pages exist.
+- PASS: The frozen Wikipedia oldid link is present and the local PDF source snapshot is packaged.
+- PASS: Technical HTML opens and cr2 displays Source = Mogao Caves, Property = dm:locatedNear, Target = Dunhuang, with a symmetry note.
+- PASS: View Turtle opens output/view_turtle.html; Download Turtle points to the raw .ttl file.
+- PASS: View RDF/XML opens output/view_rdfxml.html; Download RDF/XML points to the raw .rdf file.
+- PASS: Viewer contents match the final .ttl and .rdf files exactly.
+- PASS: Theoretical Model PDF/SVG, Conceptual Model PDF, and Graffoo PDF/SVG are packaged.
+- PASS: Standalone Theoretical Model PDF uses the approved final standalone PDF.
+- PASS: Complete Theoretical Model PDF keeps pages 1-6 unchanged and replaces Appendix B with the latest packaged Authority Control Mapping PDF.
+- PASS: Appendix B wording no longer says "Two networks"; it now uses "Several authority services" for viaf.org, id.loc.gov, and wikidata.org.
+- PASS: Complete Theoretical Model PDF Appendix B footer pagination continues from page 7 / 12 through page 12 / 12.
+- PASS: The outdated "12 of 15 VIAF" statement is not present in the replaced Theoretical Model PDFs.
+- PASS: Authority identifiers use the locked confirmed IDs; no new guessed authority IDs were added.
+- PASS: Provenance, image credit, reference, and ordinary source links on shallow backgrounds no longer use the low-contrast bright cyan color.
+- PASS: No duplicate IDs or broken internal anchors were found in the final Web Report.
+- PASS: output/index.html resolves all Showcase visual assets (img src and CSS background-image url()) via paths relative to output/ itself; the asset bundle lives at output/assets/Reconnecting_Dunhuang_Showcase_Assets_FINAL/ and 0 "../assets/" references remain. Confirmed by loading index.html directly via file:// with no local server.
+- PASS: XML-to-HTML and XML-to-RDF scripts run using package-relative defaults.
+- PASS: Final QA and changelog paths correspond to files included in the package.
+- PASS: README expected counts match the final generated outputs.
+
+Validation Notes
+- TEI Relax NG validation: PASS (independently re-confirmed after the most recent update; TEI/XML content unchanged, SHA-256 match before/after).
+- Official TEI Schematron validation was not run because no standalone local Schematron schema was available in the project environment.
+- RDF post-generation validation: PASS (re-run after transform_tei_to_rdf.py was updated for automatic viewer regeneration; 459/459 triples, isomorphic Turtle/RDF-XML graphs, 30/30 core conceptual assertions, 41 authority identifiers across 7 schemes, no owl:sameAs, R13 keeps P15_was_influenced_by -> Luo Zhenyu with no P14_carried_out_by -> Luo Zhenyu, R15/R16 share the same Digital Surrogate node).
+- View Turtle / View RDF/XML content independently verified to equal the freshly generated .ttl / .rdf files exactly, byte-for-byte after removing only HTML escaping and wrapper markup.
+- XML to HTML transformation re-run: TEI/XML immutability PASS (SHA-256 unchanged), HTML QA PASS.
+- Complete extracted ZIP package QA: PASS, re-run after the regenerated RDF/viewer files were in place (not carried over from an earlier spot-check). No duplicate ids, no broken internal anchors, and no missing local resource references were found in index.html, view_turtle.html, view_rdfxml.html, or the Technical HTML.
+- Local asset-path robustness: output/index.html's Showcase asset references were rewritten from a parent-relative path ("../assets/...") to a path relative to output/ itself ("assets/..."), and the approved asset bundle was copied into output/assets/ (SHA-256 verified identical to the original files; no images replaced or altered). Verified by loading output/index.html directly via file:// in a headless browser with no local server: 0 remaining "../assets/" references, 0 missing local visual resources, 0 failed local file:// requests, and every required image (Hero, Pelliot, donor portrait, Wang Yuanlu, manuscript, all diagrams, all icons, both model SVGs) confirmed loaded with nonzero natural dimensions, including CSS background-image sections.
+- Package cleanliness: output/final_report_files/xml_to_rdf/__pycache__/ (and its .pyc file) removed. Full package search confirmed 0 __pycache__ directories, 0 .pyc/.pyo files, 0 .DS_Store files, 0 __MACOSX directories remain, both before and after the final ZIP rebuild.
+- R16 additional authoritative source: verified by direct fetch (not a search snippet) of "About - International Dunhuang Programme", International Dunhuang Programme / The British Library, https://idp.bl.uk/about/. Determined strong and directly on-topic (first-party institutional page whose "Our Mission" section states that the programme links the collections of over 35 partner institutions worldwide, forming a growing network of libraries, museums and research institutes). Cited consistently using the same verified source URL throughout. The formal References/Provenance citation uses the document title "About - International Dunhuang Programme", while prose/UI references may use the visible descriptive heading "About the International Dunhuang Programme (IDP)". Cited in the Web Report's Evidence Lens section, the Text-to-Knowledge R15/R16 example, a new dedicated Provenance card (kept separate from the frozen Wikipedia article's own untouched 34-item bibliography), the TEI evidence-enriched category description (via a minimal inline <ref>, re-validated against RelaxNG), the RDF transformation documentation, and README. R16 evidence status remains Enriched; no relation, edge, triple, or entity was added or changed to accommodate this citation.
+- Colour adjustment: the approved visual goal was a warm coffee-brown (#3a2a20) in place of near-black dark panels. #story, #entities/#source, #text-to-knowledge, and #provenance render with a light warm-cream background by original design, independent of the asset-path fix described below. #evidence and #finale are the sections that are genuinely dark by design; both now use the approved warm coffee-brown as their effective background: #evidence's base gradient layer is a flat #3a2a20 (decorative radial-gradient glow accents preserved), and #finale's photo-overlay gradient uses the same warm brown (58,42,32) across all three rgba stops, preserving each stop's original alpha/opacity so the underlying Hero photograph's legibility vignette is unchanged. Verified via computed-style inspection that both sections resolve to rgb(58,42,32).
+- Fixed a low-contrast regression this citation work introduced: the new R16 source link in the Evidence Lens section used the site's default teal (#1f5f61, tuned for light backgrounds) against the dark #evidence background (~1.9:1 contrast, WCAG failure). Fixed by extending the page's existing gold link-on-dark-section rule (#f0c66d, already used for #model/#finale links) to include #evidence (~8.5:1 contrast).
+- The frozen Wikipedia source is identified by oldid 1347007263 (03:43, 4 April 2026); the corresponding local PDF snapshot and the citation link's URL structure were confirmed present and correctly formed.
+- R16 citation: the official International Dunhuang Programme About page states that the programme links the collections of over 35 partner institutions worldwide, forming a growing network of libraries, museums and research institutes. This provides the additional authoritative basis for R16 as an Enriched project interpretation. Formal bibliographic and provenance contexts use the document title "About - International Dunhuang Programme", while descriptive prose/UI contexts may use the visible heading "About the International Dunhuang Programme (IDP)". URL, R16 Enriched status, and all semantic/RDF values unchanged.
+- Beijing entity-card clarification (Web Report presentation only): the Entities section's scope note was enhanced to explicitly name Beijing and its formalization reason (crm:P26_moved_to), and Beijing's entity card gained a "Formalization Node" badge plus "Formal role" and "Note" fields distinguishing it from the 15 core theoretical entities, while remaining correctly grouped under Places and modelled as crm:E53_Place. No other entity cards, TEI/XML, RDF, model PDFs, or locked QA numbers were changed; confirmed via re-run of both transformation scripts, headless-browser image/link checks, and an unchanged TEI/XML file hash.

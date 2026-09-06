@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Reconnecting Dunhuang: The Library Cave and Its Manuscripts</title>
+        <respStmt>
+          <resp>TEI/XML implementation</resp>
+          <name>University of Bologna course project</name>
+        </respStmt>
+      </titleStmt>
+      <publicationStmt>
+        <p>Unpublished course project file for Information Science and Cultural Heritage, University of Bologna.</p>
+      </publicationStmt>
+      <sourceDesc>
+        <bibl xml:id="source-wikipedia">
+          <author>English Wikipedia</author>
+          <title>Dunhuang manuscripts</title>
+          <idno type="wikipedia-oldid">1347007263</idno>
+          <date when="2026-04-04T03:43:00Z">03:43, 4 April 2026</date>
+          <ref target="https://en.wikipedia.org/w/index.php?title=Dunhuang_manuscripts&amp;oldid=1347007263">Permanent revision URL</ref>
+          <note>Frozen source revision used for the TEI transcription and annotation layer.</note>
+        </bibl>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p>This TEI file encodes the locked Reconnecting Dunhuang model without changing R1-R16, entity classes, ontology mappings, evidence statuses, or conceptual edge counts.</p>
+        <p>The four locked project-specific dm: properties (dm:partOfNetwork, dm:locatedNear, dm:providesDigitalAccessTo, dm:virtuallyBringsTogether) are retained in relation @name values. Their persistent project namespace has been assigned: dm: resolves to https://haopuur-max.github.io/reconnecting-dunhuang/ontology/, used together with the resource namespace https://haopuur-max.github.io/reconnecting-dunhuang/resource/ (resource:) by the XML/TEI to RDF transformation to produce reconnecting_dunhuang.ttl and reconnecting_dunhuang.rdf.</p>
+      </projectDesc>
+      <classDecl>
+        <taxonomy xml:id="concepts">
+          <category xml:id="concept-buddhism"><catDesc>Buddhism</catDesc></category>
+          <category xml:id="concept-daoism"><catDesc>Daoism</catDesc></category>
+          <category xml:id="concept-confucianism"><catDesc>Confucianism</catDesc></category>
+          <category xml:id="concept-nestorian-christianity"><catDesc>Nestorian Christianity</catDesc></category>
+          <category xml:id="concept-manichaeism"><catDesc>Manichaeism</catDesc></category>
+        </taxonomy>
+        <taxonomy xml:id="evidence">
+          <category xml:id="evidence-direct"><catDesc>Direct evidence from the frozen Wikipedia revision.</catDesc></category>
+          <category xml:id="evidence-enriched"><catDesc>Enriched relation supported by an additional authoritative source and introduced as a project interpretation. In this project, R16 is supported by the International Dunhuang Project's (now International Dunhuang Programme) <ref target="https://idp.bl.uk/about/">institutional description</ref> and is kept distinct from Direct evidence drawn from the frozen Wikipedia revision.</catDesc></category>
+        </taxonomy>
+      </classDecl>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="en">English</language>
+        <language ident="zh">Chinese</language>
+        <language ident="ja">Japanese</language>
+      </langUsage>
+    </profileDesc>
+    <revisionDesc>
+      <change when="2026-09-01">Created TEI/XML implementation for the locked Reconnecting Dunhuang model.</change>
+    </revisionDesc>
+  </teiHeader>
+  <standOff>
+    <listPerson>
+      <person xml:id="wang-yuanlu">
+        <persName>Wang Yuanlu</persName>
+        <persName xml:lang="zh">王圆箓</persName>
+        <idno type="wikidata">Q1202225</idno>
+        <note type="conceptualClass">crm:E21_Person</note>
+      </person>
+      <person xml:id="aurel-stein">
+        <persName>Aurel Stein</persName>
+        <idno type="wikidata">Q313061</idno>
+        <idno type="viaf">88967071</idno>
+        <idno type="lc">n82045000</idno>
+        <idno type="worldcat-entity">E39PBJcc8RpgyQVjD6fDkFB9Dq</idno>
+        <note type="conceptualClass">crm:E21_Person</note>
+      </person>
+      <person xml:id="paul-pelliot">
+        <persName>Paul Pelliot</persName>
+        <idno type="wikidata">Q368821</idno>
+        <idno type="viaf">73858373</idno>
+        <idno type="lc">n50048941</idno>
+        <note type="conceptualClass">crm:E21_Person</note>
+      </person>
+      <person xml:id="otani-kozui">
+        <persName>Ōtani Kōzui</persName>
+        <persName xml:lang="ja">大谷光瑞</persName>
+        <idno type="wikidata">Q386254</idno>
+        <idno type="viaf">113770129</idno>
+        <idno type="lc">n85315990</idno>
+        <note type="conceptualClass">crm:E21_Person</note>
+      </person>
+      <person xml:id="luo-zhenyu">
+        <persName>Luo Zhenyu</persName>
+        <persName xml:lang="zh">罗振玉</persName>
+        <idno type="wikidata">Q716405</idno>
+        <idno type="viaf">16093476</idno>
+        <idno type="lc">n81076827</idno>
+        <note type="conceptualClass">crm:E21_Person</note>
+      </person>
+    </listPerson>
+    <listPlace>
+      <place xml:id="library-cave">
+        <placeName>Library Cave (Cave 17)</placeName>
+        <idno type="wikidata">Q28097247</idno>
+        <note type="conceptualClass">crm:E53_Place</note>
+      </place>
+      <place xml:id="mogao-caves">
+        <placeName>Mogao Caves</placeName>
+        <idno type="wikidata">Q43286</idno>
+        <idno type="lcsh">sh86007577</idno>
+        <idno type="fast">1240618</idno>
+        <idno type="fast-control-number">fst01240618</idno>
+        <note type="conceptualClass">crm:E53_Place</note>
+      </place>
+      <place xml:id="dunhuang">
+        <placeName>Dunhuang</placeName>
+        <idno type="wikidata">Q319114</idno>
+        <idno type="viaf">168042699</idno>
+        <idno type="lc">nr96042661</idno>
+        <idno type="fast">1278691</idno>
+        <idno type="fast-control-number">fst01278691</idno>
+        <note type="conceptualClass">crm:E53_Place</note>
+      </place>
+      <place xml:id="silk-road" type="network">
+        <placeName>Silk Road</placeName>
+        <idno type="wikidata">Q36288</idno>
+        <idno type="lcsh">sh85122554</idno>
+        <idno type="fast">1243730</idno>
+        <idno type="fast-control-number">fst01243730</idno>
+        <note type="conceptualClass">crm:E53_Place</note>
+      </place>
+      <place xml:id="beijing">
+        <placeName>Beijing</placeName>
+        <note type="conceptualClass">crm:E53_Place</note>
+        <note type="modelRole">Additional conceptual node required by R13.</note>
+      </place>
+    </listPlace>
+    <listOrg>
+      <org xml:id="british-library" type="institution">
+        <orgName>British Library</orgName>
+        <idno type="wikidata">Q23308</idno>
+        <idno type="lc">n81139951</idno>
+        <note type="conceptualClass">crm:E40_Legal_Body</note>
+      </org>
+      <org xml:id="bnf" type="institution">
+        <orgName>Bibliothèque nationale de France</orgName>
+        <idno type="wikidata">Q193563</idno>
+        <idno type="lc">no95028191</idno>
+        <note type="conceptualClass">crm:E40_Legal_Body</note>
+      </org>
+      <org xml:id="nlc" type="institution">
+        <orgName>National Library of China</orgName>
+        <idno type="wikidata">Q732353</idno>
+        <idno type="lc">no2001051712</idno>
+        <note type="conceptualClass">crm:E40_Legal_Body</note>
+      </org>
+      <org xml:id="tokyo-national-museum" type="institution">
+        <orgName>Tokyo National Museum</orgName>
+        <idno type="wikidata">Q653433</idno>
+        <note type="conceptualClass">crm:E40_Legal_Body</note>
+      </org>
+      <org xml:id="idp" type="project">
+        <orgName>International Dunhuang Project</orgName>
+        <idno type="wikidata">Q3754962</idno>
+        <note type="conceptualClass">crm:E74_Group</note>
+      </org>
+    </listOrg>
+    <list xml:id="aggregate-holdings" type="aggregateHoldings">
+      <item xml:id="dunhuang-manuscripts">
+        <name type="collection">Dunhuang Manuscripts</name>
+        <idno type="wikidata">Q276864</idno>
+        <idno type="viaf">178621901</idno>
+        <idno type="lc">n82066451</idno>
+        <idno type="fast">1356877</idno>
+        <idno type="fast-control-number">fst01356877</idno>
+        <note type="conceptualClass">crm:E78_Curated_Holding</note>
+      </item>
+    </list>
+    <list xml:id="digital-objects" type="digitalObjects">
+      <item xml:id="digital-surrogate">
+        <name type="digitalObject">Digital Surrogate of the Dunhuang Manuscripts</name>
+        <note type="conceptualClass">crmdig:D1_Digital_Object</note>
+      </item>
+    </list>
+    <list xml:id="time-spans" type="timeSpans">
+      <item xml:id="timespan-1900-06-25">
+        <date when="1900-06-25">25 June 1900</date>
+        <note type="conceptualClass">crm:E52_Time-Span</note>
+      </item>
+      <item xml:id="timespan-1910">
+        <date when="1910">1910</date>
+        <note type="conceptualClass">crm:E52_Time-Span</note>
+      </item>
+    </list>
+    <listEvent>
+      <event xml:id="sealing-event">
+        <label>Sealing of the Library Cave</label>
+        <note type="conceptualClass">crm:E7_Activity</note>
+      </event>
+      <event xml:id="discovery-event">
+        <label>Discovery of the Dunhuang Manuscripts</label>
+        <note type="conceptualClass">crmsci:S19_Encounter_Event</note>
+      </event>
+      <event xml:id="purchase-stein">
+        <label>Purchase involving Aurel Stein</label>
+        <note type="conceptualClass">crm:E96_Purchase</note>
+      </event>
+      <event xml:id="purchase-pelliot">
+        <label>Purchase involving Paul Pelliot</label>
+        <note type="conceptualClass">crm:E96_Purchase</note>
+      </event>
+      <event xml:id="purchase-otani">
+        <label>Purchase involving Ōtani Kōzui</label>
+        <note type="conceptualClass">crm:E96_Purchase</note>
+      </event>
+      <event xml:id="transfer-beijing">
+        <label>Transfer of the Dunhuang Manuscripts to Beijing</label>
+        <note type="conceptualClass">crm:E9_Move</note>
+      </event>
+      <event xml:id="digitization-event">
+        <label>Digitization of the Dunhuang Manuscripts</label>
+        <note type="conceptualClass">crmdig:D2_Digitization_Process</note>
+      </event>
+    </listEvent>
+    <listRelation xml:id="canonical-relations" type="canonical">
+      <relation xml:id="r1" name="part_of_network" active="#dunhuang" passive="#silk-road" ana="#evidence-direct"/>
+      <relation xml:id="r2" name="located_near" active="#mogao-caves" passive="#dunhuang" ana="#evidence-direct"/>
+      <relation xml:id="r3" name="located_within" active="#library-cave" passive="#mogao-caves" ana="#evidence-direct"/>
+      <relation xml:id="r4" name="sealed_in" active="#dunhuang-manuscripts" passive="#library-cave" ana="#evidence-direct"/>
+      <relation xml:id="r5" name="discovered" active="#wang-yuanlu" passive="#dunhuang-manuscripts" ana="#evidence-direct"/>
+      <relation xml:id="r6" name="sold_manuscripts_to" active="#wang-yuanlu" passive="#aurel-stein" ana="#evidence-direct"/>
+      <relation xml:id="r7" name="sold_manuscripts_to" active="#wang-yuanlu" passive="#paul-pelliot" ana="#evidence-direct"/>
+      <relation xml:id="r8" name="sold_manuscripts_to" active="#wang-yuanlu" passive="#otani-kozui" ana="#evidence-direct"/>
+      <relation xml:id="r9" name="held_by" active="#dunhuang-manuscripts" passive="#british-library" ana="#evidence-direct"/>
+      <relation xml:id="r10" name="held_by" active="#dunhuang-manuscripts" passive="#bnf" ana="#evidence-direct"/>
+      <relation xml:id="r11" name="held_by" active="#dunhuang-manuscripts" passive="#nlc" ana="#evidence-direct"/>
+      <relation xml:id="r12" name="held_by" active="#dunhuang-manuscripts" passive="#tokyo-national-museum" ana="#evidence-direct"/>
+      <relation xml:id="r13" name="facilitated_transfer_of" active="#luo-zhenyu" passive="#dunhuang-manuscripts" ana="#evidence-direct"/>
+      <relation xml:id="r14" name="digitizes" active="#idp" passive="#dunhuang-manuscripts" ana="#evidence-direct"/>
+      <relation xml:id="r15" name="provides_digital_access_to" active="#idp" passive="#dunhuang-manuscripts" ana="#evidence-direct"/>
+      <relation xml:id="r16" name="virtually_brings_together" active="#idp" passive="#dunhuang-manuscripts" ana="#evidence-enriched"/>
+    </listRelation>
+    <listRelation xml:id="conceptual-relations" type="conceptual">
+      <relation xml:id="cr1" name="dm:partOfNetwork" active="#dunhuang" passive="#silk-road" corresp="#r1" ana="#evidence-direct"/>
+      <relation xml:id="cr2" name="dm:locatedNear" mutual="#mogao-caves #dunhuang" corresp="#r2" ana="#evidence-direct"/>
+      <relation xml:id="cr3" name="crm:P89_falls_within" ref="http://www.cidoc-crm.org/cidoc-crm/P89_falls_within" active="#library-cave" passive="#mogao-caves" corresp="#r3" ana="#evidence-direct"/>
+      <relation xml:id="cr4" name="crm:P12_occurred_in_the_presence_of" ref="http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of" active="#sealing-event" passive="#dunhuang-manuscripts" corresp="#r4" ana="#evidence-direct"/>
+      <relation xml:id="cr5" name="crm:P7_took_place_at" ref="http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at" active="#sealing-event" passive="#library-cave" corresp="#r4" ana="#evidence-direct"/>
+      <relation xml:id="cr6" name="crm:P14_carried_out_by" ref="http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by" active="#discovery-event" passive="#wang-yuanlu" corresp="#r5" ana="#evidence-direct"/>
+      <relation xml:id="cr7" name="crmsci:O19_encountered_object" ref="http://www.cidoc-crm.org/extensions/crmsci/O19_encountered_object" active="#discovery-event" passive="#dunhuang-manuscripts" corresp="#r5" ana="#evidence-direct"/>
+      <relation xml:id="cr8" name="crm:P4_has_time-span" ref="http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span" active="#discovery-event" passive="#timespan-1900-06-25" corresp="#r5" ana="#evidence-direct"/>
+      <relation xml:id="cr9" name="crm:P23_transferred_title_from" ref="http://www.cidoc-crm.org/cidoc-crm/P23_transferred_title_from" active="#purchase-stein" passive="#wang-yuanlu" corresp="#r6" ana="#evidence-direct"/>
+      <relation xml:id="cr10" name="crm:P22_transferred_title_to" ref="http://www.cidoc-crm.org/cidoc-crm/P22_transferred_title_to" active="#purchase-stein" passive="#aurel-stein" corresp="#r6" ana="#evidence-direct"/>
+      <relation xml:id="cr11" name="crm:P24_transferred_title_of" ref="http://www.cidoc-crm.org/cidoc-crm/P24_transferred_title_of" active="#purchase-stein" passive="#dunhuang-manuscripts" corresp="#r6" ana="#evidence-direct"/>
+      <relation xml:id="cr12" name="crm:P23_transferred_title_from" ref="http://www.cidoc-crm.org/cidoc-crm/P23_transferred_title_from" active="#purchase-pelliot" passive="#wang-yuanlu" corresp="#r7" ana="#evidence-direct"/>
+      <relation xml:id="cr13" name="crm:P22_transferred_title_to" ref="http://www.cidoc-crm.org/cidoc-crm/P22_transferred_title_to" active="#purchase-pelliot" passive="#paul-pelliot" corresp="#r7" ana="#evidence-direct"/>
+      <relation xml:id="cr14" name="crm:P24_transferred_title_of" ref="http://www.cidoc-crm.org/cidoc-crm/P24_transferred_title_of" active="#purchase-pelliot" passive="#dunhuang-manuscripts" corresp="#r7" ana="#evidence-direct"/>
+      <relation xml:id="cr15" name="crm:P23_transferred_title_from" ref="http://www.cidoc-crm.org/cidoc-crm/P23_transferred_title_from" active="#purchase-otani" passive="#wang-yuanlu" corresp="#r8" ana="#evidence-direct"/>
+      <relation xml:id="cr16" name="crm:P22_transferred_title_to" ref="http://www.cidoc-crm.org/cidoc-crm/P22_transferred_title_to" active="#purchase-otani" passive="#otani-kozui" corresp="#r8" ana="#evidence-direct"/>
+      <relation xml:id="cr17" name="crm:P24_transferred_title_of" ref="http://www.cidoc-crm.org/cidoc-crm/P24_transferred_title_of" active="#purchase-otani" passive="#dunhuang-manuscripts" corresp="#r8" ana="#evidence-direct"/>
+      <relation xml:id="cr18" name="crm:P50_has_current_keeper" ref="http://www.cidoc-crm.org/cidoc-crm/P50_has_current_keeper" active="#dunhuang-manuscripts" passive="#british-library" corresp="#r9" ana="#evidence-direct"/>
+      <relation xml:id="cr19" name="crm:P50_has_current_keeper" ref="http://www.cidoc-crm.org/cidoc-crm/P50_has_current_keeper" active="#dunhuang-manuscripts" passive="#bnf" corresp="#r10" ana="#evidence-direct"/>
+      <relation xml:id="cr20" name="crm:P50_has_current_keeper" ref="http://www.cidoc-crm.org/cidoc-crm/P50_has_current_keeper" active="#dunhuang-manuscripts" passive="#nlc" corresp="#r11" ana="#evidence-direct"/>
+      <relation xml:id="cr21" name="crm:P50_has_current_keeper" ref="http://www.cidoc-crm.org/cidoc-crm/P50_has_current_keeper" active="#dunhuang-manuscripts" passive="#tokyo-national-museum" corresp="#r12" ana="#evidence-direct"/>
+      <relation xml:id="cr22" name="crm:P25_moved" ref="http://www.cidoc-crm.org/cidoc-crm/P25_moved" active="#transfer-beijing" passive="#dunhuang-manuscripts" corresp="#r13" ana="#evidence-direct"/>
+      <relation xml:id="cr23" name="crm:P26_moved_to" ref="http://www.cidoc-crm.org/cidoc-crm/P26_moved_to" active="#transfer-beijing" passive="#beijing" corresp="#r13" ana="#evidence-direct"/>
+      <relation xml:id="cr24" name="crm:P15_was_influenced_by" ref="http://www.cidoc-crm.org/cidoc-crm/P15_was_influenced_by" active="#transfer-beijing" passive="#luo-zhenyu" corresp="#r13" ana="#evidence-direct"/>
+      <relation xml:id="cr25" name="crm:P4_has_time-span" ref="http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span" active="#transfer-beijing" passive="#timespan-1910" corresp="#r13" ana="#evidence-direct"/>
+      <relation xml:id="cr26" name="crm:P14_carried_out_by" ref="http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by" active="#digitization-event" passive="#idp" corresp="#r14" ana="#evidence-direct"/>
+      <relation xml:id="cr27" name="crmdig:L1_digitized" ref="http://www.cidoc-crm.org/extensions/crmdig/L1_digitized" active="#digitization-event" passive="#dunhuang-manuscripts" corresp="#r14" ana="#evidence-direct"/>
+      <relation xml:id="cr28" name="crmdig:L11_had_output" ref="http://www.cidoc-crm.org/extensions/crmdig/L11_had_output" active="#digitization-event" passive="#digital-surrogate" corresp="#r15" ana="#evidence-direct"/>
+      <relation xml:id="cr29" name="dm:providesDigitalAccessTo" active="#idp" passive="#digital-surrogate" corresp="#r15" ana="#evidence-direct"/>
+      <relation xml:id="cr30" name="dm:virtuallyBringsTogether" active="#idp" passive="#digital-surrogate" corresp="#r16" ana="#evidence-enriched"/>
+    </listRelation>
+  </standOff>
+  <text>
+    <body>
+      <div xml:id="lead" type="lead">
+        <p>The <objectName ref="#dunhuang-manuscripts">Dunhuang manuscripts</objectName> are a large and varied collection of religious and secular texts, consisting mainly of handwritten manuscripts on materials such as hemp, silk, and paper, along with some woodblock-printed items. Composed in a range of languages including Chinese, Tibetan and others, these manuscripts were discovered in <date when="1900">1900</date> at the <placeName ref="#mogao-caves">Mogao Caves</placeName> near Sachu in <placeName ref="#dunhuang">Dunhuang</placeName>, Gansu Province, China, by the itinerant <term ana="#concept-daoism">Daoist</term> monk <persName ref="#wang-yuanlu">Wang Yuanlu</persName>. After taking over the caves, <persName ref="#wang-yuanlu">Wang</persName> sold the manuscripts to <persName ref="#aurel-stein">Aurel Stein</persName> and <persName ref="#paul-pelliot">Paul Pelliot</persName> for a modest sum. Knowing the philological value of the <objectName ref="#dunhuang-manuscripts">Dunhuang manuscripts</objectName>, <persName ref="#aurel-stein">Stein</persName> and <persName ref="#paul-pelliot">Pelliot</persName> bought them from <persName ref="#wang-yuanlu">Wang</persName> and took them from China to Europe.</p>
+        <figure>
+          <figDesc>Digitization of a Dunhuang manuscript</figDesc>
+        </figure>
+        <p>Most of the manuscripts originate from a cache of documents produced between the late 4th and early 11th centuries. These were sealed in what is now known as the <placeName ref="#library-cave">Library Cave (Cave 17)</placeName> sometime in the early 11th century. The site at Sachu (modern-day <placeName ref="#dunhuang">Dunhuang</placeName>) was an important regional centre for manuscript production during this period and had also served as an official printing office during the 8th and 9th centuries when the area was under Tibetan rule and formed part of the <placeName ref="#silk-road">Silk Road</placeName> network.<ref target="#bibl-1">[1]</ref><ref target="#bibl-2">[2]</ref></p>
+        <figure>
+          <figDesc>Dunhuang Mogao cave</figDesc>
+        </figure>
+        <figure>
+          <figDesc>Mogao cave painting depicting musicians</figDesc>
+        </figure>
+        <p><persName ref="#wang-yuanlu">Wang Yuanlu</persName> reportedly used the cave complex as a base for his alms-collecting activities and allegedly had discovered the documents concealed behind a sealed wall in an annex within one of the caves.</p>
+        <p>In addition to the <placeName ref="#library-cave">Library Cave</placeName>, manuscripts and printed texts have also been discovered in several other caves at the site. Notably, <persName ref="#paul-pelliot">Pelliot</persName> retrieved a large number of documents from Caves 464 and 465 in the northern section of the <placeName ref="#mogao-caves">Mogao Caves</placeName>. These documents mostly date to the Yuan dynasty (1271–1368), several hundred years after the <placeName ref="#library-cave">Library Cave</placeName> was sealed, and are written in various languages, including Tibetan, Chinese, and Old Uyghur.<ref target="#bibl-3">[3]</ref></p>
+        <p>The Dunhuang documents include works ranging from history, medicine<ref target="#bibl-4">[4]</ref> and mathematics to folk songs and dance. There are also many religious documents, most of which are <term ana="#concept-buddhism">Buddhist</term>, but other religions and philosophy including <term ana="#concept-daoism">Daoism</term>, <term ana="#concept-confucianism">Confucianism</term>, <term ana="#concept-nestorian-christianity">Nestorian Christianity</term>, Judaism, and <term ana="#concept-manichaeism">Manichaeism</term>, are also represented. These manuscripts constitute a major resource for academic research across numerous disciplines, including history, medicine, religious studies, linguistics, and manuscript studies.<ref target="#bibl-5">[5]</ref> The majority of the manuscripts <persName ref="#paul-pelliot">Pelliot</persName> took and are stored in the <orgName ref="#bnf">Bibliothèque nationale de France</orgName>'s collection are in Chinese (3,000 texts) and Tibetan (4,000 texts).<ref target="#bibl-6">[6]</ref> The multitude of other languages represented in the manuscripts include Khotanese, Kuchean, Sanskrit, Sogdian, Old Uyghur, Prakrit, Hebrew, and Old Turkic.<ref target="#bibl-7">[7]</ref></p>
+        <p>The removal of the manuscripts has since been described by some scholars as "plunder,"<ref target="#bibl-8">[8]</ref> with the Chinese government calling for their return, including eight volumes that were repatriated by a Japanese businessman in 1997.<ref target="#bibl-9">[9]</ref></p>
+      </div>
+      <div xml:id="history" type="section">
+        <head>History</head>
+        <p>The majority of surviving <objectName ref="#dunhuang-manuscripts">Dunhuang manuscripts</objectName> were kept in a cave, the so-called <placeName ref="#library-cave">Library Cave (Cave 17)</placeName>, which had been walled off sometime early in the 11th century. The documents in the cave were discovered by the <term ana="#concept-daoism">Daoist</term> monk <persName ref="#wang-yuanlu">Wang Yuanlu</persName>, who was interested in restoring the <placeName ref="#mogao-caves">Mogao Caves</placeName>, on <date when="1900-06-25">25 June 1900</date>.<ref target="#bibl-10">[10]</ref> In the next few years, <persName ref="#wang-yuanlu">Wang</persName> took some manuscripts to show to various officials who expressed varying level of interest, but in 1904 <persName ref="#wang-yuanlu">Wang</persName> re-sealed the cave following an order by the governor of Gansu concerned about the cost of transporting these documents. From 1907 onwards, <persName ref="#wang-yuanlu">Wang</persName> began to sell them to Western explorers, notably <persName ref="#aurel-stein">Aurel Stein</persName> and <persName ref="#paul-pelliot">Paul Pelliot</persName>. According to <persName ref="#aurel-stein">Stein</persName> who was the first to describe the cave in its original state:</p>
+        <figure>
+          <figDesc>Abbot Wang Yuanlu, discoverer of the hidden Library Cave</figDesc>
+        </figure>
+        <p><cit><quote>Heaped up in layers, but without any order, there appeared in the dim light of the priest's little lamp a solid mass of manuscript bundles rising to a height of nearly ten feet, and filling, as subsequent measurement showed, close on 500 cubic feet. The area left clear within the room was just sufficient for two people to stand in.</quote><ref target="#bibl-11">[11]</ref></cit></p>
+        <p><persName ref="#aurel-stein">Stein</persName> had the first pick and he was able to collect around 7,000 complete manuscripts and 6,000 fragments for which he paid £130, although these include many duplicate copies of the Diamond and Lotus Sutras. <persName ref="#paul-pelliot">Pelliot</persName> took almost 10,000 documents for the equivalent of £90, but, unlike <persName ref="#aurel-stein">Stein</persName>, <persName ref="#paul-pelliot">Pelliot</persName> was a trained sinologist literate in Chinese, and he was allowed to examine the manuscripts freely, so he was able to pick a better selection of documents than <persName ref="#aurel-stein">Stein</persName>. <persName ref="#paul-pelliot">Pelliot</persName> was interested in the more unusual and exotic of the <objectName ref="#dunhuang-manuscripts">Dunhuang manuscripts</objectName>, such as those dealing with the administration and financing of the monastery and associated lay men's groups. Many of these manuscripts survived only because they formed a type of palimpsest whereby papers were reused and <term ana="#concept-buddhism">Buddhist</term> texts were written on the opposite side of the paper. Hundreds more of the manuscripts were sold by <persName ref="#wang-yuanlu">Wang</persName> to <persName ref="#otani-kozui">Ōtani Kōzui</persName> and Sergey Oldenburg.<ref target="#bibl-13">[13]</ref><ref target="#bibl-14">[14]</ref></p>
+        <figure>
+          <figDesc>Image of Cave 16 taken by Aurel Stein in 1907, with a small high doorway leading to Cave 17, the Library Cave, seen on the right. The table, bench, and piles of manuscripts near the doorway is Stein's doctored addition made by overlaying a different photo negative.<ref target="#bibl-12">[12]</ref></figDesc>
+        </figure>
+        <p>In addition to the manuscripts that he acquired from <persName ref="#wang-yuanlu">Wang</persName>, <persName ref="#paul-pelliot">Pelliot</persName> also uncovered a large number of manuscripts and printed texts from Caves 464 and 465 (<persName ref="#paul-pelliot">Pelliot</persName>'s Caves 181 and 182) in the northern section of the site. These documents date to the Yuan dynasty (1271–1368), and are written in various languages, including Chinese, Tibetan, and Old Uyghur. The documents also include over two hundred fragments of texts written in the Tangut language, which is significant as the Tangut script (devised in 1036) is entirely absent from the <placeName ref="#library-cave">Library Cave</placeName> documents.<ref target="#bibl-3">[3]</ref></p>
+        <p>Scholars in <placeName ref="#beijing">Beijing</placeName> were alerted to the significance of the manuscripts after seeing samples of the documents in <persName ref="#paul-pelliot">Pelliot</persName>'s possession. Due to the efforts of the scholar and antiquarian <persName ref="#luo-zhenyu">Luo Zhenyu</persName>, most of the remaining Chinese manuscripts were taken to <placeName ref="#beijing">Beijing</placeName> in <date when="1910">1910</date> and are now in the <orgName ref="#nlc">National Library of China</orgName>. Several thousands of folios of Tibetan manuscripts were left in <placeName ref="#dunhuang">Dunhuang</placeName> and are now located in several museums and libraries in the region.<ref target="#bibl-15">[15]</ref> Rumours of caches of documents taken by local people continued for some time, and a cache of documents hidden by <persName ref="#wang-yuanlu">Wang</persName> from the authorities was later found in the 1940s.<ref target="#bibl-16">[16]</ref> Those acquired by Western and Japanese scholars are now held in institutions around the world, including the <orgName ref="#british-library">British Library</orgName>, the <orgName ref="#tokyo-national-museum">Tokyo National Museum</orgName>, and the <orgName ref="#bnf">Bibliothèque nationale de France</orgName>. All of the manuscript collections are being digitized by the <orgName ref="#idp">International Dunhuang Project</orgName>, and can be freely accessed online.</p>
+        <figure>
+          <figDesc>Paul Pelliot examining manuscripts in the Library Cave, 1908</figDesc>
+        </figure>
+        <p><cit><quote>“The Chinese regard Stein and Pelliot as robbers,”</quote><bibl type="attribution"><seg type="attribution">wrote the British sinologist Arthur Waley.</seg></bibl><quote>“I think the best way to understand [the feelings of the Chinese] on the subject is to imagine how we should feel if a Chinese archaeologist were to come to England, discover a cache of medieval manuscripts at a ruined monastery, bribe the custodian to part with them and carry them off to Peking. [...] Pelliot did, of course, after his return from Tun-huang, get in touch with Chinese scholars; but he had inherited so much of the nineteenth-century attitude about the right of Europeans to carry off ‘finds’ made in non-European lands that, like Stein, he seems never from the first to last to have had any qualms about the sacking of the Tun-huang library.”</quote><ref target="#bibl-17">[17]</ref></cit></p>
+      </div>
+      <div xml:id="studies" type="section">
+        <head>Studies</head>
+        <p>While most studies use <objectName ref="#dunhuang-manuscripts">Dunhuang manuscripts</objectName> to address issues in areas such as history and religious studies, some have addressed questions about the provenance and materiality of the manuscripts themselves. Various reasons have been suggested for the placing of the manuscripts in the library cave and its sealing. <persName ref="#aurel-stein">Aurel Stein</persName> suggested that the manuscripts were "sacred waste", an explanation that found favour with later scholars including Fujieda Akira.<ref target="#bibl-18">[18]</ref> More recently, it has been suggested that the cave functioned as a storeroom for a <term ana="#concept-buddhism">Buddhist</term> monastic library,<ref target="#bibl-19">[19]</ref> though this has been disputed.<ref target="#bibl-20">[20]</ref> Reasons for this include the fact that, according to Rong and Hansen (1999) there was an organized method to the manner in which many manuscripts in the caves were placed; “<term ana="#concept-buddhism">Buddhist</term> texts that had been divided into sections, labeled, and then placed in wrapped bundles."<ref target="#bibl-21">[21]</ref></p>
+        <p>The reason for the cave's sealing has also been the subject of speculation. A popular hypothesis, first suggested by <persName ref="#paul-pelliot">Paul Pelliot</persName>, is that the cave was sealed to protect the manuscripts at the advent of an invasion by the Xixia army, and later scholars followed with the alternative suggestion that it was sealed in fear of an invasion by Islamic Kharkhanids that never occurred.<ref target="#bibl-19">[19]</ref> Against these hypotheses, Yoshiro Imaeda suggested cave 17 was sealed simply because it ran out of room to function as storage.<ref target="#bibl-22">[22]</ref></p>
+        <p>Liu Bannong compiled Dunhuang Duosuo (<foreign xml:lang="zh">敦煌掇瑣</foreign> "Miscellaneous works found in the <placeName ref="#dunhuang">Dunhuang</placeName> Caves"), a pioneering work about the <objectName ref="#dunhuang-manuscripts">Dunhuang manuscripts</objectName>.</p>
+      </div>
+      <div xml:id="languages-scripts" type="section">
+        <head>Languages and scripts</head>
+        <p>The variety of languages and scripts found among the <objectName ref="#dunhuang-manuscripts">Dunhuang manuscripts</objectName> is a result of the multicultural nature of the region in the first millennium AD.<ref target="#bibl-23">[23]</ref> The largest proportion of the manuscripts are written in Chinese, both Classical and, to a lesser extent, vernacular Chinese. Most manuscripts, including <term ana="#concept-buddhism">Buddhist</term> texts, are written in Kaishu or 'regular script', while others are written in the cursive Xingshu or 'running script'. An unusual feature of the <objectName ref="#dunhuang-manuscripts">Dunhuang manuscripts</objectName> dating from the 9th and 10th centuries is that some appear to have been written with a hard stylus rather than with a brush. According to Akira Fujieda this was due to the lack of materials for constructing brushes in <placeName ref="#dunhuang">Dunhuang</placeName> after the Tibetan occupation in the late 8th century.<ref target="#bibl-24">[24]</ref></p>
+        <p>The <objectName ref="#dunhuang-manuscripts">Dunhuang manuscripts</objectName> represent some of the earliest examples of Tibetan writing. Several styles are represented among the manuscripts, forebears of the later Uchen (dbu can) and Ume (dbu med) styles.<ref target="#bibl-25">[25]</ref> Both Old Tibetan and Classical Tibetan are represented in the manuscripts, as well as the undeciphered Nam language and a language that some have identified as the Zhangzhung language.</p>
+        <p>Other languages represented are Khotanese, Sanskrit, Sogdian, Old Uyghur, and Hebrew,<ref target="#bibl-26">[26]</ref> as well as Old Turkic (e.g. Irk Bitig).<ref target="#bibl-27">[27]</ref></p>
+      </div>
+      <div xml:id="buddhist-texts" type="section">
+        <head>Buddhist texts</head>
+        <p>By far the largest proportion of manuscripts from the <placeName ref="#dunhuang">Dunhuang</placeName> cave contain <term ana="#concept-buddhism">Buddhist</term> texts. These include <term ana="#concept-buddhism">Buddhist</term> sutras, commentaries and treatises, often copied for the purpose of generating religious merit.<ref target="#bibl-28">[28]</ref> Several hundred manuscripts have been identified as notes taken by students,<ref target="#bibl-29">[29]</ref> including the popular <term ana="#concept-buddhism">Buddhist</term> narratives known as bian wen (<foreign xml:lang="zh">變文</foreign>).<ref target="#bibl-30">[30]</ref> Much of the scholarship on the Chinese <term ana="#concept-buddhism">Buddhist</term> manuscripts has been on the Chan (or Zen) texts, which have revolutionized the history of Chan <term ana="#concept-buddhism">Buddhism</term>.<ref target="#bibl-31">[31]</ref> Among the Tibetan <term ana="#concept-buddhism">Buddhist</term> manuscripts, the texts of early Tibetan tantric <term ana="#concept-buddhism">Buddhism</term>, including Mahayoga and Atiyoga or Dzogchen have been the subject of many studies.<ref target="#bibl-32">[32]</ref></p>
+        <figure>
+          <figDesc>5th-century Chinese manuscript Sutra of the Great Virtue of Wisdom on silk</figDesc>
+        </figure>
+      </div>
+      <div xml:id="other-textual-genres" type="section">
+        <head>Other textual genres</head>
+        <list>
+          <item>Non-Buddhist religious texts
+            <list>
+              <item>Taoist texts, including the Hua Hu Jing, and the Xiang'er commentary to the Tao Te Ching</item>
+              <item>Jewish Selihot prayers, as well as a version of the Old Testament in Hebrew <ref target="#bibl-33">[33]</ref></item>
+              <item><term ana="#concept-nestorian-christianity">Nestorian Christian</term> texts</item>
+              <item><term ana="#concept-manichaeism">Manichaean</term> texts</item>
+            </list>
+          </item>
+          <item>Social documents, such as contracts, account books and loan receipts</item>
+          <item>Philosophy, notably the <term ana="#concept-confucianism">Confucian</term> classics, including an ancient edition of Analects commented by Huang Kan (<foreign xml:lang="zh">皇侃</foreign>), and ancient editions of the Shang Shu</item>
+          <item>Literature, including Chinese folk songs and Classical poetry</item>
+          <item>History, both official and local</item>
+          <item>Geography, including the Wang wu tianzhu guo chuan</item>
+          <item>Medicine, including treatments for plagues and illnesses.<ref target="#bibl-34">[34]</ref> The medical texts include a fragment of Bencaojing jizhu by Tao Hongjing, one of the earliest Chinese pharmacological texts.</item>
+          <item>Astronomy, including the Dunhuang star map</item>
+          <item>Mathematics</item>
+          <item>Divination, including the Irk Bitig</item>
+          <item>Dictionaries, including fragments of the Qieyun</item>
+          <item>Music scores and dance notations</item>
+          <item>Recreational games (the Dunhuang Go Classic)</item>
+        </list>
+        <figure>
+          <figDesc>Selihah (penitential prayer) leaf written in Hebrew, 8th or 9th century</figDesc>
+        </figure>
+      </div>
+    </body>
+    <back>
+      <div xml:id="see-also" type="seeAlso">
+        <head>See also</head>
+        <list>
+          <item>Afghan Geniza, similar cache of ancient religious and secular documents</item>
+          <item>Cairo Geniza, similar cache of ancient religious and secular documents</item>
+          <item>Dunhuang Manichaean texts</item>
+          <item>Elephantine papyri and ostraca, similar cache of ancient religious and secular documents</item>
+          <item>Herculaneum papyri, similar cache of ancient religious and secular documents</item>
+          <item>Silk Road transmission of Buddhism</item>
+          <item>Timbuktu manuscripts</item>
+          <item>Zhuying ji, partially recovered poetry manuscript from the period of Wu Zetian</item>
+          <item>List of libraries in the ancient world</item>
+        </list>
+      </div>
+      <div xml:id="references" type="references">
+        <head>References</head>
+        <listBibl>
+          <bibl xml:id="bibl-1">"The Tibetan Empire: A Silk Road Superpower", <title>The Archaeologist</title>, 9 February 2023.</bibl>
+          <bibl xml:id="bibl-2">Tao Tung, <title>The Silk Roads of the Northern Tibetan Plateau during the Early Middle Ages (from the Han to Tang Dynasty)</title>, Bar Publishing, 2013: The excavation of Tuyuhun-Tubo (Tibetan) elite graves at Dulan and Delingha in the modern province of Qinghai has necessitated a rewriting of the history of the Silk Road of Tibet and the north-western China, especially during the 5th–8th centuries AD.</bibl>
+          <bibl xml:id="bibl-3">Galambos, Imre (2015). <title>Translating Chinese Tradition and Teaching Tangut Culture: Manuscripts and Printed Books from Khara-Khoto</title>. DeGruter. pp. 50–51. ISBN 978-3-11-045395-9.</bibl>
+          <bibl xml:id="bibl-4">Lo, Vivienne; Cullen, Christopher, eds. (2005). <title>Medieval Chinese medicine: the Dunhuang medical manuscripts</title>. Needham Research Institute series. London; New York: RoutledgeCurzon. ISBN 978-0-415-34295-7.</bibl>
+          <bibl xml:id="bibl-5">Ponampon, Phra Kiattisak (2019). <title>Dunhuang Manuscript S.2585: a Textual and Interdisciplinary Study on Early Medieval Chinese Buddhist Meditative Techniques and Visionary Experiences</title> (<ref target="https://www.repository.cam.ac.uk/handle/1810/284608">https://www.repository.cam.ac.uk/handle/1810/284608</ref>) (Thesis). Cambridge: University of Cambridge. p. 14. doi:10.17863/CAM.31982 (<ref target="https://doi.org/10.17863%2FCAM.31982">https://doi.org/10.17863%2FCAM.31982</ref>). Retrieved 25 February 2019.</bibl>
+          <bibl xml:id="bibl-6">International Dunhuang Program, Pelliot Collection, <ref target="https://idp.bl.uk/pelliot-collection/">https://idp.bl.uk/pelliot-collection/</ref>.</bibl>
+          <bibl xml:id="bibl-7">Jacques Gernet (31 May 1996). <title>A History of Chinese Civilization</title> (<ref target="https://archive.org/details/historyofchinese00gern">https://archive.org/details/historyofchinese00gern</ref>). Cambridge University Press. pp. 19 (<ref target="https://archive.org/details/historyofchinese00gern/page/19">https://archive.org/details/historyofchinese00gern/page/19</ref>)–. ISBN 978-0-521-49781-7.</bibl>
+          <bibl xml:id="bibl-8">Jacobs, Justin (2020). <title>The compensations of plunder: how China lost its treasures</title>. Silk roads. Chicago London: University of Chicago Press. ISBN 978-0-226-71201-7.</bibl>
+          <bibl xml:id="bibl-9">Langfitt, Frank (1997-10-15). "Plundered Buddhist manuscripts returned to China Artifacts from caves are repatriated from Japan" (<ref target="https://www.baltimoresun.com/1997/10/15/plundered-buddhist-manuscripts-returned-to-china-artifacts-from-caves-are-repatriated-from-japan/">https://www.baltimoresun.com/1997/10/15/plundered-buddhist-manuscripts-returned-to-china-artifacts-from-caves-are-repatriated-from-japan/</ref>). <title>Baltimore Sun</title>. Retrieved 2025-06-30.</bibl>
+          <bibl xml:id="bibl-10">Wenjie Duan (1 January 1994). <title>Dunhuang Art: Through the Eyes of Duan Wenjie</title>. Abhinav Publications. p. 52. ISBN 978-81-7017-313-7.</bibl>
+          <bibl xml:id="bibl-11">Opening of the hidden chapel (<ref target="https://dsr.nii.ac.jp/toyobunko/VIII-5-B2-8/V-2/page/0246.html.en">https://dsr.nii.ac.jp/toyobunko/VIII-5-B2-8/V-2/page/0246.html.en</ref>) M. Aurel Stein, <title>Ruins of Desert Cathay: Vol II</title>.</bibl>
+          <bibl xml:id="bibl-12">Valerie Hensen (2015). <title>The Silk Road: a new history</title> (<ref target="https://books.google.com/books?id=FDdRDAAAQBAJ">https://books.google.com/books?id=FDdRDAAAQBAJ</ref>). Oxford University Press. p. 168. ISBN 9780190218423.</bibl>
+          <bibl xml:id="bibl-13">Paragraph 1 in Neil Schmid "Tun-huang Literature", chapter 48 in Mair 2001.</bibl>
+          <bibl xml:id="bibl-14">Trudy Ring; Noelle Watson; Paul Schellinger, eds. (1996). <title>Asia and Oceania: International Dictionary of Historic Places</title> (<ref target="https://books.google.com/books?id=voerPYsAB5wC&amp;pg=PA244">https://books.google.com/books?id=voerPYsAB5wC&amp;pg=PA244</ref>). Routledge. p. 244. ISBN 978-1884964046.</bibl>
+          <bibl xml:id="bibl-15">"Tibetan Dunhuang Manuscripts in China" in <title>The Bulletin of the School of Oriental and African Studies</title> 65.1 (2002): 129–139. | "The Whereabouts of the Tibetan Manuscripts from Dunhuang" (<ref target="https://earlytibet.com/about/whereabouts/">https://earlytibet.com/about/whereabouts/</ref>). 2007-07-26.</bibl>
+          <bibl xml:id="bibl-16">Peter Hopkirk (2006). <title>Foreign Devils on the Silk Road</title> (<ref target="https://books.google.com/books?id=DoxsQDBQHYEC">https://books.google.com/books?id=DoxsQDBQHYEC</ref>). John Murray. ISBN 978-0-7195-6448-2.</bibl>
+          <bibl xml:id="bibl-17">Waley, Arthur (1960). <title>Ballads and Stories from Tun-huang</title>. Allen and Unwin. pp. 237–8. ISBN 978-0-4153-6173-6. ; quoted after Wilkinson, Endymion (2000). <title>Chinese history: a manual</title>. Harvard Univ Asia Center. p. 827. ISBN 0-674-00249-0.</bibl>
+          <bibl xml:id="bibl-18">Fujieda, Akira. 1969. "The Tun-huang Manuscripts: A General Description, Part II." In <title>Zimbun: Memoirs of the Research Institute for Humanistic Studies, Kyoto University</title> 10: 17–39.</bibl>
+          <bibl xml:id="bibl-19">Rong Xinjiang (1999). "The Nature of the Dunhuang Library Cave and the Reasons for its Sealing". <title>Cahiers d'Extrême-Asie</title>. 11: 247–275. doi:10.3406/asie.1999.1155 (<ref target="https://doi.org/10.3406%2Fasie.1999.1155">https://doi.org/10.3406%2Fasie.1999.1155</ref>).</bibl>
+          <bibl xml:id="bibl-20">Imaeda, Yoshirō. 2008. "The Provenance and Character of the Dunhuang Documents." <title>Memoirs of the Toyo Bunko</title> 66: 81–102. "The Provenance and Character of the Dunhuang Documents" (<ref target="https://web.archive.org/web/20120414223151/http://www.toyo-bunko.or.jp/newresearch/upload/2010011510422259.pdf">https://web.archive.org/web/20120414223151/http://www.toyo-bunko.or.jp/newresearch/upload/2010011510422259.pdf</ref>) (PDF). Archived from the original (<ref target="http://www.toyo-bunko.or.jp/newresearch/upload/2010011510422259.pdf">http://www.toyo-bunko.or.jp/newresearch/upload/2010011510422259.pdf</ref>) (PDF) on 2012-04-14.</bibl>
+          <bibl xml:id="bibl-21">Rong, X., 榮新江, &amp; Hansen, V. (1999). The nature of the Dunhuang library cave and the reasons for its sealing. <title>Cahiers d’Extrême-Asie</title>, 11, 247–275. <ref target="http://www.jstor.org/stable/44167329">http://www.jstor.org/stable/44167329</ref>.</bibl>
+          <bibl xml:id="bibl-22">Imaeda, Yoshirō. 2008. "The Provenance and Character of the Dunhuang Documents". <title>Memoirs of the Toyo Bunko</title> 66: 98 "The Provenance and Character of the Dunhuang Documents" (<ref target="https://web.archive.org/web/20120414223151/http://www.toyo-bunko.or.jp/newresearch/upload/2010011510422259.pdf">https://web.archive.org/web/20120414223151/http://www.toyo-bunko.or.jp/newresearch/upload/2010011510422259.pdf</ref>) (PDF). Archived from the original (<ref target="http://www.toyo-bunko.or.jp/newresearch/upload/2010011510422259.pdf">http://www.toyo-bunko.or.jp/newresearch/upload/2010011510422259.pdf</ref>) (PDF) on 2012-04-14.</bibl>
+          <bibl xml:id="bibl-23">Takata, Tokio 高田時雄. 2000. "Multilingualism at Tun-huang". <title>Acta Asiatica, Bulletin of the Institute of Eastern Culture</title> 78: 49–70. "Multilingualism in Tun-huang'" (<ref target="https://www.zinbun.kyoto-u.ac.jp/~takata/muldunhuang.pdf">https://www.zinbun.kyoto-u.ac.jp/~takata/muldunhuang.pdf</ref>) (PDF).</bibl>
+          <bibl xml:id="bibl-24">FUJIEDA, Akira. 1968. "Sutain Tonkō shūshū e-iri Kannongyō sasshi (S.6983): Tonkō ni okeru mokuhitsu no shiyō" スタイン蒐集絵入り〈観音経〉冊子（S.6983）—— 敦煌における木筆の使用. <title>Bokubi 墨美</title> 177: 3–45.</bibl>
+          <bibl xml:id="bibl-25">van Schaik, Sam (2012). 'The Origin of the Headless Style (dbu med) in Tibet.' <title>Tibeto-Burman Languages IV</title>, edited by Nathan Hill. Leiden: Brill, 2012. [1]</bibl>
+          <bibl xml:id="bibl-26">Susan Whitfield (2004). <title>The Silk Road: Trade, Travel, War and Faith</title>. London: British Library Press, 2004.</bibl>
+          <bibl xml:id="bibl-27">"British Collections: The British Library: The Stein Collection" (<ref target="https://web.archive.org/web/20110110083035/http://idp.bl.uk/pages/collections_en.a4d">https://web.archive.org/web/20110110083035/http://idp.bl.uk/pages/collections_en.a4d</ref>). International Dunhuang Project. Archived from the original (<ref target="http://idp.bl.uk/pages/collections_en.a4d">http://idp.bl.uk/pages/collections_en.a4d</ref>) on 2011-01-10. Retrieved 2022-03-04.</bibl>
+          <bibl xml:id="bibl-28">Giles, Lionel (1944). <title>Six Centuries at Dunhuang</title>.</bibl>
+          <bibl xml:id="bibl-29">Mair, Victor (1981). <title>Lay Students and the Making of Written Vernacular Narrative: An Inventory of the Tun-huang Manuscripts</title>. CHINOPERL Papers No. 10.</bibl>
+          <bibl xml:id="bibl-30">Mair, Victor (1983). <title>Tun-Huang Popular Narratives</title>. Cambridge University Press.</bibl>
+          <bibl xml:id="bibl-31">Adamek, Wendi (2007). <title>The Mystique of Transmission: On an Early Chan History and Its Contexts</title>. Columbia University Press.</bibl>
+          <bibl xml:id="bibl-32">van Schaik, Sam (2008). <title>A Definition of Mahāyoga: Sources from the Dunhuang Manuscripts</title> (<ref target="https://earlytibet.files.wordpress.com/2007/06/vanschaik_2008a.pdf">https://earlytibet.files.wordpress.com/2007/06/vanschaik_2008a.pdf</ref>) (PDF). <title>Tantric Studies</title> 1. pp. 45–88.</bibl>
+          <bibl xml:id="bibl-33">Murray, S. A. P. (2009). <title>The library: An illustrated history</title>. Skyhorse Publishing Company, Incorporated. p. 48.</bibl>
+          <bibl xml:id="bibl-34">"Medicine on the Silk Road" (<ref target="https://web.archive.org/web/20080508040634/http://idp.bl.uk/education/medicine/index.a4d#Or.8210/S.3417">https://web.archive.org/web/20080508040634/http://idp.bl.uk/education/medicine/index.a4d#Or.8210/S.3417</ref>). Archived from the original (<ref target="http://idp.bl.uk/education/medicine/index.a4d#Or.8210/S.3417">http://idp.bl.uk/education/medicine/index.a4d#Or.8210/S.3417</ref>) on 2008-05-08. Retrieved 2012-10-24.</bibl>
+        </listBibl>
+      </div>
+      <div xml:id="cited-works" type="citedWorks">
+        <head>Cited works</head>
+        <listBibl>
+          <bibl>Mair, Victor H. (ed.) 2001. <title>The Columbia History of Chinese Literature</title>. New York: Columbia University Press. ISBN 0-231-10984-9. (Amazon Kindle edition.)</bibl>
+        </listBibl>
+      </div>
+      <div xml:id="further-reading" type="furtherReading">
+        <head>Further reading</head>
+        <listBibl>
+          <bibl><title>Les grottes de Touen-Houang</title> 1920. <title>Les grottes de Touen-Houang : vol. 1</title> (<ref target="https://dsr.nii.ac.jp/toyobunko/VIII-5-B6-3/V-1/">https://dsr.nii.ac.jp/toyobunko/VIII-5-B6-3/V-1/</ref>) <title>Les grottes de Touen-Houang : vol. 2</title> (<ref target="https://dsr.nii.ac.jp/toyobunko/VIII-5-B6-3/V-2/">https://dsr.nii.ac.jp/toyobunko/VIII-5-B6-3/V-2/</ref>) <title>Les grottes de Touen-Houang : vol. 3</title> (<ref target="https://dsr.nii.ac.jp/toyobunko/VIII-5-B6-3/V-3/">https://dsr.nii.ac.jp/toyobunko/VIII-5-B6-3/V-3/</ref>) <title>Les grottes de Touen-Houang : vol. 4</title> (<ref target="https://dsr.nii.ac.jp/toyobunko/VIII-5-B6-3/V-4/">https://dsr.nii.ac.jp/toyobunko/VIII-5-B6-3/V-4/</ref>) <title>Les grottes de Touen-Houang : vol. 5</title> (<ref target="https://dsr.nii.ac.jp/toyobunko/VIII-5-B6-3/V-5/">https://dsr.nii.ac.jp/toyobunko/VIII-5-B6-3/V-5/</ref>) <title>Les grottes de Touen-Houang : vol. 6</title> (<ref target="https://dsr.nii.ac.jp/toyobunko/VIII-5-B6-3/V-6/">https://dsr.nii.ac.jp/toyobunko/VIII-5-B6-3/V-6/</ref>)</bibl>
+          <bibl>Воробьева-Десятовская М.И., Зограф И.Т., Мартынов А.С., Меньшиков Л.Н., Смирнов Б.Л. <title>Описание китайских рукописей Дуньхуанского фонда Института народов Азии</title>. В 2 выпусках / Ответственный редактор Л.Н.Меньшиков. М.: «Наука», ГРВЛ, 1967. Вып. 2. 687 с.</bibl>
+          <bibl>Воробьева-Десятовская М.И., Гуревич И.С., Меньшиков Л.Н., Спирин В.С., Школяр С.А. <title>Описание китайских рукописей Дуньхуанского фонда Института народов Азии</title>. В 2 выпусках / Ответственный редактор Л.Н.Меньшиков. М.: ИВЛ, 1963. Вып. 1. 778 с.</bibl>
+          <bibl><title>Китайские рукописи из Дуньхуана: Памятники буддийской литературы сувэньсюэ</title> / Издание и предисловие Л.Н.Меньшикова. М.: ИВЛ, 1963. (Памятники литературы народов Востока. Тексты. Большая серия. XV.). 75 с.</bibl>
+        </listBibl>
+      </div>
+      <div xml:id="external-links" type="externalLinks">
+        <head>External links</head>
+        <list>
+          <item><ref target="https://web.archive.org/web/20110720084858/http://idp.bl.uk/">The International Dunhuang Project</ref></item>
+        </list>
+      </div>
+    </back>
+  </text>
+</TEI>
