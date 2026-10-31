@@ -47,6 +47,6 @@ diagrams and model tables are generated from the TEI file, the RDF dataset and d
 ## Status of the URIs
 
 Resources and project properties use `https://haopuur-max.github.io/reconnecting-dunhuang/resource/{id}` and
-`.../ontology/{name}`. These are identifiers in a namespace the project controls; they are not yet dereferenceable.
-The website is not published at this address yet, and on a static host each resource would also need its own page.
-Online resolution has not been verified.
+`.../ontology/{name}`. These are identifiers in a namespace the project controls; they are not dereferenceable: on a
+static host each resource would need its own page (a resource URI returns 404). The website itself is published at
+https://haopuur-max.github.io/reconnecting-dunhuang/ (GitHub Pages; checked online on 31 October 2026).

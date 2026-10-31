@@ -1,10 +1,10 @@
-Reconnecting Dunhuang - final submission package (frozen 31 October 2026): file list
+Reconnecting Dunhuang - final submission package (frozen 31 October 2026; published online): file list
 path | bytes | sha256 (first 16)
 
-CHANGELOG_FINAL.md | 5747 | 1d637b1096e37367
-QA_REPORT.md | 34424 | 99e4446d331da726
-README.md | 8998 | c60dbe8e5e20b24e
-reconnecting-dunhuang/README.md | 3314 | 8b582920b79b5e55
+CHANGELOG_FINAL.md | 6545 | 5c28f68a9639f3ae
+QA_REPORT.md | 35445 | 801836e1aa2d9e5d
+README.md | 9226 | ad14b0141a5a76b7
+reconnecting-dunhuang/README.md | 3378 | 85acc45d0e74c187
 reconnecting-dunhuang/assets/css/fonts.css | 5362 | ecf2cc8c154d7cfb
 reconnecting-dunhuang/assets/css/print.css | 1551 | 6b45ce948cab8f8f
 reconnecting-dunhuang/assets/css/prism-editorial.css | 2672 | eb41158eaf26c890
@@ -87,9 +87,9 @@ reconnecting-dunhuang/final_report_files/site_build/check_site.py | 6294 | bc193
 reconnecting-dunhuang/final_report_files/site_build/make_fragments.py | 1928 | e2271faf3cd2915e
 reconnecting-dunhuang/final_report_files/site_build/templates/domain.html | 4857 | 284744364d2216ef
 reconnecting-dunhuang/final_report_files/site_build/templates/files.html | 2588 | 0d04064c42d52d8c
-reconnecting-dunhuang/final_report_files/site_build/templates/index.html | 19976 | cfb487160176e35f
+reconnecting-dunhuang/final_report_files/site_build/templates/index.html | 20003 | f2f96124d0b75eff
 reconnecting-dunhuang/final_report_files/site_build/templates/models.html | 23776 | fafe7c2449bc59b4
-reconnecting-dunhuang/final_report_files/site_build/templates/rdf.html | 3747 | baba1fa2abd58c92
+reconnecting-dunhuang/final_report_files/site_build/templates/rdf.html | 3751 | 4dec103d808e9d43
 reconnecting-dunhuang/final_report_files/site_build/templates/tei.html | 3613 | 50c4c09f7dd1330d
 reconnecting-dunhuang/final_report_files/site_build/templates/transformations.html | 3332 | 97f28a8f1b57c2a5
 reconnecting-dunhuang/final_report_files/site_build/templates/wiki-view.html | 468 | 2f5b7ea385667a7f
@@ -106,9 +106,9 @@ reconnecting-dunhuang/final_report_files/xml_to_rdf/reconnecting_dunhuang.rdf | 
 reconnecting-dunhuang/final_report_files/xml_to_rdf/reconnecting_dunhuang.ttl | 45982 | 309f00f961ffb9af
 reconnecting-dunhuang/final_report_files/xml_to_rdf/reconnecting_dunhuang_rdf_transformation.md | 5793 | 339bb8a2464ad8fe
 reconnecting-dunhuang/final_report_files/xml_to_rdf/transform_tei_to_rdf.py | 31339 | 462bbb78a8831872
-reconnecting-dunhuang/index.html | 22064 | e917167439e403e6
+reconnecting-dunhuang/index.html | 22091 | d0e411204b5c9b64
 reconnecting-dunhuang/models.html | 48975 | d1c5e1d7a73be902
-reconnecting-dunhuang/rdf.html | 181319 | e297df3a4b1dcd43
+reconnecting-dunhuang/rdf.html | 181323 | b8b6228d6ded093a
 reconnecting-dunhuang/tei.html | 101586 | c9e5264a5ded15f1
 reconnecting-dunhuang/transformations.html | 93787 | cfcd9406293298a4
 reconnecting-dunhuang/wiki-view.html | 63528 | 9dfb6cd3171eb443

@@ -156,8 +156,8 @@ which regenerates them pixel for pixel from `manuscript_pelliot_chinois_2778.jpg
 
 ## 6. Remaining limitations
 
-1. **Project URIs not dereferenceable; online version not verified.** The site is not yet published at
-   `https://haopuur-max.github.io/reconnecting-dunhuang/`; all checks are local.
+1. **Project URIs not dereferenceable.** The website is published at `https://haopuur-max.github.io/reconnecting-dunhuang/` (section 8.F), but a
+   resource URI such as `.../resource/aurel-stein` returns 404: a static host would need one page per resource.
 2. **The home-page overlay** draws the sixteen relations of the original model (R1–R16); its caption says so.
 3. **Below about 1360 px the diagrams scroll sideways** on the Models page ("Fit to width" and "Enlarge" are offered).
    On A4 paper they are small; the diagram PDFs are meant for zooming.
@@ -343,6 +343,19 @@ Chromium, Graphviz 2.43, xmllint (libxml2 2.9.14). Source Sans 3 is not installe
 | XML/TEI → RDF transformation (Python) for the whole set of entities and relations of the ontology | PASS | `transform_tei_to_rdf.py`; V5: all 38 conceptual and 6 subject relations present. R9 and R12 are theoretical only, by design (B6) |
 | Report, preferably a web page, with all files | PASS | the website; Files page lists 35 deliverables |
 | Individual project | PASS | author HAOPU YIN (TEI `titleStmt`) |
+
+### F. Online version (GitHub Pages, 31 October 2026)
+
+Checked in a real browser on the live site https://haopuur-max.github.io/reconnecting-dunhuang/ after the push to
+`haopuur-max/reconnecting-dunhuang` (`main`).
+
+| # | Check | Result | Evidence |
+|---|---|---|---|
+| F1 | The 8 pages load | PASS | HTTP 200 for each page |
+| F2 | Every local link, image, file and anchor of the 8 pages | PASS | 58 distinct targets requested from the live site, 0 missing; all in-page anchors exist |
+| F3 | Live files equal the package | PASS | SHA-256 identical for index.html, models.html, site.js, site.css, the TEI file, the Turtle file and the theoretical model SVG |
+| F4 | The published site includes the Safari viewer fix | PASS | live `site.js` contains the gesture handling |
+| F5 | Resource URIs resolve | NOT APPLICABLE | by design they do not (a static host has no page per resource): `/resource/aurel-stein` returns 404, as stated in section 6 |
 
 ### E. Status
 

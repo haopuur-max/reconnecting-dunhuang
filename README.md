@@ -123,9 +123,12 @@ differently when the Source Sans 3 font is not installed. Report files carry the
 
 The RDF dataset names its resources `https://haopuur-max.github.io/reconnecting-dunhuang/resource/{id}` and the
 project properties `.../ontology/{name}`. These are stable identifiers in a namespace the project controls, but they
-are **not yet dereferenceable**: this version of the website has not been published at that address (the address
-currently serves an earlier version), and on a static host each resource would also need its own page. Online
-resolution has not been verified; all link checks in `QA_REPORT.md` are local.
+are **not dereferenceable**: a static host would need one page per resource, and none is generated (a resource URI
+returns 404, checked on 31 October 2026).
+
+**Online version.** The website is published with GitHub Pages at https://haopuur-max.github.io/reconnecting-dunhuang/ (repository
+`haopuur-max/reconnecting-dunhuang`, release v1.0). Checked online on 31 October 2026: the 8 pages load; every local
+link, file and anchor (58 distinct targets) resolves; key files are byte-identical to this package (QA_REPORT section 8.F).
 
 ## 7. Credits
 
