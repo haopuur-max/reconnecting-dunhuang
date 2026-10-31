@@ -1,0 +1,63 @@
+<header class="page-head opener bleed grain">
+  <div class="bleed__inner">
+    <div>
+      <p class="kicker">Chapter 04 · Transformations</p>
+      <h1>Transformations</h1>
+      <p class="slab"><span class="slab__label">The question of this page</span><span class="slab__q">How were the outputs produced?</span></p>
+      <p class="lead">One TEI file, two outputs: XSLT produces the HTML Wiki View, Python produces the RDF dataset.</p>
+    </div>
+    <div class="opener__side" aria-hidden="true"><span class="numeral">04</span></div>
+  </div>
+</header>
+<nav class="page-toc page-toc--band" aria-label="On this page">
+  <span class="page-toc__label">On this page</span>
+    <a href="#pipeline">Workflow</a>
+    <a href="#x1">XML to HTML</a>
+    <a href="#p1">XML to RDF</a>
+    <a href="#full-files">The complete scripts</a>
+</nav>
+
+<section class="section" id="pipeline" aria-labelledby="h-pipeline">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">4.1</span><div><span class="sec-head__k">One source, two outputs</span><h2 id="h-pipeline">Workflow</h2></div></div>
+  <div class="pipeline pipeline--feature" aria-label="From the TEI file to the HTML and RDF outputs">
+    <div class="pipeline__node pipeline__source">
+      <strong>The TEI file</strong>
+      <code>tei_xml/<wbr>reconnecting_<wbr>dunhuang.xml</code>
+    </div>
+    <div class="pipeline__node pipeline__step" style="grid-row: 1">
+      <strong>XSLT, run with Python (lxml)</strong>
+      <code>xml_to_html/<wbr>tei_to_html.xsl</code>
+    </div>
+    <div class="pipeline__node pipeline__out" style="grid-row: 1">
+      <strong>HTML</strong>
+      <a href="wiki-view.html">Wiki View</a>
+    </div>
+    <div class="pipeline__node pipeline__step" style="grid-row: 2">
+      <strong>Python with rdflib</strong>
+      <code>xml_to_rdf/<wbr>transform_<wbr>tei_to_rdf.py</code>
+    </div>
+    <div class="pipeline__node pipeline__out" style="grid-row: 2">
+      <strong>RDF</strong>
+      <code>reconnecting_<wbr>dunhuang.ttl</code><br><code>reconnecting_<wbr>dunhuang.rdf</code>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="x1" aria-labelledby="h-x1">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">4.2</span><div><span class="sec-head__k">XSLT</span><h2 id="h-x1">XML to HTML</h2></div></div>
+  <p>An XSLT stylesheet turns the TEI file into the <a href="wiki-view.html">Wiki View</a>; this template renders a person’s name as a link to its entity record.</p>
+  {{snippet:X1}}
+</section>
+
+<section class="section" id="p1" aria-labelledby="h-p1">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">4.3</span><div><span class="sec-head__k">Python and rdflib</span><h2 id="h-p1">XML to RDF</h2></div></div>
+  <p>A Python script with rdflib turns each TEI relation into an RDF triple.</p>
+  {{snippet:P1}}
+</section>
+
+<section class="section" id="full-files" aria-labelledby="h-full-files">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">4.4</span><div><span class="sec-head__k">Read every line</span><h2 id="h-full-files">The complete scripts</h2></div></div>
+  {{fullfile:final_report_files/xml_to_html/tei_to_html.xsl}}
+  {{fullfile:final_report_files/xml_to_html/transform_tei_to_html.py}}
+  {{fullfile:final_report_files/xml_to_rdf/transform_tei_to_rdf.py}}
+</section>

@@ -1,0 +1,55 @@
+<header class="page-head opener bleed grain">
+  <div class="bleed__inner">
+    <div>
+      <p class="kicker">Chapter 03 · TEI</p>
+      <h1>TEI encoding</h1>
+      <p class="slab"><span class="slab__label">The question of this page</span><span class="slab__q">How is it encoded?</span></p>
+      <p class="lead">We encoded the article in TEI P5, with a standOff layer for entities and relations.</p>
+    </div>
+    <div class="opener__side" aria-hidden="true"><span class="numeral">03</span></div>
+  </div>
+</header>
+<nav class="page-toc page-toc--band" aria-label="On this page">
+  <span class="page-toc__label">On this page</span>
+    <a href="#file-map">File map</a>
+    <a href="#t2">Inline annotation</a>
+    <a href="#t3">Entity records</a>
+    <a href="#t4">Relations</a>
+    <a href="#full-file">The complete file</a>
+</nav>
+
+<ol class="layers" aria-label="Three layers of the TEI file">
+  <li style="--c:var(--azurite)"><a href="#t2"><span class="layers__n">65</span><span class="layers__k">entity annotations in the text</span><span class="layers__w">names marked where the article mentions them</span></a></li>
+  <li style="--c:var(--gold);--on:var(--night)"><a href="#t3"><span class="layers__n">28</span><span class="layers__k">standOff entity records</span><span class="layers__w">each entity described once, with authority identifiers where they exist (17 of 28)</span></a></li>
+  <li style="--c:var(--cinnabar)"><a href="#t4"><span class="layers__n">19 · 38 · 6</span><span class="layers__k">relations in standOff</span><span class="layers__w">theoretical, conceptual and subject relations</span></a></li>
+</ol>
+
+<section class="section" id="file-map" aria-labelledby="h-file-map">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">3.1</span><div><span class="sec-head__k">Where everything is</span><h2 id="h-file-map">File map</h2></div></div>
+  <p>The structure of <code>reconnecting_dunhuang.xml</code>, with line numbers.</p>
+  {{filemap:tei}}
+</section>
+
+<section class="section" id="t2" aria-labelledby="h-t2">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">3.2</span><div><span class="sec-head__k">In the text</span><h2 id="h-t2">Inline annotation</h2></div></div>
+  <p>People, places, objects and concepts are marked in the text and point to their records in standOff.</p>
+  {{snippet:T2}}
+</section>
+
+<section class="section" id="t3" aria-labelledby="h-t3">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">3.3</span><div><span class="sec-head__k">In standOff</span><h2 id="h-t3">Entity records</h2></div></div>
+  <p>Each entity is described once in standOff, with its authority identifiers.</p>
+  {{snippet:T3}}
+</section>
+
+<section class="section" id="t4" aria-labelledby="h-t4">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">3.4</span><div><span class="sec-head__k">In standOff</span><h2 id="h-t4">Relations</h2></div></div>
+  <p>Each relation is encoded in natural language and as the CIDOC CRM properties that formalize it.</p>
+  {{snippet:T4}}
+</section>
+
+<section class="section" id="full-file" aria-labelledby="h-full-file">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">3.5</span><div><span class="sec-head__k">Valid TEI P5</span><h2 id="h-full-file">The complete file</h2></div></div>
+  <p>Valid against TEI P5 (<code>tei_all</code>); see the <a href="final_report_files/validation/tei_validation_report.txt">validation report</a>. Quotations and footnote references are also encoded.</p>
+  {{fullfile:final_report_files/tei_xml/reconnecting_dunhuang.xml}}
+</section>

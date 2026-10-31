@@ -1,0 +1,18 @@
+<svg role="img" aria-label="Theoretical relation R6: Wang Yuanlu sold_manuscripts_to Aurel Stein"
+ viewBox="0.00 0.00 410.80 64.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(14.4 50.4)">
+<g id="node1" class="node">
+<path fill="#fbf8f1" stroke="#5c534a" d="M93,-36C93,-36 12,-36 12,-36 6,-36 0,-30 0,-24 0,-24 0,-12 0,-12 0,-6 6,0 12,0 12,0 93,0 93,0 99,0 105,-6 105,-12 105,-12 105,-24 105,-24 105,-30 99,-36 93,-36"/>
+<text text-anchor="start" x="10" y="-15.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Wang Yuanlu</text>
+</g>
+<g id="node2" class="node">
+<path fill="#fbf8f1" stroke="#5c534a" d="M370,-36C370,-36 304,-36 304,-36 298,-36 292,-30 292,-24 292,-24 292,-12 292,-12 292,-6 298,0 304,0 304,0 370,0 370,0 376,0 382,-6 382,-12 382,-12 382,-24 382,-24 382,-30 376,-36 370,-36"/>
+<text text-anchor="start" x="302" y="-15.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Aurel Stein</text>
+</g>
+<g id="edge1" class="edge">
+<path fill="none" stroke="#2b2622" d="M105.31,-18C156.33,-18 233.78,-18 284.63,-18"/>
+<polygon fill="#2b2622" stroke="#2b2622" points="284.94,-20.45 291.94,-18 284.94,-15.55 284.94,-20.45"/>
+<text text-anchor="middle" x="198.5" y="-21.4" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="12.00" fill="#2b2622">sold_manuscripts_to &#160;(R6)</text>
+</g>
+</g>
+</svg>

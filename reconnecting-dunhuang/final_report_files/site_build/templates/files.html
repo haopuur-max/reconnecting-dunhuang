@@ -1,0 +1,39 @@
+<header class="page-head opener opener--plain bleed grain">
+  <div class="bleed__inner">
+    <div>
+      <p class="kicker">Chapter 06 · Files</p>
+      <h1>Files</h1>
+      <p class="lead">The project files and their validation.</p>
+    </div>
+    <div class="opener__side" aria-hidden="true"><span class="numeral">06</span></div>
+  </div>
+</header>
+<nav class="page-toc page-toc--band" aria-label="On this page">
+  <span class="page-toc__label">On this page</span>
+    <a href="#all-files">Deliverables</a>
+    <a href="#validation">Validation</a>
+    <a href="#credits">Credits</a>
+</nav>
+
+<section class="section" id="all-files" aria-labelledby="h-all-files">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">6.1</span><div><span class="sec-head__k">Every file, with its size</span><h2 id="h-all-files">Deliverables</h2></div></div>
+  <p>All paths are relative; the <a href="README.md">README</a> explains how to rebuild the files.</p>
+  {{files:groups}}
+</section>
+
+<section class="section" id="validation" aria-labelledby="h-validation">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">6.2</span><div><span class="sec-head__k">Checks run on the final files</span><h2 id="h-validation">Validation</h2></div></div>
+  <p>The TEI, RDF and HTML outputs have been validated; see the <a href="final_report_files/validation/tei_validation_report.txt">TEI report</a>, the <a href="final_report_files/xml_to_rdf/rdf_qa_report.txt">RDF report</a> and the <a href="final_report_files/xml_to_html/html_qa_report.txt">HTML report</a>.</p>
+  {{files:qa}}
+  <p class="muted">In these tables, the 34 entities with a conceptual class are the 28 entity records of the standOff, the digital surrogate and the five time-spans. The 6 <code>dcterms:source</code> triples cite 5 distinct sources.</p>
+</section>
+
+<section class="section" id="credits" aria-labelledby="h-credits">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">6.3</span><div><span class="sec-head__k">Images, fonts, software</span><h2 id="h-credits">Credits</h2></div></div>
+  <h3>Images</h3>
+  {{files:credits}}
+  <h3>Fonts</h3>
+  <p>Source Serif 4, Source Sans 3 and Source Code Pro by Adobe, under the SIL Open Font License 1.1: <a href="assets/fonts/OFL-source-serif-4.txt">Source Serif 4</a>, <a href="assets/fonts/OFL-source-sans-3.txt">Source Sans 3</a>, <a href="assets/fonts/OFL-source-code-pro.txt">Source Code Pro</a>.</p>
+  <h3>Software</h3>
+  <p>Prism.js (<a href="assets/js/PRISM-LICENSE.txt">MIT License</a>), lxml, rdflib, Graphviz and xmllint.</p>
+</section>

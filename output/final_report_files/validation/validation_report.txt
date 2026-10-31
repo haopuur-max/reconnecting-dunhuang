@@ -1,9 +1,0 @@
-Validation file: output/final_report_files/tei_xml/reconnecting_dunhuang.xml
-Schema: schemas/tei_all.rng
-TEI schema/version: TEI P5 Version 4.12.0.
-Schema update/revision: 28th July 2026, revision 113e933e2
-TEI Edition Location: https://www.tei-c.org/Vault/P5/4.12.0/
-Command: xmllint --noout --relaxng schemas/tei_all.rng output/final_report_files/tei_xml/reconnecting_dunhuang.xml
-output/final_report_files/tei_xml/reconnecting_dunhuang.xml validates
-TEI P5 Relax NG validation: PASS
-Official TEI Schematron validation: NOT RUN - no official standalone TEI Schematron schema was available in the local environment; attempted TEI release path returned HTML 404, while Relax NG validation above used the official TEI schema.

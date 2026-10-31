@@ -1,0 +1,1425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transformations · Reconnecting Dunhuang</title>
+<meta name="description" content="How one TEI file produces both outputs of the Reconnecting Dunhuang project: XSLT for the HTML Wiki View, Python and rdflib for the RDF dataset.">
+<meta name="author" content="HAOPU YIN">
+<link rel="icon" href="assets/ornaments/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/prism-editorial.css">
+<link rel="stylesheet" href="assets/css/print.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="wordmark" href="index.html">Reconnecting Dunhuang</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="domain.html">Domain</a></li>
+        <li><a href="models.html">Models</a></li>
+        <li><a href="tei.html">TEI</a></li>
+        <li><a href="transformations.html" aria-current="page">Transformations</a></li>
+        <li><a href="rdf.html">RDF</a></li>
+        <li class="nav-secondary"><a href="files.html">Files</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="page">
+<header class="page-head opener bleed grain">
+  <div class="bleed__inner">
+    <div>
+      <p class="kicker">Chapter 04 · Transformations</p>
+      <h1>Transformations</h1>
+      <p class="slab"><span class="slab__label">The question of this page</span><span class="slab__q">How were the outputs produced?</span></p>
+      <p class="lead">One TEI file, two outputs: XSLT produces the HTML Wiki View, Python produces the RDF dataset.</p>
+    </div>
+    <div class="opener__side" aria-hidden="true"><span class="numeral">04</span></div>
+  </div>
+</header>
+<nav class="page-toc page-toc--band" aria-label="On this page">
+  <span class="page-toc__label">On this page</span>
+    <a href="#pipeline">Workflow</a>
+    <a href="#x1">XML to HTML</a>
+    <a href="#p1">XML to RDF</a>
+    <a href="#full-files">The complete scripts</a>
+</nav>
+
+<section class="section" id="pipeline" aria-labelledby="h-pipeline">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">4.1</span><div><span class="sec-head__k">One source, two outputs</span><h2 id="h-pipeline">Workflow</h2></div></div>
+  <div class="pipeline pipeline--feature" aria-label="From the TEI file to the HTML and RDF outputs">
+    <div class="pipeline__node pipeline__source">
+      <strong>The TEI file</strong>
+      <code>tei_xml/<wbr>reconnecting_<wbr>dunhuang.xml</code>
+    </div>
+    <div class="pipeline__node pipeline__step" style="grid-row: 1">
+      <strong>XSLT, run with Python (lxml)</strong>
+      <code>xml_to_html/<wbr>tei_to_html.xsl</code>
+    </div>
+    <div class="pipeline__node pipeline__out" style="grid-row: 1">
+      <strong>HTML</strong>
+      <a href="wiki-view.html">Wiki View</a>
+    </div>
+    <div class="pipeline__node pipeline__step" style="grid-row: 2">
+      <strong>Python with rdflib</strong>
+      <code>xml_to_rdf/<wbr>transform_<wbr>tei_to_rdf.py</code>
+    </div>
+    <div class="pipeline__node pipeline__out" style="grid-row: 2">
+      <strong>RDF</strong>
+      <code>reconnecting_<wbr>dunhuang.ttl</code><br><code>reconnecting_<wbr>dunhuang.rdf</code>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="x1" aria-labelledby="h-x1">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">4.2</span><div><span class="sec-head__k">XSLT</span><h2 id="h-x1">XML to HTML</h2></div></div>
+  <p>An XSLT stylesheet turns the TEI file into the <a href="wiki-view.html">Wiki View</a>; this template renders a person’s name as a link to its entity record.</p>
+  <div class="code-card" id="snippet-X1">
+  <div class="code-card__bar"><span class="code-card__path">final_report_files/xml_to_html/tei_to_html.xsl</span><span>tei:persName[@ref], lines 358–364</span><a href="final_report_files/xml_to_html/tei_to_html.xsl">Open the full file</a></div>
+  <pre class="line-numbers language-markup" data-start="358" data-line-offset="357" data-line="360,361"><code class="language-markup">  &lt;xsl:template match=&quot;tei:persName[@ref]&quot;&gt;
+    &lt;a class=&quot;tei-entity tei-person&quot;&gt;
+      &lt;xsl:attribute name=&quot;href&quot;&gt;#entity-&lt;xsl:value-of select=&quot;substring-after(@ref, &#x27;#&#x27;)&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name=&quot;data-ref&quot;&gt;&lt;xsl:value-of select=&quot;@ref&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:apply-templates/&gt;
+    &lt;/a&gt;
+  &lt;/xsl:template&gt;</code></pre>
+</div>
+</section>
+
+<section class="section" id="p1" aria-labelledby="h-p1">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">4.3</span><div><span class="sec-head__k">Python and rdflib</span><h2 id="h-p1">XML to RDF</h2></div></div>
+  <p>A Python script with rdflib turns each TEI relation into an RDF triple.</p>
+  <div class="code-card" id="snippet-P1">
+  <div class="code-card__bar"><span class="code-card__path">final_report_files/xml_to_rdf/transform_tei_to_rdf.py</span><span>add_relations(), lines 364–370</span><a href="final_report_files/xml_to_rdf/transform_tei_to_rdf.py">Open the full file</a></div>
+  <pre class="line-numbers language-python" data-start="364" data-line-offset="363" data-line="368"><code class="language-python">    def add_relations(self):
+        for kind in (&quot;conceptual&quot;, &quot;subject&quot;):
+            for rel in self.relations(kind):
+                s, o = self.endpoints(rel)
+                self.g.add((RES[s], self.predicate_of(rel), RES[o]))
+        self.stats[&quot;conceptual_edges&quot;] = len(self.relations(&quot;conceptual&quot;))
+        self.stats[&quot;subject_edges&quot;] = len(self.relations(&quot;subject&quot;))</code></pre>
+</div>
+</section>
+
+<section class="section" id="full-files" aria-labelledby="h-full-files">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">4.4</span><div><span class="sec-head__k">Read every line</span><h2 id="h-full-files">The complete scripts</h2></div></div>
+  <details class="fullfile">
+  <summary>Show the complete file: tei_to_html.xsl</summary>
+  <div class="code-card"><div class="code-card__bar"><span class="code-card__path">final_report_files/xml_to_html/tei_to_html.xsl</span><a href="final_report_files/xml_to_html/tei_to_html.xsl" download>Download</a></div>
+  <pre class="line-numbers language-markup fullfile__pre" data-start="1"><code class="language-markup">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;xsl:stylesheet version=&quot;1.0&quot;
+  xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+  xmlns:tei=&quot;http://www.tei-c.org/ns/1.0&quot;
+  xmlns:xml=&quot;http://www.w3.org/XML/1998/namespace&quot;
+  exclude-result-prefixes=&quot;tei xml&quot;&gt;
+
+  &lt;xsl:output method=&quot;html&quot; encoding=&quot;UTF-8&quot; indent=&quot;yes&quot;/&gt;
+  &lt;xsl:strip-space elements=&quot;tei:TEI tei:teiHeader tei:standOff tei:text tei:body tei:back tei:div tei:list tei:listBibl tei:listPerson tei:listPlace tei:listOrg tei:listEvent tei:listObject tei:object tei:objectIdentifier&quot;/&gt;
+
+  &lt;xsl:key name=&quot;by-id&quot; match=&quot;*[@xml:id]&quot; use=&quot;@xml:id&quot;/&gt;
+
+  &lt;!-- Path prefix for images: &#x27;../../&#x27; when the HTML file is written next to this stylesheet,
+       &#x27;&#x27; when the website places the Wiki View at its root. --&gt;
+  &lt;xsl:param name=&quot;base&quot; select=&quot;&#x27;../../&#x27;&quot;/&gt;
+
+  &lt;xsl:template match=&quot;/tei:TEI&quot;&gt;
+    &lt;xsl:variable name=&quot;bibl&quot; select=&quot;tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:bibl&quot;/&gt;
+    &lt;html lang=&quot;en&quot;&gt;
+      &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;/&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;/&gt;
+        &lt;title&gt;&lt;xsl:value-of select=&quot;$bibl/tei:title&quot;/&gt; (TEI-derived Wiki View)&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;div id=&quot;wiki-root&quot; class=&quot;wiki&quot;&gt;
+          &lt;xsl:call-template name=&quot;wiki-style&quot;/&gt;
+          &lt;p class=&quot;wiki-banner&quot;&gt;
+            &lt;strong&gt;TEI-derived Wiki View&lt;/strong&gt;
+            &lt;xsl:text&gt; generated by XSLT from reconnecting_dunhuang.xml (source: English Wikipedia, oldid &lt;/xsl:text&gt;
+            &lt;xsl:value-of select=&quot;$bibl/tei:idno[@type=&#x27;wikipedia-oldid&#x27;]&quot;/&gt;
+            &lt;xsl:text&gt;). It is not a copy of the Wikipedia page.&lt;/xsl:text&gt;
+          &lt;/p&gt;
+          &lt;header class=&quot;wiki-header&quot;&gt;
+            &lt;h1&gt;&lt;xsl:value-of select=&quot;$bibl/tei:title&quot;/&gt;&lt;/h1&gt;
+            &lt;p class=&quot;wiki-tagline&quot;&gt;
+              &lt;xsl:text&gt;Text of the English Wikipedia article, revision &lt;/xsl:text&gt;
+              &lt;a href=&quot;&#123;$bibl/tei:ref/@target&#125;&quot;&gt;&lt;xsl:value-of select=&quot;$bibl/tei:idno[@type=&#x27;wikipedia-oldid&#x27;]&quot;/&gt;&lt;/a&gt;
+              &lt;xsl:text&gt; (&lt;/xsl:text&gt;&lt;xsl:value-of select=&quot;$bibl/tei:date&quot;/&gt;
+              &lt;xsl:text&gt;), encoded in TEI. Names in the text link to their description in the TEI standOff layer.&lt;/xsl:text&gt;
+            &lt;/p&gt;
+          &lt;/header&gt;
+          &lt;div class=&quot;wiki-layout&quot;&gt;
+            &lt;nav class=&quot;wiki-toc&quot; aria-label=&quot;Contents&quot;&gt;
+              &lt;p class=&quot;wiki-toc__title&quot;&gt;Contents&lt;/p&gt;
+              &lt;ol&gt;
+                &lt;li&gt;&lt;a href=&quot;#lead&quot;&gt;(Top)&lt;/a&gt;&lt;/li&gt;
+                &lt;xsl:for-each select=&quot;tei:text/tei:body/tei:div[not(@type=&#x27;lead&#x27;)] | tei:text/tei:back/tei:div&quot;&gt;
+                  &lt;li&gt;&lt;a href=&quot;#&#123;@xml:id&#125;&quot;&gt;&lt;xsl:value-of select=&quot;tei:head&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;/xsl:for-each&gt;
+                &lt;li&gt;&lt;a href=&quot;#wiki-entities&quot;&gt;Entities&lt;/a&gt;&lt;/li&gt;
+              &lt;/ol&gt;
+            &lt;/nav&gt;
+            &lt;main class=&quot;wiki-article&quot;&gt;
+              &lt;xsl:call-template name=&quot;infobox&quot;/&gt;
+              &lt;xsl:apply-templates select=&quot;tei:text/tei:body/tei:div&quot;/&gt;
+              &lt;xsl:apply-templates select=&quot;tei:text/tei:back&quot;/&gt;
+              &lt;details id=&quot;wiki-entities&quot; class=&quot;wiki-entities&quot;&gt;
+                &lt;summary&gt;Entities annotated in this article, from the TEI standOff layer&lt;/summary&gt;
+                &lt;xsl:call-template name=&quot;entity-group&quot;&gt;
+                  &lt;xsl:with-param name=&quot;title&quot;&gt;People&lt;/xsl:with-param&gt;
+                  &lt;xsl:with-param name=&quot;nodes&quot; select=&quot;tei:standOff/tei:listPerson/tei:person&quot;/&gt;
+                  &lt;xsl:with-param name=&quot;kind&quot;&gt;person&lt;/xsl:with-param&gt;
+                &lt;/xsl:call-template&gt;
+                &lt;xsl:call-template name=&quot;entity-group&quot;&gt;
+                  &lt;xsl:with-param name=&quot;title&quot;&gt;Places&lt;/xsl:with-param&gt;
+                  &lt;xsl:with-param name=&quot;nodes&quot; select=&quot;tei:standOff/tei:listPlace/tei:place&quot;/&gt;
+                  &lt;xsl:with-param name=&quot;kind&quot;&gt;place&lt;/xsl:with-param&gt;
+                &lt;/xsl:call-template&gt;
+                &lt;xsl:call-template name=&quot;entity-group&quot;&gt;
+                  &lt;xsl:with-param name=&quot;title&quot;&gt;Institutions&lt;/xsl:with-param&gt;
+                  &lt;xsl:with-param name=&quot;nodes&quot; select=&quot;tei:standOff/tei:listOrg/tei:org&quot;/&gt;
+                  &lt;xsl:with-param name=&quot;kind&quot;&gt;organization&lt;/xsl:with-param&gt;
+                &lt;/xsl:call-template&gt;
+                &lt;xsl:call-template name=&quot;entity-group&quot;&gt;
+                  &lt;xsl:with-param name=&quot;title&quot;&gt;Manuscripts&lt;/xsl:with-param&gt;
+                  &lt;xsl:with-param name=&quot;nodes&quot; select=&quot;tei:standOff/tei:listObject/tei:object | tei:standOff/tei:list[@xml:id=&#x27;digital-objects&#x27;]/tei:item&quot;/&gt;
+                  &lt;xsl:with-param name=&quot;kind&quot;&gt;physical-object&lt;/xsl:with-param&gt;
+                &lt;/xsl:call-template&gt;
+                &lt;xsl:call-template name=&quot;entity-group&quot;&gt;
+                  &lt;xsl:with-param name=&quot;title&quot;&gt;Events&lt;/xsl:with-param&gt;
+                  &lt;xsl:with-param name=&quot;nodes&quot; select=&quot;tei:standOff/tei:listEvent/tei:event&quot;/&gt;
+                  &lt;xsl:with-param name=&quot;kind&quot;&gt;event&lt;/xsl:with-param&gt;
+                &lt;/xsl:call-template&gt;
+                &lt;xsl:call-template name=&quot;entity-group&quot;&gt;
+                  &lt;xsl:with-param name=&quot;title&quot;&gt;Time-spans&lt;/xsl:with-param&gt;
+                  &lt;xsl:with-param name=&quot;nodes&quot; select=&quot;tei:standOff/tei:list[@xml:id=&#x27;time-spans&#x27;]/tei:item&quot;/&gt;
+                  &lt;xsl:with-param name=&quot;kind&quot;&gt;time-span&lt;/xsl:with-param&gt;
+                &lt;/xsl:call-template&gt;
+              &lt;/details&gt;
+            &lt;/main&gt;
+          &lt;/div&gt;
+          &lt;script&gt;
+            // Following a name opens the folded entity list so that its description is visible.
+            document.querySelectorAll(&#x27;#wiki-root a.tei-entity, #wiki-root a.wiki-entity-link&#x27;).forEach(function (a) &#123;
+              a.addEventListener(&#x27;click&#x27;, function () &#123;
+                var d = document.getElementById(&#x27;wiki-entities&#x27;); if (d) &#123; d.open = true; &#125;
+              &#125;);
+            &#125;);
+          &lt;/script&gt;
+        &lt;/div&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;!-- Infobox: every value is read from the TEI standOff layer --&gt;
+  &lt;xsl:template name=&quot;infobox&quot;&gt;
+    &lt;xsl:variable name=&quot;so&quot; select=&quot;tei:standOff&quot;/&gt;
+    &lt;xsl:variable name=&quot;corpus&quot; select=&quot;key(&#x27;by-id&#x27;, &#x27;dunhuang-manuscripts&#x27;)&quot;/&gt;
+    &lt;xsl:variable name=&quot;rels&quot; select=&quot;$so/tei:listRelation[@type=&#x27;conceptual&#x27;]/tei:relation&quot;/&gt;
+    &lt;xsl:variable name=&quot;fig&quot; select=&quot;tei:text/tei:body//tei:figure[tei:graphic][contains(tei:figDesc, &#x27;Cave 16&#x27;)][1]&quot;/&gt;
+    &lt;aside class=&quot;wiki-infobox&quot; aria-label=&quot;Summary&quot;&gt;
+      &lt;p class=&quot;wiki-infobox__title&quot;&gt;&lt;xsl:value-of select=&quot;$corpus/tei:objectIdentifier/tei:objectName&quot;/&gt;&lt;/p&gt;
+      &lt;xsl:if test=&quot;$fig&quot;&gt;
+        &lt;img src=&quot;&#123;$base&#125;&#123;$fig/tei:graphic/@url&#125;&quot; alt=&quot;&#123;$fig/tei:figDesc&#125;&quot;/&gt;
+        &lt;p class=&quot;wiki-infobox__caption&quot;&gt;Cave 16 and the doorway to the Library Cave, 1907&lt;/p&gt;
+      &lt;/xsl:if&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;Discovered&lt;/th&gt;&lt;td&gt;
+          &lt;xsl:value-of select=&quot;key(&#x27;by-id&#x27;, substring-after($rels[@active=&#x27;#discovery-event&#x27;][@name=&#x27;crm:P4_has_time-span&#x27;]/@passive, &#x27;#&#x27;))/tei:date&quot;/&gt;
+          &lt;xsl:text&gt;, by &lt;/xsl:text&gt;
+          &lt;xsl:call-template name=&quot;entity-link&quot;&gt;&lt;xsl:with-param name=&quot;ref&quot; select=&quot;$rels[@active=&#x27;#discovery-event&#x27;][@name=&#x27;crm:P14_carried_out_by&#x27;]/@passive&quot;/&gt;&lt;/xsl:call-template&gt;
+        &lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Found in&lt;/th&gt;&lt;td&gt;
+          &lt;xsl:call-template name=&quot;entity-link&quot;&gt;&lt;xsl:with-param name=&quot;ref&quot; select=&quot;$rels[@active=&#x27;#sealing-event&#x27;][@name=&#x27;crm:P7_took_place_at&#x27;]/@passive&quot;/&gt;&lt;/xsl:call-template&gt;
+          &lt;xsl:text&gt;, &lt;/xsl:text&gt;
+          &lt;xsl:call-template name=&quot;entity-link&quot;&gt;&lt;xsl:with-param name=&quot;ref&quot; select=&quot;$rels[@active=&#x27;#library-cave&#x27;][@name=&#x27;crm:P89_falls_within&#x27;]/@passive&quot;/&gt;&lt;/xsl:call-template&gt;
+        &lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Held by&lt;/th&gt;&lt;td&gt;
+          &lt;xsl:for-each select=&quot;$rels[@name=&#x27;crm:P50_has_current_keeper&#x27;]&quot;&gt;
+            &lt;xsl:call-template name=&quot;entity-link&quot;&gt;&lt;xsl:with-param name=&quot;ref&quot; select=&quot;@passive&quot;/&gt;&lt;/xsl:call-template&gt;
+            &lt;xsl:text&gt; (&lt;/xsl:text&gt;
+            &lt;xsl:call-template name=&quot;node-label&quot;&gt;&lt;xsl:with-param name=&quot;node&quot; select=&quot;key(&#x27;by-id&#x27;, substring-after(current()/@active, &#x27;#&#x27;))&quot;/&gt;&lt;/xsl:call-template&gt;
+            &lt;xsl:text&gt;)&lt;/xsl:text&gt;
+            &lt;xsl:if test=&quot;position() != last()&quot;&gt;&lt;br/&gt;&lt;/xsl:if&gt;
+          &lt;/xsl:for-each&gt;
+        &lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Digitized by&lt;/th&gt;&lt;td&gt;
+          &lt;xsl:call-template name=&quot;entity-link&quot;&gt;&lt;xsl:with-param name=&quot;ref&quot; select=&quot;$rels[@active=&#x27;#digitization-event&#x27;][@name=&#x27;crm:P14_carried_out_by&#x27;]/@passive&quot;/&gt;&lt;/xsl:call-template&gt;
+        &lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Authority records&lt;/th&gt;&lt;td&gt;
+          &lt;xsl:for-each select=&quot;$corpus/tei:objectIdentifier/tei:idno[@type=&#x27;wikidata&#x27; or @type=&#x27;viaf&#x27; or @type=&#x27;lc&#x27; or @type=&#x27;fast&#x27;]&quot;&gt;
+            &lt;a&gt;
+              &lt;xsl:attribute name=&quot;href&quot;&gt;
+                &lt;xsl:choose&gt;
+                  &lt;xsl:when test=&quot;@type=&#x27;wikidata&#x27;&quot;&gt;https://www.wikidata.org/wiki/&lt;xsl:value-of select=&quot;.&quot;/&gt;&lt;/xsl:when&gt;
+                  &lt;xsl:when test=&quot;@type=&#x27;viaf&#x27;&quot;&gt;https://viaf.org/viaf/&lt;xsl:value-of select=&quot;.&quot;/&gt;&lt;/xsl:when&gt;
+                  &lt;xsl:when test=&quot;@type=&#x27;lc&#x27;&quot;&gt;https://id.loc.gov/authorities/names/&lt;xsl:value-of select=&quot;.&quot;/&gt;.html&lt;/xsl:when&gt;
+                  &lt;xsl:otherwise&gt;https://id.worldcat.org/fast/&lt;xsl:value-of select=&quot;.&quot;/&gt;&lt;/xsl:otherwise&gt;
+                &lt;/xsl:choose&gt;
+              &lt;/xsl:attribute&gt;
+              &lt;xsl:choose&gt;
+                &lt;xsl:when test=&quot;@type=&#x27;wikidata&#x27;&quot;&gt;Wikidata&lt;/xsl:when&gt;
+                &lt;xsl:when test=&quot;@type=&#x27;viaf&#x27;&quot;&gt;VIAF&lt;/xsl:when&gt;
+                &lt;xsl:when test=&quot;@type=&#x27;lc&#x27;&quot;&gt;Library of Congress&lt;/xsl:when&gt;
+                &lt;xsl:otherwise&gt;FAST&lt;/xsl:otherwise&gt;
+              &lt;/xsl:choose&gt;
+            &lt;/a&gt;
+            &lt;xsl:if test=&quot;position() != last()&quot;&gt;&lt;xsl:text&gt;, &lt;/xsl:text&gt;&lt;/xsl:if&gt;
+          &lt;/xsl:for-each&gt;
+        &lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+      &lt;p class=&quot;wiki-infobox__note&quot;&gt;Values read from the TEI standOff layer.&lt;/p&gt;
+    &lt;/aside&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template name=&quot;entity-link&quot;&gt;
+    &lt;xsl:param name=&quot;ref&quot;/&gt;
+    &lt;a class=&quot;wiki-entity-link&quot; href=&quot;#entity-&#123;substring-after($ref, &#x27;#&#x27;)&#125;&quot;&gt;
+      &lt;xsl:call-template name=&quot;node-label&quot;&gt;&lt;xsl:with-param name=&quot;node&quot; select=&quot;key(&#x27;by-id&#x27;, substring-after($ref, &#x27;#&#x27;))&quot;/&gt;&lt;/xsl:call-template&gt;
+    &lt;/a&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template name=&quot;wiki-style&quot;&gt;
+    &lt;style&gt;
+      #wiki-root &#123; --w-text: #202122; --w-link: #3366CC; --w-rule: #A2A9B1; --w-box: #F8F9FA;
+        background: #FFFFFF; color: var(--w-text); font-family: -apple-system, &#x27;Segoe UI&#x27;, &#x27;Helvetica Neue&#x27;, Arial, sans-serif;
+        font-size: 16px; line-height: 1.6; padding: 0 0 24px; &#125;
+      #wiki-root a &#123; color: var(--w-link); text-decoration: none; &#125;
+      #wiki-root a:hover &#123; text-decoration: underline; &#125;
+      #wiki-root .wiki-banner &#123; margin: 0; padding: 10px 16px; background: #EAF3FF; border-bottom: 1px solid #C8CCD1; font-size: 14px; color: var(--w-text); &#125;
+      #wiki-root .wiki-header &#123; padding: 20px 24px 8px; border-bottom: 1px solid var(--w-rule); &#125;
+      #wiki-root h1 &#123; font-family: &#x27;Linux Libertine&#x27;, Georgia, Times, serif; font-weight: 400; font-size: 32px; line-height: 1.3; margin: 0 0 4px; letter-spacing: 0; &#125;
+      #wiki-root .wiki-tagline &#123; margin: 0 0 8px; font-size: 14px; color: #54595D; max-width: none; &#125;
+      #wiki-root .wiki-layout &#123; display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 28px; padding: 16px 24px 0; &#125;
+      #wiki-root .wiki-toc &#123; position: sticky; top: 80px; align-self: start; font-size: 14px; max-height: calc(100vh - 100px); overflow: auto; &#125;
+      #wiki-root .wiki-toc__title &#123; font-weight: 700; margin: 0 0 6px; border-bottom: 1px solid #C8CCD1; padding-bottom: 4px; &#125;
+      #wiki-root .wiki-toc ol &#123; list-style: none; margin: 0; padding: 0; &#125;
+      #wiki-root .wiki-toc li &#123; margin: 0 0 6px; line-height: 1.35; &#125;
+      #wiki-root h2 &#123; font-family: &#x27;Linux Libertine&#x27;, Georgia, Times, serif; font-weight: 400; font-size: 24px; line-height: 1.3; margin: 24px 0 8px; padding-bottom: 2px; border-bottom: 1px solid var(--w-rule); letter-spacing: 0; &#125;
+      #wiki-root p &#123; margin: 8px 0 12px; max-width: none; &#125;
+      #wiki-root .lead &#123; font-family: inherit; font-size: inherit; font-style: normal; line-height: inherit; margin: 0; max-width: none; &#125;
+      #wiki-root ul &#123; padding-left: 1.6em; &#125;
+      #wiki-root li &#123; margin: 2px 0; &#125;
+      #wiki-root .wiki-infobox &#123; float: right; clear: right; width: 300px; margin: 0 0 16px 20px; padding: 6px; background: var(--w-box); border: 1px solid var(--w-rule); font-size: 14px; line-height: 1.45; &#125;
+      #wiki-root .wiki-infobox__title &#123; text-align: center; font-weight: 700; font-size: 17px; margin: 4px 0 8px; &#125;
+      #wiki-root .wiki-infobox img &#123; display: block; width: 100%; height: auto; &#125;
+      #wiki-root .wiki-infobox__caption &#123; text-align: center; font-size: 13px; margin: 4px 0 8px; &#125;
+      #wiki-root .wiki-infobox table &#123; width: 100%; border-collapse: collapse; font-family: inherit; font-size: 14px; &#125;
+      #wiki-root .wiki-infobox th &#123; text-align: left; vertical-align: top; padding: 4px 6px 4px 2px; font-weight: 700; color: var(--w-text); border: 0; font-variant-caps: normal; letter-spacing: 0; width: 38%; &#125;
+      #wiki-root .wiki-infobox td &#123; padding: 4px 2px; border: 0; vertical-align: top; &#125;
+      #wiki-root .wiki-infobox__note &#123; font-size: 12px; color: #54595D; text-align: center; margin: 6px 0 2px; &#125;
+      #wiki-root figure &#123; margin: 8px 0 14px; padding: 4px; border: 1px solid #C8CCD1; background: var(--w-box); max-width: 320px; &#125;
+      #wiki-root figure.has-image &#123; float: right; clear: right; margin-left: 20px; &#125;
+      #wiki-root figure img &#123; display: block; width: 100%; height: auto; &#125;
+      #wiki-root figcaption &#123; font-family: inherit; font-size: 13px; line-height: 1.4; color: var(--w-text); margin: 4px 2px 2px; max-width: none; &#125;
+      #wiki-root blockquote.tei-cit &#123; margin: 12px 0 16px; padding: 4px 0 4px 18px; border-left: 3px solid #C8CCD1; &#125;
+      #wiki-root .tei-quote &#123; display: block; &#125;
+      #wiki-root .tei-attribution &#123; display: block; color: #54595D; margin-top: 4px; &#125;
+      #wiki-root .citation &#123; font-size: 0.78em; vertical-align: super; line-height: 0; &#125;
+      #wiki-root .tei-entity &#123; border-bottom: 1px dotted #72777D; &#125;
+      #wiki-root time &#123; font-variant-numeric: normal; &#125;
+      #wiki-root .references &#123; font-size: 14px; &#125;
+      #wiki-root cite.tei-title &#123; font-style: italic; &#125;
+      #wiki-root .wiki-entities &#123; clear: both; margin-top: 28px; border-top: 1px solid var(--w-rule); padding-top: 12px; max-width: none; &#125;
+      #wiki-root .wiki-entities summary &#123; font-size: 16px; font-weight: 700; color: var(--w-text); cursor: pointer; font-family: inherit; &#125;
+      #wiki-root .entity-group h4 &#123; font-size: 15px; margin: 16px 0 6px; &#125;
+      #wiki-root .entity-grid &#123; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; &#125;
+      #wiki-root .entity-card &#123; border: 1px solid #C8CCD1; background: var(--w-box); padding: 8px 10px; font-size: 13px; scroll-margin-top: 90px; &#125;
+      #wiki-root .entity-card:target &#123; outline: 2px solid var(--w-link); &#125;
+      #wiki-root .entity-card h4 &#123; margin: 0 0 4px; font-size: 14px; &#125;
+      #wiki-root .entity-card dl &#123; margin: 0; &#125;
+      #wiki-root .entity-card dt &#123; color: #54595D; font-size: 12px; &#125;
+      #wiki-root .entity-card dd &#123; margin: 0 0 4px; overflow-wrap: anywhere; &#125;
+      @media (max-width: 860px) &#123;
+        #wiki-root .wiki-layout &#123; grid-template-columns: 1fr; &#125;
+        #wiki-root .wiki-toc &#123; position: static; max-height: none; border: 1px solid #C8CCD1; background: var(--w-box); padding: 8px 12px; &#125;
+        #wiki-root .wiki-infobox, #wiki-root figure.has-image &#123; float: none; width: auto; max-width: 100%; margin: 0 0 16px; &#125;
+      &#125;
+    &lt;/style&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:body/tei:div&quot;&gt;
+    &lt;section&gt;
+      &lt;xsl:attribute name=&quot;id&quot;&gt;&lt;xsl:value-of select=&quot;@xml:id&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name=&quot;class&quot;&gt;
+        &lt;xsl:text&gt;source-section&lt;/xsl:text&gt;
+        &lt;xsl:if test=&quot;@type=&#x27;lead&#x27;&quot;&gt; lead&lt;/xsl:if&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:if test=&quot;not(@type=&#x27;lead&#x27;)&quot;&gt;
+        &lt;h2&gt;&lt;xsl:value-of select=&quot;tei:head&quot;/&gt;&lt;/h2&gt;
+      &lt;/xsl:if&gt;
+      &lt;xsl:apply-templates select=&quot;node()[not(self::tei:head)]&quot;/&gt;
+    &lt;/section&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:back&quot;&gt;
+    &lt;xsl:apply-templates select=&quot;tei:div&quot;/&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:back/tei:div&quot;&gt;
+    &lt;section class=&quot;source-section back-matter&quot;&gt;
+      &lt;xsl:attribute name=&quot;id&quot;&gt;&lt;xsl:value-of select=&quot;@xml:id&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;h2&gt;&lt;xsl:value-of select=&quot;tei:head&quot;/&gt;&lt;/h2&gt;
+      &lt;xsl:apply-templates select=&quot;node()[not(self::tei:head)]&quot;/&gt;
+    &lt;/section&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:p&quot;&gt;
+    &lt;xsl:choose&gt;
+      &lt;xsl:when test=&quot;count(*) = 1 and tei:cit and normalize-space(text()) = &#x27;&#x27;&quot;&gt;
+        &lt;xsl:apply-templates/&gt;
+      &lt;/xsl:when&gt;
+      &lt;xsl:otherwise&gt;
+        &lt;p&gt;&lt;xsl:apply-templates/&gt;&lt;/p&gt;
+      &lt;/xsl:otherwise&gt;
+    &lt;/xsl:choose&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:list&quot;&gt;
+    &lt;ul&gt;&lt;xsl:apply-templates/&gt;&lt;/ul&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:item&quot;&gt;
+    &lt;li&gt;&lt;xsl:apply-templates/&gt;&lt;/li&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:figure&quot;&gt;
+    &lt;figure&gt;
+      &lt;xsl:if test=&quot;tei:graphic&quot;&gt;
+        &lt;xsl:attribute name=&quot;class&quot;&gt;has-image&lt;/xsl:attribute&gt;
+        &lt;img src=&quot;&#123;$base&#125;&#123;tei:graphic/@url&#125;&quot; alt=&quot;&#123;normalize-space(tei:figDesc)&#125;&quot;/&gt;
+      &lt;/xsl:if&gt;
+      &lt;figcaption&gt;&lt;xsl:apply-templates select=&quot;tei:figDesc/node()&quot;/&gt;&lt;/figcaption&gt;
+    &lt;/figure&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:cit&quot;&gt;
+    &lt;blockquote class=&quot;tei-cit&quot;&gt;
+      &lt;xsl:apply-templates/&gt;
+    &lt;/blockquote&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:quote&quot;&gt;
+    &lt;span class=&quot;tei-quote&quot;&gt;&lt;xsl:apply-templates/&gt;&lt;/span&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:bibl[@type=&#x27;attribution&#x27;]&quot;&gt;
+    &lt;xsl:apply-templates/&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:seg[@type=&#x27;attribution&#x27;]&quot;&gt;
+    &lt;span class=&quot;tei-attribution&quot;&gt;&lt;xsl:apply-templates/&gt;&lt;/span&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:listBibl&quot;&gt;
+    &lt;xsl:choose&gt;
+      &lt;xsl:when test=&quot;ancestor::tei:div[@xml:id=&#x27;references&#x27;]&quot;&gt;
+        &lt;ol class=&quot;references&quot;&gt;
+          &lt;xsl:apply-templates select=&quot;tei:bibl&quot;/&gt;
+        &lt;/ol&gt;
+      &lt;/xsl:when&gt;
+      &lt;xsl:otherwise&gt;
+        &lt;ul class=&quot;bibliography&quot;&gt;
+          &lt;xsl:apply-templates select=&quot;tei:bibl&quot;/&gt;
+        &lt;/ul&gt;
+      &lt;/xsl:otherwise&gt;
+    &lt;/xsl:choose&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:bibl&quot;&gt;
+    &lt;li&gt;
+      &lt;xsl:if test=&quot;@xml:id&quot;&gt;
+        &lt;xsl:attribute name=&quot;id&quot;&gt;&lt;xsl:value-of select=&quot;@xml:id&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;/xsl:if&gt;
+      &lt;xsl:apply-templates/&gt;
+    &lt;/li&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:back//tei:bibl//tei:title&quot;&gt;
+    &lt;cite class=&quot;tei-title&quot;&gt;&lt;xsl:apply-templates/&gt;&lt;/cite&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:ref[starts-with(@target, &#x27;#bibl-&#x27;)]&quot;&gt;
+    &lt;a&gt;
+      &lt;xsl:attribute name=&quot;href&quot;&gt;&lt;xsl:value-of select=&quot;@target&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name=&quot;class&quot;&gt;citation&lt;/xsl:attribute&gt;
+      &lt;xsl:apply-templates/&gt;
+    &lt;/a&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:ref[starts-with(@target, &#x27;http://&#x27;) or starts-with(@target, &#x27;https://&#x27;)]&quot;&gt;
+    &lt;a&gt;
+      &lt;xsl:attribute name=&quot;href&quot;&gt;&lt;xsl:value-of select=&quot;@target&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name=&quot;target&quot;&gt;_blank&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name=&quot;rel&quot;&gt;noopener noreferrer&lt;/xsl:attribute&gt;
+      &lt;xsl:apply-templates/&gt;
+    &lt;/a&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:ref&quot;&gt;
+    &lt;a&gt;
+      &lt;xsl:attribute name=&quot;href&quot;&gt;&lt;xsl:value-of select=&quot;@target&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:apply-templates/&gt;
+    &lt;/a&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:persName[@ref]&quot;&gt;
+    &lt;a class=&quot;tei-entity tei-person&quot;&gt;
+      &lt;xsl:attribute name=&quot;href&quot;&gt;#entity-&lt;xsl:value-of select=&quot;substring-after(@ref, &#x27;#&#x27;)&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name=&quot;data-ref&quot;&gt;&lt;xsl:value-of select=&quot;@ref&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:apply-templates/&gt;
+    &lt;/a&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:placeName[@ref]&quot;&gt;
+    &lt;a class=&quot;tei-entity tei-place&quot;&gt;
+      &lt;xsl:attribute name=&quot;href&quot;&gt;#entity-&lt;xsl:value-of select=&quot;substring-after(@ref, &#x27;#&#x27;)&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name=&quot;data-ref&quot;&gt;&lt;xsl:value-of select=&quot;@ref&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:apply-templates/&gt;
+    &lt;/a&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:orgName[@ref]&quot;&gt;
+    &lt;a class=&quot;tei-entity tei-org&quot;&gt;
+      &lt;xsl:attribute name=&quot;href&quot;&gt;#entity-&lt;xsl:value-of select=&quot;substring-after(@ref, &#x27;#&#x27;)&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name=&quot;data-ref&quot;&gt;&lt;xsl:value-of select=&quot;@ref&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:apply-templates/&gt;
+    &lt;/a&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:objectName[@ref]&quot;&gt;
+    &lt;a class=&quot;tei-entity tei-object&quot;&gt;
+      &lt;xsl:attribute name=&quot;href&quot;&gt;#entity-&lt;xsl:value-of select=&quot;substring-after(@ref, &#x27;#&#x27;)&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name=&quot;data-ref&quot;&gt;&lt;xsl:value-of select=&quot;@ref&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:apply-templates/&gt;
+    &lt;/a&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:term[@ana]&quot;&gt;
+    &lt;span class=&quot;tei-entity tei-concept&quot;&gt;
+      &lt;xsl:attribute name=&quot;data-ana&quot;&gt;&lt;xsl:value-of select=&quot;@ana&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:apply-templates/&gt;
+    &lt;/span&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:date[@when]&quot;&gt;
+    &lt;time&gt;
+      &lt;xsl:attribute name=&quot;datetime&quot;&gt;&lt;xsl:value-of select=&quot;@when&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:apply-templates/&gt;
+    &lt;/time&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;tei:foreign[@xml:lang]&quot;&gt;
+    &lt;span&gt;
+      &lt;xsl:attribute name=&quot;lang&quot;&gt;&lt;xsl:value-of select=&quot;@xml:lang&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:apply-templates/&gt;
+    &lt;/span&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template name=&quot;entity-group&quot;&gt;
+    &lt;xsl:param name=&quot;title&quot;/&gt;
+    &lt;xsl:param name=&quot;nodes&quot;/&gt;
+    &lt;xsl:param name=&quot;kind&quot;/&gt;
+    &lt;section class=&quot;entity-group&quot;&gt;
+      &lt;xsl:attribute name=&quot;data-entity-kind&quot;&gt;&lt;xsl:value-of select=&quot;$kind&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;h4&gt;&lt;xsl:value-of select=&quot;$title&quot;/&gt;&lt;/h4&gt;
+      &lt;div class=&quot;entity-grid&quot;&gt;
+        &lt;xsl:for-each select=&quot;$nodes&quot;&gt;
+          &lt;xsl:call-template name=&quot;entity-card&quot;&gt;
+            &lt;xsl:with-param name=&quot;kind&quot; select=&quot;$kind&quot;/&gt;
+          &lt;/xsl:call-template&gt;
+        &lt;/xsl:for-each&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template name=&quot;entity-card&quot;&gt;
+    &lt;xsl:param name=&quot;kind&quot;/&gt;
+    &lt;article class=&quot;entity-card&quot;&gt;
+      &lt;xsl:attribute name=&quot;id&quot;&gt;entity-&lt;xsl:value-of select=&quot;@xml:id&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name=&quot;data-tei-id&quot;&gt;&lt;xsl:value-of select=&quot;@xml:id&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;xsl:attribute name=&quot;data-entity-kind&quot;&gt;&lt;xsl:value-of select=&quot;$kind&quot;/&gt;&lt;/xsl:attribute&gt;
+      &lt;h4&gt;
+        &lt;xsl:call-template name=&quot;node-label&quot;&gt;
+          &lt;xsl:with-param name=&quot;node&quot; select=&quot;.&quot;/&gt;
+        &lt;/xsl:call-template&gt;
+      &lt;/h4&gt;
+      &lt;dl&gt;
+        &lt;dt&gt;xml:id&lt;/dt&gt;
+        &lt;dd&gt;&lt;xsl:value-of select=&quot;@xml:id&quot;/&gt;&lt;/dd&gt;
+        &lt;dt&gt;Conceptual class&lt;/dt&gt;
+        &lt;dd&gt;&lt;xsl:value-of select=&quot;tei:note[@type=&#x27;conceptualClass&#x27;]&quot;/&gt;&lt;/dd&gt;
+        &lt;xsl:if test=&quot;tei:idno | tei:objectIdentifier/tei:idno&quot;&gt;
+          &lt;dt&gt;Authority identifiers&lt;/dt&gt;
+          &lt;dd&gt;
+            &lt;xsl:for-each select=&quot;tei:idno | tei:objectIdentifier/tei:idno&quot;&gt;
+              &lt;span class=&quot;authority-id&quot;&gt;
+                &lt;xsl:value-of select=&quot;@type&quot;/&gt;
+                &lt;xsl:text&gt;: &lt;/xsl:text&gt;
+                &lt;xsl:value-of select=&quot;.&quot;/&gt;
+              &lt;/span&gt;
+              &lt;xsl:if test=&quot;position() != last()&quot;&gt;&lt;br/&gt;&lt;/xsl:if&gt;
+            &lt;/xsl:for-each&gt;
+          &lt;/dd&gt;
+        &lt;/xsl:if&gt;
+      &lt;/dl&gt;
+    &lt;/article&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template name=&quot;node-label&quot;&gt;
+    &lt;xsl:param name=&quot;node&quot;/&gt;
+    &lt;xsl:choose&gt;
+      &lt;xsl:when test=&quot;$node/tei:persName[1]&quot;&gt;&lt;xsl:value-of select=&quot;$node/tei:persName[1]&quot;/&gt;&lt;/xsl:when&gt;
+      &lt;xsl:when test=&quot;$node/tei:placeName[1]&quot;&gt;&lt;xsl:value-of select=&quot;$node/tei:placeName[1]&quot;/&gt;&lt;/xsl:when&gt;
+      &lt;xsl:when test=&quot;$node/tei:orgName[1]&quot;&gt;&lt;xsl:value-of select=&quot;$node/tei:orgName[1]&quot;/&gt;&lt;/xsl:when&gt;
+      &lt;xsl:when test=&quot;$node/tei:objectIdentifier/tei:objectName[1]&quot;&gt;&lt;xsl:value-of select=&quot;$node/tei:objectIdentifier/tei:objectName[1]&quot;/&gt;&lt;/xsl:when&gt;
+      &lt;xsl:when test=&quot;$node/tei:name[1]&quot;&gt;&lt;xsl:value-of select=&quot;$node/tei:name[1]&quot;/&gt;&lt;/xsl:when&gt;
+      &lt;xsl:when test=&quot;$node/tei:label[1]&quot;&gt;&lt;xsl:value-of select=&quot;$node/tei:label[1]&quot;/&gt;&lt;/xsl:when&gt;
+      &lt;xsl:when test=&quot;$node/tei:date[1]&quot;&gt;&lt;xsl:value-of select=&quot;$node/tei:date[1]&quot;/&gt;&lt;/xsl:when&gt;
+      &lt;xsl:otherwise&gt;&lt;xsl:value-of select=&quot;$node/@xml:id&quot;/&gt;&lt;/xsl:otherwise&gt;
+    &lt;/xsl:choose&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</code></pre></div>
+</details>
+  <details class="fullfile">
+  <summary>Show the complete file: transform_tei_to_html.py</summary>
+  <div class="code-card"><div class="code-card__bar"><span class="code-card__path">final_report_files/xml_to_html/transform_tei_to_html.py</span><a href="final_report_files/xml_to_html/transform_tei_to_html.py" download>Download</a></div>
+  <pre class="line-numbers language-python fullfile__pre" data-start="1"><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;Transform the final Reconnecting Dunhuang TEI file to HTML and QA the result.&quot;&quot;&quot;
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+from pathlib import Path
+from typing import Iterable
+
+from lxml import etree, html
+
+
+TEI_NS = &#123;&quot;tei&quot;: &quot;http://www.tei-c.org/ns/1.0&quot;&#125;
+SCRIPT_DIR = Path(__file__).resolve().parent
+DEFAULT_TEI = SCRIPT_DIR.parent / &quot;tei_xml&quot; / &quot;reconnecting_dunhuang.xml&quot;
+DEFAULT_XSL = SCRIPT_DIR / &quot;tei_to_html.xsl&quot;
+DEFAULT_HTML = SCRIPT_DIR / &quot;reconnecting_dunhuang.html&quot;
+DEFAULT_QA_REPORT = SCRIPT_DIR / &quot;html_qa_report.txt&quot;
+
+
+def sha256(path: Path) -&gt; str:
+    digest = hashlib.sha256()
+    with path.open(&quot;rb&quot;) as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b&quot;&quot;):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def parse_tei(path: Path) -&gt; etree._ElementTree:
+    parser = etree.XMLParser(remove_blank_text=False, resolve_entities=False)
+    return etree.parse(str(path), parser)
+
+
+def transform(tei_path: Path, xsl_path: Path, html_path: Path) -&gt; None:
+    tei_doc = parse_tei(tei_path)
+    xsl_doc = etree.parse(str(xsl_path))
+    result = etree.XSLT(xsl_doc)(tei_doc)
+    html_path.parent.mkdir(parents=True, exist_ok=True)
+    html_path.write_bytes(etree.tostring(result, method=&quot;html&quot;, encoding=&quot;UTF-8&quot;, pretty_print=True))
+
+
+def norm_ref(value: str | None) -&gt; str:
+    return (value or &quot;&quot;).lstrip(&quot;#&quot;)
+
+
+def require(condition: bool, message: str, failures: list[str]) -&gt; None:
+    if not condition:
+        failures.append(message)
+
+
+def ids(elements: Iterable[etree._Element]) -&gt; set[str]:
+    return &#123;element.get(&quot;&#123;http://www.w3.org/XML/1998/namespace&#125;id&quot;) for element in elements&#125;
+
+
+def text_content(element: etree._Element) -&gt; str:
+    return &quot; &quot;.join(&quot;&quot;.join(element.itertext()).split())
+
+
+def display_path(path: Path) -&gt; str:
+    resolved = path.resolve()
+    package_root = SCRIPT_DIR.parents[1]
+    try:
+        return str(resolved.relative_to(package_root))
+    except ValueError:
+        return str(path)
+
+
+def tei_relation_signature(relation: etree._Element) -&gt; tuple[str, str, str, str, str, str, str]:
+    relation_id = relation.get(&quot;&#123;http://www.w3.org/XML/1998/namespace&#125;id&quot;) or &quot;&quot;
+    return (
+        relation_id,
+        relation.get(&quot;active&quot;) or &quot;&quot;,
+        relation.get(&quot;passive&quot;) or &quot;&quot;,
+        relation.get(&quot;mutual&quot;) or &quot;&quot;,
+        relation.get(&quot;name&quot;) or &quot;&quot;,
+        relation.get(&quot;corresp&quot;) or &quot;&quot;,
+        relation.get(&quot;ana&quot;) or &quot;&quot;,
+    )
+
+
+def qa_html(tei_path: Path, html_path: Path) -&gt; tuple[bool, str]:
+    failures: list[str] = []
+    tei_doc = parse_tei(tei_path)
+    html_doc = html.parse(str(html_path))
+    root = html_doc.getroot()
+
+    body_section_ids = [&quot;lead&quot;, &quot;history&quot;, &quot;studies&quot;, &quot;languages-scripts&quot;, &quot;buddhist-texts&quot;, &quot;other-textual-genres&quot;]
+    back_section_ids = [&quot;see-also&quot;, &quot;references&quot;, &quot;cited-works&quot;, &quot;further-reading&quot;, &quot;external-links&quot;]
+
+    tei_standoff_nodes = (
+        tei_doc.xpath(&quot;//tei:standOff/tei:listPerson/tei:person&quot;, namespaces=TEI_NS)
+        + tei_doc.xpath(&quot;//tei:standOff/tei:listPlace/tei:place&quot;, namespaces=TEI_NS)
+        + tei_doc.xpath(&quot;//tei:standOff/tei:listOrg/tei:org&quot;, namespaces=TEI_NS)
+        + tei_doc.xpath(&quot;//tei:standOff/tei:listObject/tei:object&quot;, namespaces=TEI_NS)
+        + tei_doc.xpath(&quot;//tei:standOff/tei:list[@xml:id=&#x27;digital-objects&#x27;]/tei:item&quot;, namespaces=TEI_NS)
+        + tei_doc.xpath(&quot;//tei:standOff/tei:list[@xml:id=&#x27;time-spans&#x27;]/tei:item&quot;, namespaces=TEI_NS)
+        + tei_doc.xpath(&quot;//tei:standOff/tei:listEvent/tei:event&quot;, namespaces=TEI_NS)
+    )
+    standoff_ids = ids(tei_standoff_nodes)
+
+    all_html_ids = &#123;element.get(&quot;id&quot;) for element in root.xpath(&quot;//*[@id]&quot;)&#125;
+    entity_cards = root.xpath(&quot;//article[contains(concat(&#x27; &#x27;, normalize-space(@class), &#x27; &#x27;), &#x27; entity-card &#x27;)]&quot;)
+    entity_card_te_ids = &#123;card.get(&quot;data-tei-id&quot;) for card in entity_cards&#125;
+    entity_card_ids = &#123;card.get(&quot;id&quot;) for card in entity_cards&#125;
+
+    event_xml = tei_doc.xpath(&quot;//tei:standOff/tei:listEvent/tei:event&quot;, namespaces=TEI_NS)
+
+    require(html_path.exists(), &quot;HTML output file was not created&quot;, failures)
+    require(len(root.xpath(&quot;//h1&quot;)) == 1, &quot;HTML must contain exactly one H1&quot;, failures)
+    require(all(root.xpath(f&quot;//*[@id=&#x27;&#123;section_id&#125;&#x27;]&quot;) for section_id in body_section_ids), &quot;Not all body sections rendered&quot;, failures)
+    require(all(root.xpath(f&quot;//*[@id=&#x27;&#123;section_id&#125;&#x27;]&quot;) for section_id in back_section_ids), &quot;Not all back sections rendered&quot;, failures)
+    require(not root.xpath(&quot;//section[@id=&#x27;lead&#x27;]/h2&quot;), &quot;Lead must not have an invented H2 heading&quot;, failures)
+    require(len(root.xpath(&quot;//main//section/h2&quot;)) == 10, &quot;Expected 10 source section H2 headings&quot;, failures)
+    require(len(root.xpath(&quot;//figure/figcaption&quot;)) == 8, &quot;Expected 8 figure captions&quot;, failures)
+    require(root.xpath(&quot;//section[@id=&#x27;other-textual-genres&#x27;]//li[contains(normalize-space(.), &#x27;Non-Buddhist religious texts&#x27;)]/ul/li&quot;), &quot;Nested Non-Buddhist list was not preserved&quot;, failures)
+    require(not root.xpath(&quot;//p//blockquote&quot;), &quot;blockquote must not be nested inside p&quot;, failures)
+    require(len(root.xpath(&quot;//blockquote[contains(@class, &#x27;tei-cit&#x27;)]&quot;)) == 2, &quot;Expected 2 rendered cited passages&quot;, failures)
+    require(len(root.xpath(&quot;//span[contains(@class, &#x27;tei-quote&#x27;)]&quot;)) &gt;= 3, &quot;TEI quote elements were not rendered as span.tei-quote&quot;, failures)
+    require(not root.xpath(&quot;//q&quot;), &quot;HTML q elements must not be used&quot;, failures)
+    require(root.xpath(&quot;//span[contains(@class, &#x27;tei-attribution&#x27;) and contains(., &#x27;Arthur Waley&#x27;)]&quot;), &quot;Waley attribution span is missing&quot;, failures)
+    require(not root.xpath(&quot;//cite[contains(., &#x27;Arthur Waley&#x27;)]&quot;), &quot;Waley attribution must not use HTML cite&quot;, failures)
+    require(root.xpath(&quot;//section[@id=&#x27;references&#x27;]/ol[contains(@class, &#x27;references&#x27;)]&quot;), &quot;References must render as ol.references&quot;, failures)
+    require(len(root.xpath(&quot;//section[@id=&#x27;references&#x27;]/ol[contains(@class, &#x27;references&#x27;)]/li[starts-with(@id, &#x27;bibl-&#x27;)]&quot;)) == 34, &quot;Expected 34 numbered reference li elements&quot;, failures)
+    require(all(root.xpath(f&quot;//li[@id=&#x27;bibl-&#123;number&#125;&#x27;]&quot;) for number in range(1, 35)), &quot;Reference IDs bibl-1 through bibl-34 are incomplete&quot;, failures)
+    citation_hrefs = [anchor.get(&quot;href&quot;) for anchor in root.xpath(&quot;//a[contains(concat(&#x27; &#x27;, normalize-space(@class), &#x27; &#x27;), &#x27; citation &#x27;)]&quot;)]
+    require(all(href and href.startswith(&quot;#bibl-&quot;) for href in citation_hrefs), &quot;Internal citations must link to bibl IDs&quot;, failures)
+    require(all(norm_ref(href) in all_html_ids for href in citation_hrefs), &quot;At least one internal citation link does not resolve&quot;, failures)
+    require(not root.xpath(&quot;//a[contains(concat(&#x27; &#x27;, normalize-space(@class), &#x27; &#x27;), &#x27; citation &#x27;) and @data-target]&quot;), &quot;Citation links must not add data-target&quot;, failures)
+    require(not root.xpath(&quot;//time[@data-when]&quot;), &quot;Dates must not add data-when when datetime exists&quot;, failures)
+    require(len(root.xpath(&quot;//time[@datetime]&quot;)) &gt;= 3, &quot;Expected rendered datetime attributes for TEI dates&quot;, failures)
+    require(root.xpath(&quot;//a[starts-with(@href, &#x27;http&#x27;) and @target=&#x27;_blank&#x27; and contains(@rel, &#x27;noopener&#x27;) and contains(@rel, &#x27;noreferrer&#x27;)]&quot;), &quot;External links must use target blank and noopener noreferrer&quot;, failures)
+    require(set(entity_card_te_ids) == standoff_ids, &quot;Entity register does not exactly match expected standOff records&quot;, failures)
+    require(all((f&quot;entity-&#123;tei_id&#125;&quot; in entity_card_ids) for tei_id in standoff_ids), &quot;Entity card IDs do not match standOff xml:id values&quot;, failures)
+    inline_entity_links = root.xpath(&quot;//main//a[contains(concat(&#x27; &#x27;, normalize-space(@class), &#x27; &#x27;), &#x27; tei-entity &#x27;)]&quot;)
+    require(all((link.get(&quot;href&quot;) or &quot;&quot;).startswith(&quot;#entity-&quot;) for link in inline_entity_links), &quot;Inline entity links must point to entity cards&quot;, failures)
+    require(all(norm_ref(link.get(&quot;href&quot;)) in all_html_ids for link in inline_entity_links), &quot;At least one inline entity link does not resolve&quot;, failures)
+    require(root.xpath(&quot;//span[contains(concat(&#x27; &#x27;, normalize-space(@class), &#x27; &#x27;), &#x27; tei-concept &#x27;) and @data-ana]&quot;), &quot;Concept annotations must remain traceable with data-ana&quot;, failures)
+    require(len(root.xpath(&quot;//article[@data-entity-kind=&#x27;event&#x27;]&quot;)) == len(event_xml), &quot;All TEI event nodes must appear in the entity list&quot;, failures)
+    # Wiki View layout: banner, contents, infobox, images
+    require(root.xpath(&quot;//div[@id=&#x27;wiki-root&#x27;]/p[contains(@class,&#x27;wiki-banner&#x27;) and contains(., &#x27;TEI-derived Wiki View&#x27;)]&quot;), &quot;The TEI-derived Wiki View banner is missing&quot;, failures)
+    toc_targets = [a.get(&quot;href&quot;) for a in root.xpath(&quot;//nav[contains(@class,&#x27;wiki-toc&#x27;)]//a&quot;)]
+    require(all(norm_ref(h) in all_html_ids for h in toc_targets), &quot;A contents link does not resolve&quot;, failures)
+    require(len(toc_targets) == len(body_section_ids) + len(back_section_ids) + 1, &quot;Contents must list every section and the entity list&quot;, failures)
+    infobox = root.xpath(&quot;//aside[contains(@class,&#x27;wiki-infobox&#x27;)]&quot;)
+    require(len(infobox) == 1, &quot;Exactly one infobox expected&quot;, failures)
+    require(all(norm_ref(a.get(&quot;href&quot;)) in all_html_ids for a in root.xpath(&quot;//aside[contains(@class,&#x27;wiki-infobox&#x27;)]//a[starts-with(@href,&#x27;#&#x27;)]&quot;)), &quot;An infobox entity link does not resolve&quot;, failures)
+    graphics = tei_doc.xpath(&quot;//tei:text//tei:figure/tei:graphic/@url&quot;, namespaces=TEI_NS)
+    figure_imgs = root.xpath(&quot;//main//figure/img/@src&quot;)
+    require(len(figure_imgs) == len(graphics), &quot;Every TEI graphic must be rendered as an image&quot;, failures)
+    require(all((html_path.parent / src).resolve().exists() for src in figure_imgs), &quot;A rendered image file does not exist&quot;, failures)
+    require(not root.xpath(&quot;//table[contains(@class,&#x27;relations&#x27;)]&quot;), &quot;Relation tables belong to the RDF page, not the Wiki View&quot;, failures)
+    require(len(root.xpath(&quot;//section[@id=&#x27;references&#x27;]//cite[contains(@class, &#x27;tei-title&#x27;)]&quot;)) &gt;= 1, &quot;Bibliography work titles may use cite.tei-title and none were found&quot;, failures)
+    require(not root.xpath(&quot;//*[@data-target]&quot;), &quot;No redundant data-target attributes should appear&quot;, failures)
+    require(not root.xpath(&quot;//*[@data-when]&quot;), &quot;No redundant data-when attributes should appear&quot;, failures)
+
+    reference_count = len(root.xpath(&quot;//section[@id=&#x27;references&#x27;]/ol[contains(@class, &#x27;references&#x27;)]/li[starts-with(@id, &#x27;bibl-&#x27;)]&quot;))
+    event_node_count = len(root.xpath(&quot;//article[@data-entity-kind=&#x27;event&#x27;]&quot;))
+
+    report_lines = [
+        f&quot;HTML QA file: &#123;display_path(html_path)&#125;&quot;,
+        f&quot;Source TEI file: &#123;display_path(tei_path)&#125;&quot;,
+        &quot;Source sections: body=6/6, back=5/5&quot;,
+        &quot;Source structure: paragraphs rendered; nested Non-Buddhist list preserved; figure captions=8/8&quot;,
+        f&quot;References: numbered bibliography entries=&#123;reference_count&#125;/34; internal citation links=&#123;len(citation_hrefs)&#125;; all checked for resolution&quot;,
+        &quot;Quotation rendering: cit -&gt; blockquote.tei-cit; quote -&gt; span.tei-quote; HTML q unused; Waley attribution -&gt; span.tei-attribution&quot;,
+        f&quot;Inline annotation links: &#123;len(inline_entity_links)&#125; entity anchors checked for #entity-* resolution; concepts use data-ana&quot;,
+        f&quot;Entity list: entity cards=&#123;len(entity_cards)&#125;/&#123;len(standoff_ids)&#125; from standOff; event nodes=&#123;event_node_count&#125;/&#123;len(event_xml)&#125;&quot;,
+        f&quot;Wiki View: banner present; contents links=&#123;len(toc_targets)&#125; resolved; infobox=1 with resolved entity links; figure images=&#123;len(figure_imgs)&#125;/&#123;len(graphics)&#125; TEI graphics, files exist; no relation tables&quot;,
+        &quot;Semantic data provenance: entity card IDs exactly match TEI standOff records; no extra records detected&quot;,
+        &quot;HTML semantics: no cite used for Waley attribution; bibliography title cite elements allowed; no redundant data-target/data-when attributes&quot;,
+        &quot;No RDF export was attempted.&quot;,
+    ]
+
+    if failures:
+        report_lines.append(&quot;&quot;)
+        report_lines.append(&quot;HTML QA FAIL&quot;)
+        report_lines.extend(f&quot;- &#123;failure&#125;&quot; for failure in failures)
+        return False, &quot;\n&quot;.join(report_lines) + &quot;\n&quot;
+
+    report_lines.append(&quot;&quot;)
+    report_lines.append(&quot;HTML QA PASS&quot;)
+    return True, &quot;\n&quot;.join(report_lines) + &quot;\n&quot;
+
+
+def main() -&gt; int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(&quot;--tei&quot;, default=DEFAULT_TEI, type=Path)
+    parser.add_argument(&quot;--xsl&quot;, default=DEFAULT_XSL, type=Path)
+    parser.add_argument(&quot;--html&quot;, default=DEFAULT_HTML, type=Path)
+    parser.add_argument(&quot;--qa-report&quot;, default=DEFAULT_QA_REPORT, type=Path)
+    args = parser.parse_args()
+
+    before_hash = sha256(args.tei)
+    transform(args.tei, args.xsl, args.html)
+    after_hash = sha256(args.tei)
+
+    passed, qa_report = qa_html(args.tei, args.html)
+    immutability_lines = [
+        &quot;XML immutability check:&quot;,
+        f&quot;- Before SHA-256: &#123;before_hash&#125;&quot;,
+        f&quot;- After SHA-256:  &#123;after_hash&#125;&quot;,
+        f&quot;- Result: &#123;&#x27;PASS&#x27; if before_hash == after_hash else &#x27;FAIL&#x27;&#125;&quot;,
+        &quot;&quot;,
+    ]
+    args.qa_report.parent.mkdir(parents=True, exist_ok=True)
+    args.qa_report.write_text(&quot;\n&quot;.join(immutability_lines) + qa_report, encoding=&quot;utf-8&quot;)
+
+    print(f&quot;Generated HTML: &#123;args.html&#125;&quot;)
+    print(f&quot;Generated QA report: &#123;args.qa_report&#125;&quot;)
+    print(f&quot;XML SHA-256 before: &#123;before_hash&#125;&quot;)
+    print(f&quot;XML SHA-256 after:  &#123;after_hash&#125;&quot;)
+    print(&quot;XML immutability: &quot; + (&quot;PASS&quot; if before_hash == after_hash else &quot;FAIL&quot;))
+    print(&quot;HTML QA: &quot; + (&quot;PASS&quot; if passed else &quot;FAIL&quot;))
+
+    return 0 if passed and before_hash == after_hash else 1
+
+
+if __name__ == &quot;__main__&quot;:
+    raise SystemExit(main())</code></pre></div>
+</details>
+  <details class="fullfile">
+  <summary>Show the complete file: transform_tei_to_rdf.py</summary>
+  <div class="code-card"><div class="code-card__bar"><span class="code-card__path">final_report_files/xml_to_rdf/transform_tei_to_rdf.py</span><a href="final_report_files/xml_to_rdf/transform_tei_to_rdf.py" download>Download</a></div>
+  <pre class="line-numbers language-python fullfile__pre" data-start="1"><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;
+Reconnecting Dunhuang - TEI/XML to RDF transformation (v3.1, review round 1: language-tagged labels).
+
+Input : tei_xml/reconnecting_dunhuang.xml   (the single source for everything below)
+        ontology/dm-ontology.ttl            (definitions of the three dm: properties)
+Output: reconnecting_dunhuang.ttl / .rdf    (the same graph in Turtle and RDF/XML)
+        rdf_qa_report.txt                   (counts + validation results)
+
+What the script does, in order
+  1. read_entities()      every standOff record that has &lt;note type=&quot;conceptualClass&quot;&gt;
+                          becomes one resource with rdf:type and rdfs:label (@en); name elements
+                          with @xml:lang (zh, ja) become further rdfs:label in that language.
+  2. add_concepts()       the project taxonomy &quot;concepts&quot; becomes a skos:ConceptScheme;
+                          &lt;equiv @uri&gt; becomes skos:exactMatch.
+  3. add_identifiers()    every &lt;idno&gt; becomes a crm:E42_Identifier node (CIDOC CRM pattern)
+                          and, where the scheme has a URI form, an external link chosen by
+                          the authority linking policy (owl:sameAs only for actors on Wikidata).
+  4. add_time_bounds()    &lt;date @when/@notBefore/@notAfter&gt; on time-span records becomes
+                          crm:P82a_begin_of_the_begin / crm:P82b_end_of_the_end (xsd:dateTime).
+  5. add_relations()      listRelation[@type=&#x27;conceptual&#x27;] -&gt; one triple per &lt;relation&gt;
+                          listRelation[@type=&#x27;subject&#x27;]    -&gt; dcterms:subject triples
+  6. add_provenance()     each conceptual relation also gets an rdf:Statement node recording
+                          which theoretical relation (R1-R19) it comes from and its evidence
+                          status (Direct / Enriched). This layer is kept for traceability only.
+                          R1-R19 are typed crm:E89_Propositional_Object: propositions of the
+                          theoretical model, not RDF triples (an rdf:Statement restates one
+                          triple; several statements can refer to the same proposition).
+                          The TEI taxonomy &quot;evidence&quot; becomes a second skos:ConceptScheme whose
+                          two concepts carry their TEI catDesc as skos:definition.
+     Enriched relations carry relation/@source -&gt; listBibl &quot;enrichment-sources&quot;; each pointer
+                          becomes dcterms:source (the bibl&#x27;s URL) on the rdf:Statement.
+  7. validate()           reference integrity, CIDOC CRM domain/range, dm: declarations,
+                          round-trip of both serializations, presence of every TEI relation.
+
+Nothing is invented: every value in the graph comes from an attribute or element of the TEI
+file, or from the fixed tables below (namespaces, link policy, class/property signatures).
+&quot;&quot;&quot;
+
+import sys
+from datetime import date
+from pathlib import Path
+
+from lxml import etree
+from rdflib import Graph, Literal, Namespace, URIRef, RDF, RDFS, OWL, compare
+from rdflib.namespace import DCTERMS, SKOS, XSD
+
+# ---------------------------------------------------------------------------
+# Paths
+# ---------------------------------------------------------------------------
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPORT_FILES = SCRIPT_DIR.parent
+DEFAULT_XML = REPORT_FILES / &quot;tei_xml&quot; / &quot;reconnecting_dunhuang.xml&quot;
+DEFAULT_ONTOLOGY = REPORT_FILES / &quot;ontology&quot; / &quot;dm-ontology.ttl&quot;
+DEFAULT_TTL = SCRIPT_DIR / &quot;reconnecting_dunhuang.ttl&quot;
+DEFAULT_RDF = SCRIPT_DIR / &quot;reconnecting_dunhuang.rdf&quot;
+DEFAULT_QA = SCRIPT_DIR / &quot;rdf_qa_report.txt&quot;
+
+# ---------------------------------------------------------------------------
+# Namespaces
+# ---------------------------------------------------------------------------
+BASE = &quot;https://haopuur-max.github.io/reconnecting-dunhuang/&quot;
+DM = Namespace(BASE + &quot;ontology/&quot;)
+RES = Namespace(BASE + &quot;resource/&quot;)
+CRM = Namespace(&quot;http://www.cidoc-crm.org/cidoc-crm/&quot;)
+CRMSCI = Namespace(&quot;http://www.cidoc-crm.org/extensions/crmsci/&quot;)
+CRMDIG = Namespace(&quot;http://www.cidoc-crm.org/extensions/crmdig/&quot;)
+PREFIXES = &#123;&quot;crm&quot;: CRM, &quot;crmsci&quot;: CRMSCI, &quot;crmdig&quot;: CRMDIG, &quot;dm&quot;: DM,
+            &quot;dcterms&quot;: DCTERMS, &quot;skos&quot;: SKOS&#125;
+
+TEI = &quot;http://www.tei-c.org/ns/1.0&quot;
+NS = &#123;&quot;tei&quot;: TEI&#125;
+XML_ID = &quot;&#123;http://www.w3.org/XML/1998/namespace&#125;id&quot;
+
+# ---------------------------------------------------------------------------
+# Authority linking policy
+#   All identifiers are always kept as crm:E42_Identifier nodes (no identity claim).
+#   In addition, an external link is added when the scheme has a URI form:
+#     - owl:sameAs  only for Wikidata items of actors (persons and groups, institutions included),
+#                   where the Wikidata item and our resource denote the same individual;
+#     - rdfs:seeAlso for everything else: authority records (VIAF clusters, LC name
+#                   authorities), subject headings (LCSH, FAST), and Wikidata items of
+#                   places and of the corpus, whose Wikidata class differs from our
+#                   CIDOC CRM class (e.g. E53 Place is a spatial extent, not a city).
+#   FAST control numbers have no URI form and stay as identifiers only.
+#   Concepts use skos:exactMatch (see add_concepts).
+# ---------------------------------------------------------------------------
+AUTHORITY_URI = &#123;
+    &quot;wikidata&quot;: &quot;http://www.wikidata.org/entity/&#123;&#125;&quot;,
+    &quot;viaf&quot;: &quot;http://viaf.org/viaf/&#123;&#125;&quot;,
+    &quot;lc&quot;: &quot;http://id.loc.gov/authorities/names/&#123;&#125;&quot;,
+    &quot;lcsh&quot;: &quot;http://id.loc.gov/authorities/subjects/&#123;&#125;&quot;,
+    &quot;fast&quot;: &quot;http://id.worldcat.org/fast/&#123;&#125;&quot;,
+    &quot;worldcat-entity&quot;: &quot;https://id.oclc.org/worldcat/entity/&#123;&#125;&quot;,
+&#125;
+SCHEME_LABELS = &#123;
+    &quot;wikidata&quot;: &quot;Wikidata&quot;,
+    &quot;viaf&quot;: &quot;VIAF&quot;,
+    &quot;lc&quot;: &quot;Library of Congress Name Authority File&quot;,
+    &quot;lcsh&quot;: &quot;Library of Congress Subject Headings&quot;,
+    &quot;fast&quot;: &quot;FAST (OCLC)&quot;,
+    &quot;fast-control-number&quot;: &quot;FAST control number (OCLC)&quot;,
+    &quot;worldcat-entity&quot;: &quot;WorldCat Entity&quot;,
+    &quot;bl-shelfmark&quot;: &quot;British Library shelfmark&quot;,
+&#125;
+
+# ---------------------------------------------------------------------------
+# Class hierarchy and property signatures used for the domain/range check.
+# Transcribed from CIDOC CRM 7.1.3, CRMsci 3.2 (O19 range E18; S19 &lt; S27 &lt; I1),
+# CRMinf 1.2.1 (I1 &lt; E7) and CRMdig 5.0 (L1 D2 -&gt; E18; L11 D7 -&gt; D1; D7 &lt; E11, E65).
+# Only the classes and properties this dataset uses are listed; anything else
+# is reported so the table cannot silently fall behind the data.
+# ---------------------------------------------------------------------------
+SUPERCLASSES = &#123;
+    &quot;crm:E1_CRM_Entity&quot;: [],
+    &quot;crm:E77_Persistent_Item&quot;: [&quot;crm:E1_CRM_Entity&quot;],
+    &quot;crm:E70_Thing&quot;: [&quot;crm:E77_Persistent_Item&quot;],
+    &quot;crm:E72_Legal_Object&quot;: [&quot;crm:E70_Thing&quot;],
+    &quot;crm:E71_Human-Made_Thing&quot;: [&quot;crm:E70_Thing&quot;],
+    &quot;crm:E18_Physical_Thing&quot;: [&quot;crm:E72_Legal_Object&quot;],
+    &quot;crm:E19_Physical_Object&quot;: [&quot;crm:E18_Physical_Thing&quot;],
+    &quot;crm:E24_Physical_Human-Made_Thing&quot;: [&quot;crm:E18_Physical_Thing&quot;, &quot;crm:E71_Human-Made_Thing&quot;],
+    &quot;crm:E78_Curated_Holding&quot;: [&quot;crm:E24_Physical_Human-Made_Thing&quot;],
+    &quot;crm:E20_Biological_Object&quot;: [&quot;crm:E19_Physical_Object&quot;],
+    &quot;crm:E39_Actor&quot;: [&quot;crm:E77_Persistent_Item&quot;],
+    &quot;crm:E21_Person&quot;: [&quot;crm:E20_Biological_Object&quot;, &quot;crm:E39_Actor&quot;],
+    &quot;crm:E74_Group&quot;: [&quot;crm:E39_Actor&quot;],
+    &quot;crm:E53_Place&quot;: [&quot;crm:E1_CRM_Entity&quot;],
+    &quot;crm:E52_Time-Span&quot;: [&quot;crm:E1_CRM_Entity&quot;],
+    &quot;crm:E2_Temporal_Entity&quot;: [&quot;crm:E1_CRM_Entity&quot;],
+    &quot;crm:E92_Spacetime_Volume&quot;: [&quot;crm:E1_CRM_Entity&quot;],
+    &quot;crm:E4_Period&quot;: [&quot;crm:E2_Temporal_Entity&quot;, &quot;crm:E92_Spacetime_Volume&quot;],
+    &quot;crm:E5_Event&quot;: [&quot;crm:E4_Period&quot;],
+    &quot;crm:E7_Activity&quot;: [&quot;crm:E5_Event&quot;],
+    &quot;crm:E8_Acquisition&quot;: [&quot;crm:E7_Activity&quot;],
+    &quot;crm:E96_Purchase&quot;: [&quot;crm:E8_Acquisition&quot;],
+    &quot;crm:E9_Move&quot;: [&quot;crm:E7_Activity&quot;],
+    &quot;crm:E63_Beginning_of_Existence&quot;: [&quot;crm:E5_Event&quot;],
+    &quot;crm:E65_Creation&quot;: [&quot;crm:E7_Activity&quot;, &quot;crm:E63_Beginning_of_Existence&quot;],
+    &quot;crm:E28_Conceptual_Object&quot;: [&quot;crm:E71_Human-Made_Thing&quot;],
+    &quot;crm:E89_Propositional_Object&quot;: [&quot;crm:E28_Conceptual_Object&quot;],
+    &quot;crm:E90_Symbolic_Object&quot;: [&quot;crm:E28_Conceptual_Object&quot;, &quot;crm:E72_Legal_Object&quot;],
+    &quot;crm:E73_Information_Object&quot;: [&quot;crm:E89_Propositional_Object&quot;, &quot;crm:E90_Symbolic_Object&quot;],
+    &quot;crminf:I1_Argumentation&quot;: [&quot;crm:E7_Activity&quot;],
+    &quot;crmsci:S27_Observation&quot;: [&quot;crminf:I1_Argumentation&quot;],
+    &quot;crmsci:S19_Encounter_Event&quot;: [&quot;crmsci:S27_Observation&quot;],
+    &quot;crm:E11_Modification&quot;: [&quot;crm:E7_Activity&quot;],
+    &quot;crmsci:S21_Measurement&quot;: [&quot;crmsci:S27_Observation&quot;],
+    &quot;crmdig:D7_Digital_Machine_Event&quot;: [&quot;crm:E11_Modification&quot;, &quot;crm:E65_Creation&quot;],
+    &quot;crmdig:D11_Digital_Measurement_Event&quot;: [&quot;crmdig:D7_Digital_Machine_Event&quot;, &quot;crmsci:S21_Measurement&quot;],
+    &quot;crmdig:D2_Digitization_Process&quot;: [&quot;crmdig:D11_Digital_Measurement_Event&quot;],
+    &quot;crmdig:D1_Digital_Object&quot;: [&quot;crm:E73_Information_Object&quot;],
+&#125;
+SIGNATURES = &#123;  # property -&gt; (domain, range)
+    &quot;crm:P4_has_time-span&quot;: (&quot;crm:E2_Temporal_Entity&quot;, &quot;crm:E52_Time-Span&quot;),
+    &quot;crm:P7_took_place_at&quot;: (&quot;crm:E4_Period&quot;, &quot;crm:E53_Place&quot;),
+    &quot;crm:P12_occurred_in_the_presence_of&quot;: (&quot;crm:E5_Event&quot;, &quot;crm:E77_Persistent_Item&quot;),
+    &quot;crm:P14_carried_out_by&quot;: (&quot;crm:E7_Activity&quot;, &quot;crm:E39_Actor&quot;),
+    &quot;crm:P15_was_influenced_by&quot;: (&quot;crm:E7_Activity&quot;, &quot;crm:E1_CRM_Entity&quot;),
+    &quot;crm:P22_transferred_title_to&quot;: (&quot;crm:E8_Acquisition&quot;, &quot;crm:E39_Actor&quot;),
+    &quot;crm:P23_transferred_title_from&quot;: (&quot;crm:E8_Acquisition&quot;, &quot;crm:E39_Actor&quot;),
+    &quot;crm:P24_transferred_title_of&quot;: (&quot;crm:E8_Acquisition&quot;, &quot;crm:E18_Physical_Thing&quot;),
+    &quot;crm:P25_moved&quot;: (&quot;crm:E9_Move&quot;, &quot;crm:E19_Physical_Object&quot;),
+    &quot;crm:P26_moved_to&quot;: (&quot;crm:E9_Move&quot;, &quot;crm:E53_Place&quot;),
+    &quot;crm:P46i_forms_part_of&quot;: (&quot;crm:E18_Physical_Thing&quot;, &quot;crm:E18_Physical_Thing&quot;),
+    &quot;crm:P50_has_current_keeper&quot;: (&quot;crm:E18_Physical_Thing&quot;, &quot;crm:E39_Actor&quot;),
+    &quot;crm:P89_falls_within&quot;: (&quot;crm:E53_Place&quot;, &quot;crm:E53_Place&quot;),
+    &quot;crmsci:O19_encountered_object&quot;: (&quot;crmsci:S19_Encounter_Event&quot;, &quot;crm:E18_Physical_Thing&quot;),
+    &quot;crmdig:L1_digitized&quot;: (&quot;crmdig:D2_Digitization_Process&quot;, &quot;crm:E18_Physical_Thing&quot;),
+    &quot;crmdig:L11_had_output&quot;: (&quot;crmdig:D7_Digital_Machine_Event&quot;, &quot;crmdig:D1_Digital_Object&quot;),
+&#125;
+
+EVIDENCE_LABELS = &#123;&quot;direct&quot;: &quot;Direct evidence (frozen Wikipedia revision)&quot;,
+                   &quot;enriched&quot;: &quot;Enriched evidence (additional authoritative source)&quot;&#125;
+
+
+# ---------------------------------------------------------------------------
+# Small helpers
+# ---------------------------------------------------------------------------
+def curie_to_uri(curie):
+    &quot;&quot;&quot;&#x27;crm:E21_Person&#x27; -&gt; URIRef&quot;&quot;&quot;
+    prefix, local = curie.split(&quot;:&quot;, 1)
+    return PREFIXES[prefix][local]
+
+
+def uri_to_curie(uri):
+    for prefix, ns in PREFIXES.items():
+        if str(uri).startswith(str(ns)):
+            return f&quot;&#123;prefix&#125;:&#123;str(uri)[len(str(ns)):]&#125;&quot;
+    return str(uri)
+
+
+def local_id(ref):
+    &quot;&quot;&quot;&#x27;#aurel-stein&#x27; -&gt; &#x27;aurel-stein&#x27;&quot;&quot;&quot;
+    return ref[1:] if ref.startswith(&quot;#&quot;) else ref
+
+
+def ancestors(cls):
+    &quot;&quot;&quot;cls and all its superclasses (transitively).&quot;&quot;&quot;
+    seen, todo = set(), [cls]
+    while todo:
+        c = todo.pop()
+        if c not in seen:
+            seen.add(c)
+            todo.extend(SUPERCLASSES.get(c, []))
+    return seen
+
+
+def is_a(cls, target):
+    return target in ancestors(cls)
+
+
+def date_bound(value, end):
+    &quot;&quot;&quot;TEI date value (&#x27;1907&#x27; or &#x27;1900-06-25&#x27;) -&gt; xsd:dateTime literal for P82a/P82b.&quot;&quot;&quot;
+    parts = value.split(&quot;-&quot;)
+    if len(parts) == 1:
+        year = int(parts[0])
+        text = f&quot;&#123;year:04d&#125;-12-31T23:59:59&quot; if end else f&quot;&#123;year:04d&#125;-01-01T00:00:00&quot;
+    elif len(parts) == 3:
+        text = f&quot;&#123;value&#125;T23:59:59&quot; if end else f&quot;&#123;value&#125;T00:00:00&quot;
+    else:
+        raise ValueError(f&quot;Unsupported TEI date value: &#123;value!r&#125;&quot;)
+    return Literal(text, datatype=XSD.dateTime)
+
+
+# ---------------------------------------------------------------------------
+# Transformation
+# ---------------------------------------------------------------------------
+class Transformer:
+    def __init__(self, xml_path):
+        self.root = etree.parse(str(xml_path)).getroot()
+        self.standoff = self.root.find(f&quot;&#123;&#123;&#123;TEI&#125;&#125;&#125;standOff&quot;)
+        self.g = Graph()
+        for prefix, ns in PREFIXES.items():
+            self.g.bind(prefix, ns)
+        self.g.bind(&quot;resource&quot;, RES)
+        self.g.bind(&quot;owl&quot;, OWL)
+        self.entity_class = &#123;&#125;          # xml:id -&gt; &#x27;crm:E21_Person&#x27;
+        self.stats = &#123;&#125;
+
+    # 1 -- entities ------------------------------------------------------
+    @staticmethod
+    def label_of(el):
+        for xp in (&quot;tei:persName[not(@xml:lang)]&quot;, &quot;tei:placeName[not(@xml:lang)]&quot;, &quot;tei:orgName[not(@xml:lang)]&quot;,
+                   &quot;tei:objectIdentifier/tei:objectName[not(@xml:lang)]&quot;, &quot;tei:name&quot;, &quot;tei:label&quot;, &quot;tei:date&quot;):
+            found = el.xpath(xp, namespaces=NS)
+            if found:
+                return &quot; &quot;.join(&quot;&quot;.join(found[0].itertext()).split())
+        return None
+
+    @staticmethod
+    def native_names(el):
+        &quot;&quot;&quot;Second name elements in the entity&#x27;s own language: [(lang, text), ...].&quot;&quot;&quot;
+        found = el.xpath(&quot;tei:persName[@xml:lang] | tei:placeName[@xml:lang] | tei:orgName[@xml:lang]&quot;
+                         &quot; | tei:objectIdentifier/tei:objectName[@xml:lang]&quot;, namespaces=NS)
+        return [(n.get(&quot;&#123;http://www.w3.org/XML/1998/namespace&#125;lang&quot;), &quot; &quot;.join(&quot;&quot;.join(n.itertext()).split()))
+                for n in found]
+
+    def read_entities(self):
+        records = self.standoff.xpath(&quot;.//*[@xml:id][tei:note[@type=&#x27;conceptualClass&#x27;]]&quot;, namespaces=NS)
+        for el in records:
+            xml_id = el.get(XML_ID)
+            cls = el.xpath(&quot;string(tei:note[@type=&#x27;conceptualClass&#x27;])&quot;, namespaces=NS).strip()
+            node = RES[xml_id]
+            self.entity_class[xml_id] = cls
+            self.g.add((node, RDF.type, curie_to_uri(cls)))
+            label = self.label_of(el)
+            if label:
+                self.g.add((node, RDFS.label, Literal(label, lang=&quot;en&quot;)))
+            for lang, text in self.native_names(el):     # e.g. &quot;王圆箓&quot;@zh, &quot;東京国立博物館&quot;@ja
+                self.g.add((node, RDFS.label, Literal(text, lang=lang)))
+                self.stats[&quot;native_labels&quot;] = self.stats.get(&quot;native_labels&quot;, 0) + 1
+            for note in el.xpath(&quot;tei:note[@type=&#x27;sourceWording&#x27; or @type=&#x27;description&#x27;]&quot;, namespaces=NS):
+                self.g.add((node, CRM.P3_has_note, Literal(&quot; &quot;.join(&quot;&quot;.join(note.itertext()).split()))))
+        self.stats[&quot;entities&quot;] = len(records)
+
+    # 2 -- concepts ----------------------------------------------------------
+    def add_concepts(self):
+        taxonomy = self.root.xpath(&quot;//tei:taxonomy[@xml:id=&#x27;concepts&#x27;]&quot;, namespaces=NS)[0]
+        scheme = RES[&quot;concept-scheme/religious-traditions&quot;]
+        self.g.add((scheme, RDF.type, SKOS.ConceptScheme))
+        self.g.add((scheme, RDFS.label, Literal(&quot;Religious and philosophical traditions (project taxonomy)&quot;)))
+        n, n_match = 0, 0
+        for cat in taxonomy.findall(f&quot;&#123;&#123;&#123;TEI&#125;&#125;&#125;category&quot;):
+            xml_id = cat.get(XML_ID)
+            node = RES[xml_id]
+            self.entity_class[xml_id] = &quot;skos:Concept&quot;
+            self.g.add((node, RDF.type, SKOS.Concept))
+            self.g.add((node, SKOS.prefLabel, Literal(cat.findtext(f&quot;&#123;&#123;&#123;TEI&#125;&#125;&#125;desc&quot;).strip(), lang=&quot;en&quot;)))
+            self.g.add((node, SKOS.inScheme, scheme))
+            n += 1
+            for equiv in cat.findall(f&quot;&#123;&#123;&#123;TEI&#125;&#125;&#125;equiv&quot;):
+                self.g.add((node, SKOS.exactMatch, URIRef(equiv.get(&quot;uri&quot;))))
+                n_match += 1
+        self.stats.update(concepts=n, exactMatch=n_match)
+
+    # 3 -- identifiers and external links --------------------------------
+    def link_predicate(self, scheme, cls):
+        if scheme not in AUTHORITY_URI:
+            return None
+        if scheme == &quot;wikidata&quot; and cls in SUPERCLASSES and is_a(cls, &quot;crm:E39_Actor&quot;):
+            return OWL.sameAs
+        return RDFS.seeAlso
+
+    def add_identifiers(self):
+        schemes, n_ids, n_same, n_see = set(), 0, 0, 0
+        for idno in self.standoff.xpath(&quot;.//tei:idno[@type]&quot;, namespaces=NS):
+            owner = idno.xpath(&quot;ancestor::*[@xml:id][1]&quot;, namespaces=NS)[0]
+            xml_id, scheme, value = owner.get(XML_ID), idno.get(&quot;type&quot;), (idno.text or &quot;&quot;).strip()
+            entity = RES[xml_id]
+            ident = RES[f&quot;&#123;xml_id&#125;-&#123;scheme&#125;&quot;]
+            scheme_node = RES[f&quot;identifier-type/&#123;scheme&#125;&quot;]
+            self.g.add((entity, CRM.P1_is_identified_by, ident))
+            self.g.add((ident, RDF.type, CRM.E42_Identifier))
+            self.g.add((ident, CRM.P190_has_symbolic_content, Literal(value)))
+            self.g.add((ident, CRM.P2_has_type, scheme_node))
+            schemes.add(scheme)
+            n_ids += 1
+            pred = self.link_predicate(scheme, self.entity_class[xml_id])
+            if pred is not None:
+                self.g.add((entity, pred, URIRef(AUTHORITY_URI[scheme].format(value))))
+                n_same += pred == OWL.sameAs
+                n_see += pred == RDFS.seeAlso
+        for scheme in sorted(schemes):
+            node = RES[f&quot;identifier-type/&#123;scheme&#125;&quot;]
+            self.g.add((node, RDF.type, CRM.E55_Type))
+            self.g.add((node, RDFS.label, Literal(SCHEME_LABELS.get(scheme, scheme))))
+        self.stats.update(identifiers=n_ids, schemes=len(schemes), sameAs=n_same, seeAlso=n_see)
+
+    # 4 -- time bounds -----------------------------------------------------
+    def add_time_bounds(self):
+        n = 0
+        spans = self.standoff.xpath(
+            &quot;.//*[@xml:id][tei:note[@type=&#x27;conceptualClass&#x27;]=&#x27;crm:E52_Time-Span&#x27;]&quot;, namespaces=NS)
+        for item in spans:
+            node, d = RES[item.get(XML_ID)], item.find(f&quot;&#123;&#123;&#123;TEI&#125;&#125;&#125;date&quot;)
+            begin = d.get(&quot;when&quot;) or d.get(&quot;notBefore&quot;)
+            end = d.get(&quot;when&quot;) or d.get(&quot;notAfter&quot;)
+            if begin:
+                self.g.add((node, CRM.P82a_begin_of_the_begin, date_bound(begin, end=False)))
+                n += 1
+            if end:
+                self.g.add((node, CRM.P82b_end_of_the_end, date_bound(end, end=True)))
+                n += 1
+        self.stats.update(time_spans=len(spans), time_bounds=n)
+
+    # 5 -- relations -----------------------------------------------------------
+    @staticmethod
+    def endpoints(rel):
+        if rel.get(&quot;active&quot;) and rel.get(&quot;passive&quot;):
+            return local_id(rel.get(&quot;active&quot;)), local_id(rel.get(&quot;passive&quot;))
+        a, b = [local_id(t) for t in rel.get(&quot;mutual&quot;).split()]
+        return a, b
+
+    @staticmethod
+    def predicate_of(rel):
+        if rel.get(&quot;ref&quot;):
+            return URIRef(rel.get(&quot;ref&quot;))
+        return curie_to_uri(rel.get(&quot;name&quot;))          # dm: properties carry no @ref
+
+    def relations(self, kind):
+        return self.standoff.xpath(f&quot;tei:listRelation[@type=&#x27;&#123;kind&#125;&#x27;]/tei:relation&quot;, namespaces=NS)
+
+    def add_relations(self):
+        for kind in (&quot;conceptual&quot;, &quot;subject&quot;):
+            for rel in self.relations(kind):
+                s, o = self.endpoints(rel)
+                self.g.add((RES[s], self.predicate_of(rel), RES[o]))
+        self.stats[&quot;conceptual_edges&quot;] = len(self.relations(&quot;conceptual&quot;))
+        self.stats[&quot;subject_edges&quot;] = len(self.relations(&quot;subject&quot;))
+
+    # 6 -- provenance (kept for traceability, not the main narrative) ----------
+    def add_provenance(self):
+        names = &#123;r.get(XML_ID): r.get(&quot;name&quot;) for r in self.relations(&quot;canonical&quot;)&#125;
+        used_evidence = set()
+        for rel in self.relations(&quot;conceptual&quot;):
+            s, o = self.endpoints(rel)
+            r_id = local_id(rel.get(&quot;corresp&quot;))
+            evidence = local_id(rel.get(&quot;ana&quot;)).replace(&quot;evidence-&quot;, &quot;&quot;)
+            st = RES[f&quot;statement/&#123;rel.get(XML_ID)&#125;&quot;]
+            self.g.add((st, RDF.type, RDF.Statement))
+            self.g.add((st, RDF.subject, RES[s]))
+            self.g.add((st, RDF.predicate, self.predicate_of(rel)))
+            self.g.add((st, RDF.object, RES[o]))
+            self.g.add((st, DCTERMS.relation, RES[f&quot;canonical-relation/&#123;r_id&#125;&quot;]))
+            self.g.add((st, DCTERMS.type, RES[f&quot;evidence/&#123;evidence&#125;&quot;]))
+            for token in (rel.get(&quot;source&quot;) or &quot;&quot;).split():      # Enriched: the sources of this assertion
+                self.g.add((st, DCTERMS.source, URIRef(self.source_urls()[local_id(token)])))
+                self.stats[&quot;sources&quot;] = self.stats.get(&quot;sources&quot;, 0) + 1
+            used_evidence.add(evidence)
+        for r_id, name in names.items():
+            self.g.add((RES[f&quot;canonical-relation/&#123;r_id&#125;&quot;], RDF.type, CRM.E89_Propositional_Object))
+            self.g.add((RES[f&quot;canonical-relation/&#123;r_id&#125;&quot;], RDFS.label, Literal(f&quot;R&#123;r_id[1:]&#125; - &#123;name&#125;&quot;)))
+        scheme = RES[&quot;concept-scheme/evidence-types&quot;]
+        self.g.add((scheme, RDF.type, SKOS.ConceptScheme))
+        self.g.add((scheme, RDFS.label, Literal(&quot;Evidence types (project taxonomy)&quot;)))
+        taxonomy = self.root.xpath(&quot;//tei:taxonomy[@xml:id=&#x27;evidence&#x27;]&quot;, namespaces=NS)[0]
+        for ev in sorted(used_evidence):
+            node = RES[f&quot;evidence/&#123;ev&#125;&quot;]
+            cat = taxonomy.xpath(f&quot;tei:category[@xml:id=&#x27;evidence-&#123;ev&#125;&#x27;]&quot;, namespaces=NS)[0]
+            self.g.add((node, RDF.type, SKOS.Concept))
+            self.g.add((node, RDFS.label, Literal(EVIDENCE_LABELS[ev])))
+            self.g.add((node, SKOS.inScheme, scheme))
+            self.g.add((node, SKOS.definition, Literal(&quot; &quot;.join(&quot;&quot;.join(cat.find(f&quot;&#123;&#123;&#123;TEI&#125;&#125;&#125;catDesc&quot;).itertext()).split()), lang=&quot;en&quot;)))
+        self.stats[&quot;statements&quot;] = len(self.relations(&quot;conceptual&quot;))
+        self.stats[&quot;propositions&quot;] = len(names)
+        self.stats[&quot;evidence_types&quot;] = len(used_evidence)
+
+    def source_urls(self):
+        &quot;&quot;&quot;listBibl enrichment-sources: bibl/@xml:id -&gt; the URL of its ref.&quot;&quot;&quot;
+        return &#123;b.get(XML_ID): b.xpath(&quot;string(tei:ref/@target)&quot;, namespaces=NS)
+                for b in self.standoff.xpath(&quot;tei:listBibl[@xml:id=&#x27;enrichment-sources&#x27;]/tei:bibl&quot;, namespaces=NS)&#125;
+
+    def run(self):
+        self.read_entities()
+        self.add_concepts()
+        self.add_identifiers()
+        self.add_time_bounds()
+        self.add_relations()
+        self.add_provenance()
+        return self.g
+
+
+# ---------------------------------------------------------------------------
+# Validation
+# ---------------------------------------------------------------------------
+def validate(t, ttl_path, rdf_path, ontology_path):
+    errors, checks = [], []
+
+    # V1 reference integrity: every pointer in listRelation resolves to a record
+    known = set(t.entity_class)
+    known |= &#123;r.get(XML_ID) for r in t.relations(&quot;canonical&quot;)&#125;
+    known |= &#123;c.get(XML_ID) for c in t.root.xpath(&quot;//tei:category&quot;, namespaces=NS)&#125;
+    known |= set(t.source_urls())
+    bad = []
+    for rel in t.standoff.xpath(&quot;tei:listRelation/tei:relation&quot;, namespaces=NS):
+        for attr in (&quot;active&quot;, &quot;passive&quot;, &quot;corresp&quot;, &quot;ana&quot;):
+            if rel.get(attr) and local_id(rel.get(attr)) not in known:
+                bad.append(f&quot;&#123;rel.get(XML_ID)&#125;/@&#123;attr&#125;=&#123;rel.get(attr)&#125;&quot;)
+        for token in (rel.get(&quot;mutual&quot;) or &quot;&quot;).split() + (rel.get(&quot;source&quot;) or &quot;&quot;).split():
+            if local_id(token) not in known:
+                bad.append(f&quot;&#123;rel.get(XML_ID)&#125;/@mutual=&#123;token&#125;&quot;)
+    errors += [f&quot;Unresolved TEI pointer: &#123;b&#125;&quot; for b in bad]
+    checks.append(f&quot;V1 TEI pointers resolve to standOff records: &#123;&#x27;PASS&#x27; if not bad else &#x27;FAIL&#x27;&#125;&quot;)
+
+    # V2 domain/range of every conceptual relation (CIDOC CRM family + dm:)
+    dm_graph = Graph().parse(ontology_path)
+    dm_sig = &#123;uri_to_curie(p): (uri_to_curie(dm_graph.value(p, RDFS.domain)),
+                                uri_to_curie(dm_graph.value(p, RDFS.range)))
+              for p in set(dm_graph.subjects(RDF.type, OWL.ObjectProperty))&#125;
+    signatures = &#123;**SIGNATURES, **dm_sig&#125;
+    table_rows, violations, unchecked = [], [], []
+    for rel in t.relations(&quot;conceptual&quot;):
+        s, o = t.endpoints(rel)
+        prop = uri_to_curie(t.predicate_of(rel))
+        cs, co = t.entity_class[s], t.entity_class[o]
+        if prop not in signatures:
+            unchecked.append(f&quot;&#123;rel.get(XML_ID):&gt;4&#125;  &#123;prop&#125;  &#123;cs&#125; -&gt; &#123;co&#125;&quot;)
+            continue
+        for cls in (cs, co):
+            if cls not in SUPERCLASSES:
+                violations.append(f&quot;&#123;rel.get(XML_ID)&#125;: class &#123;cls&#125; not in hierarchy table&quot;)
+        dom, rng = signatures[prop]
+        ok_d, ok_r = is_a(cs, dom), is_a(co, rng)
+        table_rows.append(f&quot;  &#123;rel.get(XML_ID):&gt;4&#125;  &#123;prop:&lt;38&#125; &#123;cs&#125; -&gt; &#123;co&#125;  &quot;
+                          f&quot;[domain &#123;&#x27;ok&#x27; if ok_d else &#x27;VIOLATION&#x27;&#125;, range &#123;&#x27;ok&#x27; if ok_r else &#x27;VIOLATION&#x27;&#125;]&quot;)
+        if not ok_d:
+            violations.append(f&quot;&#123;rel.get(XML_ID)&#125;: &#123;cs&#125; is not a &#123;dom&#125; (domain of &#123;prop&#125;)&quot;)
+        if not ok_r:
+            violations.append(f&quot;&#123;rel.get(XML_ID)&#125;: &#123;co&#125; is not a &#123;rng&#125; (range of &#123;prop&#125;)&quot;)
+    errors += violations
+    checks.append(f&quot;V2 domain/range of &#123;len(table_rows)&#125; CRM-family and dm: relations: &quot;
+                  f&quot;&#123;&#x27;PASS&#x27; if not violations else &#x27;FAIL&#x27;&#125;&quot;)
+
+    # V3 every dm: property used is declared; the retired one is not used
+    used_dm = &#123;uri_to_curie(p) for p in t.g.predicates() if str(p).startswith(str(DM))&#125;
+    undeclared = used_dm - set(dm_sig)
+    retired = &quot;dm:providesDigitalAccessTo&quot; in used_dm
+    errors += [f&quot;dm: property used but not declared in dm-ontology.ttl: &#123;p&#125;&quot; for p in sorted(undeclared)]
+    if retired:
+        errors.append(&quot;Retired property dm:providesDigitalAccessTo is still used&quot;)
+    checks.append(f&quot;V3 dm: properties used (&#123;&#x27;, &#x27;.join(sorted(used_dm))&#125;) are declared; &quot;
+                  f&quot;retired property unused: &#123;&#x27;PASS&#x27; if not undeclared and not retired else &#x27;FAIL&#x27;&#125;&quot;)
+
+    # V4 both serializations re-parse to the same graph as the one in memory
+    g_ttl = Graph().parse(ttl_path, format=&quot;turtle&quot;)
+    g_rdf = Graph().parse(rdf_path, format=&quot;xml&quot;)
+    iso = compare.isomorphic(g_ttl, t.g) and compare.isomorphic(g_rdf, t.g)
+    if not iso:
+        errors.append(&quot;Serialized Turtle / RDF/XML are not isomorphic to the in-memory graph&quot;)
+    checks.append(f&quot;V4 Turtle (&#123;len(g_ttl)&#125; triples) and RDF/XML (&#123;len(g_rdf)&#125; triples) are &quot;
+                  f&quot;isomorphic to the in-memory graph (&#123;len(t.g)&#125;): &#123;&#x27;PASS&#x27; if iso else &#x27;FAIL&#x27;&#125;&quot;)
+
+    # V5 every TEI relation appears as a triple in the serialized Turtle
+    missing = []
+    for kind in (&quot;conceptual&quot;, &quot;subject&quot;):
+        for rel in t.relations(kind):
+            s, o = t.endpoints(rel)
+            if (RES[s], t.predicate_of(rel), RES[o]) not in g_ttl:
+                missing.append(rel.get(XML_ID))
+    errors += [f&quot;TEI relation missing from Turtle: &#123;m&#125;&quot; for m in missing]
+    checks.append(f&quot;V5 all &#123;t.stats[&#x27;conceptual_edges&#x27;]&#125; conceptual and &#123;t.stats[&#x27;subject_edges&#x27;]&#125; subject &quot;
+                  f&quot;relations present in the Turtle file: &#123;&#x27;PASS&#x27; if not missing else &#x27;FAIL&#x27;&#125;&quot;)
+
+    # V6 every project resource used as a subject is typed (theoretical propositions and
+    #    evidence types included)
+    untyped = sorted(&#123;str(s) for s in t.g.subjects() if str(s).startswith(str(RES))
+                      and (s, RDF.type, None) not in t.g&#125;)
+    errors += [f&quot;Untyped resource: &#123;u&#125;&quot; for u in untyped]
+    checks.append(f&quot;V6 every project resource is typed: &#123;&#x27;PASS&#x27; if not untyped else &#x27;FAIL&#x27;&#125;&quot;)
+
+    # V7 every Enriched relation (canonical and conceptual) points to at least one source with a URL,
+    #    every Direct relation has none, and every source pointer of a conceptual relation is a
+    #    dcterms:source of its rdf:Statement in the Turtle file
+    urls, src_problems = t.source_urls(), []
+    for rel in t.standoff.xpath(&quot;tei:listRelation[@type=&#x27;canonical&#x27; or @type=&#x27;conceptual&#x27;]/tei:relation&quot;, namespaces=NS):
+        enriched = rel.get(&quot;ana&quot;) == &quot;#evidence-enriched&quot;
+        tokens = (rel.get(&quot;source&quot;) or &quot;&quot;).split()
+        if enriched and not tokens:
+            src_problems.append(f&quot;&#123;rel.get(XML_ID)&#125;: Enriched relation without @source&quot;)
+        if not enriched and tokens:
+            src_problems.append(f&quot;&#123;rel.get(XML_ID)&#125;: Direct relation with @source&quot;)
+        for tok in tokens:
+            if not urls.get(local_id(tok), &quot;&quot;).startswith(&quot;http&quot;):
+                src_problems.append(f&quot;&#123;rel.get(XML_ID)&#125;: source &#123;tok&#125; has no URL&quot;)
+        if rel.getparent().get(&quot;type&quot;) == &quot;conceptual&quot;:
+            st = RES[f&quot;statement/&#123;rel.get(XML_ID)&#125;&quot;]
+            for tok in tokens:
+                if (st, DCTERMS.source, URIRef(urls.get(local_id(tok), &quot;&quot;))) not in g_ttl:
+                    src_problems.append(f&quot;&#123;rel.get(XML_ID)&#125;: dcterms:source &#123;tok&#125; missing in Turtle&quot;)
+    errors += src_problems
+    n_enr = len(t.root.xpath(&quot;//tei:listRelation[@type=&#x27;conceptual&#x27;]/tei:relation[@ana=&#x27;#evidence-enriched&#x27;]&quot;, namespaces=NS))
+    checks.append(f&quot;V7 every Enriched relation has its own sources (&#123;n_enr&#125; conceptual, &#123;len(urls)&#125; sources), &quot;
+                  f&quot;Direct relations have none, and each source is a dcterms:source in the Turtle file: &quot;
+                  f&quot;&#123;&#x27;PASS&#x27; if not src_problems else &#x27;FAIL&#x27;&#125;&quot;)
+
+    return errors, checks, table_rows, unchecked
+
+
+# ---------------------------------------------------------------------------
+# QA report
+# ---------------------------------------------------------------------------
+def qa_report(t, errors, checks, table_rows, unchecked):
+    s = t.stats
+    lines = [
+        &quot;=== Reconnecting Dunhuang - TEI to RDF QA report (v3.2, review round 2a) ===&quot;,
+        f&quot;Generated: &#123;date.today().isoformat()&#125;&quot;,
+        &quot;&quot;,
+        &quot;Counts&quot;,
+        f&quot;  entities with a conceptual class ......... &#123;s[&#x27;entities&#x27;]&#125;&quot;,
+        f&quot;  native-script labels (@zh, @ja) .......... &#123;s.get(&#x27;native_labels&#x27;, 0)&#125;&quot;,
+        f&quot;  time-spans / P82a-P82b bounds ............ &#123;s[&#x27;time_spans&#x27;]&#125; / &#123;s[&#x27;time_bounds&#x27;]&#125;&quot;,
+        f&quot;  subject concepts (skos:Concept) .......... &#123;s[&#x27;concepts&#x27;]&#125; (skos:exactMatch: &#123;s[&#x27;exactMatch&#x27;]&#125;)&quot;,
+        f&quot;  conceptual relations ..................... &#123;s[&#x27;conceptual_edges&#x27;]&#125;&quot;,
+        f&quot;  subject relations (dcterms:subject) ...... &#123;s[&#x27;subject_edges&#x27;]&#125;&quot;,
+        f&quot;  identifiers (crm:E42_Identifier) ......... &#123;s[&#x27;identifiers&#x27;]&#125; in &#123;s[&#x27;schemes&#x27;]&#125; schemes&quot;,
+        f&quot;  external links ........................... owl:sameAs &#123;s[&#x27;sameAs&#x27;]&#125;, rdfs:seeAlso &#123;s[&#x27;seeAlso&#x27;]&#125;&quot;,
+        f&quot;  provenance statements (rdf:Statement) .... &#123;s[&#x27;statements&#x27;]&#125;&quot;,
+        f&quot;  sources of Enriched statements ........... &#123;s.get(&#x27;sources&#x27;, 0)&#125; dcterms:source&quot;,
+        f&quot;  theoretical propositions (crm:E89) ....... &#123;s[&#x27;propositions&#x27;]&#125;&quot;,
+        f&quot;  evidence types (skos:Concept) ............ &#123;s[&#x27;evidence_types&#x27;]&#125;&quot;,
+        f&quot;  total triples ............................ &#123;len(t.g)&#125;&quot;,
+        &quot;&quot;,
+        &quot;Validation&quot;,
+        *[f&quot;  &#123;c&#125;&quot; for c in checks],
+        &quot;&quot;,
+        &quot;Domain/range table (checked against CIDOC CRM 7.1.3, CRMsci 3.2, CRMdig 5.0, dm-ontology.ttl)&quot;,
+        *table_rows,
+        &quot;&quot;,
+        &quot;Relations using vocabularies outside the CRM family (no domain/range declared to check)&quot;,
+        *[f&quot;  &#123;u&#125;&quot; for u in unchecked],
+        &quot;&quot;,
+    ]
+    lines += ([&quot;RESULT: FAIL&quot;, *[f&quot;  - &#123;e&#125;&quot; for e in errors]] if errors else [&quot;RESULT: PASS&quot;])
+    return &quot;\n&quot;.join(lines) + &quot;\n&quot;
+
+
+def main():
+    t = Transformer(DEFAULT_XML)
+    g = t.run()
+    g.serialize(destination=DEFAULT_TTL, format=&quot;turtle&quot;)
+    g.serialize(destination=DEFAULT_RDF, format=&quot;xml&quot;)
+
+    errors, checks, rows, unchecked = validate(t, DEFAULT_TTL, DEFAULT_RDF, DEFAULT_ONTOLOGY)
+    report = qa_report(t, errors, checks, rows, unchecked)
+    DEFAULT_QA.write_text(report, encoding=&quot;utf-8&quot;)
+    print(report)
+    return 1 if errors else 0
+
+
+if __name__ == &quot;__main__&quot;:
+    sys.exit(main())</code></pre></div>
+</details>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <nav class="pager" aria-label="Previous and next page">
+      <a class="pager__prev" href="tei.html"><span class="pager__dir">Previous</span><span class="pager__name">TEI</span></a>
+      <a class="pager__next" href="rdf.html"><span class="pager__dir">Next</span><span class="pager__name">RDF</span></a>
+    </nav>
+    <p class="site-footer__meta"><img src="assets/ornaments/mark.svg" alt="" width="36" height="36">
+      <span>HAOPU YIN · A project for Information Science and Cultural Heritage, University of Bologna, 2025–2026. Source: English Wikipedia, “Dunhuang manuscripts”, revision 1347007263.</span></p>
+  </div>
+</footer>
+<script src="assets/js/prism.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

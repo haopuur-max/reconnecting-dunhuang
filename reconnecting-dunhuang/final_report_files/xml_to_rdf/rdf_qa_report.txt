@@ -1,0 +1,70 @@
+=== Reconnecting Dunhuang - TEI to RDF QA report (v3.2, review round 2a) ===
+Generated: 2026-10-31
+
+Counts
+  entities with a conceptual class ......... 34
+  native-script labels (@zh, @ja) .......... 11
+  time-spans / P82a-P82b bounds ............ 5 / 6
+  subject concepts (skos:Concept) .......... 6 (skos:exactMatch: 11)
+  conceptual relations ..................... 38
+  subject relations (dcterms:subject) ...... 6
+  identifiers (crm:E42_Identifier) ......... 45 in 8 schemes
+  external links ........................... owl:sameAs 10, rdfs:seeAlso 30
+  provenance statements (rdf:Statement) .... 38
+  sources of Enriched statements ........... 6 dcterms:source
+  theoretical propositions (crm:E89) ....... 19
+  evidence types (skos:Concept) ............ 2
+  total triples ............................ 683
+
+Validation
+  V1 TEI pointers resolve to standOff records: PASS
+  V2 domain/range of 37 CRM-family and dm: relations: PASS
+  V3 dm: properties used (dm:locatedNear, dm:partOfNetwork, dm:virtuallyBringsTogether) are declared; retired property unused: PASS
+  V4 Turtle (683 triples) and RDF/XML (683 triples) are isomorphic to the in-memory graph (683): PASS
+  V5 all 38 conceptual and 6 subject relations present in the Turtle file: PASS
+  V6 every project resource is typed: PASS
+  V7 every Enriched relation has its own sources (4 conceptual, 5 sources), Direct relations have none, and each source is a dcterms:source in the Turtle file: PASS
+
+Domain/range table (checked against CIDOC CRM 7.1.3, CRMsci 3.2, CRMdig 5.0, dm-ontology.ttl)
+   cr1  dm:partOfNetwork                       crm:E53_Place -> crm:E53_Place  [domain ok, range ok]
+   cr2  dm:locatedNear                         crm:E53_Place -> crm:E53_Place  [domain ok, range ok]
+   cr3  crm:P89_falls_within                   crm:E53_Place -> crm:E53_Place  [domain ok, range ok]
+   cr4  crm:P12_occurred_in_the_presence_of    crm:E7_Activity -> crm:E18_Physical_Thing  [domain ok, range ok]
+   cr5  crm:P7_took_place_at                   crm:E7_Activity -> crm:E53_Place  [domain ok, range ok]
+   cr6  crm:P14_carried_out_by                 crmsci:S19_Encounter_Event -> crm:E21_Person  [domain ok, range ok]
+   cr7  crmsci:O19_encountered_object          crmsci:S19_Encounter_Event -> crm:E18_Physical_Thing  [domain ok, range ok]
+   cr8  crm:P4_has_time-span                   crmsci:S19_Encounter_Event -> crm:E52_Time-Span  [domain ok, range ok]
+   cr9  crm:P23_transferred_title_from         crm:E96_Purchase -> crm:E21_Person  [domain ok, range ok]
+  cr10  crm:P22_transferred_title_to           crm:E96_Purchase -> crm:E21_Person  [domain ok, range ok]
+  cr11  crm:P24_transferred_title_of           crm:E96_Purchase -> crm:E19_Physical_Object  [domain ok, range ok]
+  cr12  crm:P23_transferred_title_from         crm:E96_Purchase -> crm:E21_Person  [domain ok, range ok]
+  cr13  crm:P22_transferred_title_to           crm:E96_Purchase -> crm:E21_Person  [domain ok, range ok]
+  cr14  crm:P24_transferred_title_of           crm:E96_Purchase -> crm:E19_Physical_Object  [domain ok, range ok]
+  cr15  crm:P23_transferred_title_from         crm:E96_Purchase -> crm:E21_Person  [domain ok, range ok]
+  cr16  crm:P22_transferred_title_to           crm:E96_Purchase -> crm:E21_Person  [domain ok, range ok]
+  cr17  crm:P24_transferred_title_of           crm:E96_Purchase -> crm:E19_Physical_Object  [domain ok, range ok]
+  cr19  crm:P50_has_current_keeper             crm:E19_Physical_Object -> crm:E74_Group  [domain ok, range ok]
+  cr20  crm:P50_has_current_keeper             crm:E19_Physical_Object -> crm:E74_Group  [domain ok, range ok]
+  cr22  crm:P25_moved                          crm:E9_Move -> crm:E19_Physical_Object  [domain ok, range ok]
+  cr23  crm:P26_moved_to                       crm:E9_Move -> crm:E53_Place  [domain ok, range ok]
+  cr24  crm:P15_was_influenced_by              crm:E9_Move -> crm:E21_Person  [domain ok, range ok]
+  cr25  crm:P4_has_time-span                   crm:E9_Move -> crm:E52_Time-Span  [domain ok, range ok]
+  cr26  crm:P14_carried_out_by                 crmdig:D2_Digitization_Process -> crm:E74_Group  [domain ok, range ok]
+  cr27  crmdig:L1_digitized                    crmdig:D2_Digitization_Process -> crm:E18_Physical_Thing  [domain ok, range ok]
+  cr28  crmdig:L11_had_output                  crmdig:D2_Digitization_Process -> crmdig:D1_Digital_Object  [domain ok, range ok]
+  cr30  dm:virtuallyBringsTogether             crm:E74_Group -> crm:E18_Physical_Thing  [domain ok, range ok]
+  cr31  crm:P46i_forms_part_of                 crm:E19_Physical_Object -> crm:E18_Physical_Thing  [domain ok, range ok]
+  cr32  crm:P46i_forms_part_of                 crm:E19_Physical_Object -> crm:E18_Physical_Thing  [domain ok, range ok]
+  cr33  crm:P46i_forms_part_of                 crm:E19_Physical_Object -> crm:E18_Physical_Thing  [domain ok, range ok]
+  cr34  crm:P46i_forms_part_of                 crm:E19_Physical_Object -> crm:E18_Physical_Thing  [domain ok, range ok]
+  cr35  crm:P4_has_time-span                   crm:E7_Activity -> crm:E52_Time-Span  [domain ok, range ok]
+  cr36  crm:P4_has_time-span                   crm:E96_Purchase -> crm:E52_Time-Span  [domain ok, range ok]
+  cr37  crm:P4_has_time-span                   crm:E96_Purchase -> crm:E52_Time-Span  [domain ok, range ok]
+  cr38  crm:P46i_forms_part_of                 crm:E19_Physical_Object -> crm:E18_Physical_Thing  [domain ok, range ok]
+  cr39  crm:P24_transferred_title_of           crm:E96_Purchase -> crm:E19_Physical_Object  [domain ok, range ok]
+  cr40  crm:P50_has_current_keeper             crm:E19_Physical_Object -> crm:E74_Group  [domain ok, range ok]
+
+Relations using vocabularies outside the CRM family (no domain/range declared to check)
+  cr29  dcterms:publisher  crmdig:D1_Digital_Object -> crm:E74_Group
+
+RESULT: PASS

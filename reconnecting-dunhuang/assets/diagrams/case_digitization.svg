@@ -1,0 +1,53 @@
+<svg role="img" aria-label="Digitization with CRMdig, publication with DCTerms and the enriched project interpretation"
+ viewBox="0.00 0.00 517.30 377.85" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(14.4 363.45)">
+<g id="node1" class="node">
+<path fill="#ffffff" stroke="#1f4e79" stroke-dasharray="5,2" d="M159,-232C159,-232 12,-232 12,-232 6,-232 0,-226 0,-220 0,-220 0,-198 0,-198 0,-192 6,-186 12,-186 12,-186 159,-186 159,-186 165,-186 171,-192 171,-198 171,-198 171,-220 171,-220 171,-226 165,-232 159,-232"/>
+<text text-anchor="start" x="11.5" y="-217.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Digital Surrogate of the</text>
+<text text-anchor="start" x="10" y="-204.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Dunhuang Manuscripts</text>
+<text text-anchor="start" x="27" y="-194" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crmdig:D1_Digital_Object</text>
+</g>
+<g id="node4" class="node">
+<path fill="#fbf8f1" stroke="#5c534a" d="M233,-134C233,-134 86,-134 86,-134 80,-134 74,-128 74,-122 74,-122 74,-100 74,-100 74,-94 80,-88 86,-88 86,-88 233,-88 233,-88 239,-88 245,-94 245,-100 245,-100 245,-122 245,-122 245,-128 239,-134 233,-134"/>
+<text text-anchor="start" x="84" y="-119.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">International Dunhuang</text>
+<text text-anchor="start" x="136.5" y="-106.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Project</text>
+<text text-anchor="start" x="122.5" y="-96" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E74_Group</text>
+</g>
+<g id="edge1" class="edge">
+<path fill="none" stroke="#5c534a" stroke-dasharray="5,2" d="M90.18,-185.85C93.11,-175.49 97.66,-163.41 104.5,-154 108.53,-148.46 113.49,-143.31 118.76,-138.64"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="120.34,-140.51 124.13,-134.14 117.19,-136.76 120.34,-140.51"/>
+<text text-anchor="middle" x="153" y="-157.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">dcterms:publisher</text>
+</g>
+<g id="node2" class="node">
+<ellipse fill="#e2e9f0" stroke="#1f4e79" cx="218.5" cy="-316.53" rx="120.83" ry="32.55"/>
+<text text-anchor="start" x="161.5" y="-325.13" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Digitization of the</text>
+<text text-anchor="start" x="143" y="-312.13" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Dunhuang Manuscripts</text>
+<text text-anchor="start" x="143" y="-301.53" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crmdig:D2_Digitization_Process</text>
+</g>
+<g id="edge3" class="edge">
+<path fill="none" stroke="#5c534a" d="M122.66,-296.61C106.46,-289.1 91.62,-278.63 81.5,-264 76.57,-256.87 75.71,-247.88 76.62,-239.28"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="79.07,-239.51 77.76,-232.21 74.23,-238.73 79.07,-239.51"/>
+<text text-anchor="middle" x="141.5" y="-255.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crmdig:L11_had_output</text>
+</g>
+<g id="node3" class="node">
+<path fill="#f2e6d2" stroke="#8a5a1f" stroke-width="2" d="M342,-36C342,-36 195,-36 195,-36 189,-36 183,-30 183,-24 183,-24 183,-12 183,-12 183,-6 189,0 195,0 195,0 342,0 342,0 348,0 354,-6 354,-12 354,-12 354,-24 354,-24 354,-30 348,-36 342,-36"/>
+<text text-anchor="start" x="193" y="-20.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Dunhuang Manuscripts</text>
+<text text-anchor="start" x="212" y="-9.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E18_Physical_Thing</text>
+</g>
+<g id="edge4" class="edge">
+<path fill="none" stroke="#5c534a" d="M286.24,-289.38C311.38,-276.1 337.42,-257.32 352.5,-232 392.59,-164.69 406.6,-120.76 362.5,-56 358.12,-49.56 352.42,-44.25 346.01,-39.85"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="347.17,-37.69 339.94,-36.07 344.59,-41.85 347.17,-37.69"/>
+<text text-anchor="middle" x="437.5" y="-157.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crmdig:L1_digitized</text>
+</g>
+<g id="edge2" class="edge">
+<path fill="none" stroke="#5c534a" d="M221.56,-283.77C223.45,-249.9 222.46,-195.53 202.5,-154 200.02,-148.84 196.63,-143.97 192.83,-139.49"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="194.38,-137.55 187.84,-134.04 190.76,-140.86 194.38,-137.55"/>
+<text text-anchor="middle" x="284.5" y="-206.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P14_carried_out_by</text>
+</g>
+<g id="edge5" class="edge">
+<path fill="none" stroke="#a63a24" stroke-width="1.4" stroke-dasharray="5,2" d="M153.92,-87.95C152.54,-77.37 153,-65.07 159.5,-56 164.18,-49.47 170.08,-44.08 176.69,-39.63"/>
+<polygon fill="#a63a24" stroke="#a63a24" stroke-width="1.4" points="178.26,-41.54 182.96,-35.8 175.71,-37.36 178.26,-41.54"/>
+<text text-anchor="middle" x="260.5" y="-59.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#a63a24">dm:virtuallyBringsTogether (Enriched)</text>
+</g>
+</g>
+</svg>

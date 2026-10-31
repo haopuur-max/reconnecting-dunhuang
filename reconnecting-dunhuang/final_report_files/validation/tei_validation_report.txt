@@ -1,0 +1,6 @@
+Validation file: final_report_files/tei_xml/reconnecting_dunhuang.xml
+Schema: final_report_files/schemas/tei_all.rng (TEI P5 Version 4.12.0)
+Date: 2026-10-31
+Command: xmllint --noout --relaxng final_report_files/schemas/tei_all.rng final_report_files/tei_xml/reconnecting_dunhuang.xml
+final_report_files/tei_xml/reconnecting_dunhuang.xml validates
+TEI P5 Relax NG validation: PASS

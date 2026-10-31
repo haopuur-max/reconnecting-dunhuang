@@ -1,0 +1,75 @@
+<svg role="img" aria-label="The 1910 transfer to Beijing as a move of a physical subset"
+ viewBox="0.00 0.00 1013.43 262.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(14.4 248.4)">
+<g id="node1" class="node">
+<path fill="#e4eee8" stroke="#2f6b4f" d="M564.63,-234C564.63,-234 496.63,-234 496.63,-234 490.63,-234 484.63,-228 484.63,-222 484.63,-222 484.63,-210 484.63,-210 484.63,-204 490.63,-198 496.63,-198 496.63,-198 564.63,-198 564.63,-198 570.63,-198 576.63,-204 576.63,-210 576.63,-210 576.63,-222 576.63,-222 576.63,-228 570.63,-234 564.63,-234"/>
+<text text-anchor="start" x="508.63" y="-218.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Beijing</text>
+<text text-anchor="start" x="494.63" y="-207.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E53_Place</text>
+</g>
+<g id="node2" class="node">
+<path fill="#f2e6d2" stroke="#8a5a1f" stroke-width="2" d="M968.63,-135C968.63,-135 821.63,-135 821.63,-135 815.63,-135 809.63,-129 809.63,-123 809.63,-123 809.63,-111 809.63,-111 809.63,-105 815.63,-99 821.63,-99 821.63,-99 968.63,-99 968.63,-99 974.63,-99 980.63,-105 980.63,-111 980.63,-111 980.63,-123 980.63,-123 980.63,-129 974.63,-135 968.63,-135"/>
+<text text-anchor="start" x="819.63" y="-119.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Dunhuang Manuscripts</text>
+<text text-anchor="start" x="838.63" y="-108.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E18_Physical_Thing</text>
+</g>
+<g id="node3" class="node">
+<path fill="#fbf8f1" stroke="#5c534a" d="M566.63,-176C566.63,-176 494.63,-176 494.63,-176 488.63,-176 482.63,-170 482.63,-164 482.63,-164 482.63,-152 482.63,-152 482.63,-146 488.63,-140 494.63,-140 494.63,-140 566.63,-140 566.63,-140 572.63,-140 578.63,-146 578.63,-152 578.63,-152 578.63,-164 578.63,-164 578.63,-170 572.63,-176 566.63,-176"/>
+<text text-anchor="start" x="492.63" y="-160.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Luo Zhenyu</text>
+<text text-anchor="start" x="492.63" y="-149.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E21_Person</text>
+</g>
+<g id="node4" class="node">
+<path fill="#fbf8f1" stroke="#5c534a" d="M972.63,-77C972.63,-77 817.63,-77 817.63,-77 811.63,-77 805.63,-71 805.63,-65 805.63,-65 805.63,-53 805.63,-53 805.63,-47 811.63,-41 817.63,-41 817.63,-41 972.63,-41 972.63,-41 978.63,-41 984.63,-47 984.63,-53 984.63,-53 984.63,-65 984.63,-65 984.63,-71 978.63,-77 972.63,-77"/>
+<text text-anchor="start" x="815.63" y="-61.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">National Library of China</text>
+<text text-anchor="start" x="858.13" y="-50.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E74_Group</text>
+</g>
+<g id="node5" class="node">
+<path fill="#f8f0e2" stroke="#8a5a1f" d="M599.63,-117.5C599.63,-117.5 461.63,-117.5 461.63,-117.5 455.63,-117.5 449.63,-111.5 449.63,-105.5 449.63,-105.5 449.63,-70.5 449.63,-70.5 449.63,-64.5 455.63,-58.5 461.63,-58.5 461.63,-58.5 599.63,-58.5 599.63,-58.5 605.63,-58.5 611.63,-64.5 611.63,-70.5 611.63,-70.5 611.63,-105.5 611.63,-105.5 611.63,-111.5 605.63,-117.5 599.63,-117.5"/>
+<text text-anchor="start" x="468.63" y="-103.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Remaining Chinese</text>
+<text text-anchor="start" x="459.63" y="-90.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">manuscripts moved to</text>
+<text text-anchor="start" x="508.63" y="-77.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Beijing</text>
+<text text-anchor="start" x="471.63" y="-66.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E19_Physical_Object</text>
+</g>
+<g id="edge1" class="edge">
+<path fill="none" stroke="#5c534a" d="M611.63,-94.4C668.03,-98.91 743.69,-104.96 802.51,-109.67"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="802.43,-112.12 809.6,-110.24 802.82,-107.24 802.43,-112.12"/>
+<text text-anchor="middle" x="708.63" y="-110.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P46i_forms_part_of</text>
+</g>
+<g id="edge2" class="edge">
+<path fill="none" stroke="#5c534a" d="M611.86,-80.68C618.54,-80.1 625.2,-79.53 631.63,-79 686.76,-74.42 748.45,-69.7 798.16,-65.99"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="798.61,-68.42 805.41,-65.46 798.24,-63.53 798.61,-68.42"/>
+<text text-anchor="middle" x="708.63" y="-82.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P50_has_current_keeper</text>
+</g>
+<g id="node6" class="node">
+<polygon fill="#f6f1e7" stroke="#b9ac95" points="583.13,-36 472.13,-36 472.13,0 589.13,0 589.13,-30 583.13,-36"/>
+<polyline fill="none" stroke="#b9ac95" points="583.13,-36 583.13,-30 "/>
+<polyline fill="none" stroke="#b9ac95" points="589.13,-30 583.13,-30 "/>
+<text text-anchor="start" x="516.63" y="-20.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">1910</text>
+<text text-anchor="start" x="482.13" y="-9.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E52_Time&#45;Span</text>
+</g>
+<g id="node7" class="node">
+<ellipse fill="#e2e9f0" stroke="#1f4e79" cx="130.81" cy="-138" rx="130.63" ry="32.55"/>
+<text text-anchor="start" x="48.31" y="-146.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Transfer of the Dunhuang</text>
+<text text-anchor="start" x="59.31" y="-133.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Manuscripts to Beijing</text>
+<text text-anchor="start" x="97.81" y="-123" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E9_Move</text>
+</g>
+<g id="edge5" class="edge">
+<path fill="none" stroke="#5c534a" d="M231.69,-158.91C248.36,-162.33 265.48,-165.8 281.63,-169 349.16,-182.39 427.21,-197.04 477.43,-206.37"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="477,-208.78 484.33,-207.65 477.9,-203.96 477,-208.78"/>
+<text text-anchor="middle" x="355.63" y="-200.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P26_moved_to</text>
+</g>
+<g id="edge3" class="edge">
+<path fill="none" stroke="#5c534a" d="M259.33,-144.41C332.19,-148.07 419.79,-152.48 475.1,-155.26"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="475.23,-157.72 482.35,-155.62 475.48,-152.82 475.23,-157.72"/>
+<text text-anchor="middle" x="355.63" y="-155.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P15_was_influenced_by</text>
+</g>
+<g id="edge4" class="edge">
+<path fill="none" stroke="#5c534a" d="M247.95,-123.4C309.97,-115.61 385.06,-106.17 442.11,-99"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="442.68,-101.4 449.32,-98.09 442.07,-96.54 442.68,-101.4"/>
+<text text-anchor="middle" x="355.63" y="-121.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P25_moved</text>
+</g>
+<g id="edge6" class="edge">
+<path fill="none" stroke="#5c534a" d="M203.4,-110.78C228.04,-101.79 255.9,-92.04 281.63,-84 343.36,-64.7 414.83,-46.06 465.14,-33.55"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="465.89,-35.88 472.1,-31.82 464.71,-31.13 465.89,-35.88"/>
+<text text-anchor="middle" x="355.63" y="-87.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P4_has_time&#45;span</text>
+</g>
+</g>
+</svg>

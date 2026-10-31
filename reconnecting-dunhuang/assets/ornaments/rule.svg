@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 24" width="280" height="24" role="presentation" aria-hidden="true">
+  <!-- Original ornament for Reconnecting Dunhuang: a hairline rule with a small three-petal lotus bud. -->
+  <g fill="none" stroke="#5C534A" stroke-width="1" stroke-linecap="round" opacity="0.55">
+    <line x1="0" y1="14" x2="118" y2="14"/>
+    <line x1="162" y1="14" x2="280" y2="14"/>
+    <path d="M140 3 C146 8 146 15 140 21 C134 15 134 8 140 3 Z" stroke="#1F4E79"/>
+    <path d="M139 20 C131 19 125 14 123 8 C130 9 135 13 139 20" stroke="#1F4E79"/>
+    <path d="M141 20 C149 19 155 14 157 8 C150 9 145 13 141 20" stroke="#1F4E79"/>
+    <circle cx="127" cy="14" r="1.2" fill="#5C534A" stroke="none"/>
+    <circle cx="153" cy="14" r="1.2" fill="#5C534A" stroke="none"/>
+  </g>
+</svg>

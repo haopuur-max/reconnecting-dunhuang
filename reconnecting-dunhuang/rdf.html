@@ -1,0 +1,2064 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RDF · Reconnecting Dunhuang</title>
+<meta name="description" content="How to read the Reconnecting Dunhuang RDF dataset: triples, Turtle and RDF/XML, physical subsets, dates and links to external authorities.">
+<meta name="author" content="HAOPU YIN">
+<link rel="icon" href="assets/ornaments/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/prism-editorial.css">
+<link rel="stylesheet" href="assets/css/print.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="wordmark" href="index.html">Reconnecting Dunhuang</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="domain.html">Domain</a></li>
+        <li><a href="models.html">Models</a></li>
+        <li><a href="tei.html">TEI</a></li>
+        <li><a href="transformations.html">Transformations</a></li>
+        <li><a href="rdf.html" aria-current="page">RDF</a></li>
+        <li class="nav-secondary"><a href="files.html">Files</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="page">
+<header class="page-head opener bleed grain">
+  <div class="bleed__inner">
+    <div>
+      <p class="kicker">Chapter 05 · RDF</p>
+      <h1>RDF</h1>
+      <p class="slab"><span class="slab__label">The question of this page</span><span class="slab__q">What does the data say?</span></p>
+      <p class="lead">We produced an RDF dataset in Turtle and RDF/XML, linked to external authorities.</p>
+    </div>
+    <div class="opener__side" aria-hidden="true"><span class="numeral">05</span></div>
+  </div>
+</header>
+<nav class="page-toc page-toc--band" aria-label="On this page">
+  <span class="page-toc__label">On this page</span>
+    <a href="#r1">Sample</a>
+    <a href="#linking">Linking</a>
+    <a href="#uris">URIs</a>
+    <a href="#visualization">Visualization</a>
+    <a href="#full-files">The complete files</a>
+</nav>
+
+<section class="section" id="r1" aria-labelledby="h-r1">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">5.1</span><div><span class="sec-head__k">One event, in Turtle</span><h2 id="h-r1">Sample</h2></div></div>
+  <p>The purchase involving Aurel Stein, as it appears in the dataset.</p>
+  <div class="code-card" id="snippet-R1">
+  <div class="code-card__bar"><span class="code-card__path">final_report_files/xml_to_rdf/reconnecting_dunhuang.ttl</span><span>resource:purchase-stein, lines 800–806</span><a href="final_report_files/xml_to_rdf/reconnecting_dunhuang.ttl">Open the full file</a></div>
+  <pre class="line-numbers language-turtle" data-start="800" data-line-offset="799" data-line="802"><code class="language-turtle">resource:purchase-stein a crm:E96_Purchase ;
+    rdfs:label &quot;Purchase involving Aurel Stein&quot;@en ;
+    crm:P22_transferred_title_to resource:aurel-stein ;
+    crm:P23_transferred_title_from resource:wang-yuanlu ;
+    crm:P24_transferred_title_of resource:diamond-sutra-868,
+        resource:stein-portion ;
+    crm:P4_has_time-span resource:timespan-purchase-stein .</code></pre>
+</div>
+  <p class="triple-intro">The highlighted line, read as one triple:</p>
+  <div class="triple wide" role="group" aria-label="One RDF triple"><div class="triple__part"><span class="triple__role">Subject</span><code class="triple__curie">resource:purchase-stein</code><span class="triple__full">https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-stein</span><span class="triple__note">an IRI or a blank node</span></div><div class="triple__part"><span class="triple__role">Predicate</span><code class="triple__curie">crm:P22_transferred_title_to</code><span class="triple__full">http://www.cidoc-crm.org/cidoc-crm/P22_transferred_title_to</span><span class="triple__note">always an IRI, here from an ontology</span></div><div class="triple__part"><span class="triple__role">Object</span><code class="triple__curie">resource:aurel-stein</code><span class="triple__full">https://haopuur-max.github.io/reconnecting-dunhuang/resource/aurel-stein</span><span class="triple__note">an IRI, a literal or a blank node</span></div></div>
+</section>
+
+<section class="section" id="linking" aria-labelledby="h-linking">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">5.2</span><div><span class="sec-head__k">External authorities</span><h2 id="h-linking">Linking</h2></div></div>
+  <p>We aligned entities to Wikidata, VIAF, the Library of Congress and FAST, using <code>owl:sameAs</code> for people and institutions, <code>rdfs:seeAlso</code> for authority records, and <code>skos:exactMatch</code> for concepts.</p>
+  <details>
+    <summary>Every identifier and its link</summary>
+    <div class="table-wrap"><table><thead><tr><th>Entity</th><th>Class</th><th>Scheme</th><th>Identifier</th><th>External link</th></tr></thead><tbody>
+<tr><td data-label="Entity">Aurel Stein</td><td data-label="Class"><code>crm:E21_Person</code></td><td data-label="Scheme">Library of Congress Name Authority File</td><td data-label="Identifier"><code>n82045000</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Aurel Stein</td><td data-label="Class"><code>crm:E21_Person</code></td><td data-label="Scheme">VIAF</td><td data-label="Identifier"><code>88967071</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Aurel Stein</td><td data-label="Class"><code>crm:E21_Person</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q313061</code></td><td data-label="External link"><code>owl:sameAs</code></td></tr>
+<tr><td data-label="Entity">Aurel Stein</td><td data-label="Class"><code>crm:E21_Person</code></td><td data-label="Scheme">WorldCat Entity</td><td data-label="Identifier"><code>E39PBJcc8RpgyQVjD6fDkFB9Dq</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Beijing</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">VIAF</td><td data-label="Identifier"><code>127787278</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Beijing</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q956</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Bibliothèque nationale de France</td><td data-label="Class"><code>crm:E74_Group</code></td><td data-label="Scheme">Library of Congress Name Authority File</td><td data-label="Identifier"><code>no95028191</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Bibliothèque nationale de France</td><td data-label="Class"><code>crm:E74_Group</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q193563</code></td><td data-label="External link"><code>owl:sameAs</code></td></tr>
+<tr><td data-label="Entity">British Library</td><td data-label="Class"><code>crm:E74_Group</code></td><td data-label="Scheme">Library of Congress Name Authority File</td><td data-label="Identifier"><code>n81139951</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">British Library</td><td data-label="Class"><code>crm:E74_Group</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q23308</code></td><td data-label="External link"><code>owl:sameAs</code></td></tr>
+<tr><td data-label="Entity">Diamond Sutra, printed copy of 868</td><td data-label="Class"><code>crm:E19_Physical_Object</code></td><td data-label="Scheme">British Library shelfmark</td><td data-label="Identifier"><code>Or.8210/P.2</code></td><td data-label="External link">Identifier only</td></tr>
+<tr><td data-label="Entity">Diamond Sutra, printed copy of 868</td><td data-label="Class"><code>crm:E19_Physical_Object</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q28097186</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Dunhuang</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">FAST (OCLC)</td><td data-label="Identifier"><code>1278691</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Dunhuang</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">FAST control number (OCLC)</td><td data-label="Identifier"><code>fst01278691</code></td><td data-label="External link">Identifier only</td></tr>
+<tr><td data-label="Entity">Dunhuang</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">Library of Congress Name Authority File</td><td data-label="Identifier"><code>nr96042661</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Dunhuang</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">VIAF</td><td data-label="Identifier"><code>168042699</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Dunhuang</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q319114</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Dunhuang Manuscripts</td><td data-label="Class"><code>crm:E18_Physical_Thing</code></td><td data-label="Scheme">FAST (OCLC)</td><td data-label="Identifier"><code>1356877</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Dunhuang Manuscripts</td><td data-label="Class"><code>crm:E18_Physical_Thing</code></td><td data-label="Scheme">FAST control number (OCLC)</td><td data-label="Identifier"><code>fst01356877</code></td><td data-label="External link">Identifier only</td></tr>
+<tr><td data-label="Entity">Dunhuang Manuscripts</td><td data-label="Class"><code>crm:E18_Physical_Thing</code></td><td data-label="Scheme">Library of Congress Name Authority File</td><td data-label="Identifier"><code>n82066451</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Dunhuang Manuscripts</td><td data-label="Class"><code>crm:E18_Physical_Thing</code></td><td data-label="Scheme">VIAF</td><td data-label="Identifier"><code>178621901</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Dunhuang Manuscripts</td><td data-label="Class"><code>crm:E18_Physical_Thing</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q276864</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">International Dunhuang Project</td><td data-label="Class"><code>crm:E74_Group</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q3754962</code></td><td data-label="External link"><code>owl:sameAs</code></td></tr>
+<tr><td data-label="Entity">Library Cave (Cave 17)</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q28097247</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Luo Zhenyu</td><td data-label="Class"><code>crm:E21_Person</code></td><td data-label="Scheme">Library of Congress Name Authority File</td><td data-label="Identifier"><code>n81076827</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Luo Zhenyu</td><td data-label="Class"><code>crm:E21_Person</code></td><td data-label="Scheme">VIAF</td><td data-label="Identifier"><code>16093476</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Luo Zhenyu</td><td data-label="Class"><code>crm:E21_Person</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q716405</code></td><td data-label="External link"><code>owl:sameAs</code></td></tr>
+<tr><td data-label="Entity">Mogao Caves</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">FAST (OCLC)</td><td data-label="Identifier"><code>1240618</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Mogao Caves</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">FAST control number (OCLC)</td><td data-label="Identifier"><code>fst01240618</code></td><td data-label="External link">Identifier only</td></tr>
+<tr><td data-label="Entity">Mogao Caves</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">Library of Congress Subject Headings</td><td data-label="Identifier"><code>sh86007577</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Mogao Caves</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q43286</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">National Library of China</td><td data-label="Class"><code>crm:E74_Group</code></td><td data-label="Scheme">Library of Congress Name Authority File</td><td data-label="Identifier"><code>no2001051712</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">National Library of China</td><td data-label="Class"><code>crm:E74_Group</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q732353</code></td><td data-label="External link"><code>owl:sameAs</code></td></tr>
+<tr><td data-label="Entity">Paul Pelliot</td><td data-label="Class"><code>crm:E21_Person</code></td><td data-label="Scheme">Library of Congress Name Authority File</td><td data-label="Identifier"><code>n50048941</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Paul Pelliot</td><td data-label="Class"><code>crm:E21_Person</code></td><td data-label="Scheme">VIAF</td><td data-label="Identifier"><code>73858373</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Paul Pelliot</td><td data-label="Class"><code>crm:E21_Person</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q368821</code></td><td data-label="External link"><code>owl:sameAs</code></td></tr>
+<tr><td data-label="Entity">Silk Road</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">FAST (OCLC)</td><td data-label="Identifier"><code>1243730</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Silk Road</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">FAST control number (OCLC)</td><td data-label="Identifier"><code>fst01243730</code></td><td data-label="External link">Identifier only</td></tr>
+<tr><td data-label="Entity">Silk Road</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">Library of Congress Subject Headings</td><td data-label="Identifier"><code>sh85122554</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Silk Road</td><td data-label="Class"><code>crm:E53_Place</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q36288</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Tokyo National Museum</td><td data-label="Class"><code>crm:E74_Group</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q653433</code></td><td data-label="External link"><code>owl:sameAs</code></td></tr>
+<tr><td data-label="Entity">Wang Yuanlu</td><td data-label="Class"><code>crm:E21_Person</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q1202225</code></td><td data-label="External link"><code>owl:sameAs</code></td></tr>
+<tr><td data-label="Entity">Ōtani Kōzui</td><td data-label="Class"><code>crm:E21_Person</code></td><td data-label="Scheme">Library of Congress Name Authority File</td><td data-label="Identifier"><code>n85315990</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Ōtani Kōzui</td><td data-label="Class"><code>crm:E21_Person</code></td><td data-label="Scheme">VIAF</td><td data-label="Identifier"><code>113770129</code></td><td data-label="External link"><code>rdfs:seeAlso</code></td></tr>
+<tr><td data-label="Entity">Ōtani Kōzui</td><td data-label="Class"><code>crm:E21_Person</code></td><td data-label="Scheme">Wikidata</td><td data-label="Identifier"><code>Q386254</code></td><td data-label="External link"><code>owl:sameAs</code></td></tr>
+</tbody></table></div>
+  </details>
+</section>
+
+<section class="section" id="uris" aria-labelledby="h-uris">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">5.3</span><div><span class="sec-head__k">Identifiers</span><h2 id="h-uris">URIs</h2></div></div>
+  <dl class="source-card wide"><dt>Resources</dt><dd><code>https://haopuur-max.github.io/reconnecting-dunhuang/resource/{id}</code></dd><dt>Properties</dt><dd><code>https://haopuur-max.github.io/reconnecting-dunhuang/ontology/{name}</code> (prefix <code>dm:</code>)</dd></dl><ul class="uri-list"><li><code>https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts</code></li><li><code>https://haopuur-max.github.io/reconnecting-dunhuang/resource/aurel-stein</code></li><li><code>https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-stein</code></li><li><code>https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-purchase-stein</code></li><li><code>https://haopuur-max.github.io/reconnecting-dunhuang/ontology/virtuallyBringsTogether</code></li></ul>
+  <p>These URIs are stable identifiers in a namespace the project controls. They are not yet dereferenceable: the website is not published at this address, and a static host would also need one page per resource. Online resolution has not been verified.</p>
+</section>
+
+<section class="section" id="visualization" aria-labelledby="h-visualization">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">5.4</span><div><span class="sec-head__k">The whole graph</span><h2 id="h-visualization">Visualization</h2></div></div>
+  <figure class="figure wide" data-zoomable>
+    <div class="figure__panel">
+      <button type="button" class="figure__enlarge" data-enlarge>Enlarge</button>
+      <img src="final_report_files/models/conceptual_model_instance_graph.svg"
+           alt="Instance graph of the RDF dataset: the individuals, such as Wang Yuanlu, the purchase events and the corpus, linked by CIDOC CRM properties.">
+    </div>
+    <figcaption><b>The dataset as a graph.</b> Identifiers, concepts and provenance statements are omitted.</figcaption>
+  </figure>
+  <details>
+    <summary>All conceptual relations</summary>
+    <div class="table-wrap"><table><thead><tr><th>Subject</th><th>Property</th><th>Object</th><th>From</th></tr></thead><tbody>
+<tr><td data-label="Subject">Dunhuang</td><td data-label="Property"><code>dm:partOfNetwork</code></td><td data-label="Object">Silk Road</td><td data-label="From" class="nowrap">R1</td></tr>
+<tr><td data-label="Subject">Mogao Caves</td><td data-label="Property"><code>dm:locatedNear</code></td><td data-label="Object">Dunhuang</td><td data-label="From" class="nowrap">R2</td></tr>
+<tr><td data-label="Subject">Library Cave (Cave 17)</td><td data-label="Property"><code>crm:P89_falls_within</code></td><td data-label="Object">Mogao Caves</td><td data-label="From" class="nowrap">R3</td></tr>
+<tr><td data-label="Subject">#sealing-event</td><td data-label="Property"><code>crm:P12_occurred_in_the_presence_of</code></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="From" class="nowrap">R4</td></tr>
+<tr><td data-label="Subject">#sealing-event</td><td data-label="Property"><code>crm:P7_took_place_at</code></td><td data-label="Object">Library Cave (Cave 17)</td><td data-label="From" class="nowrap">R4</td></tr>
+<tr><td data-label="Subject">#discovery-event</td><td data-label="Property"><code>crm:P14_carried_out_by</code></td><td data-label="Object">Wang Yuanlu</td><td data-label="From" class="nowrap">R5</td></tr>
+<tr><td data-label="Subject">#discovery-event</td><td data-label="Property"><code>crmsci:O19_encountered_object</code></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="From" class="nowrap">R5</td></tr>
+<tr><td data-label="Subject">#discovery-event</td><td data-label="Property"><code>crm:P4_has_time-span</code></td><td data-label="Object">#timespan-1900-06-25</td><td data-label="From" class="nowrap">R5</td></tr>
+<tr><td data-label="Subject">#purchase-stein</td><td data-label="Property"><code>crm:P23_transferred_title_from</code></td><td data-label="Object">Wang Yuanlu</td><td data-label="From" class="nowrap">R6</td></tr>
+<tr><td data-label="Subject">#purchase-stein</td><td data-label="Property"><code>crm:P22_transferred_title_to</code></td><td data-label="Object">Aurel Stein</td><td data-label="From" class="nowrap">R6</td></tr>
+<tr><td data-label="Subject">#purchase-stein</td><td data-label="Property"><code>crm:P24_transferred_title_of</code></td><td data-label="Object">Manuscripts acquired by Aurel Stein</td><td data-label="From" class="nowrap">R6</td></tr>
+<tr><td data-label="Subject">#purchase-pelliot</td><td data-label="Property"><code>crm:P23_transferred_title_from</code></td><td data-label="Object">Wang Yuanlu</td><td data-label="From" class="nowrap">R7</td></tr>
+<tr><td data-label="Subject">#purchase-pelliot</td><td data-label="Property"><code>crm:P22_transferred_title_to</code></td><td data-label="Object">Paul Pelliot</td><td data-label="From" class="nowrap">R7</td></tr>
+<tr><td data-label="Subject">#purchase-pelliot</td><td data-label="Property"><code>crm:P24_transferred_title_of</code></td><td data-label="Object">Manuscripts acquired by Paul Pelliot</td><td data-label="From" class="nowrap">R7</td></tr>
+<tr><td data-label="Subject">#purchase-otani</td><td data-label="Property"><code>crm:P23_transferred_title_from</code></td><td data-label="Object">Wang Yuanlu</td><td data-label="From" class="nowrap">R8</td></tr>
+<tr><td data-label="Subject">#purchase-otani</td><td data-label="Property"><code>crm:P22_transferred_title_to</code></td><td data-label="Object">Ōtani Kōzui</td><td data-label="From" class="nowrap">R8</td></tr>
+<tr><td data-label="Subject">#purchase-otani</td><td data-label="Property"><code>crm:P24_transferred_title_of</code></td><td data-label="Object">Manuscripts sold to Ōtani Kōzui</td><td data-label="From" class="nowrap">R8</td></tr>
+<tr><td data-label="Subject">Manuscripts acquired by Paul Pelliot</td><td data-label="Property"><code>crm:P50_has_current_keeper</code></td><td data-label="Object">Bibliothèque nationale de France</td><td data-label="From" class="nowrap">R10</td></tr>
+<tr><td data-label="Subject">Remaining Chinese manuscripts moved to Beijing</td><td data-label="Property"><code>crm:P50_has_current_keeper</code></td><td data-label="Object">National Library of China</td><td data-label="From" class="nowrap">R11</td></tr>
+<tr><td data-label="Subject">#transfer-beijing</td><td data-label="Property"><code>crm:P25_moved</code></td><td data-label="Object">Remaining Chinese manuscripts moved to Beijing</td><td data-label="From" class="nowrap">R13</td></tr>
+<tr><td data-label="Subject">#transfer-beijing</td><td data-label="Property"><code>crm:P26_moved_to</code></td><td data-label="Object">Beijing</td><td data-label="From" class="nowrap">R13</td></tr>
+<tr><td data-label="Subject">#transfer-beijing</td><td data-label="Property"><code>crm:P15_was_influenced_by</code></td><td data-label="Object">Luo Zhenyu</td><td data-label="From" class="nowrap">R13</td></tr>
+<tr><td data-label="Subject">#transfer-beijing</td><td data-label="Property"><code>crm:P4_has_time-span</code></td><td data-label="Object">#timespan-1910</td><td data-label="From" class="nowrap">R13</td></tr>
+<tr><td data-label="Subject">#digitization-event</td><td data-label="Property"><code>crm:P14_carried_out_by</code></td><td data-label="Object">International Dunhuang Project</td><td data-label="From" class="nowrap">R14</td></tr>
+<tr><td data-label="Subject">#digitization-event</td><td data-label="Property"><code>crmdig:L1_digitized</code></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="From" class="nowrap">R14</td></tr>
+<tr><td data-label="Subject">#digitization-event</td><td data-label="Property"><code>crmdig:L11_had_output</code></td><td data-label="Object">Digital Surrogate of the Dunhuang Manuscripts</td><td data-label="From" class="nowrap">R15</td></tr>
+<tr><td data-label="Subject">Digital Surrogate of the Dunhuang Manuscripts</td><td data-label="Property"><code>dcterms:publisher</code></td><td data-label="Object">International Dunhuang Project</td><td data-label="From" class="nowrap">R15</td></tr>
+<tr><td data-label="Subject">International Dunhuang Project</td><td data-label="Property"><code>dm:virtuallyBringsTogether</code></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="From" class="nowrap">R16 <span class="tag tag--enriched">Enriched</span></td></tr>
+<tr><td data-label="Subject">Manuscripts acquired by Aurel Stein</td><td data-label="Property"><code>crm:P46i_forms_part_of</code></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="From" class="nowrap">R6</td></tr>
+<tr><td data-label="Subject">Manuscripts acquired by Paul Pelliot</td><td data-label="Property"><code>crm:P46i_forms_part_of</code></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="From" class="nowrap">R7</td></tr>
+<tr><td data-label="Subject">Manuscripts sold to Ōtani Kōzui</td><td data-label="Property"><code>crm:P46i_forms_part_of</code></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="From" class="nowrap">R8</td></tr>
+<tr><td data-label="Subject">Remaining Chinese manuscripts moved to Beijing</td><td data-label="Property"><code>crm:P46i_forms_part_of</code></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="From" class="nowrap">R13</td></tr>
+<tr><td data-label="Subject">#sealing-event</td><td data-label="Property"><code>crm:P4_has_time-span</code></td><td data-label="Object">#timespan-sealing</td><td data-label="From" class="nowrap">R4</td></tr>
+<tr><td data-label="Subject">#purchase-stein</td><td data-label="Property"><code>crm:P4_has_time-span</code></td><td data-label="Object">#timespan-purchase-stein</td><td data-label="From" class="nowrap">R6</td></tr>
+<tr><td data-label="Subject">#purchase-pelliot</td><td data-label="Property"><code>crm:P4_has_time-span</code></td><td data-label="Object">#timespan-purchase-pelliot</td><td data-label="From" class="nowrap">R7</td></tr>
+<tr><td data-label="Subject">Diamond Sutra, printed copy of 868</td><td data-label="Property"><code>crm:P46i_forms_part_of</code></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="From" class="nowrap">R17 <span class="tag tag--enriched">Enriched</span></td></tr>
+<tr><td data-label="Subject">#purchase-stein</td><td data-label="Property"><code>crm:P24_transferred_title_of</code></td><td data-label="Object">Diamond Sutra, printed copy of 868</td><td data-label="From" class="nowrap">R18 <span class="tag tag--enriched">Enriched</span></td></tr>
+<tr><td data-label="Subject">Diamond Sutra, printed copy of 868</td><td data-label="Property"><code>crm:P50_has_current_keeper</code></td><td data-label="Object">British Library</td><td data-label="From" class="nowrap">R19 <span class="tag tag--enriched">Enriched</span></td></tr>
+</tbody></table></div>
+  </details>
+</section>
+
+<section class="section" id="full-files" aria-labelledby="h-full-files">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">5.5</span><div><span class="sec-head__k">Turtle and RDF/XML</span><h2 id="h-full-files">The complete files</h2></div></div>
+  <details class="fullfile">
+  <summary>Show the complete file: reconnecting_dunhuang.ttl</summary>
+  <div class="code-card"><div class="code-card__bar"><span class="code-card__path">final_report_files/xml_to_rdf/reconnecting_dunhuang.ttl</span><a href="final_report_files/xml_to_rdf/reconnecting_dunhuang.ttl" download>Download</a></div>
+  <pre class="line-numbers language-turtle fullfile__pre" data-start="1"><code class="language-turtle">@prefix crm: &lt;http://www.cidoc-crm.org/cidoc-crm/&gt; .
+@prefix crmdig: &lt;http://www.cidoc-crm.org/extensions/crmdig/&gt; .
+@prefix crmsci: &lt;http://www.cidoc-crm.org/extensions/crmsci/&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix dm: &lt;https://haopuur-max.github.io/reconnecting-dunhuang/ontology/&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix resource: &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/&gt; .
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r12&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R12 - held_by&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r9&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R9 - held_by&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr1&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r1&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:silk-road ;
+    rdf:predicate dm:partOfNetwork ;
+    rdf:subject resource:dunhuang .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr10&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r6&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:aurel-stein ;
+    rdf:predicate crm:P22_transferred_title_to ;
+    rdf:subject resource:purchase-stein .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr11&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r6&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:stein-portion ;
+    rdf:predicate crm:P24_transferred_title_of ;
+    rdf:subject resource:purchase-stein .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr12&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r7&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:wang-yuanlu ;
+    rdf:predicate crm:P23_transferred_title_from ;
+    rdf:subject resource:purchase-pelliot .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr13&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r7&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:paul-pelliot ;
+    rdf:predicate crm:P22_transferred_title_to ;
+    rdf:subject resource:purchase-pelliot .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr14&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r7&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:pelliot-portion ;
+    rdf:predicate crm:P24_transferred_title_of ;
+    rdf:subject resource:purchase-pelliot .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr15&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r8&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:wang-yuanlu ;
+    rdf:predicate crm:P23_transferred_title_from ;
+    rdf:subject resource:purchase-otani .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr16&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r8&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:otani-kozui ;
+    rdf:predicate crm:P22_transferred_title_to ;
+    rdf:subject resource:purchase-otani .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr17&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r8&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:otani-portion ;
+    rdf:predicate crm:P24_transferred_title_of ;
+    rdf:subject resource:purchase-otani .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr19&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r10&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:bnf ;
+    rdf:predicate crm:P50_has_current_keeper ;
+    rdf:subject resource:pelliot-portion .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr2&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r2&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:dunhuang ;
+    rdf:predicate dm:locatedNear ;
+    rdf:subject resource:mogao-caves .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr20&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r11&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:nlc ;
+    rdf:predicate crm:P50_has_current_keeper ;
+    rdf:subject resource:remaining-chinese-manuscripts .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr22&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r13&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:remaining-chinese-manuscripts ;
+    rdf:predicate crm:P25_moved ;
+    rdf:subject resource:transfer-beijing .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr23&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r13&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:beijing ;
+    rdf:predicate crm:P26_moved_to ;
+    rdf:subject resource:transfer-beijing .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr24&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r13&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:luo-zhenyu ;
+    rdf:predicate crm:P15_was_influenced_by ;
+    rdf:subject resource:transfer-beijing .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr25&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r13&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:timespan-1910 ;
+    rdf:predicate crm:P4_has_time-span ;
+    rdf:subject resource:transfer-beijing .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr26&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r14&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:idp ;
+    rdf:predicate crm:P14_carried_out_by ;
+    rdf:subject resource:digitization-event .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr27&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r14&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:dunhuang-manuscripts ;
+    rdf:predicate crmdig:L1_digitized ;
+    rdf:subject resource:digitization-event .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr28&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r15&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:digital-surrogate ;
+    rdf:predicate crmdig:L11_had_output ;
+    rdf:subject resource:digitization-event .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr29&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r15&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:idp ;
+    rdf:predicate dcterms:publisher ;
+    rdf:subject resource:digital-surrogate .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr3&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r3&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:mogao-caves ;
+    rdf:predicate crm:P89_falls_within ;
+    rdf:subject resource:library-cave .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr30&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r16&gt; ;
+    dcterms:source &lt;https://idp.bl.uk/about/&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/enriched&gt; ;
+    rdf:object resource:dunhuang-manuscripts ;
+    rdf:predicate dm:virtuallyBringsTogether ;
+    rdf:subject resource:idp .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr31&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r6&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:dunhuang-manuscripts ;
+    rdf:predicate crm:P46i_forms_part_of ;
+    rdf:subject resource:stein-portion .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr32&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r7&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:dunhuang-manuscripts ;
+    rdf:predicate crm:P46i_forms_part_of ;
+    rdf:subject resource:pelliot-portion .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr33&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r8&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:dunhuang-manuscripts ;
+    rdf:predicate crm:P46i_forms_part_of ;
+    rdf:subject resource:otani-portion .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr34&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r13&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:dunhuang-manuscripts ;
+    rdf:predicate crm:P46i_forms_part_of ;
+    rdf:subject resource:remaining-chinese-manuscripts .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr35&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r4&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:timespan-sealing ;
+    rdf:predicate crm:P4_has_time-span ;
+    rdf:subject resource:sealing-event .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr36&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r6&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:timespan-purchase-stein ;
+    rdf:predicate crm:P4_has_time-span ;
+    rdf:subject resource:purchase-stein .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr37&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r7&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:timespan-purchase-pelliot ;
+    rdf:predicate crm:P4_has_time-span ;
+    rdf:subject resource:purchase-pelliot .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr38&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r17&gt; ;
+    dcterms:source &lt;https://idp.bl.uk/blog/shaping-the-stein-collections-dunhuang-corpus-2-the-items-from-cave-17s-miscellaneous-bundles/&gt;,
+        &lt;https://idp.bl.uk/blog/the-diamond-sutra/&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/enriched&gt; ;
+    rdf:object resource:dunhuang-manuscripts ;
+    rdf:predicate crm:P46i_forms_part_of ;
+    rdf:subject resource:diamond-sutra-868 .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr39&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r18&gt; ;
+    dcterms:source &lt;https://idp.bl.uk/blog/shaping-the-stein-collections-dunhuang-corpus-2-the-items-from-cave-17s-miscellaneous-bundles/&gt;,
+        &lt;https://idp.bl.uk/learning/dunhuang/dunhuang-articles/cave-17-the-library-cave/discovering-cave-17&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/enriched&gt; ;
+    rdf:object resource:diamond-sutra-868 ;
+    rdf:predicate crm:P24_transferred_title_of ;
+    rdf:subject resource:purchase-stein .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr4&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r4&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:dunhuang-manuscripts ;
+    rdf:predicate crm:P12_occurred_in_the_presence_of ;
+    rdf:subject resource:sealing-event .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr40&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r19&gt; ;
+    dcterms:source &lt;https://idp.bl.uk/collection/51FDAEAFB4A24E2E9981692A98130BC8&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/enriched&gt; ;
+    rdf:object resource:british-library ;
+    rdf:predicate crm:P50_has_current_keeper ;
+    rdf:subject resource:diamond-sutra-868 .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr5&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r4&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:library-cave ;
+    rdf:predicate crm:P7_took_place_at ;
+    rdf:subject resource:sealing-event .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr6&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r5&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:wang-yuanlu ;
+    rdf:predicate crm:P14_carried_out_by ;
+    rdf:subject resource:discovery-event .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr7&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r5&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:dunhuang-manuscripts ;
+    rdf:predicate crmsci:O19_encountered_object ;
+    rdf:subject resource:discovery-event .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr8&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r5&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:timespan-1900-06-25 ;
+    rdf:predicate crm:P4_has_time-span ;
+    rdf:subject resource:discovery-event .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr9&gt; a rdf:Statement ;
+    dcterms:relation &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r6&gt; ;
+    dcterms:type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; ;
+    rdf:object resource:wang-yuanlu ;
+    rdf:predicate crm:P23_transferred_title_from ;
+    rdf:subject resource:purchase-stein .
+
+resource:tokyo-national-museum a crm:E74_Group ;
+    rdfs:label &quot;Tokyo National Museum&quot;@en,
+        &quot;東京国立博物館&quot;@ja ;
+    crm:P1_is_identified_by resource:tokyo-national-museum-wikidata ;
+    owl:sameAs &lt;http://www.wikidata.org/entity/Q653433&gt; .
+
+resource:aurel-stein-lc a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;n82045000&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&gt; .
+
+resource:aurel-stein-viaf a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;88967071&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&gt; .
+
+resource:aurel-stein-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q313061&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:aurel-stein-worldcat-entity a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;E39PBJcc8RpgyQVjD6fDkFB9Dq&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/worldcat-entity&gt; .
+
+resource:beijing-viaf a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;127787278&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&gt; .
+
+resource:beijing-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q956&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:bnf-lc a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;no95028191&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&gt; .
+
+resource:bnf-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q193563&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:british-library-lc a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;n81139951&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&gt; .
+
+resource:british-library-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q23308&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r1&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R1 - part_of_network&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r10&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R10 - held_by&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r11&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R11 - held_by&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r16&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R16 - virtually_brings_together&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r17&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R17 - part_of&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r18&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R18 - acquired_by&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r19&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R19 - held_by&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r2&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R2 - located_near&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r3&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R3 - located_within&quot; .
+
+resource:concept-buddhism a skos:Concept ;
+    skos:exactMatch &lt;http://id.loc.gov/authorities/subjects/sh85017454&gt;,
+        &lt;http://www.wikidata.org/entity/Q748&gt; ;
+    skos:inScheme &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/religious-traditions&gt; ;
+    skos:prefLabel &quot;Buddhism&quot;@en .
+
+resource:concept-confucianism a skos:Concept ;
+    skos:exactMatch &lt;http://id.loc.gov/authorities/subjects/sh85031069&gt;,
+        &lt;http://www.wikidata.org/entity/Q9581&gt; ;
+    skos:inScheme &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/religious-traditions&gt; ;
+    skos:prefLabel &quot;Confucianism&quot;@en .
+
+resource:concept-daoism a skos:Concept ;
+    skos:exactMatch &lt;http://id.loc.gov/authorities/subjects/sh85132392&gt;,
+        &lt;http://www.wikidata.org/entity/Q9598&gt; ;
+    skos:inScheme &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/religious-traditions&gt; ;
+    skos:prefLabel &quot;Daoism&quot;@en .
+
+resource:concept-judaism a skos:Concept ;
+    skos:exactMatch &lt;http://id.loc.gov/authorities/subjects/sh85070835&gt;,
+        &lt;http://www.wikidata.org/entity/Q9268&gt; ;
+    skos:inScheme &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/religious-traditions&gt; ;
+    skos:prefLabel &quot;Judaism&quot;@en .
+
+resource:concept-manichaeism a skos:Concept ;
+    skos:exactMatch &lt;http://id.loc.gov/authorities/subjects/sh85080542&gt;,
+        &lt;http://www.wikidata.org/entity/Q131165&gt; ;
+    skos:inScheme &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/religious-traditions&gt; ;
+    skos:prefLabel &quot;Manichaeism&quot;@en .
+
+resource:concept-nestorian-christianity a skos:Concept ;
+    skos:exactMatch &lt;http://www.wikidata.org/entity/Q168414&gt; ;
+    skos:inScheme &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/religious-traditions&gt; ;
+    skos:prefLabel &quot;Nestorian Christianity&quot;@en .
+
+resource:diamond-sutra-868-bl-shelfmark a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Or.8210/P.2&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/bl-shelfmark&gt; .
+
+resource:diamond-sutra-868-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q28097186&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:dunhuang-fast a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;1278691&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast&gt; .
+
+resource:dunhuang-fast-control-number a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;fst01278691&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast-control-number&gt; .
+
+resource:dunhuang-lc a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;nr96042661&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&gt; .
+
+resource:dunhuang-manuscripts-fast a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;1356877&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast&gt; .
+
+resource:dunhuang-manuscripts-fast-control-number a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;fst01356877&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast-control-number&gt; .
+
+resource:dunhuang-manuscripts-lc a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;n82066451&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&gt; .
+
+resource:dunhuang-manuscripts-viaf a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;178621901&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&gt; .
+
+resource:dunhuang-manuscripts-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q276864&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:dunhuang-viaf a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;168042699&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&gt; .
+
+resource:dunhuang-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q319114&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/bl-shelfmark&gt; a crm:E55_Type ;
+    rdfs:label &quot;British Library shelfmark&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/worldcat-entity&gt; a crm:E55_Type ;
+    rdfs:label &quot;WorldCat Entity&quot; .
+
+resource:idp-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q3754962&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:library-cave-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q28097247&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:luo-zhenyu-lc a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;n81076827&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&gt; .
+
+resource:luo-zhenyu-viaf a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;16093476&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&gt; .
+
+resource:luo-zhenyu-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q716405&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:mogao-caves-fast a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;1240618&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast&gt; .
+
+resource:mogao-caves-fast-control-number a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;fst01240618&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast-control-number&gt; .
+
+resource:mogao-caves-lcsh a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;sh86007577&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lcsh&gt; .
+
+resource:mogao-caves-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q43286&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:nlc-lc a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;no2001051712&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&gt; .
+
+resource:nlc-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q732353&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:otani-kozui-lc a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;n85315990&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&gt; .
+
+resource:otani-kozui-viaf a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;113770129&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&gt; .
+
+resource:otani-kozui-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q386254&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:paul-pelliot-lc a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;n50048941&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&gt; .
+
+resource:paul-pelliot-viaf a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;73858373&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&gt; .
+
+resource:paul-pelliot-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q368821&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:silk-road-fast a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;1243730&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast&gt; .
+
+resource:silk-road-fast-control-number a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;fst01243730&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast-control-number&gt; .
+
+resource:silk-road-lcsh a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;sh85122554&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lcsh&gt; .
+
+resource:silk-road-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q36288&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:tokyo-national-museum-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q653433&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:wang-yuanlu-wikidata a crm:E42_Identifier ;
+    crm:P190_has_symbolic_content &quot;Q1202225&quot; ;
+    crm:P2_has_type &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; .
+
+resource:aurel-stein a crm:E21_Person ;
+    rdfs:label &quot;Aurel Stein&quot;@en ;
+    crm:P1_is_identified_by resource:aurel-stein-lc,
+        resource:aurel-stein-viaf,
+        resource:aurel-stein-wikidata,
+        resource:aurel-stein-worldcat-entity ;
+    rdfs:seeAlso &lt;http://id.loc.gov/authorities/names/n82045000&gt;,
+        &lt;http://viaf.org/viaf/88967071&gt;,
+        &lt;https://id.oclc.org/worldcat/entity/E39PBJcc8RpgyQVjD6fDkFB9Dq&gt; ;
+    owl:sameAs &lt;http://www.wikidata.org/entity/Q313061&gt; .
+
+resource:beijing a crm:E53_Place ;
+    rdfs:label &quot;Beijing&quot;@en,
+        &quot;北京&quot;@zh ;
+    crm:P1_is_identified_by resource:beijing-viaf,
+        resource:beijing-wikidata ;
+    rdfs:seeAlso &lt;http://viaf.org/viaf/127787278&gt;,
+        &lt;http://www.wikidata.org/entity/Q956&gt; .
+
+resource:bnf a crm:E74_Group ;
+    rdfs:label &quot;Bibliothèque nationale de France&quot;@en ;
+    crm:P1_is_identified_by resource:bnf-lc,
+        resource:bnf-wikidata ;
+    rdfs:seeAlso &lt;http://id.loc.gov/authorities/names/no95028191&gt; ;
+    owl:sameAs &lt;http://www.wikidata.org/entity/Q193563&gt; .
+
+resource:british-library a crm:E74_Group ;
+    rdfs:label &quot;British Library&quot;@en ;
+    crm:P1_is_identified_by resource:british-library-lc,
+        resource:british-library-wikidata ;
+    rdfs:seeAlso &lt;http://id.loc.gov/authorities/names/n81139951&gt; ;
+    owl:sameAs &lt;http://www.wikidata.org/entity/Q23308&gt; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r14&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R14 - digitizes&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r15&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R15 - provides_digital_access_to&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/evidence-types&gt; a skos:ConceptScheme ;
+    rdfs:label &quot;Evidence types (project taxonomy)&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lcsh&gt; a crm:E55_Type ;
+    rdfs:label &quot;Library of Congress Subject Headings&quot; .
+
+resource:luo-zhenyu a crm:E21_Person ;
+    rdfs:label &quot;Luo Zhenyu&quot;@en,
+        &quot;罗振玉&quot;@zh ;
+    crm:P1_is_identified_by resource:luo-zhenyu-lc,
+        resource:luo-zhenyu-viaf,
+        resource:luo-zhenyu-wikidata ;
+    rdfs:seeAlso &lt;http://id.loc.gov/authorities/names/n81076827&gt;,
+        &lt;http://viaf.org/viaf/16093476&gt; ;
+    owl:sameAs &lt;http://www.wikidata.org/entity/Q716405&gt; .
+
+resource:nlc a crm:E74_Group ;
+    rdfs:label &quot;National Library of China&quot;@en,
+        &quot;中国国家图书馆&quot;@zh ;
+    crm:P1_is_identified_by resource:nlc-lc,
+        resource:nlc-wikidata ;
+    rdfs:seeAlso &lt;http://id.loc.gov/authorities/names/no2001051712&gt; ;
+    owl:sameAs &lt;http://www.wikidata.org/entity/Q732353&gt; .
+
+resource:otani-kozui a crm:E21_Person ;
+    rdfs:label &quot;Ōtani Kōzui&quot;@en,
+        &quot;大谷光瑞&quot;@ja ;
+    crm:P1_is_identified_by resource:otani-kozui-lc,
+        resource:otani-kozui-viaf,
+        resource:otani-kozui-wikidata ;
+    rdfs:seeAlso &lt;http://id.loc.gov/authorities/names/n85315990&gt;,
+        &lt;http://viaf.org/viaf/113770129&gt; ;
+    owl:sameAs &lt;http://www.wikidata.org/entity/Q386254&gt; .
+
+resource:paul-pelliot a crm:E21_Person ;
+    rdfs:label &quot;Paul Pelliot&quot;@en ;
+    crm:P1_is_identified_by resource:paul-pelliot-lc,
+        resource:paul-pelliot-viaf,
+        resource:paul-pelliot-wikidata ;
+    rdfs:seeAlso &lt;http://id.loc.gov/authorities/names/n50048941&gt;,
+        &lt;http://viaf.org/viaf/73858373&gt; ;
+    owl:sameAs &lt;http://www.wikidata.org/entity/Q368821&gt; .
+
+resource:silk-road a crm:E53_Place ;
+    rdfs:label &quot;Silk Road&quot;@en,
+        &quot;丝绸之路&quot;@zh ;
+    crm:P1_is_identified_by resource:silk-road-fast,
+        resource:silk-road-fast-control-number,
+        resource:silk-road-lcsh,
+        resource:silk-road-wikidata ;
+    rdfs:seeAlso &lt;http://id.loc.gov/authorities/subjects/sh85122554&gt;,
+        &lt;http://id.worldcat.org/fast/1243730&gt;,
+        &lt;http://www.wikidata.org/entity/Q36288&gt; .
+
+resource:timespan-1900-06-25 a crm:E52_Time-Span ;
+    rdfs:label &quot;25 June 1900&quot;@en ;
+    crm:P82a_begin_of_the_begin &quot;1900-06-25T00:00:00&quot;^^xsd:dateTime ;
+    crm:P82b_end_of_the_end &quot;1900-06-25T23:59:59&quot;^^xsd:dateTime .
+
+resource:timespan-1910 a crm:E52_Time-Span ;
+    rdfs:label &quot;1910&quot;@en ;
+    crm:P82a_begin_of_the_begin &quot;1910-01-01T00:00:00&quot;^^xsd:dateTime ;
+    crm:P82b_end_of_the_end &quot;1910-12-31T23:59:59&quot;^^xsd:dateTime .
+
+resource:timespan-purchase-pelliot a crm:E52_Time-Span ;
+    rdfs:label &quot;from 1907 onwards&quot;@en ;
+    crm:P82a_begin_of_the_begin &quot;1907-01-01T00:00:00&quot;^^xsd:dateTime .
+
+resource:timespan-purchase-stein a crm:E52_Time-Span ;
+    rdfs:label &quot;from 1907 onwards&quot;@en ;
+    crm:P82a_begin_of_the_begin &quot;1907-01-01T00:00:00&quot;^^xsd:dateTime .
+
+resource:timespan-sealing a crm:E52_Time-Span ;
+    rdfs:label &quot;sometime in the early 11th century&quot;@en .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r4&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R4 - sealed_in&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r5&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R5 - discovered&quot; .
+
+resource:digital-surrogate a crmdig:D1_Digital_Object ;
+    rdfs:label &quot;Digital Surrogate of the Dunhuang Manuscripts&quot;@en ;
+    dcterms:publisher resource:idp .
+
+resource:digitization-event a crmdig:D2_Digitization_Process ;
+    rdfs:label &quot;Digitization of the Dunhuang Manuscripts&quot;@en ;
+    crm:P14_carried_out_by resource:idp ;
+    crmdig:L11_had_output resource:digital-surrogate ;
+    crmdig:L1_digitized resource:dunhuang-manuscripts .
+
+resource:discovery-event a crmsci:S19_Encounter_Event ;
+    rdfs:label &quot;Discovery of the Dunhuang Manuscripts&quot;@en ;
+    crm:P14_carried_out_by resource:wang-yuanlu ;
+    crm:P4_has_time-span resource:timespan-1900-06-25 ;
+    crmsci:O19_encountered_object resource:dunhuang-manuscripts .
+
+resource:dunhuang a crm:E53_Place ;
+    rdfs:label &quot;Dunhuang&quot;@en,
+        &quot;敦煌&quot;@zh ;
+    crm:P1_is_identified_by resource:dunhuang-fast,
+        resource:dunhuang-fast-control-number,
+        resource:dunhuang-lc,
+        resource:dunhuang-viaf,
+        resource:dunhuang-wikidata ;
+    rdfs:seeAlso &lt;http://id.loc.gov/authorities/names/nr96042661&gt;,
+        &lt;http://id.worldcat.org/fast/1278691&gt;,
+        &lt;http://viaf.org/viaf/168042699&gt;,
+        &lt;http://www.wikidata.org/entity/Q319114&gt; ;
+    dm:partOfNetwork resource:silk-road .
+
+resource:library-cave a crm:E53_Place ;
+    rdfs:label &quot;Library Cave (Cave 17)&quot;@en,
+        &quot;藏经洞&quot;@zh ;
+    crm:P1_is_identified_by resource:library-cave-wikidata ;
+    crm:P89_falls_within resource:mogao-caves ;
+    rdfs:seeAlso &lt;http://www.wikidata.org/entity/Q28097247&gt; .
+
+resource:mogao-caves a crm:E53_Place ;
+    rdfs:label &quot;Mogao Caves&quot;@en,
+        &quot;莫高窟&quot;@zh ;
+    crm:P1_is_identified_by resource:mogao-caves-fast,
+        resource:mogao-caves-fast-control-number,
+        resource:mogao-caves-lcsh,
+        resource:mogao-caves-wikidata ;
+    rdfs:seeAlso &lt;http://id.loc.gov/authorities/subjects/sh86007577&gt;,
+        &lt;http://id.worldcat.org/fast/1240618&gt;,
+        &lt;http://www.wikidata.org/entity/Q43286&gt; ;
+    dm:locatedNear resource:dunhuang .
+
+resource:otani-portion a crm:E19_Physical_Object ;
+    rdfs:label &quot;Manuscripts sold to Ōtani Kōzui&quot;@en ;
+    crm:P3_has_note &quot;Hundreds more of the manuscripts were sold by Wang to Ōtani Kōzui and Sergey Oldenburg&quot; ;
+    crm:P46i_forms_part_of resource:dunhuang-manuscripts .
+
+resource:purchase-otani a crm:E96_Purchase ;
+    rdfs:label &quot;Purchase involving Ōtani Kōzui&quot;@en ;
+    crm:P22_transferred_title_to resource:otani-kozui ;
+    crm:P23_transferred_title_from resource:wang-yuanlu ;
+    crm:P24_transferred_title_of resource:otani-portion .
+
+resource:sealing-event a crm:E7_Activity ;
+    rdfs:label &quot;Sealing of the Library Cave&quot;@en ;
+    crm:P12_occurred_in_the_presence_of resource:dunhuang-manuscripts ;
+    crm:P4_has_time-span resource:timespan-sealing ;
+    crm:P7_took_place_at resource:library-cave .
+
+resource:stein-portion a crm:E19_Physical_Object ;
+    rdfs:label &quot;Manuscripts acquired by Aurel Stein&quot;@en ;
+    crm:P3_has_note &quot;around 7,000 complete manuscripts and 6,000 fragments&quot; ;
+    crm:P46i_forms_part_of resource:dunhuang-manuscripts .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r8&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R8 - sold_manuscripts_to&quot; .
+
+resource:diamond-sutra-868 a crm:E19_Physical_Object ;
+    rdfs:label &quot;Diamond Sutra, printed copy of 868&quot;@en ;
+    crm:P1_is_identified_by resource:diamond-sutra-868-bl-shelfmark,
+        resource:diamond-sutra-868-wikidata ;
+    crm:P3_has_note &quot;Woodblock-printed scroll of the Diamond Sutra dated 868, Stein number Ch.ciii.014; described by the International Dunhuang Programme as the world&#x27;s earliest dated printed book.&quot; ;
+    crm:P46i_forms_part_of resource:dunhuang-manuscripts ;
+    crm:P50_has_current_keeper resource:british-library ;
+    rdfs:seeAlso &lt;http://www.wikidata.org/entity/Q28097186&gt; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/enriched&gt; a skos:Concept ;
+    rdfs:label &quot;Enriched evidence (additional authoritative source)&quot; ;
+    skos:definition &quot;Enriched relation supported by an additional authoritative source rather than by the frozen Wikipedia revision. In this project: R16 is the project&#x27;s interpretation of the International Dunhuang Project&#x27;s (now International Dunhuang Programme) institutional description; R17-R19 add one documented item, the printed Diamond Sutra of 868 (British Library, Or.8210/P.2), from the IDP catalogue and research articles. Each Enriched relation points to its own sources (relation/@source, listBibl enrichment-sources) and is kept distinct from Direct evidence drawn from the frozen Wikipedia revision.&quot;@en ;
+    skos:inScheme &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/evidence-types&gt; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast&gt; a crm:E55_Type ;
+    rdfs:label &quot;FAST (OCLC)&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast-control-number&gt; a crm:E55_Type ;
+    rdfs:label &quot;FAST control number (OCLC)&quot; .
+
+resource:pelliot-portion a crm:E19_Physical_Object ;
+    rdfs:label &quot;Manuscripts acquired by Paul Pelliot&quot;@en ;
+    crm:P3_has_note &quot;almost 10,000 documents&quot; ;
+    crm:P46i_forms_part_of resource:dunhuang-manuscripts ;
+    crm:P50_has_current_keeper resource:bnf .
+
+resource:purchase-pelliot a crm:E96_Purchase ;
+    rdfs:label &quot;Purchase involving Paul Pelliot&quot;@en ;
+    crm:P22_transferred_title_to resource:paul-pelliot ;
+    crm:P23_transferred_title_from resource:wang-yuanlu ;
+    crm:P24_transferred_title_of resource:pelliot-portion ;
+    crm:P4_has_time-span resource:timespan-purchase-pelliot .
+
+resource:remaining-chinese-manuscripts a crm:E19_Physical_Object ;
+    rdfs:label &quot;Remaining Chinese manuscripts moved to Beijing&quot;@en ;
+    crm:P3_has_note &quot;most of the remaining Chinese manuscripts were taken to Beijing in 1910 and are now in the National Library of China&quot; ;
+    crm:P46i_forms_part_of resource:dunhuang-manuscripts ;
+    crm:P50_has_current_keeper resource:nlc .
+
+resource:transfer-beijing a crm:E9_Move ;
+    rdfs:label &quot;Transfer of the Dunhuang Manuscripts to Beijing&quot;@en ;
+    crm:P15_was_influenced_by resource:luo-zhenyu ;
+    crm:P25_moved resource:remaining-chinese-manuscripts ;
+    crm:P26_moved_to resource:beijing ;
+    crm:P4_has_time-span resource:timespan-1910 .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r13&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R13 - facilitated_transfer_of&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r6&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R6 - sold_manuscripts_to&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r7&gt; a crm:E89_Propositional_Object ;
+    rdfs:label &quot;R7 - sold_manuscripts_to&quot; .
+
+resource:idp a crm:E74_Group ;
+    rdfs:label &quot;International Dunhuang Project&quot;@en ;
+    crm:P1_is_identified_by resource:idp-wikidata ;
+    owl:sameAs &lt;http://www.wikidata.org/entity/Q3754962&gt; ;
+    dm:virtuallyBringsTogether resource:dunhuang-manuscripts .
+
+resource:purchase-stein a crm:E96_Purchase ;
+    rdfs:label &quot;Purchase involving Aurel Stein&quot;@en ;
+    crm:P22_transferred_title_to resource:aurel-stein ;
+    crm:P23_transferred_title_from resource:wang-yuanlu ;
+    crm:P24_transferred_title_of resource:diamond-sutra-868,
+        resource:stein-portion ;
+    crm:P4_has_time-span resource:timespan-purchase-stein .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/religious-traditions&gt; a skos:ConceptScheme ;
+    rdfs:label &quot;Religious and philosophical traditions (project taxonomy)&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&gt; a crm:E55_Type ;
+    rdfs:label &quot;VIAF&quot; .
+
+resource:wang-yuanlu a crm:E21_Person ;
+    rdfs:label &quot;Wang Yuanlu&quot;@en,
+        &quot;王圆箓&quot;@zh ;
+    crm:P1_is_identified_by resource:wang-yuanlu-wikidata ;
+    owl:sameAs &lt;http://www.wikidata.org/entity/Q1202225&gt; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&gt; a crm:E55_Type ;
+    rdfs:label &quot;Library of Congress Name Authority File&quot; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&gt; a crm:E55_Type ;
+    rdfs:label &quot;Wikidata&quot; .
+
+resource:dunhuang-manuscripts a crm:E18_Physical_Thing ;
+    rdfs:label &quot;Dunhuang Manuscripts&quot;@en,
+        &quot;敦煌文献&quot;@zh ;
+    dcterms:subject resource:concept-buddhism,
+        resource:concept-confucianism,
+        resource:concept-daoism,
+        resource:concept-judaism,
+        resource:concept-manichaeism,
+        resource:concept-nestorian-christianity ;
+    crm:P1_is_identified_by resource:dunhuang-manuscripts-fast,
+        resource:dunhuang-manuscripts-fast-control-number,
+        resource:dunhuang-manuscripts-lc,
+        resource:dunhuang-manuscripts-viaf,
+        resource:dunhuang-manuscripts-wikidata ;
+    rdfs:seeAlso &lt;http://id.loc.gov/authorities/names/n82066451&gt;,
+        &lt;http://id.worldcat.org/fast/1356877&gt;,
+        &lt;http://viaf.org/viaf/178621901&gt;,
+        &lt;http://www.wikidata.org/entity/Q276864&gt; .
+
+&lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&gt; a skos:Concept ;
+    rdfs:label &quot;Direct evidence (frozen Wikipedia revision)&quot; ;
+    skos:definition &quot;A relation extracted or modelled directly from the frozen Wikipedia revision, without implying independent historical verification.&quot;@en ;
+    skos:inScheme &lt;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/evidence-types&gt; .</code></pre></div>
+</details>
+  <details class="fullfile">
+  <summary>Show the complete file: reconnecting_dunhuang.rdf</summary>
+  <div class="code-card"><div class="code-card__bar"><span class="code-card__path">final_report_files/xml_to_rdf/reconnecting_dunhuang.rdf</span><a href="final_report_files/xml_to_rdf/reconnecting_dunhuang.rdf" download>Download</a></div>
+  <pre class="line-numbers language-markup fullfile__pre" data-start="1"><code class="language-markup">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF
+   xmlns:crm=&quot;http://www.cidoc-crm.org/cidoc-crm/&quot;
+   xmlns:crmdig=&quot;http://www.cidoc-crm.org/extensions/crmdig/&quot;
+   xmlns:crmsci=&quot;http://www.cidoc-crm.org/extensions/crmsci/&quot;
+   xmlns:dcterms=&quot;http://purl.org/dc/terms/&quot;
+   xmlns:dm=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/ontology/&quot;
+   xmlns:owl=&quot;http://www.w3.org/2002/07/owl#&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
+   xmlns:rdfs=&quot;http://www.w3.org/2000/01/rdf-schema#&quot;
+   xmlns:skos=&quot;http://www.w3.org/2004/02/skos/core#&quot;
+&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/silk-road-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q36288&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/diamond-sutra-868&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Diamond Sutra, printed copy of 868&lt;/rdfs:label&gt;
+    &lt;crm:P3_has_note&gt;Woodblock-printed scroll of the Diamond Sutra dated 868, Stein number Ch.ciii.014; described by the International Dunhuang Programme as the world&#x27;s earliest dated printed book.&lt;/crm:P3_has_note&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/diamond-sutra-868-bl-shelfmark&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/diamond-sutra-868-wikidata&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://www.wikidata.org/entity/Q28097186&quot;/&gt;
+    &lt;crm:P46i_forms_part_of rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+    &lt;crm:P50_has_current_keeper rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/british-library&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/sealing-event&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E7_Activity&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Sealing of the Library Cave&lt;/rdfs:label&gt;
+    &lt;crm:P12_occurred_in_the_presence_of rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+    &lt;crm:P7_took_place_at rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/library-cave&quot;/&gt;
+    &lt;crm:P4_has_time-span rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-sealing&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/library-cave&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E53_Place&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Library Cave (Cave 17)&lt;/rdfs:label&gt;
+    &lt;rdfs:label xml:lang=&quot;zh&quot;&gt;藏经洞&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/library-cave-wikidata&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://www.wikidata.org/entity/Q28097247&quot;/&gt;
+    &lt;crm:P89_falls_within rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/mogao-caves&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/luo-zhenyu-viaf&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;16093476&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/aurel-stein-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q313061&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr10&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-stein&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P22_transferred_title_to&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/aurel-stein&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r6&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-daoism&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/2004/02/skos/core#Concept&quot;/&gt;
+    &lt;skos:prefLabel xml:lang=&quot;en&quot;&gt;Daoism&lt;/skos:prefLabel&gt;
+    &lt;skos:inScheme rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/religious-traditions&quot;/&gt;
+    &lt;skos:exactMatch rdf:resource=&quot;http://www.wikidata.org/entity/Q9598&quot;/&gt;
+    &lt;skos:exactMatch rdf:resource=&quot;http://id.loc.gov/authorities/subjects/sh85132392&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr38&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/diamond-sutra-868&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P46i_forms_part_of&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r17&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/enriched&quot;/&gt;
+    &lt;dcterms:source rdf:resource=&quot;https://idp.bl.uk/blog/shaping-the-stein-collections-dunhuang-corpus-2-the-items-from-cave-17s-miscellaneous-bundles/&quot;/&gt;
+    &lt;dcterms:source rdf:resource=&quot;https://idp.bl.uk/blog/the-diamond-sutra/&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr39&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-stein&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P24_transferred_title_of&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/diamond-sutra-868&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r18&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/enriched&quot;/&gt;
+    &lt;dcterms:source rdf:resource=&quot;https://idp.bl.uk/blog/shaping-the-stein-collections-dunhuang-corpus-2-the-items-from-cave-17s-miscellaneous-bundles/&quot;/&gt;
+    &lt;dcterms:source rdf:resource=&quot;https://idp.bl.uk/learning/dunhuang/dunhuang-articles/cave-17-the-library-cave/discovering-cave-17&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr29&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/digital-surrogate&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://purl.org/dc/terms/publisher&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/idp&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r15&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/wang-yuanlu&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E21_Person&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Wang Yuanlu&lt;/rdfs:label&gt;
+    &lt;rdfs:label xml:lang=&quot;zh&quot;&gt;王圆箓&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/wang-yuanlu-wikidata&quot;/&gt;
+    &lt;owl:sameAs rdf:resource=&quot;http://www.wikidata.org/entity/Q1202225&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/otani-kozui&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E21_Person&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Ōtani Kōzui&lt;/rdfs:label&gt;
+    &lt;rdfs:label xml:lang=&quot;ja&quot;&gt;大谷光瑞&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/otani-kozui-wikidata&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/otani-kozui-viaf&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/otani-kozui-lc&quot;/&gt;
+    &lt;owl:sameAs rdf:resource=&quot;http://www.wikidata.org/entity/Q386254&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://viaf.org/viaf/113770129&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.loc.gov/authorities/names/n85315990&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr35&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/sealing-event&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-sealing&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r4&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E53_Place&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Dunhuang&lt;/rdfs:label&gt;
+    &lt;rdfs:label xml:lang=&quot;zh&quot;&gt;敦煌&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-wikidata&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-viaf&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-lc&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-fast&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-fast-control-number&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://www.wikidata.org/entity/Q319114&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://viaf.org/viaf/168042699&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.loc.gov/authorities/names/nr96042661&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.worldcat.org/fast/1278691&quot;/&gt;
+    &lt;dm:partOfNetwork rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/silk-road&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr34&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/remaining-chinese-manuscripts&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P46i_forms_part_of&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r13&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr6&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/discovery-event&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/wang-yuanlu&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r5&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr22&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/transfer-beijing&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P25_moved&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/remaining-chinese-manuscripts&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r13&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/luo-zhenyu&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E21_Person&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Luo Zhenyu&lt;/rdfs:label&gt;
+    &lt;rdfs:label xml:lang=&quot;zh&quot;&gt;罗振玉&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/luo-zhenyu-wikidata&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/luo-zhenyu-viaf&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/luo-zhenyu-lc&quot;/&gt;
+    &lt;owl:sameAs rdf:resource=&quot;http://www.wikidata.org/entity/Q716405&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://viaf.org/viaf/16093476&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.loc.gov/authorities/names/n81076827&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-stein&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E96_Purchase&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Purchase involving Aurel Stein&lt;/rdfs:label&gt;
+    &lt;crm:P23_transferred_title_from rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/wang-yuanlu&quot;/&gt;
+    &lt;crm:P22_transferred_title_to rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/aurel-stein&quot;/&gt;
+    &lt;crm:P24_transferred_title_of rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/stein-portion&quot;/&gt;
+    &lt;crm:P24_transferred_title_of rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/diamond-sutra-868&quot;/&gt;
+    &lt;crm:P4_has_time-span rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-purchase-stein&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr4&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/sealing-event&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r4&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/paul-pelliot&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E21_Person&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Paul Pelliot&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/paul-pelliot-wikidata&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/paul-pelliot-viaf&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/paul-pelliot-lc&quot;/&gt;
+    &lt;owl:sameAs rdf:resource=&quot;http://www.wikidata.org/entity/Q368821&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://viaf.org/viaf/73858373&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.loc.gov/authorities/names/n50048941&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/mogao-caves-fast-control-number&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;fst01240618&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast-control-number&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr40&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/diamond-sutra-868&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P50_has_current_keeper&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/british-library&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r19&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/enriched&quot;/&gt;
+    &lt;dcterms:source rdf:resource=&quot;https://idp.bl.uk/collection/51FDAEAFB4A24E2E9981692A98130BC8&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/digitization-event&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/extensions/crmdig/D2_Digitization_Process&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Digitization of the Dunhuang Manuscripts&lt;/rdfs:label&gt;
+    &lt;crm:P14_carried_out_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/idp&quot;/&gt;
+    &lt;crmdig:L1_digitized rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+    &lt;crmdig:L11_had_output rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/digital-surrogate&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/silk-road-fast&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;1243730&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/aurel-stein-lc&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;n82045000&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts-fast-control-number&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;fst01356877&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast-control-number&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr32&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/pelliot-portion&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P46i_forms_part_of&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r7&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr7&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/discovery-event&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/extensions/crmsci/O19_encountered_object&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r5&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr9&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-stein&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P23_transferred_title_from&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/wang-yuanlu&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r6&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr36&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-stein&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-purchase-stein&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r6&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/enriched&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/2004/02/skos/core#Concept&quot;/&gt;
+    &lt;rdfs:label&gt;Enriched evidence (additional authoritative source)&lt;/rdfs:label&gt;
+    &lt;skos:inScheme rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/evidence-types&quot;/&gt;
+    &lt;skos:definition xml:lang=&quot;en&quot;&gt;Enriched relation supported by an additional authoritative source rather than by the frozen Wikipedia revision. In this project: R16 is the project&#x27;s interpretation of the International Dunhuang Project&#x27;s (now International Dunhuang Programme) institutional description; R17-R19 add one documented item, the printed Diamond Sutra of 868 (British Library, Or.8210/P.2), from the IDP catalogue and research articles. Each Enriched relation points to its own sources (relation/@source, listBibl enrichment-sources) and is kept distinct from Direct evidence drawn from the frozen Wikipedia revision.&lt;/skos:definition&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/silk-road&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E53_Place&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Silk Road&lt;/rdfs:label&gt;
+    &lt;rdfs:label xml:lang=&quot;zh&quot;&gt;丝绸之路&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/silk-road-wikidata&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/silk-road-lcsh&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/silk-road-fast&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/silk-road-fast-control-number&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://www.wikidata.org/entity/Q36288&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.loc.gov/authorities/subjects/sh85122554&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.worldcat.org/fast/1243730&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr23&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/transfer-beijing&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P26_moved_to&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/beijing&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r13&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r4&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R4 - sealed_in&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr30&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/idp&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/ontology/virtuallyBringsTogether&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r16&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/enriched&quot;/&gt;
+    &lt;dcterms:source rdf:resource=&quot;https://idp.bl.uk/about/&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/diamond-sutra-868-bl-shelfmark&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Or.8210/P.2&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/bl-shelfmark&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r19&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R19 - held_by&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-purchase-stein&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;from 1907 onwards&lt;/rdfs:label&gt;
+    &lt;crm:P82a_begin_of_the_begin rdf:datatype=&quot;http://www.w3.org/2001/XMLSchema#dateTime&quot;&gt;1907-01-01T00:00:00&lt;/crm:P82a_begin_of_the_begin&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/aurel-stein&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E21_Person&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Aurel Stein&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/aurel-stein-wikidata&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/aurel-stein-viaf&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/aurel-stein-lc&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/aurel-stein-worldcat-entity&quot;/&gt;
+    &lt;owl:sameAs rdf:resource=&quot;http://www.wikidata.org/entity/Q313061&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://viaf.org/viaf/88967071&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.loc.gov/authorities/names/n82045000&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;https://id.oclc.org/worldcat/entity/E39PBJcc8RpgyQVjD6fDkFB9Dq&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r10&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R10 - held_by&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r5&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R5 - discovered&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/2004/02/skos/core#Concept&quot;/&gt;
+    &lt;rdfs:label&gt;Direct evidence (frozen Wikipedia revision)&lt;/rdfs:label&gt;
+    &lt;skos:inScheme rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/evidence-types&quot;/&gt;
+    &lt;skos:definition xml:lang=&quot;en&quot;&gt;A relation extracted or modelled directly from the frozen Wikipedia revision, without implying independent historical verification.&lt;/skos:definition&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/nlc&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E74_Group&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;National Library of China&lt;/rdfs:label&gt;
+    &lt;rdfs:label xml:lang=&quot;zh&quot;&gt;中国国家图书馆&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/nlc-wikidata&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/nlc-lc&quot;/&gt;
+    &lt;owl:sameAs rdf:resource=&quot;http://www.wikidata.org/entity/Q732353&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.loc.gov/authorities/names/no2001051712&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr12&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-pelliot&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P23_transferred_title_from&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/wang-yuanlu&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r7&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/beijing-viaf&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;127787278&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast-control-number&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E55_Type&quot;/&gt;
+    &lt;rdfs:label&gt;FAST control number (OCLC)&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r17&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R17 - part_of&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr20&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/remaining-chinese-manuscripts&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P50_has_current_keeper&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/nlc&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r11&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E55_Type&quot;/&gt;
+    &lt;rdfs:label&gt;FAST (OCLC)&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr33&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/otani-portion&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P46i_forms_part_of&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r8&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/silk-road-lcsh&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;sh85122554&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lcsh&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E18_Physical_Thing&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Dunhuang Manuscripts&lt;/rdfs:label&gt;
+    &lt;rdfs:label xml:lang=&quot;zh&quot;&gt;敦煌文献&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts-wikidata&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts-viaf&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts-lc&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts-fast&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts-fast-control-number&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://www.wikidata.org/entity/Q276864&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://viaf.org/viaf/178621901&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.loc.gov/authorities/names/n82066451&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.worldcat.org/fast/1356877&quot;/&gt;
+    &lt;dcterms:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-buddhism&quot;/&gt;
+    &lt;dcterms:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-daoism&quot;/&gt;
+    &lt;dcterms:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-confucianism&quot;/&gt;
+    &lt;dcterms:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-nestorian-christianity&quot;/&gt;
+    &lt;dcterms:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-manichaeism&quot;/&gt;
+    &lt;dcterms:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-judaism&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/nlc-lc&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;no2001051712&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr13&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-pelliot&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P22_transferred_title_to&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/paul-pelliot&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r7&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r18&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R18 - acquired_by&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr17&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-otani&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P24_transferred_title_of&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/otani-portion&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r8&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr24&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/transfer-beijing&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P15_was_influenced_by&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/luo-zhenyu&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r13&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/digital-surrogate&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/extensions/crmdig/D1_Digital_Object&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Digital Surrogate of the Dunhuang Manuscripts&lt;/rdfs:label&gt;
+    &lt;dcterms:publisher rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/idp&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/discovery-event&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/extensions/crmsci/S19_Encounter_Event&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Discovery of the Dunhuang Manuscripts&lt;/rdfs:label&gt;
+    &lt;crm:P14_carried_out_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/wang-yuanlu&quot;/&gt;
+    &lt;crmsci:O19_encountered_object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+    &lt;crm:P4_has_time-span rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-1900-06-25&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r8&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R8 - sold_manuscripts_to&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/otani-kozui-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q386254&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr19&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/pelliot-portion&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P50_has_current_keeper&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/bnf&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r10&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-fast-control-number&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;fst01278691&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast-control-number&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/bnf&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E74_Group&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Bibliothèque nationale de France&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/bnf-wikidata&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/bnf-lc&quot;/&gt;
+    &lt;owl:sameAs rdf:resource=&quot;http://www.wikidata.org/entity/Q193563&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.loc.gov/authorities/names/no95028191&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr15&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-otani&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P23_transferred_title_from&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/wang-yuanlu&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r8&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r15&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R15 - provides_digital_access_to&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/diamond-sutra-868-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q28097186&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r11&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R11 - held_by&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr11&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-stein&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P24_transferred_title_of&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/stein-portion&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r6&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E55_Type&quot;/&gt;
+    &lt;rdfs:label&gt;VIAF&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-otani&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E96_Purchase&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Purchase involving Ōtani Kōzui&lt;/rdfs:label&gt;
+    &lt;crm:P23_transferred_title_from rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/wang-yuanlu&quot;/&gt;
+    &lt;crm:P22_transferred_title_to rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/otani-kozui&quot;/&gt;
+    &lt;crm:P24_transferred_title_of rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/otani-portion&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q319114&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-pelliot&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E96_Purchase&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Purchase involving Paul Pelliot&lt;/rdfs:label&gt;
+    &lt;crm:P23_transferred_title_from rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/wang-yuanlu&quot;/&gt;
+    &lt;crm:P22_transferred_title_to rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/paul-pelliot&quot;/&gt;
+    &lt;crm:P24_transferred_title_of rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/pelliot-portion&quot;/&gt;
+    &lt;crm:P4_has_time-span rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-purchase-pelliot&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr3&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/library-cave&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P89_falls_within&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/mogao-caves&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r3&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r7&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R7 - sold_manuscripts_to&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr31&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/stein-portion&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P46i_forms_part_of&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r6&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr14&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-pelliot&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P24_transferred_title_of&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/pelliot-portion&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r7&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr5&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/sealing-event&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/library-cave&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r4&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr8&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/discovery-event&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-1900-06-25&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r5&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/religious-traditions&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/2004/02/skos/core#ConceptScheme&quot;/&gt;
+    &lt;rdfs:label&gt;Religious and philosophical traditions (project taxonomy)&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/stein-portion&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Manuscripts acquired by Aurel Stein&lt;/rdfs:label&gt;
+    &lt;crm:P3_has_note&gt;around 7,000 complete manuscripts and 6,000 fragments&lt;/crm:P3_has_note&gt;
+    &lt;crm:P46i_forms_part_of rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/bnf-lc&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;no95028191&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr25&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/transfer-beijing&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-1910&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r13&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr37&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-pelliot&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-purchase-pelliot&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r7&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/aurel-stein-worldcat-entity&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;E39PBJcc8RpgyQVjD6fDkFB9Dq&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/worldcat-entity&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/mogao-caves&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E53_Place&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Mogao Caves&lt;/rdfs:label&gt;
+    &lt;rdfs:label xml:lang=&quot;zh&quot;&gt;莫高窟&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/mogao-caves-wikidata&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/mogao-caves-lcsh&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/mogao-caves-fast&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/mogao-caves-fast-control-number&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://www.wikidata.org/entity/Q43286&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.loc.gov/authorities/subjects/sh86007577&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.worldcat.org/fast/1240618&quot;/&gt;
+    &lt;dm:locatedNear rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/transfer-beijing&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E9_Move&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Transfer of the Dunhuang Manuscripts to Beijing&lt;/rdfs:label&gt;
+    &lt;crm:P25_moved rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/remaining-chinese-manuscripts&quot;/&gt;
+    &lt;crm:P26_moved_to rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/beijing&quot;/&gt;
+    &lt;crm:P15_was_influenced_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/luo-zhenyu&quot;/&gt;
+    &lt;crm:P4_has_time-span rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-1910&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-viaf&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;168042699&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr28&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/digitization-event&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/extensions/crmdig/L11_had_output&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/digital-surrogate&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r15&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/luo-zhenyu-lc&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;n81076827&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/beijing&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E53_Place&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Beijing&lt;/rdfs:label&gt;
+    &lt;rdfs:label xml:lang=&quot;zh&quot;&gt;北京&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/beijing-wikidata&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/beijing-viaf&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://www.wikidata.org/entity/Q956&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://viaf.org/viaf/127787278&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/otani-portion&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Manuscripts sold to Ōtani Kōzui&lt;/rdfs:label&gt;
+    &lt;crm:P3_has_note&gt;Hundreds more of the manuscripts were sold by Wang to Ōtani Kōzui and Sergey Oldenburg&lt;/crm:P3_has_note&gt;
+    &lt;crm:P46i_forms_part_of rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr27&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/digitization-event&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/extensions/crmdig/L1_digitized&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r14&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/aurel-stein-viaf&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;88967071&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/tokyo-national-museum-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q653433&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr2&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/mogao-caves&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/ontology/locatedNear&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r2&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r2&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R2 - located_near&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r1&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R1 - part_of_network&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/pelliot-portion&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Manuscripts acquired by Paul Pelliot&lt;/rdfs:label&gt;
+    &lt;crm:P3_has_note&gt;almost 10,000 documents&lt;/crm:P3_has_note&gt;
+    &lt;crm:P50_has_current_keeper rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/bnf&quot;/&gt;
+    &lt;crm:P46i_forms_part_of rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-buddhism&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/2004/02/skos/core#Concept&quot;/&gt;
+    &lt;skos:prefLabel xml:lang=&quot;en&quot;&gt;Buddhism&lt;/skos:prefLabel&gt;
+    &lt;skos:inScheme rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/religious-traditions&quot;/&gt;
+    &lt;skos:exactMatch rdf:resource=&quot;http://www.wikidata.org/entity/Q748&quot;/&gt;
+    &lt;skos:exactMatch rdf:resource=&quot;http://id.loc.gov/authorities/subjects/sh85017454&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r3&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R3 - located_within&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts-lc&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;n82066451&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/remaining-chinese-manuscripts&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Remaining Chinese manuscripts moved to Beijing&lt;/rdfs:label&gt;
+    &lt;crm:P3_has_note&gt;most of the remaining Chinese manuscripts were taken to Beijing in 1910 and are now in the National Library of China&lt;/crm:P3_has_note&gt;
+    &lt;crm:P50_has_current_keeper rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/nlc&quot;/&gt;
+    &lt;crm:P46i_forms_part_of rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr16&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/purchase-otani&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P22_transferred_title_to&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/otani-kozui&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r8&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr1&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/ontology/partOfNetwork&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/silk-road&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r1&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/british-library&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E74_Group&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;British Library&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/british-library-wikidata&quot;/&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/british-library-lc&quot;/&gt;
+    &lt;owl:sameAs rdf:resource=&quot;http://www.wikidata.org/entity/Q23308&quot;/&gt;
+    &lt;rdfs:seeAlso rdf:resource=&quot;http://id.loc.gov/authorities/names/n81139951&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/otani-kozui-lc&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;n85315990&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-sealing&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;sometime in the early 11th century&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r12&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R12 - held_by&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r14&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R14 - digitizes&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/mogao-caves-lcsh&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;sh86007577&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lcsh&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/tokyo-national-museum&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E74_Group&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Tokyo National Museum&lt;/rdfs:label&gt;
+    &lt;rdfs:label xml:lang=&quot;ja&quot;&gt;東京国立博物館&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/tokyo-national-museum-wikidata&quot;/&gt;
+    &lt;owl:sameAs rdf:resource=&quot;http://www.wikidata.org/entity/Q653433&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-manichaeism&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/2004/02/skos/core#Concept&quot;/&gt;
+    &lt;skos:prefLabel xml:lang=&quot;en&quot;&gt;Manichaeism&lt;/skos:prefLabel&gt;
+    &lt;skos:inScheme rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/religious-traditions&quot;/&gt;
+    &lt;skos:exactMatch rdf:resource=&quot;http://www.wikidata.org/entity/Q131165&quot;/&gt;
+    &lt;skos:exactMatch rdf:resource=&quot;http://id.loc.gov/authorities/subjects/sh85080542&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/mogao-caves-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q43286&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r16&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R16 - virtually_brings_together&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/worldcat-entity&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E55_Type&quot;/&gt;
+    &lt;rdfs:label&gt;WorldCat Entity&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/british-library-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q23308&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-nestorian-christianity&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/2004/02/skos/core#Concept&quot;/&gt;
+    &lt;skos:prefLabel xml:lang=&quot;en&quot;&gt;Nestorian Christianity&lt;/skos:prefLabel&gt;
+    &lt;skos:inScheme rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/religious-traditions&quot;/&gt;
+    &lt;skos:exactMatch rdf:resource=&quot;http://www.wikidata.org/entity/Q168414&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/paul-pelliot-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q368821&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/evidence-types&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/2004/02/skos/core#ConceptScheme&quot;/&gt;
+    &lt;rdfs:label&gt;Evidence types (project taxonomy)&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-1910&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;1910&lt;/rdfs:label&gt;
+    &lt;crm:P82a_begin_of_the_begin rdf:datatype=&quot;http://www.w3.org/2001/XMLSchema#dateTime&quot;&gt;1910-01-01T00:00:00&lt;/crm:P82a_begin_of_the_begin&gt;
+    &lt;crm:P82b_end_of_the_end rdf:datatype=&quot;http://www.w3.org/2001/XMLSchema#dateTime&quot;&gt;1910-12-31T23:59:59&lt;/crm:P82b_end_of_the_end&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r9&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R9 - held_by&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts-fast&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;1356877&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/nlc-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q732353&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/british-library-lc&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;n81139951&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r13&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R13 - facilitated_transfer_of&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/library-cave-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q28097247&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-confucianism&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/2004/02/skos/core#Concept&quot;/&gt;
+    &lt;skos:prefLabel xml:lang=&quot;en&quot;&gt;Confucianism&lt;/skos:prefLabel&gt;
+    &lt;skos:inScheme rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/religious-traditions&quot;/&gt;
+    &lt;skos:exactMatch rdf:resource=&quot;http://www.wikidata.org/entity/Q9581&quot;/&gt;
+    &lt;skos:exactMatch rdf:resource=&quot;http://id.loc.gov/authorities/subjects/sh85031069&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/wang-yuanlu-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q1202225&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/statement/cr26&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement&quot;/&gt;
+    &lt;rdf:subject rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/digitization-event&quot;/&gt;
+    &lt;rdf:predicate rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by&quot;/&gt;
+    &lt;rdf:object rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/idp&quot;/&gt;
+    &lt;dcterms:relation rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r14&quot;/&gt;
+    &lt;dcterms:type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/evidence/direct&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-1900-06-25&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;25 June 1900&lt;/rdfs:label&gt;
+    &lt;crm:P82a_begin_of_the_begin rdf:datatype=&quot;http://www.w3.org/2001/XMLSchema#dateTime&quot;&gt;1900-06-25T00:00:00&lt;/crm:P82a_begin_of_the_begin&gt;
+    &lt;crm:P82b_end_of_the_end rdf:datatype=&quot;http://www.w3.org/2001/XMLSchema#dateTime&quot;&gt;1900-06-25T23:59:59&lt;/crm:P82b_end_of_the_end&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/luo-zhenyu-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q716405&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/silk-road-fast-control-number&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;fst01243730&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast-control-number&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/otani-kozui-viaf&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;113770129&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/timespan-purchase-pelliot&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;from 1907 onwards&lt;/rdfs:label&gt;
+    &lt;crm:P82a_begin_of_the_begin rdf:datatype=&quot;http://www.w3.org/2001/XMLSchema#dateTime&quot;&gt;1907-01-01T00:00:00&lt;/crm:P82a_begin_of_the_begin&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts-viaf&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;178621901&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-lc&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;nr96042661&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q276864&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E55_Type&quot;/&gt;
+    &lt;rdfs:label&gt;Wikidata&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/idp-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q3754962&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/idp&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E74_Group&quot;/&gt;
+    &lt;rdfs:label xml:lang=&quot;en&quot;&gt;International Dunhuang Project&lt;/rdfs:label&gt;
+    &lt;crm:P1_is_identified_by rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/idp-wikidata&quot;/&gt;
+    &lt;owl:sameAs rdf:resource=&quot;http://www.wikidata.org/entity/Q3754962&quot;/&gt;
+    &lt;dm:virtuallyBringsTogether rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-manuscripts&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/mogao-caves-fast&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;1240618&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/dunhuang-fast&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;1278691&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/fast&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-judaism&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.w3.org/2004/02/skos/core#Concept&quot;/&gt;
+    &lt;skos:prefLabel xml:lang=&quot;en&quot;&gt;Judaism&lt;/skos:prefLabel&gt;
+    &lt;skos:inScheme rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/concept-scheme/religious-traditions&quot;/&gt;
+    &lt;skos:exactMatch rdf:resource=&quot;http://www.wikidata.org/entity/Q9268&quot;/&gt;
+    &lt;skos:exactMatch rdf:resource=&quot;http://id.loc.gov/authorities/subjects/sh85070835&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/beijing-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q956&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/paul-pelliot-lc&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;n50048941&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/bl-shelfmark&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E55_Type&quot;/&gt;
+    &lt;rdfs:label&gt;British Library shelfmark&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/paul-pelliot-viaf&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;73858373&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/viaf&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lc&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E55_Type&quot;/&gt;
+    &lt;rdfs:label&gt;Library of Congress Name Authority File&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/lcsh&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E55_Type&quot;/&gt;
+    &lt;rdfs:label&gt;Library of Congress Subject Headings&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/bnf-wikidata&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E42_Identifier&quot;/&gt;
+    &lt;crm:P190_has_symbolic_content&gt;Q193563&lt;/crm:P190_has_symbolic_content&gt;
+    &lt;crm:P2_has_type rdf:resource=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/identifier-type/wikidata&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;https://haopuur-max.github.io/reconnecting-dunhuang/resource/canonical-relation/r6&quot;&gt;
+    &lt;rdf:type rdf:resource=&quot;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object&quot;/&gt;
+    &lt;rdfs:label&gt;R6 - sold_manuscripts_to&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</code></pre></div>
+</details>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <nav class="pager" aria-label="Previous and next page">
+      <a class="pager__prev" href="transformations.html"><span class="pager__dir">Previous</span><span class="pager__name">Transformations</span></a>
+      <a class="pager__next" href="files.html"><span class="pager__dir">Next</span><span class="pager__name">Files</span></a>
+    </nav>
+    <p class="site-footer__meta"><img src="assets/ornaments/mark.svg" alt="" width="36" height="36">
+      <span>HAOPU YIN · A project for Information Science and Cultural Heritage, University of Bologna, 2025–2026. Source: English Wikipedia, “Dunhuang manuscripts”, revision 1347007263.</span></p>
+  </div>
+</footer>
+<script src="assets/js/prism.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

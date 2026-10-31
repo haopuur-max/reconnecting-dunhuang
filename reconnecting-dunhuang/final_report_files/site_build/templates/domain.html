@@ -1,0 +1,58 @@
+<header class="page-head opener bleed grain">
+  <div class="bleed__inner">
+    <div>
+      <p class="kicker">Chapter 01 · Domain</p>
+      <h1>Domain</h1>
+      <p class="slab"><span class="slab__label">The question of this page</span><span class="slab__q">What is the project about?</span></p>
+      <p class="lead">The project models one story told by the Wikipedia article: manuscripts sealed in a cave, found in 1900, sold and moved across the world, and reconnected online.</p>
+    </div>
+    <div class="opener__side" aria-hidden="true"><span class="numeral">01</span></div>
+  </div>
+</header>
+<nav class="page-toc page-toc--band" aria-label="On this page">
+  <span class="page-toc__label">On this page</span>
+    <a href="#source">The source</a>
+    <a href="#story">The story</a>
+    <a href="#entities">Entities</a>
+    <a href="#evidence">Evidence</a>
+</nav>
+
+<ul class="census" aria-label="The entity records of the TEI file, by kind">
+  <li style="--c:var(--azurite)"><a href="#entities"><span class="census__n">5</span><span class="census__k">people</span></a></li>
+  <li style="--c:var(--malachite)"><a href="#entities"><span class="census__n">5</span><span class="census__k">places</span></a></li>
+  <li style="--c:var(--gold);--c-ink:var(--gold-ink)"><a href="#entities"><span class="census__n">5</span><span class="census__k">institutions</span></a></li>
+  <li style="--c:var(--ochre)"><a href="#entities"><span class="census__n">6</span><span class="census__k">manuscripts and groups of manuscripts</span></a></li>
+  <li style="--c:var(--cinnabar)"><a href="#story"><span class="census__n">7</span><span class="census__k">events</span></a></li>
+</ul>
+<p class="census-note">The 28 entity records of the TEI standOff (persons, places, organisations, objects, events). Sixteen of them are the entities of the theoretical model on the <a href="models.html#theoretical">Models</a> page. The standOff also describes the digital surrogate and five time-spans; the Manuscripts tab below lists the digital surrogate too.</p>
+
+<section class="section" id="source" aria-labelledby="h-source">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">1.1</span><div><span class="sec-head__k">One frozen revision</span><h2 id="h-source">The source</h2></div></div>
+  <p>We worked on one frozen revision of the English Wikipedia article.</p>
+  {{domain:source}}
+</section>
+
+<section class="section" id="story" aria-labelledby="h-story">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">1.2</span><div><span class="sec-head__k">From the cave to the screen</span><h2 id="h-story">The story</h2></div></div>
+  <p>Most of the manuscripts come from a cache sealed in the Library Cave of the Mogao Caves, near Dunhuang. Found by Wang Yuanlu in 1900, much of the cache was sold from 1907 to Aurel Stein, Paul Pelliot, Ōtani Kōzui and others, and in 1910 most of the remaining Chinese manuscripts were taken to Beijing. Today the manuscripts are held in several countries, and the International Dunhuang Project is reuniting them in digital form.</p>
+  <figure class="figure wide">
+    <div class="figure__panel figure__panel--photo">
+      <img src="assets/img/history_pelliot_cave17.jpg" width="520" height="720" style="max-width: 420px; margin: 0 auto"
+           alt="Paul Pelliot, seated by candlelight in the Library Cave, examining manuscripts stacked around him on the shelves.">
+    </div>
+    <figcaption><b>Paul Pelliot examining manuscripts in Cave 17, the Library Cave, 1908.</b> Photograph by Charles Nouette. Wikimedia Commons, public domain.</figcaption>
+  </figure>
+  <h3>Events</h3>
+  {{domain:timeline}}
+</section>
+
+<section class="section" id="entities" aria-labelledby="h-entities">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">1.3</span><div><span class="sec-head__k">People, places, institutions, manuscripts, events</span><h2 id="h-entities">Entities</h2></div></div>
+  <p>The people, places, institutions, manuscripts and events encoded in the TEI file, with their authority records.</p>
+  {{domain:entities}}
+</section>
+
+<section class="section" id="evidence" aria-labelledby="h-evidence">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">1.4</span><div><span class="sec-head__k">Direct and Enriched</span><h2 id="h-evidence">Evidence</h2></div></div>
+  <p class="evidence-note">Each relation is marked <span class="tag tag--direct">Direct</span> when the frozen article states it, or <span class="tag tag--enriched">Enriched</span> when it needs another source. R16 is Enriched, drawing on the International Dunhuang Project’s <a href="https://idp.bl.uk/about/">own description</a>; so are R17–R19, which add one documented manuscript from the IDP catalogue, the printed Diamond Sutra of 868. Each Enriched relation names its sources.</p>
+</section>

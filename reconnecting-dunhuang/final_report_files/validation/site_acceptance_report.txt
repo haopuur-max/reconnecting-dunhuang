@@ -1,0 +1,13 @@
+=== Reconnecting Dunhuang - site acceptance report ===
+Generated: 2026-10-31
+Pages: index.html, domain.html, models.html, tei.html, transformations.html, rdf.html, wiki-view.html, files.html
+
+1 Local links, images and anchors: 405 checked, 0 broken
+2 Code blocks identical to the cited files: 19 checked, 0 different
+3 Wiki View equals the XSLT output (stylesheet re-run with base=''): PASS
+4 Files page: 35 listed deliverables exist and are shown with current sizes; 0 problems
+5 QA reports: TEI validation PASS, RDF V1-V7 PASS, HTML QA PASS
+6 Turtle (683 triples) and RDF/XML (683 triples) isomorphic: PASS
+7 Domain page free of ontology class and property names: PASS
+
+RESULT: PASS

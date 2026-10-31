@@ -1,0 +1,60 @@
+/* Reconnecting Dunhuang - editorial syntax theme for Prism.js (Final Specification 13.7).
+   Paper background, restrained colours; cinnabar is reserved for evidence and never used here. */
+
+code[class*="language-"], pre[class*="language-"] {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: none;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  tab-size: 2;
+  hyphens: none;
+  font-variant-numeric: normal;
+}
+pre[class*="language-"] {
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  overflow: auto;
+}
+:not(pre) > code[class*="language-"] { padding: 0.1em 0.3em; border-radius: 3px; }
+
+.token.comment, .token.prolog, .token.doctype, .token.cdata { color: var(--ink-muted); font-style: italic; }
+.token.punctuation { color: var(--ink-muted); }
+.token.tag, .token.keyword, .token.prefix, .token.class-name, .token.function, .token.builtin { color: var(--azurite); }
+.token.tag .token.punctuation { color: var(--ink-muted); }
+.token.attr-name, .token.property, .token.boolean, .token.operator { color: var(--malachite); }
+.token.string, .token.attr-value, .token.number, .token.url, .token.datatype { color: var(--ochre); }
+.token.attr-value .token.punctuation { color: var(--ochre); }
+.language-turtle .token.function { color: var(--azurite); }
+.language-turtle .token.keyword { color: var(--malachite); }
+
+/* line numbers: real line numbers from the source file (data-start) */
+pre[class*="language-"].line-numbers { position: relative; padding-left: 4.4em; counter-reset: linenumber; }
+pre[class*="language-"].line-numbers > code { position: relative; white-space: inherit; }
+.line-numbers .line-numbers-rows {
+  position: absolute; pointer-events: none; top: 0; font-size: 100%;
+  left: -4.4em; width: 3.6em; letter-spacing: 0;
+  border-right: 1px solid var(--rule); user-select: none;
+}
+.line-numbers-rows > span { display: block; counter-increment: linenumber; }
+.line-numbers-rows > span::before {
+  content: counter(linenumber); color: var(--ink-muted); display: block;
+  padding-right: 0.8em; text-align: right;
+}
+
+/* highlighted lines: azurite tint with a 3 px azurite rule */
+pre[data-line] { position: relative; }
+.line-highlight {
+  position: absolute; left: 0; right: 0; margin-top: 16px;
+  background: rgba(31, 78, 121, 0.10);
+  border-left: 3px solid var(--azurite);
+  pointer-events: none; line-height: inherit; white-space: pre;
+}
+.line-highlight::before, .line-highlight::after { content: none; }
+.line-numbers .line-highlight::before, .line-numbers .line-highlight::after { content: none; }

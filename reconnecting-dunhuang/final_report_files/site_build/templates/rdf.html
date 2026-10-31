@@ -1,0 +1,64 @@
+<header class="page-head opener bleed grain">
+  <div class="bleed__inner">
+    <div>
+      <p class="kicker">Chapter 05 · RDF</p>
+      <h1>RDF</h1>
+      <p class="slab"><span class="slab__label">The question of this page</span><span class="slab__q">What does the data say?</span></p>
+      <p class="lead">We produced an RDF dataset in Turtle and RDF/XML, linked to external authorities.</p>
+    </div>
+    <div class="opener__side" aria-hidden="true"><span class="numeral">05</span></div>
+  </div>
+</header>
+<nav class="page-toc page-toc--band" aria-label="On this page">
+  <span class="page-toc__label">On this page</span>
+    <a href="#r1">Sample</a>
+    <a href="#linking">Linking</a>
+    <a href="#uris">URIs</a>
+    <a href="#visualization">Visualization</a>
+    <a href="#full-files">The complete files</a>
+</nav>
+
+<section class="section" id="r1" aria-labelledby="h-r1">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">5.1</span><div><span class="sec-head__k">One event, in Turtle</span><h2 id="h-r1">Sample</h2></div></div>
+  <p>The purchase involving Aurel Stein, as it appears in the dataset.</p>
+  {{snippet:R1}}
+  <p class="triple-intro">The highlighted line, read as one triple:</p>
+  {{triple:resource:purchase-stein crm:P22_transferred_title_to}}
+</section>
+
+<section class="section" id="linking" aria-labelledby="h-linking">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">5.2</span><div><span class="sec-head__k">External authorities</span><h2 id="h-linking">Linking</h2></div></div>
+  <p>We aligned entities to Wikidata, VIAF, the Library of Congress and FAST, using <code>owl:sameAs</code> for people and institutions, <code>rdfs:seeAlso</code> for authority records, and <code>skos:exactMatch</code> for concepts.</p>
+  <details>
+    <summary>Every identifier and its link</summary>
+    {{table:authority}}
+  </details>
+</section>
+
+<section class="section" id="uris" aria-labelledby="h-uris">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">5.3</span><div><span class="sec-head__k">Identifiers</span><h2 id="h-uris">URIs</h2></div></div>
+  {{rdf:uris}}
+  <p>These URIs are stable identifiers in a namespace the project controls. They are not yet dereferenceable: the website is not published at this address, and a static host would also need one page per resource. Online resolution has not been verified.</p>
+</section>
+
+<section class="section" id="visualization" aria-labelledby="h-visualization">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">5.4</span><div><span class="sec-head__k">The whole graph</span><h2 id="h-visualization">Visualization</h2></div></div>
+  <figure class="figure wide" data-zoomable>
+    <div class="figure__panel">
+      <button type="button" class="figure__enlarge" data-enlarge>Enlarge</button>
+      <img src="final_report_files/models/conceptual_model_instance_graph.svg"
+           alt="Instance graph of the RDF dataset: the individuals, such as Wang Yuanlu, the purchase events and the corpus, linked by CIDOC CRM properties.">
+    </div>
+    <figcaption><b>The dataset as a graph.</b> Identifiers, concepts and provenance statements are omitted.</figcaption>
+  </figure>
+  <details>
+    <summary>All conceptual relations</summary>
+    {{table:conceptual}}
+  </details>
+</section>
+
+<section class="section" id="full-files" aria-labelledby="h-full-files">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">5.5</span><div><span class="sec-head__k">Turtle and RDF/XML</span><h2 id="h-full-files">The complete files</h2></div></div>
+  {{fullfile:final_report_files/xml_to_rdf/reconnecting_dunhuang.ttl}}
+  {{fullfile:final_report_files/xml_to_rdf/reconnecting_dunhuang.rdf}}
+</section>

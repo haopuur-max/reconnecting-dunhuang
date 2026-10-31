@@ -1,0 +1,226 @@
+<header class="page-head opener bleed grain">
+  <div class="bleed__inner">
+    <div>
+      <p class="kicker">Chapter 02 · Models</p>
+      <h1>Models</h1>
+      <p class="slab"><span class="slab__label">The question of this page</span><span class="slab__q">How does a story told in prose become a formal model?</span></p>
+      <p class="lead">We described the domain in natural language, then formalized it with CIDOC CRM and its extensions.</p>
+    </div>
+    <div class="opener__side" aria-hidden="true"><span class="numeral">02</span></div>
+  </div>
+</header>
+<nav class="path bleed" aria-label="From the article to the data">
+  <div class="bleed__inner">
+    <ol>
+      <li><a href="domain.html#story"><span class="path__dot">1</span><span class="path__name">Historical relationships</span><span class="path__what">What the article says: who found, sold, moved and holds the manuscripts.</span><span class="path__where">Domain page</span></a></li>
+      <li class="is-here"><a href="#theoretical"><span class="path__dot">2</span><span class="path__name">Theoretical model</span><span class="path__what">16 entities and 19 relations, R1–R19, in natural language and five narrative layers.</span><span class="path__where">On this page</span></a></li>
+      <li class="is-here"><a href="#conceptual"><span class="path__dot">3</span><span class="path__name">Ontology-based conceptual model</span><span class="path__what">The same domain in CIDOC CRM 7.1.3, CRMsci 3.2, CRMdig 5.0 and three project properties.</span><span class="path__where">On this page</span></a></li>
+      <li><a href="rdf.html"><span class="path__dot">4</span><span class="path__name">RDF representation</span><span class="path__what">The conceptual model in the final graph of 683 triples, generated from the TEI file.</span><span class="path__where">RDF page</span></a></li>
+    </ol>
+  </div>
+</nav>
+
+<section class="glance" aria-labelledby="h-glance">
+  <p class="kicker">Read this first</p>
+  <h2 id="h-glance">Four modelling decisions</h2>
+  <ul class="glance__grid">
+    <li style="--c:var(--night);--c-ink:var(--azurite)"><span class="glance__head"><span class="glance__n">1</span><span class="glance__k">Events at the centre</span></span><span class="glance__body"><span class="glance__t">A sale is an event, not a line between two people</span><p>A purchase links a seller, a buyer, an object and a time, which a direct relation cannot hold. R6 “sold manuscripts to” becomes a <code>crm:E96_Purchase</code>.</p><a class="glance__go" href="#formalization">From theory to formalization</a></span></li>
+    <li style="--c:var(--gold);--on:var(--night);--c-ink:var(--gold-ink)"><span class="glance__head"><span class="glance__n">2</span><span class="glance__k">Evidence</span></span><span class="glance__body"><span class="glance__t">Every relation says where it comes from</span><p><span class="tag tag--direct">Direct</span> relations are stated in the frozen article, without implying independent historical verification; <span class="tag tag--enriched">Enriched</span> ones (R16–R19) need another source, and each names its sources in the TEI and as <code>dcterms:source</code> in the RDF.</p><a class="glance__go" href="#evidence-types">Evidence types</a></span></li>
+    <li style="--c:var(--diamond)"><span class="glance__head"><span class="glance__n">3</span><span class="glance__k">◇ What the source does not say</span></span><span class="glance__body"><span class="glance__t">R9 and R12 stay in the theory</span><p>The British Library and the Tokyo National Museum hold manuscripts, but the article does not say which ones, so no holding triple is asserted in the RDF. In the diagram they carry the ◇.</p><a class="glance__go" href="#r9-r12">R9 and R12</a></span></li>
+    <li style="--c:var(--enriched-violet);--c-ink:var(--violet-ink)"><span class="glance__head"><span class="glance__n">4</span><span class="glance__k">One documented item · Enriched</span></span><span class="glance__body"><span class="glance__t">The Diamond Sutra of 868 (R17–R19)</span><p>Part of the corpus (<code>P46i</code>: a historical part–whole, not a claim that the corpus is still kept together), bought by Stein (<code>P24</code>: from the IDP’s research, not an item-by-item list, and no judgement on legitimacy), kept by the British Library (<code>P50</code>: custody, not ownership). R19 is one case of R9, not a formalisation of it. In the diagram: the violet dashed arrows.</p><a class="glance__go" href="#decisions">Modelling decisions</a></span></li>
+  </ul>
+  <nav class="page-toc" aria-label="On this page">
+    <span class="page-toc__label">On this page</span>
+    <a href="#theoretical">Theoretical model</a>
+    <a href="#conceptual">Conceptual model</a>
+    <a href="#formalization">From theory to formalization</a>
+    <a href="#decisions">Modelling decisions</a>
+    <a href="#ontologies">Ontologies used</a>
+    <a href="#properties">Project properties</a>
+  </nav>
+</section>
+
+<section class="section" id="theoretical" aria-labelledby="h-theoretical">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">2.1</span><div><span class="sec-head__k">Natural language</span><h2 id="h-theoretical">Theoretical model</h2></div></div>
+  <p>The entities of the article and the relations between them, R1–R19, in natural language and in five narrative layers. No ontology terms are used here; they appear in the conceptual model.</p>
+  <div class="readkey" aria-label="How to read the theoretical model">
+    <span class="readkey__layer" style="--bg:#F4F7FC"><b>I</b>Original context</span><span class="readkey__layer" style="--bg:#FFFBF0"><b>II</b>Discovery</span><span class="readkey__layer" style="--bg:#FDF4F3"><b>III</b>Dispersal</span><span class="readkey__layer" style="--bg:#F0F8F8"><b>IV</b>Collections</span><span class="readkey__layer" style="--bg:#F6F2FB"><b>V</b>Digital reconnection</span>
+    <span class="readkey__sep"></span>
+    <span class="readkey__line"><span class="line-key"></span>Direct evidence</span><span class="readkey__line"><span class="line-key line-key--enriched"></span>Enriched evidence</span><span class="readkey__line"><span class="readkey__dia">◇</span> kept in the theory, no holding triple in the RDF</span>
+  </div>
+  <figure class="figure figure--model" data-zoomable data-model>
+    <div class="figure__panel">
+      <div class="figure__tools"><button type="button" class="figure__fit" data-fit hidden>Fit to width</button><button type="button" class="figure__enlarge" data-enlarge>Enlarge</button></div>
+      <p class="figure__hint" hidden>Shown at reading size. Scroll sideways, use “Fit to width” for an overview, or open the PDF.</p>
+      <div class="figure__scroll">
+        <img src="final_report_files/models/Reconnecting_Dunhuang_Theoretical_Model_FINAL.svg" width="{{size:final_report_files/models/Reconnecting_Dunhuang_Theoretical_Model_FINAL.svg}}"
+             alt="Theoretical model: the Dunhuang manuscripts at the centre, linked by nineteen natural-language relations to places, people, institutions, one documented manuscript and the International Dunhuang Project, arranged in five narrative layers, with the authority records and subjects of each entity.">
+      </div>
+    </div>
+    <figcaption><b>Theoretical model.</b> Solid arrows: Direct evidence; dashed: Enriched; ◇: relation kept in the theoretical model, no holding triple asserted in the RDF.</figcaption>
+    <p class="figure__links"><a href="final_report_files/models/Reconnecting_Dunhuang_Theoretical_Model_FINAL.pdf">PDF, full version with notes</a><a href="final_report_files/models/Reconnecting_Dunhuang_Theoretical_Model_FINAL.svg">SVG (web)</a><a href="final_report_files/models/Reconnecting_Dunhuang_Theoretical_Model_FINAL_full.svg">SVG (full)</a></p>
+  </figure>
+  <h3 id="evidence-types">Evidence types</h3>
+  <p>Each relation carries one of two evidence types, defined in the TEI taxonomy and published in the RDF as <code>skos:definition</code>.</p>
+  {{models:evidence}}
+  <div class="callout" id="r9-r12">
+  <h3>R9 and R12 (◇)</h3>
+  <p>R9 and R12 (<em>held_by</em>: British Library, Tokyo National Museum) are kept as relations of the theoretical model, but no holding triple is asserted for them in the RDF, because the source does not say which manuscripts these institutions hold. The ◇ marks this; the line style still shows only the evidence type.</p>
+  <p>R17–R19 add one documented item that the page does not name: the printed Diamond Sutra of 868 (British Library, Or.8210/P.2), from the International Dunhuang Programme. R19 (the British Library holds it) is one documented case of R9, not a formalisation of it: R9 stays a general relation, still marked ◇. All three are Enriched, and each points to its own sources.</p>
+  <p>Wang Yuanlu and Aurel Stein appear in more than one narrative layer, where they act, so that the arrows stay short. A repeated box keeps the same number and refers to the same entity; it is not an additional entity. The theoretical model contains 16 distinct entities.</p>
+  </div>
+  <details>
+    <summary>Relations R1–R19</summary>
+    {{table:canonical}}
+  </details>
+</section>
+
+<section class="section" id="conceptual" aria-labelledby="h-conceptual">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">2.2</span><div><span class="sec-head__k">Ontologies</span><h2 id="h-conceptual">Conceptual model</h2></div></div>
+  <p>The same domain formalized with CIDOC CRM 7.1.3, CRMsci 3.2, CRMdig 5.0 and three project properties. Two diagrams in <a href="https://essepuntato.it/graffoo/specification/">Graffoo</a> notation, both drawn from the RDF dataset: the core of the model, and the layer that documents it.</p>
+
+  <h3 id="core-graffoo">Core</h3>
+  <figure class="figure figure--model" data-zoomable data-model>
+    <div class="figure__panel">
+      <div class="figure__tools"><button type="button" class="figure__fit" data-fit hidden>Fit to width</button><button type="button" class="figure__enlarge" data-enlarge>Enlarge</button></div>
+      <p class="figure__hint" hidden>Shown at reading size. Scroll sideways, use “Fit to width” for an overview, or open the PDF.</p>
+      <div class="figure__scroll">
+        <img src="final_report_files/models/conceptual_model_core_graffoo.svg" width="{{size:final_report_files/models/conceptual_model_core_graffoo.svg}}"
+             alt="Graffoo diagram of the core conceptual model: event classes (encounter, purchase, move, activity, digitization) linked by CIDOC CRM, CRMsci and CRMdig properties to persons, groups, physical things, places, time-spans and the digital object, with the three project properties and the direct subclass axioms.">
+      </div>
+    </div>
+    <figcaption><b>Conceptual model — core (Graffoo).</b> How existing ontologies are used in this project: an application profile, not a redefinition of CIDOC CRM.</figcaption>
+    <p class="figure__links"><a href="final_report_files/models/conceptual_model_core_graffoo.pdf">PDF, full version with ontology box, prefixes and table</a><a href="final_report_files/models/conceptual_model_core_graffoo.svg">SVG (web)</a><a href="final_report_files/models/conceptual_model_core_graffoo_full.svg">SVG (full)</a></p>
+  </figure>
+  <ul>
+    <li><strong>Dotted arcs</strong> (Graffoo “property facility”): an existing property used between these classes. The arc asserts no domain or range; the declared signature is in the table below.</li>
+    <li><strong>Solid arcs</strong>: the three <code>dm:</code> properties, drawn at the domain and range declared in <a href="final_report_files/ontology/dm-ontology.ttl">dm-ontology.ttl</a>.</li>
+    <li><strong>Subclass arrows</strong>: only direct <code>rdfs:subClassOf</code> axioms between classes on the diagram (E19 ⊑ E18, E21 ⊑ E39, E74 ⊑ E39). Indirect paths are given in the table.</li>
+  </ul>
+  <aside class="model-note"><strong>Why an event?</strong> {{models:e96}}</aside>
+  <h4>Why each reused property fits the classes it links</h4>
+  <p>Declared domain → range in CIDOC CRM 7.1.3, CRMsci 3.2, CRMdig 5.0 and DCMI Terms 2020; ⊑ means “subclass of”.</p>
+  <details>
+    <summary>Show the table of declared domains and ranges</summary>
+    {{models:conformance}}
+  </details>
+
+  <h3 id="subjects-graffoo">Subjects, identifiers and evidence</h3>
+  <figure class="figure figure--model" data-zoomable data-model>
+    <div class="figure__panel">
+      <div class="figure__tools"><button type="button" class="figure__fit" data-fit hidden>Fit to width</button><button type="button" class="figure__enlarge" data-enlarge>Enlarge</button></div>
+      <p class="figure__hint" hidden>Shown at reading size. Scroll sideways, use “Fit to width” for an overview, or open the PDF.</p>
+      <div class="figure__scroll">
+        <img src="final_report_files/models/conceptual_model_subjects_identifiers_evidence_graffoo.svg" width="{{size:final_report_files/models/conceptual_model_subjects_identifiers_evidence_graffoo.svg}}"
+             alt="Graffoo diagram in three bands: identifiers and authority links (crm:E42_Identifier, owl:sameAs, rdfs:seeAlso), subjects as a SKOS concept scheme aligned to Wikidata, and the evidence layer in which rdf:Statement nodes restate conceptual-relation triples and point to the propositions of the theoretical model and to their evidence type; each band with a real example from the data.">
+      </div>
+    </div>
+    <figcaption><b>Conceptual model — subjects, identifiers and evidence (Graffoo).</b> Class level on the left of each band, one real example from the data on the right.</figcaption>
+    <p class="figure__links"><a href="final_report_files/models/conceptual_model_subjects_identifiers_evidence_graffoo.pdf">PDF, full version with notes and prefixes</a><a href="final_report_files/models/conceptual_model_subjects_identifiers_evidence_graffoo.svg">SVG (web)</a><a href="final_report_files/models/conceptual_model_subjects_identifiers_evidence_graffoo_full.svg">SVG (full)</a></p>
+  </figure>
+  <p><strong>A · Identifiers and authority links.</strong> Every authority number is a <code>crm:E42_Identifier</code> with its scheme (<code>crm:E55_Type</code>) and its value (<code>crm:P190_has_symbolic_content</code>). External links are chosen by what they claim: {{models:identity}}</p>
+  <p><strong>B · Subjects.</strong> The six traditions named in the source form a SKOS concept scheme. <code>skos:exactMatch</code> aligns all six with Wikidata items and five with Library of Congress Subject Headings (no heading was found for Nestorian Christianity). It aligns concepts; it does not say that two real-world things are identical, nor that the corpus <em>is</em> Buddhism.</p>
+  <p><strong>C · Evidence.</strong> {{models:statements}} Three kinds of resource are kept apart:</p>
+  <ol>
+    <li><strong>The historical event, as data</strong> — <code>purchase-stein</code> (<code>crm:E96_Purchase</code>); the triple <code>purchase-stein crm:P22_transferred_title_to aurel-stein</code> is a fact of the dataset.</li>
+    <li><strong>The restatement</strong> — <code>statement/cr10</code> (<code>rdf:Statement</code>) restates that one triple so that it can be annotated. It is neither the sale nor the proposition.</li>
+    <li><strong>The proposition</strong> — R6 (<code>crm:E89_Propositional_Object</code>) is a relation of the theoretical model (“sold manuscripts to”). Statements point to it with <code>dcterms:relation</code>; R6 is restated by {{models:r6-count}} statements, R9 and R12 by none.</li>
+  </ol>
+
+  <h3 id="other-views">Other views</h3>
+  <p>Generated from the same RDF in the colours of this website: the core classes used by the modelling cases below, and the instance graph of all individuals.</p>
+  <div class="figure-pair">
+    <figure class="figure" data-zoomable>
+      <div class="figure__panel">
+        <button type="button" class="figure__enlarge" data-enlarge>Enlarge</button>
+        <img src="final_report_files/models/core_conceptual_model.svg"
+             alt="Core conceptual model in the website colours: the event, actor, place, physical and digital classes used by the modelling cases, linked by CIDOC CRM, CRMsci and CRMdig properties shown without prefix.">
+      </div>
+      <figcaption><b>Core classes (website colours).</b> Properties shown without their prefix.</figcaption>
+      <p class="figure__links"><a href="final_report_files/models/core_conceptual_model.svg">SVG</a><a href="final_report_files/models/core_conceptual_model.pdf">PDF</a></p>
+    </figure>
+    <figure class="figure" data-zoomable>
+      <div class="figure__panel">
+        <button type="button" class="figure__enlarge" data-enlarge>Enlarge</button>
+        <img src="final_report_files/models/conceptual_model_instance_graph.svg"
+             alt="Instance graph: the individuals of the dataset, such as Wang Yuanlu, the purchase events and the corpus, linked by CIDOC CRM properties.">
+      </div>
+      <figcaption><b>Instance graph.</b></figcaption>
+      <p class="figure__links"><a href="final_report_files/models/conceptual_model_instance_graph.svg">SVG</a><a href="final_report_files/models/conceptual_model_instance_graph.pdf">PDF</a></p>
+    </figure>
+  </div>
+  {{legend:instance}}
+</section>
+
+<aside class="pull bleed" aria-label="Key idea">
+  <div class="bleed__inner">
+    <span class="pull__mark" aria-hidden="true">“</span>
+    <p class="pull__text">Relations become events.<span>R6 is formalized as a purchase: <a href="#formalization">see it step by step</a>.</span></p>
+  </div>
+</aside>
+
+<section class="section" id="formalization" aria-labelledby="h-formalization">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">2.3</span><div><span class="sec-head__k">One relation, step by step</span><h2 id="h-formalization">From theory to formalization</h2></div></div>
+  <p>Relations become events: R6 is formalized as a purchase.</p>
+  <div class="formalize">
+    <div class="formalize__layer">
+      <p class="formalize__label"><strong>Theoretical model</strong>R6</p>
+      <figure class="figure formalize__theory">
+        <div class="figure__panel">{{svg:assets/diagrams/case_theory_r6.svg}}</div>
+      </figure>
+    </div>
+    <div class="formalize__step" aria-hidden="true"><span></span><span>formalized with CIDOC CRM</span></div>
+    <div class="formalize__layer">
+      <p class="formalize__label"><strong>Conceptual model</strong>E96 Purchase</p>
+      <figure class="figure" data-zoomable>
+        <div class="figure__panel">
+          <button type="button" class="figure__enlarge" data-enlarge>Enlarge</button>
+          {{svg:assets/diagrams/case_purchase.svg}}
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="decisions" aria-labelledby="h-decisions">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">2.4</span><div><span class="sec-head__k">Choices and reasons</span><h2 id="h-decisions">Modelling decisions</h2></div></div>
+  <div class="table-wrap table-wrap--feature">
+    <table>
+      <thead><tr><th>Modelling case</th><th>Choice</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr><td>Manuscript corpus</td><td><code>crm:E18_Physical_Thing</code>; bought or moved groups as <code>crm:E19_Physical_Object</code></td><td>The dispersed corpus is treated as a broad physical thing, not an <code>E78_Curated_Holding</code>, since no single actor curates it; E19 is kept for the identifiable groups of manuscripts.</td></tr>
+        <tr><td>Discovery</td><td><code>crmsci:S19_Encounter_Event</code></td><td>Finding the cave is the first encounter with something that already existed.</td></tr>
+        <tr><td>Purchase</td><td><code>crm:E96_Purchase</code></td><td>A sale links a seller, a buyer, an object and a time, which a direct relation between two people cannot hold.</td></tr>
+        <tr><td>Transfer to Beijing</td><td><code>crm:E9_Move</code> of an E19 subset</td><td><code>P25_moved</code> applies to physical objects, and the source says only the remaining Chinese manuscripts were moved.</td></tr>
+        <tr><td>Digitization</td><td><code>crmdig:D2_Digitization_Process</code></td><td>The digital surrogate is kept separate from the dispersed manuscripts it copies.</td></tr>
+        <tr><td>Diamond Sutra, part of the corpus (R17)</td><td><code>crm:P46i_forms_part_of</code> the corpus</td><td>A historical physical part-whole relation: the IDP records the scroll among the bundles of Cave 17, and the corpus is the physical aggregate sealed there. In CIDOC CRM 7.1.3, P46 “does not specify when and for how long a component element resided in the respective whole”: the triple does not say that the corpus is still kept together, nor when the scroll left it. It is not a classification; what the texts are about is given by <code>dcterms:subject</code>.</td></tr>
+        <tr><td>Diamond Sutra, bought by Stein (R18)</td><td><code>crm:P24_transferred_title_of</code> from the existing purchase by Stein</td><td>Based on the IDP's research on Stein's acquisition of 1907 (the bundles handed over between 21 May and 6 June 1907), not on an item-by-item list of the transaction. It records the transfer as these sources describe it, and makes no judgement on the legitimacy of the transaction.</td></tr>
+        <tr><td>Diamond Sutra, British Library (R19)</td><td><code>crm:P50_has_current_keeper</code></td><td>Custody, not ownership (ownership would be <code>crm:P52_has_current_owner</code>, which is not used).</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="ontologies" aria-labelledby="h-ontologies">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">2.5</span><div><span class="sec-head__k">Vocabularies</span><h2 id="h-ontologies">Ontologies used</h2></div></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th class="nowrap">Prefix</th><th>Vocabulary</th><th>Used in this project for</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap"><code>crm:</code></td><td><a href="http://www.cidoc-crm.org/cidoc-crm/7.1.3/">CIDOC CRM 7.1.3</a></td><td>People, places, institutions, physical things and the events of the story.</td></tr>
+        <tr><td class="nowrap"><code>crmsci:</code></td><td><a href="http://www.cidoc-crm.org/extensions/crmsci/3.2/">CRMsci 3.2</a></td><td>The discovery, as an encounter event.</td></tr>
+        <tr><td class="nowrap"><code>crmdig:</code></td><td><a href="https://cidoc-crm.org/crmdig/ModelVersion/crmdig-v5.0">CRMdig 5.0</a></td><td>The digitization and the digital surrogate.</td></tr>
+        <tr><td class="nowrap"><code>skos:</code></td><td>SKOS</td><td>The religious traditions as a concept scheme matched to Wikidata and LCSH.</td></tr>
+        <tr><td class="nowrap"><code>dcterms:</code></td><td>DCMI Metadata Terms</td><td>Subjects, the publisher of the digital surrogate, and the provenance and sources of statements.</td></tr>
+        <tr><td class="nowrap"><code>owl:</code> <code>rdfs:</code></td><td>OWL, RDFS</td><td>Links to external authorities and the definition of project properties.</td></tr>
+        <tr><td class="nowrap"><code>dm:</code></td><td>Project namespace</td><td>Three properties for relations no existing property expresses.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="properties" aria-labelledby="h-properties">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">2.6</span><div><span class="sec-head__k">Project namespace</span><h2 id="h-properties">Project properties</h2></div></div>
+  <p>Defined in <a href="final_report_files/ontology/dm-ontology.ttl">dm-ontology.ttl</a>.</p>
+  {{table:dm-short}}
+</section>

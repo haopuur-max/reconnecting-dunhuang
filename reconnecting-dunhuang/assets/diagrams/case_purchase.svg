@@ -1,0 +1,75 @@
+<svg role="img" aria-label="The purchase involving Aurel Stein as a CIDOC CRM purchase event"
+ viewBox="0.00 0.00 1046.36 316.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(14.4 302.4)">
+<g id="node1" class="node">
+<path fill="#fbf8f1" stroke="#5c534a" d="M628.06,-288C628.06,-288 556.06,-288 556.06,-288 550.06,-288 544.06,-282 544.06,-276 544.06,-276 544.06,-264 544.06,-264 544.06,-258 550.06,-252 556.06,-252 556.06,-252 628.06,-252 628.06,-252 634.06,-252 640.06,-258 640.06,-264 640.06,-264 640.06,-276 640.06,-276 640.06,-282 634.06,-288 628.06,-288"/>
+<text text-anchor="start" x="557.06" y="-272.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Aurel Stein</text>
+<text text-anchor="start" x="554.06" y="-261.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E21_Person</text>
+</g>
+<g id="node2" class="node">
+<path fill="#f8f0e2" stroke="#8a5a1f" d="M664.06,-230C664.06,-230 520.06,-230 520.06,-230 514.06,-230 508.06,-224 508.06,-218 508.06,-218 508.06,-196 508.06,-196 508.06,-190 514.06,-184 520.06,-184 520.06,-184 664.06,-184 664.06,-184 670.06,-184 676.06,-190 676.06,-196 676.06,-196 676.06,-218 676.06,-218 676.06,-224 670.06,-230 664.06,-230"/>
+<text text-anchor="start" x="518.06" y="-215.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Diamond Sutra, printed</text>
+<text text-anchor="start" x="554.06" y="-202.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">copy of 868</text>
+<text text-anchor="start" x="533.06" y="-192" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E19_Physical_Object</text>
+</g>
+<g id="node3" class="node">
+<path fill="#f2e6d2" stroke="#8a5a1f" stroke-width="2" d="M1005.56,-157C1005.56,-157 858.56,-157 858.56,-157 852.56,-157 846.56,-151 846.56,-145 846.56,-145 846.56,-133 846.56,-133 846.56,-127 852.56,-121 858.56,-121 858.56,-121 1005.56,-121 1005.56,-121 1011.56,-121 1017.56,-127 1017.56,-133 1017.56,-133 1017.56,-145 1017.56,-145 1017.56,-151 1011.56,-157 1005.56,-157"/>
+<text text-anchor="start" x="856.56" y="-141.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Dunhuang Manuscripts</text>
+<text text-anchor="start" x="875.56" y="-130.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E18_Physical_Thing</text>
+</g>
+<g id="node4" class="node">
+<ellipse fill="#e2e9f0" stroke="#1f4e79" cx="127.28" cy="-139" rx="127.06" ry="32.55"/>
+<text text-anchor="start" x="47.28" y="-147.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Purchase involving Aurel</text>
+<text text-anchor="start" x="110.78" y="-134.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Stein</text>
+<text text-anchor="start" x="81.78" y="-124" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E96_Purchase</text>
+</g>
+<g id="edge1" class="edge">
+<path fill="none" stroke="#5c534a" d="M183.28,-168.37C210.18,-181.74 243.41,-196.82 274.56,-207 364.3,-236.32 473.03,-254.34 536.87,-263.23"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="536.77,-265.69 544.04,-264.22 537.44,-260.83 536.77,-265.69"/>
+<text text-anchor="middle" x="378.56" y="-256.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P22_transferred_title_to</text>
+</g>
+<g id="edge3" class="edge">
+<path fill="none" stroke="#a63a24" stroke-width="1.4" stroke-dasharray="5,2" d="M237.95,-155.12C318.09,-166.89 425.46,-182.67 500.69,-193.72"/>
+<polygon fill="#a63a24" stroke="#a63a24" stroke-width="1.4" points="500.58,-196.18 507.87,-194.78 501.3,-191.33 500.58,-196.18"/>
+<text text-anchor="middle" x="378.56" y="-193.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#a63a24">crm:P24_transferred_title_of (Enriched)</text>
+</g>
+<g id="node5" class="node">
+<path fill="#f8f0e2" stroke="#8a5a1f" d="M669.56,-162C669.56,-162 514.56,-162 514.56,-162 508.56,-162 502.56,-156 502.56,-150 502.56,-150 502.56,-128 502.56,-128 502.56,-122 508.56,-116 514.56,-116 514.56,-116 669.56,-116 669.56,-116 675.56,-116 681.56,-122 681.56,-128 681.56,-128 681.56,-150 681.56,-150 681.56,-156 675.56,-162 669.56,-162"/>
+<text text-anchor="start" x="512.56" y="-147.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Manuscripts acquired by</text>
+<text text-anchor="start" x="557.06" y="-134.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Aurel Stein</text>
+<text text-anchor="start" x="533.06" y="-124" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E19_Physical_Object</text>
+</g>
+<g id="edge4" class="edge">
+<path fill="none" stroke="#5c534a" d="M254.74,-139C330.67,-139 425.74,-139 495.41,-139"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="495.5,-141.45 502.5,-139 495.5,-136.55 495.5,-141.45"/>
+<text text-anchor="middle" x="378.56" y="-142.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P24_transferred_title_of</text>
+</g>
+<g id="node6" class="node">
+<polygon fill="#f6f1e7" stroke="#b9ac95" points="657.56,-94 520.56,-94 520.56,-58 663.56,-58 663.56,-88 657.56,-94"/>
+<polyline fill="none" stroke="#b9ac95" points="657.56,-94 657.56,-88 "/>
+<polyline fill="none" stroke="#b9ac95" points="663.56,-88 657.56,-88 "/>
+<text text-anchor="start" x="530.56" y="-78.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">from 1907 onwards</text>
+<text text-anchor="start" x="543.56" y="-67.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E52_Time&#45;Span</text>
+</g>
+<g id="edge5" class="edge">
+<path fill="none" stroke="#5c534a" d="M240.01,-123.79C324.48,-112.29 438.31,-96.79 513.14,-86.61"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="513.65,-89.01 520.26,-85.64 512.99,-84.16 513.65,-89.01"/>
+<text text-anchor="middle" x="378.56" y="-122.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P4_has_time&#45;span</text>
+</g>
+<g id="node7" class="node">
+<path fill="#fbf8f1" stroke="#5c534a" d="M632.56,-36C632.56,-36 551.56,-36 551.56,-36 545.56,-36 539.56,-30 539.56,-24 539.56,-24 539.56,-12 539.56,-12 539.56,-6 545.56,0 551.56,0 551.56,0 632.56,0 632.56,0 638.56,0 644.56,-6 644.56,-12 644.56,-12 644.56,-24 644.56,-24 644.56,-30 638.56,-36 632.56,-36"/>
+<text text-anchor="start" x="549.56" y="-20.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Wang Yuanlu</text>
+<text text-anchor="start" x="554.06" y="-9.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E21_Person</text>
+</g>
+<g id="edge2" class="edge">
+<path fill="none" stroke="#5c534a" d="M185.81,-110.1C212.29,-97.77 244.46,-84.16 274.56,-75 362.38,-48.28 467.94,-32.37 532.24,-24.41"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="532.83,-26.8 539.48,-23.52 532.24,-21.94 532.83,-26.8"/>
+<text text-anchor="middle" x="378.56" y="-78.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P23_transferred_title_from</text>
+</g>
+<g id="edge6" class="edge">
+<path fill="none" stroke="#5c534a" d="M681.86,-139C730.33,-139 790.26,-139 839.2,-139"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="839.34,-141.45 846.34,-139 839.34,-136.55 839.34,-141.45"/>
+<text text-anchor="middle" x="764.06" y="-142.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P46i_forms_part_of</text>
+</g>
+</g>
+</svg>

@@ -1,95 +1,139 @@
-# Reconnecting Dunhuang Final Web Report
+# Reconnecting Dunhuang
 
-## Start Here
+**A dispersed manuscript corpus, reconnected through data.**
 
-Open `output/index.html` after extracting the complete ZIP package. This is the main Web Report for reviewing the project narrative, model diagrams, TEI/XML, Technical HTML, RDF outputs, and QA reports.
+HAOPU YIN · Digital Humanities and Digital Knowledge (DHDK), University of Bologna
+Final LODLAM project for *Information Science and Cultural Heritage*, a.y. 2025–2026
 
-The report is designed to open locally from the extracted folder. All images, diagrams, PDFs, viewers, and downloads are referenced with paths relative to `output/`, so the `output/` folder is self-contained and `output/index.html` can be opened directly by double-clicking it, with no local server required.
+Source: English Wikipedia, *Dunhuang manuscripts*, revision 1347007263, frozen for this project
+(PDF snapshot in `reconnecting-dunhuang/final_report_files/source_snapshot/`).
 
-## Package Structure
+---
 
-- `output/index.html` - main Web Report entry point.
-- `output/view_turtle.html` - browser-readable wrapper for the Turtle serialization.
-- `output/view_rdfxml.html` - browser-readable wrapper for the RDF/XML serialization.
-- `output/final_package_qa_report.txt` - final package QA report.
-- `output/final_package_changelog.txt` - final package changelog.
-- `output/final_report_files/tei_xml/reconnecting_dunhuang.xml` - final encoded TEI/XML used as the common input for both transformation branches (XML to HTML and XML to RDF).
-- `output/final_report_files/xml_to_html/` - XML to HTML stylesheet, script, generated Technical HTML, and HTML QA report.
-- `output/final_report_files/xml_to_rdf/` - XML to RDF script, Turtle, RDF/XML, RDF QA report, and transformation documentation.
-- `output/final_report_files/models/` - final theoretical, conceptual, Graffoo, and authority-control model files.
-- `output/final_report_files/source_snapshot/` - local PDF snapshot of the frozen Wikipedia source.
-- `output/final_report_files/validation/` - TEI validation and project QA reports.
-- `output/assets/Reconnecting_Dunhuang_Showcase_Assets_FINAL/` - images, diagrams, icons, and asset documentation used by the Web Report.
+## 1. Contents of this package
 
-## Frozen Source
-
-The project source text is the frozen English Wikipedia article `Dunhuang manuscripts`, revision `oldid=1347007263`, timestamped `03:43, 4 April 2026`.
-
-The Web Report links both the online frozen revision and a local PDF snapshot. The TEI/XML encodes the frozen source text and the locked project annotations.
-
-## Running XML to HTML
-
-From the extracted package, run:
-
-```bash
-python3 output/final_report_files/xml_to_html/transform_tei_to_html.py
+```
+Reconnecting_Dunhuang_HP_YIN/
+├── README.md                    this guide
+├── QA_REPORT.md                 final quality check of this package
+├── MANIFEST.txt                 every file with its size and hash
+└── reconnecting-dunhuang/       the website (web report) with all project files
+    ├── index.html               home page: the entry point of the report and of the oral presentation
+    ├── domain.html  models.html  tei.html  transformations.html  rdf.html  files.html
+    ├── wiki-view.html           the TEI file rendered by the XSLT stylesheet
+    ├── README.md                technical notes on rebuilding the web report
+    ├── assets/                  styles, scripts, fonts, images, diagrams
+    └── final_report_files/      data, models, schemas, scripts and reports
 ```
 
-The script uses package-relative defaults:
+## 2. How to open
 
-- input TEI/XML: `output/final_report_files/tei_xml/reconnecting_dunhuang.xml`
-- stylesheet: `output/final_report_files/xml_to_html/tei_to_html.xsl`
-- output HTML: `output/final_report_files/xml_to_html/reconnecting_dunhuang.html`
-- QA report: `output/final_report_files/xml_to_html/html_qa_report.txt`
+Everything works offline: all paths are relative and no external resource is loaded. Unzip the package first;
+pages opened from inside the archive preview may not load their images and styles.
 
-Dependency: `lxml`.
+Open `reconnecting-dunhuang/index.html`. The navigation leads to every part of the report: Domain, Models, TEI,
+Transformations, RDF, Wiki View and Files. The website itself is used for the oral presentation; there is no separate
+slide deck.
 
-## Running XML to RDF
+## 3. Where each course deliverable is
 
-From the extracted package, run:
+All paths below are inside `reconnecting-dunhuang/`.
+
+| Course requirement | On the website | Files |
+|---|---|---|
+| Study of the domain: idea and at least 10 entities | `domain.html` | 16 entities in the theoretical model; 28 entity records in the TEI standOff (persons, places, organisations, manuscripts, events) |
+| Theoretical model | `models.html#theoretical` | `final_report_files/models/Reconnecting_Dunhuang_Theoretical_Model_FINAL.svg` (web) / `_full.svg` / `.pdf` (full version with notes) |
+| Conceptual model (Graffoo) and reused ontologies | `models.html#conceptual`, `#ontologies` | two Graffoo diagrams, each as web SVG, full SVG and PDF: `models/conceptual_model_core_graffoo.*` and `models/conceptual_model_subjects_identifiers_evidence_graffoo.*`; also `models/core_conceptual_model.*` and `models/conceptual_model_instance_graph.*` (website colours) |
+| Project ontology terms | `models.html#properties` | `final_report_files/ontology/dm-ontology.ttl` (three properties, used with CIDOC CRM 7.1.3, CRMsci, CRMdig, DCTerms, SKOS) |
+| Authority links and subjects | `rdf.html#linking`; `models.html` | `models/authority_linking_table.md`; TEI `idno` and `equiv`; RDF `owl:sameAs` / `rdfs:seeAlso` / `skos:exactMatch` (Wikidata, VIAF, LC, LCSH, FAST, WorldCat) |
+| TEI/XML document | `tei.html` | `final_report_files/tei_xml/reconnecting_dunhuang.xml` (TEI P5, valid against `schemas/tei_all.rng`) |
+| XML → HTML transformation and output | `transformations.html#x1`, `wiki-view.html` | `final_report_files/xml_to_html/tei_to_html.xsl`, `transform_tei_to_html.py`, output `reconnecting_dunhuang.html` |
+| XML/TEI → RDF transformation (Python) and dataset | `transformations.html#p1`, `rdf.html` | `final_report_files/xml_to_rdf/transform_tei_to_rdf.py`; output `reconnecting_dunhuang.ttl` and `reconnecting_dunhuang.rdf` (683 triples) |
+| Report with all files | `files.html` | every deliverable listed with its size |
+
+## 4. Running the transformations
+
+**One command** (from inside `reconnecting-dunhuang/`): it runs every step below in order, writes all QA reports
+(the TEI validation report included) and stops at the first step that fails.
 
 ```bash
-python3 output/final_report_files/xml_to_rdf/transform_tei_to_rdf.py
+python3 final_report_files/run_all.py
 ```
 
-The script uses package-relative defaults:
+The same steps one by one, from inside `reconnecting-dunhuang/`, in this order:
 
-- input TEI/XML: `output/final_report_files/tei_xml/reconnecting_dunhuang.xml`
-- Turtle output: `output/final_report_files/xml_to_rdf/reconnecting_dunhuang.ttl`
-- RDF/XML output: `output/final_report_files/xml_to_rdf/reconnecting_dunhuang.rdf`
-- RDF QA report: `output/final_report_files/xml_to_rdf/rdf_qa_report.txt`
-- Turtle viewer: `output/view_turtle.html`
-- RDF/XML viewer: `output/view_rdfxml.html`
+```bash
+# 1. validate the TEI file
+xmllint --noout --relaxng final_report_files/schemas/tei_all.rng final_report_files/tei_xml/reconnecting_dunhuang.xml
 
-Dependencies: `lxml` and `rdflib`.
+# 2. TEI -> RDF (Turtle and RDF/XML) with its checks V1-V7
+python3 final_report_files/xml_to_rdf/transform_tei_to_rdf.py
 
-## Automatic Viewer Regeneration
+# 3. TEI -> HTML with the XSLT stylesheet, and the HTML checks
+python3 final_report_files/xml_to_html/transform_tei_to_html.py
 
-`transform_tei_to_rdf.py` regenerates `output/view_turtle.html` and `output/view_rdfxml.html` automatically every time it runs, immediately after writing the `.ttl` and `.rdf` files. Each viewer is only a browser-safe wrapper: its content is the exact text of the corresponding raw file with HTML escaping applied for safe display, with no RDF content reinterpreted, reordered, or altered. This guarantees the viewers can never go stale relative to the raw files, even though RDF/XML serialization order is not guaranteed to be stable across runs.
+# 4. model diagrams from the RDF dataset (instance graph, core classes, case diagrams), then the theoretical
+#    model and the two Graffoo diagrams, web and full versions, with their PDFs
+python3 final_report_files/models/generate_model_diagrams.py
+python3 final_report_files/models/graffoo/build_model_diagrams.py
 
-## RDF Viewers and Downloads
+# 5. website pages, then the full-site check
+python3 final_report_files/site_build/build_site_snippets.py
+python3 final_report_files/site_build/check_site.py
+```
 
-Use `output/view_turtle.html` and `output/view_rdfxml.html` for browser-readable inspection. These viewer files wrap the exact Turtle and RDF/XML source text so it can be read conveniently in a browser.
+Requirements, and how to install them (macOS with Homebrew shown; on Linux use `apt install graphviz libxml2-utils`):
 
-Use the download links for the original machine-readable files:
+```bash
+pip install lxml "rdflib>=7" pillow playwright
+python3 -m playwright install chromium     # the browser that renders the diagram PDFs (step 4b)
+brew install graphviz libxml2              # Graphviz `dot` (step 4a); xmllint is optional, see below
+```
 
-- `output/final_report_files/xml_to_rdf/reconnecting_dunhuang.ttl`
-- `output/final_report_files/xml_to_rdf/reconnecting_dunhuang.rdf`
+- `run_all.py` first checks every tool and, if one is missing, stops before building anything and names the command to
+  install it.
+- **TEI validation**: with `xmllint` if it is installed; otherwise with `lxml`, which runs the same libxml2 RELAX NG
+  validator on the same schema (`schemas/tei_all.rng`). Both give the same result: checked on the TEI file and on three
+  deliberately invalid copies (QA_REPORT section 8). The report names the validator used.
+- **Chromium**: Playwright's own browser, or an installed Chromium/Chrome given in the environment variable
+  `RD_CHROMIUM` (path to the executable). Rendering is offline (local files, fonts embedded in the SVGs); any web
+  request is blocked and reported as an error.
+- `--skip-diagrams` leaves steps 4a and 4b out (no Graphviz, Pillow or Chromium needed); the summary then marks them
+  NOT RUN.
 
-## Expected Counts
+Re-running gives the same data. Some outputs can differ byte by byte without any change of content: the
+RDF/XML serialiser may order statements differently (the graph stays isomorphic, and `rdf.html`, which prints
+that file, follows its order), the PDFs carry their creation time, and Graphviz spaces the model diagrams slightly
+differently when the Source Sans 3 font is not installed. Report files carry the date of the run.
 
-- Canonical relations: 16 / 16.
-- Conceptual edges: 30 / 30.
-- Events: 7.
-- Time-spans: 2.
-- Evidence status: R1-R15 Direct; R16 Enriched.
-- RDF triples: 459 in Turtle and 459 in RDF/XML.
-- Authority identifiers: 41.
-- Identifier schemes: 7.
-- RDF validation: PASS.
+## 5. How the content is kept honest
 
-R16 is not Direct evidence from the frozen Wikipedia revision. It is an Enriched project interpretation supported by an additional authoritative source: International Dunhuang Programme, "About - International Dunhuang Programme", The British Library, https://idp.bl.uk/about/.
+- The RDF is generated from the TEI file only; no output file is edited by hand.
+- Every relation has an evidence type. Direct relations come from the frozen Wikipedia revision. Enriched relations
+  (R16–R19) point to their own sources in the TEI (`relation/@source`, `listBibl` "enrichment-sources"), and the
+  RDF records each of them as `dcterms:source` on the `rdf:Statement`; check V7 enforces this.
+- Code on the website is cut from the final files and shows their real line numbers; `check_site.py` compares every
+  excerpt with its file.
+- The three main model diagrams are drawn from the TEI file and the RDF dataset by `models/graffoo/`; each build
+  stops if a drawn arc, its direction, an example fact or a count differs from the data. On the Models page the
+  diagrams are shown at reading size (wider than the text column on desktop; on narrow screens the panel scrolls
+  sideways, with "Fit to width" and "Enlarge" views); the PDFs carry the complete notes, legend, prefixes and tables.
 
-## Known Modelling Limitation
+## 6. Status of the URIs and of the online version
 
-The RDF technical documentation records one retained modelling limitation: the locked aggregate model uses `crm:E78_Curated_Holding` for the Dunhuang Manuscripts while `crm:P25_moved` has a narrower physical-object range expectation. This is documented intentionally and not changed in this package; the locked 30-edge model is preserved.
+The RDF dataset names its resources `https://haopuur-max.github.io/reconnecting-dunhuang/resource/{id}` and the
+project properties `.../ontology/{name}`. These are stable identifiers in a namespace the project controls, but they
+are **not yet dereferenceable**: this version of the website has not been published at that address (the address
+currently serves an earlier version), and on a static host each resource would also need its own page. Online
+resolution has not been verified; all link checks in `QA_REPORT.md` are local.
+
+## 7. Credits
+
+- Photographs and the manuscript image: public domain according to their Wikimedia Commons file pages, checked on
+  29 October 2026 (the 1907 Cave 16 photograph: public domain in the United States); the home-page fragments are cut
+  from Pelliot chinois 2778 (Bibliothèque nationale de France). Details and open points:
+  `reconnecting-dunhuang/assets/img/IMAGE_CREDITS.md`.
+- Sources of the Enriched relations: International Dunhuang Programme (idp.bl.uk), listed in the TEI `listBibl`
+  "enrichment-sources".
+- Fonts: Source Serif 4, Source Sans 3, Source Code Pro (SIL Open Font License 1.1, in `assets/fonts/`).
+  Syntax highlighting: Prism (MIT, `assets/js/PRISM-LICENSE.txt`).

@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Models · Reconnecting Dunhuang</title>
+<meta name="description" content="How the Reconnecting Dunhuang project moves from a natural-language theoretical model to a conceptual model built on CIDOC CRM, CRMsci and CRMdig.">
+<meta name="author" content="HAOPU YIN">
+<link rel="icon" href="assets/ornaments/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/prism-editorial.css">
+<link rel="stylesheet" href="assets/css/print.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="wordmark" href="index.html">Reconnecting Dunhuang</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="domain.html">Domain</a></li>
+        <li><a href="models.html" aria-current="page">Models</a></li>
+        <li><a href="tei.html">TEI</a></li>
+        <li><a href="transformations.html">Transformations</a></li>
+        <li><a href="rdf.html">RDF</a></li>
+        <li class="nav-secondary"><a href="files.html">Files</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="page">
+<header class="page-head opener bleed grain">
+  <div class="bleed__inner">
+    <div>
+      <p class="kicker">Chapter 02 · Models</p>
+      <h1>Models</h1>
+      <p class="slab"><span class="slab__label">The question of this page</span><span class="slab__q">How does a story told in prose become a formal model?</span></p>
+      <p class="lead">We described the domain in natural language, then formalized it with CIDOC CRM and its extensions.</p>
+    </div>
+    <div class="opener__side" aria-hidden="true"><span class="numeral">02</span></div>
+  </div>
+</header>
+<nav class="path bleed" aria-label="From the article to the data">
+  <div class="bleed__inner">
+    <ol>
+      <li><a href="domain.html#story"><span class="path__dot">1</span><span class="path__name">Historical relationships</span><span class="path__what">What the article says: who found, sold, moved and holds the manuscripts.</span><span class="path__where">Domain page</span></a></li>
+      <li class="is-here"><a href="#theoretical"><span class="path__dot">2</span><span class="path__name">Theoretical model</span><span class="path__what">16 entities and 19 relations, R1–R19, in natural language and five narrative layers.</span><span class="path__where">On this page</span></a></li>
+      <li class="is-here"><a href="#conceptual"><span class="path__dot">3</span><span class="path__name">Ontology-based conceptual model</span><span class="path__what">The same domain in CIDOC CRM 7.1.3, CRMsci 3.2, CRMdig 5.0 and three project properties.</span><span class="path__where">On this page</span></a></li>
+      <li><a href="rdf.html"><span class="path__dot">4</span><span class="path__name">RDF representation</span><span class="path__what">The conceptual model in the final graph of 683 triples, generated from the TEI file.</span><span class="path__where">RDF page</span></a></li>
+    </ol>
+  </div>
+</nav>
+
+<section class="glance" aria-labelledby="h-glance">
+  <p class="kicker">Read this first</p>
+  <h2 id="h-glance">Four modelling decisions</h2>
+  <ul class="glance__grid">
+    <li style="--c:var(--night);--c-ink:var(--azurite)"><span class="glance__head"><span class="glance__n">1</span><span class="glance__k">Events at the centre</span></span><span class="glance__body"><span class="glance__t">A sale is an event, not a line between two people</span><p>A purchase links a seller, a buyer, an object and a time, which a direct relation cannot hold. R6 “sold manuscripts to” becomes a <code>crm:E96_Purchase</code>.</p><a class="glance__go" href="#formalization">From theory to formalization</a></span></li>
+    <li style="--c:var(--gold);--on:var(--night);--c-ink:var(--gold-ink)"><span class="glance__head"><span class="glance__n">2</span><span class="glance__k">Evidence</span></span><span class="glance__body"><span class="glance__t">Every relation says where it comes from</span><p><span class="tag tag--direct">Direct</span> relations are stated in the frozen article, without implying independent historical verification; <span class="tag tag--enriched">Enriched</span> ones (R16–R19) need another source, and each names its sources in the TEI and as <code>dcterms:source</code> in the RDF.</p><a class="glance__go" href="#evidence-types">Evidence types</a></span></li>
+    <li style="--c:var(--diamond)"><span class="glance__head"><span class="glance__n">3</span><span class="glance__k">◇ What the source does not say</span></span><span class="glance__body"><span class="glance__t">R9 and R12 stay in the theory</span><p>The British Library and the Tokyo National Museum hold manuscripts, but the article does not say which ones, so no holding triple is asserted in the RDF. In the diagram they carry the ◇.</p><a class="glance__go" href="#r9-r12">R9 and R12</a></span></li>
+    <li style="--c:var(--enriched-violet);--c-ink:var(--violet-ink)"><span class="glance__head"><span class="glance__n">4</span><span class="glance__k">One documented item · Enriched</span></span><span class="glance__body"><span class="glance__t">The Diamond Sutra of 868 (R17–R19)</span><p>Part of the corpus (<code>P46i</code>: a historical part–whole, not a claim that the corpus is still kept together), bought by Stein (<code>P24</code>: from the IDP’s research, not an item-by-item list, and no judgement on legitimacy), kept by the British Library (<code>P50</code>: custody, not ownership). R19 is one case of R9, not a formalisation of it. In the diagram: the violet dashed arrows.</p><a class="glance__go" href="#decisions">Modelling decisions</a></span></li>
+  </ul>
+  <nav class="page-toc" aria-label="On this page">
+    <span class="page-toc__label">On this page</span>
+    <a href="#theoretical">Theoretical model</a>
+    <a href="#conceptual">Conceptual model</a>
+    <a href="#formalization">From theory to formalization</a>
+    <a href="#decisions">Modelling decisions</a>
+    <a href="#ontologies">Ontologies used</a>
+    <a href="#properties">Project properties</a>
+  </nav>
+</section>
+
+<section class="section" id="theoretical" aria-labelledby="h-theoretical">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">2.1</span><div><span class="sec-head__k">Natural language</span><h2 id="h-theoretical">Theoretical model</h2></div></div>
+  <p>The entities of the article and the relations between them, R1–R19, in natural language and in five narrative layers. No ontology terms are used here; they appear in the conceptual model.</p>
+  <div class="readkey" aria-label="How to read the theoretical model">
+    <span class="readkey__layer" style="--bg:#F4F7FC"><b>I</b>Original context</span><span class="readkey__layer" style="--bg:#FFFBF0"><b>II</b>Discovery</span><span class="readkey__layer" style="--bg:#FDF4F3"><b>III</b>Dispersal</span><span class="readkey__layer" style="--bg:#F0F8F8"><b>IV</b>Collections</span><span class="readkey__layer" style="--bg:#F6F2FB"><b>V</b>Digital reconnection</span>
+    <span class="readkey__sep"></span>
+    <span class="readkey__line"><span class="line-key"></span>Direct evidence</span><span class="readkey__line"><span class="line-key line-key--enriched"></span>Enriched evidence</span><span class="readkey__line"><span class="readkey__dia">◇</span> kept in the theory, no holding triple in the RDF</span>
+  </div>
+  <figure class="figure figure--model" data-zoomable data-model>
+    <div class="figure__panel">
+      <div class="figure__tools"><button type="button" class="figure__fit" data-fit hidden>Fit to width</button><button type="button" class="figure__enlarge" data-enlarge>Enlarge</button></div>
+      <p class="figure__hint" hidden>Shown at reading size. Scroll sideways, use “Fit to width” for an overview, or open the PDF.</p>
+      <div class="figure__scroll">
+        <img src="final_report_files/models/Reconnecting_Dunhuang_Theoretical_Model_FINAL.svg" width="1720" height="3447"
+             alt="Theoretical model: the Dunhuang manuscripts at the centre, linked by nineteen natural-language relations to places, people, institutions, one documented manuscript and the International Dunhuang Project, arranged in five narrative layers, with the authority records and subjects of each entity.">
+      </div>
+    </div>
+    <figcaption><b>Theoretical model.</b> Solid arrows: Direct evidence; dashed: Enriched; ◇: relation kept in the theoretical model, no holding triple asserted in the RDF.</figcaption>
+    <p class="figure__links"><a href="final_report_files/models/Reconnecting_Dunhuang_Theoretical_Model_FINAL.pdf">PDF, full version with notes</a><a href="final_report_files/models/Reconnecting_Dunhuang_Theoretical_Model_FINAL.svg">SVG (web)</a><a href="final_report_files/models/Reconnecting_Dunhuang_Theoretical_Model_FINAL_full.svg">SVG (full)</a></p>
+  </figure>
+  <h3 id="evidence-types">Evidence types</h3>
+  <p>Each relation carries one of two evidence types, defined in the TEI taxonomy and published in the RDF as <code>skos:definition</code>.</p>
+  <dl class="defs">
+  <div><dt>Direct</dt><dd>A relation extracted or modelled directly from the frozen Wikipedia revision, without implying independent historical verification. <span class="defs__n">34 restated triples</span></dd></div>
+  <div><dt>Enriched</dt><dd>Enriched relation supported by an additional authoritative source rather than by the frozen Wikipedia revision. In this project: R16 is the project&#x27;s interpretation of the International Dunhuang Project&#x27;s (now International Dunhuang Programme) institutional description; R17-R19 add one documented item, the printed Diamond Sutra of 868 (British Library, Or.8210/P.2), from the IDP catalogue and research articles. Each Enriched relation points to its own sources (relation/@source, listBibl enrichment-sources) and is kept distinct from Direct evidence drawn from the frozen Wikipedia revision. <span class="defs__n">4 restated triples (R16–R19)</span></dd></div>
+</dl>
+  <div class="callout" id="r9-r12">
+  <h3>R9 and R12 (◇)</h3>
+  <p>R9 and R12 (<em>held_by</em>: British Library, Tokyo National Museum) are kept as relations of the theoretical model, but no holding triple is asserted for them in the RDF, because the source does not say which manuscripts these institutions hold. The ◇ marks this; the line style still shows only the evidence type.</p>
+  <p>R17–R19 add one documented item that the page does not name: the printed Diamond Sutra of 868 (British Library, Or.8210/P.2), from the International Dunhuang Programme. R19 (the British Library holds it) is one documented case of R9, not a formalisation of it: R9 stays a general relation, still marked ◇. All three are Enriched, and each points to its own sources.</p>
+  <p>Wang Yuanlu and Aurel Stein appear in more than one narrative layer, where they act, so that the arrows stay short. A repeated box keeps the same number and refers to the same entity; it is not an additional entity. The theoretical model contains 16 distinct entities.</p>
+  </div>
+  <details>
+    <summary>Relations R1–R19</summary>
+    <div class="table-wrap"><table><thead><tr><th>ID</th><th>Subject</th><th>Relation</th><th>Object</th><th>Evidence</th></tr></thead><tbody>
+<tr><td data-label="ID" class="nowrap">R1</td><td data-label="Subject">Dunhuang</td><td data-label="Relation"><em>part_of_network</em></td><td data-label="Object">Silk Road</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R2</td><td data-label="Subject">Mogao Caves</td><td data-label="Relation"><em>located_near</em></td><td data-label="Object">Dunhuang</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R3</td><td data-label="Subject">Library Cave (Cave 17)</td><td data-label="Relation"><em>located_within</em></td><td data-label="Object">Mogao Caves</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R4</td><td data-label="Subject">Dunhuang Manuscripts</td><td data-label="Relation"><em>sealed_in</em></td><td data-label="Object">Library Cave (Cave 17)</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R5</td><td data-label="Subject">Wang Yuanlu</td><td data-label="Relation"><em>discovered</em></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R6</td><td data-label="Subject">Wang Yuanlu</td><td data-label="Relation"><em>sold_manuscripts_to</em></td><td data-label="Object">Aurel Stein</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R7</td><td data-label="Subject">Wang Yuanlu</td><td data-label="Relation"><em>sold_manuscripts_to</em></td><td data-label="Object">Paul Pelliot</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R8</td><td data-label="Subject">Wang Yuanlu</td><td data-label="Relation"><em>sold_manuscripts_to</em></td><td data-label="Object">Ōtani Kōzui</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R9</td><td data-label="Subject">Dunhuang Manuscripts</td><td data-label="Relation"><em>held_by</em></td><td data-label="Object">British Library</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R10</td><td data-label="Subject">Dunhuang Manuscripts</td><td data-label="Relation"><em>held_by</em></td><td data-label="Object">Bibliothèque nationale de France</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R11</td><td data-label="Subject">Dunhuang Manuscripts</td><td data-label="Relation"><em>held_by</em></td><td data-label="Object">National Library of China</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R12</td><td data-label="Subject">Dunhuang Manuscripts</td><td data-label="Relation"><em>held_by</em></td><td data-label="Object">Tokyo National Museum</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R13</td><td data-label="Subject">Luo Zhenyu</td><td data-label="Relation"><em>facilitated_transfer_of</em></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R14</td><td data-label="Subject">International Dunhuang Project</td><td data-label="Relation"><em>digitizes</em></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R15</td><td data-label="Subject">International Dunhuang Project</td><td data-label="Relation"><em>provides_digital_access_to</em></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="Evidence"><span class="tag tag--direct">Direct</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R16</td><td data-label="Subject">International Dunhuang Project</td><td data-label="Relation"><em>virtually_brings_together</em></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="Evidence"><span class="tag tag--enriched">Enriched</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R17</td><td data-label="Subject">Diamond Sutra, printed copy of 868</td><td data-label="Relation"><em>part_of</em></td><td data-label="Object">Dunhuang Manuscripts</td><td data-label="Evidence"><span class="tag tag--enriched">Enriched</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R18</td><td data-label="Subject">Diamond Sutra, printed copy of 868</td><td data-label="Relation"><em>acquired_by</em></td><td data-label="Object">Aurel Stein</td><td data-label="Evidence"><span class="tag tag--enriched">Enriched</span></td></tr>
+<tr><td data-label="ID" class="nowrap">R19</td><td data-label="Subject">Diamond Sutra, printed copy of 868</td><td data-label="Relation"><em>held_by</em></td><td data-label="Object">British Library</td><td data-label="Evidence"><span class="tag tag--enriched">Enriched</span></td></tr>
+</tbody></table></div>
+  </details>
+</section>
+
+<section class="section" id="conceptual" aria-labelledby="h-conceptual">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">2.2</span><div><span class="sec-head__k">Ontologies</span><h2 id="h-conceptual">Conceptual model</h2></div></div>
+  <p>The same domain formalized with CIDOC CRM 7.1.3, CRMsci 3.2, CRMdig 5.0 and three project properties. Two diagrams in <a href="https://essepuntato.it/graffoo/specification/">Graffoo</a> notation, both drawn from the RDF dataset: the core of the model, and the layer that documents it.</p>
+
+  <h3 id="core-graffoo">Core</h3>
+  <figure class="figure figure--model" data-zoomable data-model>
+    <div class="figure__panel">
+      <div class="figure__tools"><button type="button" class="figure__fit" data-fit hidden>Fit to width</button><button type="button" class="figure__enlarge" data-enlarge>Enlarge</button></div>
+      <p class="figure__hint" hidden>Shown at reading size. Scroll sideways, use “Fit to width” for an overview, or open the PDF.</p>
+      <div class="figure__scroll">
+        <img src="final_report_files/models/conceptual_model_core_graffoo.svg" width="1900" height="1378"
+             alt="Graffoo diagram of the core conceptual model: event classes (encounter, purchase, move, activity, digitization) linked by CIDOC CRM, CRMsci and CRMdig properties to persons, groups, physical things, places, time-spans and the digital object, with the three project properties and the direct subclass axioms.">
+      </div>
+    </div>
+    <figcaption><b>Conceptual model — core (Graffoo).</b> How existing ontologies are used in this project: an application profile, not a redefinition of CIDOC CRM.</figcaption>
+    <p class="figure__links"><a href="final_report_files/models/conceptual_model_core_graffoo.pdf">PDF, full version with ontology box, prefixes and table</a><a href="final_report_files/models/conceptual_model_core_graffoo.svg">SVG (web)</a><a href="final_report_files/models/conceptual_model_core_graffoo_full.svg">SVG (full)</a></p>
+  </figure>
+  <ul>
+    <li><strong>Dotted arcs</strong> (Graffoo “property facility”): an existing property used between these classes. The arc asserts no domain or range; the declared signature is in the table below.</li>
+    <li><strong>Solid arcs</strong>: the three <code>dm:</code> properties, drawn at the domain and range declared in <a href="final_report_files/ontology/dm-ontology.ttl">dm-ontology.ttl</a>.</li>
+    <li><strong>Subclass arrows</strong>: only direct <code>rdfs:subClassOf</code> axioms between classes on the diagram (E19 ⊑ E18, E21 ⊑ E39, E74 ⊑ E39). Indirect paths are given in the table.</li>
+  </ul>
+  <aside class="model-note"><strong>Why an event?</strong> A sale is not a link between two people: crm:E96_Purchase is an event that holds the seller (P23), the buyer (P22), the part of the corpus sold (P24) and, where the source gives it, the date (P4). It formalises R6–R8.</aside>
+  <h4>Why each reused property fits the classes it links</h4>
+  <p>Declared domain → range in CIDOC CRM 7.1.3, CRMsci 3.2, CRMdig 5.0 and DCMI Terms 2020; ⊑ means “subclass of”.</p>
+  <details>
+    <summary>Show the table of declared domains and ranges</summary>
+    <div class="table-wrap">
+<table class="table--compact">
+<thead><tr><th>Property</th><th>Declared</th><th>Used here</th><th>Valid because</th></tr></thead>
+<tbody>
+<tr><td><code>crm:P4_has_time-span</code></td><td>E2 → E52</td><td>E96, E9, E7, S19</td><td>E96 ⊑ E8 ⊑ E7;  E9 ⊑ E7;  E7 ⊑ E5 ⊑ E4 ⊑ E2<br>S19 ⊑ S27 ⊑ I1 ⊑ E7</td></tr>
+<tr><td><code>crm:P7_took_place_at</code></td><td>E4 → E53</td><td>E7 → E53</td><td>E7 ⊑ E5 ⊑ E4</td></tr>
+<tr><td><code>crm:P12_occurred_in_the_presence_of</code></td><td>E5 → E77</td><td>E7 → E18</td><td>E7 ⊑ E5;  E18 ⊑ E72 ⊑ E70 ⊑ E77</td></tr>
+<tr><td><code>crm:P14_carried_out_by</code></td><td>E7 → E39</td><td>S19 → E21, D2 → E74</td><td>S19 ⊑ S27 ⊑ I1 ⊑ E7;  D2 ⊑ D11 ⊑ D7 ⊑ E11 ⊑ E7<br>E21 ⊑ E39;  E74 ⊑ E39</td></tr>
+<tr><td><code>crm:P15_was_influenced_by</code></td><td>E7 → E1</td><td>E9 → E21</td><td>E9 ⊑ E7;  E21 ⊑ … ⊑ E1</td></tr>
+<tr><td><code>crm:P22_transferred_title_to</code></td><td>E8 → E39</td><td>E96 → E21</td><td>E96 ⊑ E8;  E21 ⊑ E39</td></tr>
+<tr><td><code>crm:P23_transferred_title_from</code></td><td>E8 → E39</td><td>E96 → E21</td><td>E96 ⊑ E8;  E21 ⊑ E39</td></tr>
+<tr><td><code>crm:P24_transferred_title_of</code></td><td>E8 → E18</td><td>E96 → E19</td><td>E96 ⊑ E8;  E19 ⊑ E18</td></tr>
+<tr><td><code>crm:P25_moved</code></td><td>E9 → E19</td><td>E9 → E19</td><td>direct</td></tr>
+<tr><td><code>crm:P26_moved_to</code></td><td>E9 → E53</td><td>E9 → E53</td><td>direct</td></tr>
+<tr><td><code>crm:P46i_forms_part_of</code></td><td>E18 → E18</td><td>E19 → E18</td><td>E19 ⊑ E18</td></tr>
+<tr><td><code>crm:P50_has_current_keeper</code></td><td>E18 → E39</td><td>E19 → E74</td><td>E19 ⊑ E18;  E74 ⊑ E39</td></tr>
+<tr><td><code>crm:P89_falls_within</code></td><td>E53 → E53</td><td>E53 → E53</td><td>direct</td></tr>
+<tr><td><code>crm:P3_has_note</code></td><td>E1 → E62</td><td>E19 → xsd:string</td><td>E19 ⊑ … ⊑ E1; E62 String as literal</td></tr>
+<tr><td><code>crm:P82a / P82b</code></td><td>E52 → E61</td><td>E52 → xsd:dateTime</td><td>direct; E61 Time Primitive as literal</td></tr>
+<tr><td><code>crmsci:O19_encountered_object</code></td><td>S19 → E18</td><td>S19 → E18</td><td>direct</td></tr>
+<tr><td><code>crmdig:L1_digitized</code></td><td>D2 → E18</td><td>D2 → E18</td><td>direct</td></tr>
+<tr><td><code>crmdig:L11_had_output</code></td><td>D7 → D1</td><td>D2 → D1</td><td>D2 ⊑ D11 ⊑ D7</td></tr>
+<tr><td><code>dcterms:publisher</code></td><td>none</td><td>D1 → E74</td><td>no domain or range (range includes Agent)</td></tr>
+</tbody></table>
+</div>
+  </details>
+
+  <h3 id="subjects-graffoo">Subjects, identifiers and evidence</h3>
+  <figure class="figure figure--model" data-zoomable data-model>
+    <div class="figure__panel">
+      <div class="figure__tools"><button type="button" class="figure__fit" data-fit hidden>Fit to width</button><button type="button" class="figure__enlarge" data-enlarge>Enlarge</button></div>
+      <p class="figure__hint" hidden>Shown at reading size. Scroll sideways, use “Fit to width” for an overview, or open the PDF.</p>
+      <div class="figure__scroll">
+        <img src="final_report_files/models/conceptual_model_subjects_identifiers_evidence_graffoo.svg" width="1900" height="2813"
+             alt="Graffoo diagram in three bands: identifiers and authority links (crm:E42_Identifier, owl:sameAs, rdfs:seeAlso), subjects as a SKOS concept scheme aligned to Wikidata, and the evidence layer in which rdf:Statement nodes restate conceptual-relation triples and point to the propositions of the theoretical model and to their evidence type; each band with a real example from the data.">
+      </div>
+    </div>
+    <figcaption><b>Conceptual model — subjects, identifiers and evidence (Graffoo).</b> Class level on the left of each band, one real example from the data on the right.</figcaption>
+    <p class="figure__links"><a href="final_report_files/models/conceptual_model_subjects_identifiers_evidence_graffoo.pdf">PDF, full version with notes and prefixes</a><a href="final_report_files/models/conceptual_model_subjects_identifiers_evidence_graffoo.svg">SVG (web)</a><a href="final_report_files/models/conceptual_model_subjects_identifiers_evidence_graffoo_full.svg">SVG (full)</a></p>
+  </figure>
+  <p><strong>A · Identifiers and authority links.</strong> Every authority number is a <code>crm:E42_Identifier</code> with its scheme (<code>crm:E55_Type</code>) and its value (<code>crm:P190_has_symbolic_content</code>). External links are chosen by what they claim: <code>owl:sameAs</code> (10 links) only where the external record is the same individual (persons and groups); <code>rdfs:seeAlso</code> (30 links) for a description elsewhere, with no identity claim (the corpus and the places link to Wikidata this way).</p>
+  <p><strong>B · Subjects.</strong> The six traditions named in the source form a SKOS concept scheme. <code>skos:exactMatch</code> aligns all six with Wikidata items and five with Library of Congress Subject Headings (no heading was found for Nestorian Christianity). It aligns concepts; it does not say that two real-world things are identical, nor that the corpus <em>is</em> Buddhism.</p>
+  <p><strong>C · Evidence.</strong> Only the 38 conceptual-relation triples (the formalisations of R1–R19) are restated as <code>rdf:Statement</code>, not all 683 triples of the dataset. Three kinds of resource are kept apart:</p>
+  <ol>
+    <li><strong>The historical event, as data</strong> — <code>purchase-stein</code> (<code>crm:E96_Purchase</code>); the triple <code>purchase-stein crm:P22_transferred_title_to aurel-stein</code> is a fact of the dataset.</li>
+    <li><strong>The restatement</strong> — <code>statement/cr10</code> (<code>rdf:Statement</code>) restates that one triple so that it can be annotated. It is neither the sale nor the proposition.</li>
+    <li><strong>The proposition</strong> — R6 (<code>crm:E89_Propositional_Object</code>) is a relation of the theoretical model (“sold manuscripts to”). Statements point to it with <code>dcterms:relation</code>; R6 is restated by 5 statements, R9 and R12 by none.</li>
+  </ol>
+
+  <h3 id="other-views">Other views</h3>
+  <p>Generated from the same RDF in the colours of this website: the core classes used by the modelling cases below, and the instance graph of all individuals.</p>
+  <div class="figure-pair">
+    <figure class="figure" data-zoomable>
+      <div class="figure__panel">
+        <button type="button" class="figure__enlarge" data-enlarge>Enlarge</button>
+        <img src="final_report_files/models/core_conceptual_model.svg"
+             alt="Core conceptual model in the website colours: the event, actor, place, physical and digital classes used by the modelling cases, linked by CIDOC CRM, CRMsci and CRMdig properties shown without prefix.">
+      </div>
+      <figcaption><b>Core classes (website colours).</b> Properties shown without their prefix.</figcaption>
+      <p class="figure__links"><a href="final_report_files/models/core_conceptual_model.svg">SVG</a><a href="final_report_files/models/core_conceptual_model.pdf">PDF</a></p>
+    </figure>
+    <figure class="figure" data-zoomable>
+      <div class="figure__panel">
+        <button type="button" class="figure__enlarge" data-enlarge>Enlarge</button>
+        <img src="final_report_files/models/conceptual_model_instance_graph.svg"
+             alt="Instance graph: the individuals of the dataset, such as Wang Yuanlu, the purchase events and the corpus, linked by CIDOC CRM properties.">
+      </div>
+      <figcaption><b>Instance graph.</b></figcaption>
+      <p class="figure__links"><a href="final_report_files/models/conceptual_model_instance_graph.svg">SVG</a><a href="final_report_files/models/conceptual_model_instance_graph.pdf">PDF</a></p>
+    </figure>
+  </div>
+  <p class="legend" aria-label="Colour key"><span class="legend__item"><span class="swatch swatch--event" aria-hidden="true"></span>Event</span><span class="legend__item"><span class="swatch swatch--actor" aria-hidden="true"></span>Person or institution</span><span class="legend__item"><span class="swatch swatch--place" aria-hidden="true"></span>Place</span><span class="legend__item"><span class="swatch swatch--thing" aria-hidden="true"></span>The corpus (E18)</span><span class="legend__item"><span class="swatch swatch--object" aria-hidden="true"></span>Physical subset (E19)</span><span class="legend__item"><span class="swatch swatch--time" aria-hidden="true"></span>Time-span</span><span class="legend__item"><span class="swatch swatch--digital" aria-hidden="true"></span>Digital object</span><span class="legend__item"><span class="line-key line-key--dm" aria-hidden="true"></span>Project property (dm:)</span><span class="legend__item"><span class="line-key line-key--dcterms" aria-hidden="true"></span>DCTerms property</span><span class="legend__item"><span class="line-key line-key--enriched" aria-hidden="true"></span>Enriched relation</span></p>
+</section>
+
+<aside class="pull bleed" aria-label="Key idea">
+  <div class="bleed__inner">
+    <span class="pull__mark" aria-hidden="true">“</span>
+    <p class="pull__text">Relations become events.<span>R6 is formalized as a purchase: <a href="#formalization">see it step by step</a>.</span></p>
+  </div>
+</aside>
+
+<section class="section" id="formalization" aria-labelledby="h-formalization">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">2.3</span><div><span class="sec-head__k">One relation, step by step</span><h2 id="h-formalization">From theory to formalization</h2></div></div>
+  <p>Relations become events: R6 is formalized as a purchase.</p>
+  <div class="formalize">
+    <div class="formalize__layer">
+      <p class="formalize__label"><strong>Theoretical model</strong>R6</p>
+      <figure class="figure formalize__theory">
+        <div class="figure__panel"><svg style="max-width:548px;margin:0 auto" role="img" aria-label="Theoretical relation R6: Wang Yuanlu sold_manuscripts_to Aurel Stein"
+ viewBox="0.00 0.00 410.80 64.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="case-theory-r6-graph0" class="graph" transform="scale(1 1) rotate(0) translate(14.4 50.4)">
+<g id="case-theory-r6-node1" class="node">
+<path fill="#fbf8f1" stroke="#5c534a" d="M93,-36C93,-36 12,-36 12,-36 6,-36 0,-30 0,-24 0,-24 0,-12 0,-12 0,-6 6,0 12,0 12,0 93,0 93,0 99,0 105,-6 105,-12 105,-12 105,-24 105,-24 105,-30 99,-36 93,-36"/>
+<text text-anchor="start" x="10" y="-15.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Wang Yuanlu</text>
+</g>
+<g id="case-theory-r6-node2" class="node">
+<path fill="#fbf8f1" stroke="#5c534a" d="M370,-36C370,-36 304,-36 304,-36 298,-36 292,-30 292,-24 292,-24 292,-12 292,-12 292,-6 298,0 304,0 304,0 370,0 370,0 376,0 382,-6 382,-12 382,-12 382,-24 382,-24 382,-30 376,-36 370,-36"/>
+<text text-anchor="start" x="302" y="-15.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Aurel Stein</text>
+</g>
+<g id="case-theory-r6-edge1" class="edge">
+<path fill="none" stroke="#2b2622" d="M105.31,-18C156.33,-18 233.78,-18 284.63,-18"/>
+<polygon fill="#2b2622" stroke="#2b2622" points="284.94,-20.45 291.94,-18 284.94,-15.55 284.94,-20.45"/>
+<text text-anchor="middle" x="198.5" y="-21.4" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="12.00" fill="#2b2622">sold_manuscripts_to &#160;(R6)</text>
+</g>
+</g>
+</svg></div>
+      </figure>
+    </div>
+    <div class="formalize__step" aria-hidden="true"><span></span><span>formalized with CIDOC CRM</span></div>
+    <div class="formalize__layer">
+      <p class="formalize__label"><strong>Conceptual model</strong>E96 Purchase</p>
+      <figure class="figure" data-zoomable>
+        <div class="figure__panel">
+          <button type="button" class="figure__enlarge" data-enlarge>Enlarge</button>
+          <svg style="max-width:1395px;margin:0 auto" role="img" aria-label="The purchase involving Aurel Stein as a CIDOC CRM purchase event"
+ viewBox="0.00 0.00 1046.36 316.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="case-purchase-graph0" class="graph" transform="scale(1 1) rotate(0) translate(14.4 302.4)">
+<g id="case-purchase-node1" class="node">
+<path fill="#fbf8f1" stroke="#5c534a" d="M628.06,-288C628.06,-288 556.06,-288 556.06,-288 550.06,-288 544.06,-282 544.06,-276 544.06,-276 544.06,-264 544.06,-264 544.06,-258 550.06,-252 556.06,-252 556.06,-252 628.06,-252 628.06,-252 634.06,-252 640.06,-258 640.06,-264 640.06,-264 640.06,-276 640.06,-276 640.06,-282 634.06,-288 628.06,-288"/>
+<text text-anchor="start" x="557.06" y="-272.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Aurel Stein</text>
+<text text-anchor="start" x="554.06" y="-261.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E21_Person</text>
+</g>
+<g id="case-purchase-node2" class="node">
+<path fill="#f8f0e2" stroke="#8a5a1f" d="M664.06,-230C664.06,-230 520.06,-230 520.06,-230 514.06,-230 508.06,-224 508.06,-218 508.06,-218 508.06,-196 508.06,-196 508.06,-190 514.06,-184 520.06,-184 520.06,-184 664.06,-184 664.06,-184 670.06,-184 676.06,-190 676.06,-196 676.06,-196 676.06,-218 676.06,-218 676.06,-224 670.06,-230 664.06,-230"/>
+<text text-anchor="start" x="518.06" y="-215.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Diamond Sutra, printed</text>
+<text text-anchor="start" x="554.06" y="-202.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">copy of 868</text>
+<text text-anchor="start" x="533.06" y="-192" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E19_Physical_Object</text>
+</g>
+<g id="case-purchase-node3" class="node">
+<path fill="#f2e6d2" stroke="#8a5a1f" stroke-width="2" d="M1005.56,-157C1005.56,-157 858.56,-157 858.56,-157 852.56,-157 846.56,-151 846.56,-145 846.56,-145 846.56,-133 846.56,-133 846.56,-127 852.56,-121 858.56,-121 858.56,-121 1005.56,-121 1005.56,-121 1011.56,-121 1017.56,-127 1017.56,-133 1017.56,-133 1017.56,-145 1017.56,-145 1017.56,-151 1011.56,-157 1005.56,-157"/>
+<text text-anchor="start" x="856.56" y="-141.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Dunhuang Manuscripts</text>
+<text text-anchor="start" x="875.56" y="-130.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E18_Physical_Thing</text>
+</g>
+<g id="case-purchase-node4" class="node">
+<ellipse fill="#e2e9f0" stroke="#1f4e79" cx="127.28" cy="-139" rx="127.06" ry="32.55"/>
+<text text-anchor="start" x="47.28" y="-147.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Purchase involving Aurel</text>
+<text text-anchor="start" x="110.78" y="-134.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Stein</text>
+<text text-anchor="start" x="81.78" y="-124" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E96_Purchase</text>
+</g>
+<g id="case-purchase-edge1" class="edge">
+<path fill="none" stroke="#5c534a" d="M183.28,-168.37C210.18,-181.74 243.41,-196.82 274.56,-207 364.3,-236.32 473.03,-254.34 536.87,-263.23"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="536.77,-265.69 544.04,-264.22 537.44,-260.83 536.77,-265.69"/>
+<text text-anchor="middle" x="378.56" y="-256.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P22_transferred_title_to</text>
+</g>
+<g id="case-purchase-edge3" class="edge">
+<path fill="none" stroke="#a63a24" stroke-width="1.4" stroke-dasharray="5,2" d="M237.95,-155.12C318.09,-166.89 425.46,-182.67 500.69,-193.72"/>
+<polygon fill="#a63a24" stroke="#a63a24" stroke-width="1.4" points="500.58,-196.18 507.87,-194.78 501.3,-191.33 500.58,-196.18"/>
+<text text-anchor="middle" x="378.56" y="-193.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#a63a24">crm:P24_transferred_title_of (Enriched)</text>
+</g>
+<g id="case-purchase-node5" class="node">
+<path fill="#f8f0e2" stroke="#8a5a1f" d="M669.56,-162C669.56,-162 514.56,-162 514.56,-162 508.56,-162 502.56,-156 502.56,-150 502.56,-150 502.56,-128 502.56,-128 502.56,-122 508.56,-116 514.56,-116 514.56,-116 669.56,-116 669.56,-116 675.56,-116 681.56,-122 681.56,-128 681.56,-128 681.56,-150 681.56,-150 681.56,-156 675.56,-162 669.56,-162"/>
+<text text-anchor="start" x="512.56" y="-147.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Manuscripts acquired by</text>
+<text text-anchor="start" x="557.06" y="-134.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Aurel Stein</text>
+<text text-anchor="start" x="533.06" y="-124" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E19_Physical_Object</text>
+</g>
+<g id="case-purchase-edge4" class="edge">
+<path fill="none" stroke="#5c534a" d="M254.74,-139C330.67,-139 425.74,-139 495.41,-139"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="495.5,-141.45 502.5,-139 495.5,-136.55 495.5,-141.45"/>
+<text text-anchor="middle" x="378.56" y="-142.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P24_transferred_title_of</text>
+</g>
+<g id="case-purchase-node6" class="node">
+<polygon fill="#f6f1e7" stroke="#b9ac95" points="657.56,-94 520.56,-94 520.56,-58 663.56,-58 663.56,-88 657.56,-94"/>
+<polyline fill="none" stroke="#b9ac95" points="657.56,-94 657.56,-88 "/>
+<polyline fill="none" stroke="#b9ac95" points="663.56,-88 657.56,-88 "/>
+<text text-anchor="start" x="530.56" y="-78.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">from 1907 onwards</text>
+<text text-anchor="start" x="543.56" y="-67.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E52_Time&#45;Span</text>
+</g>
+<g id="case-purchase-edge5" class="edge">
+<path fill="none" stroke="#5c534a" d="M240.01,-123.79C324.48,-112.29 438.31,-96.79 513.14,-86.61"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="513.65,-89.01 520.26,-85.64 512.99,-84.16 513.65,-89.01"/>
+<text text-anchor="middle" x="378.56" y="-122.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P4_has_time&#45;span</text>
+</g>
+<g id="case-purchase-node7" class="node">
+<path fill="#fbf8f1" stroke="#5c534a" d="M632.56,-36C632.56,-36 551.56,-36 551.56,-36 545.56,-36 539.56,-30 539.56,-24 539.56,-24 539.56,-12 539.56,-12 539.56,-6 545.56,0 551.56,0 551.56,0 632.56,0 632.56,0 638.56,0 644.56,-6 644.56,-12 644.56,-12 644.56,-24 644.56,-24 644.56,-30 638.56,-36 632.56,-36"/>
+<text text-anchor="start" x="549.56" y="-20.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Wang Yuanlu</text>
+<text text-anchor="start" x="554.06" y="-9.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E21_Person</text>
+</g>
+<g id="case-purchase-edge2" class="edge">
+<path fill="none" stroke="#5c534a" d="M185.81,-110.1C212.29,-97.77 244.46,-84.16 274.56,-75 362.38,-48.28 467.94,-32.37 532.24,-24.41"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="532.83,-26.8 539.48,-23.52 532.24,-21.94 532.83,-26.8"/>
+<text text-anchor="middle" x="378.56" y="-78.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P23_transferred_title_from</text>
+</g>
+<g id="case-purchase-edge6" class="edge">
+<path fill="none" stroke="#5c534a" d="M681.86,-139C730.33,-139 790.26,-139 839.2,-139"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="839.34,-141.45 846.34,-139 839.34,-136.55 839.34,-141.45"/>
+<text text-anchor="middle" x="764.06" y="-142.2" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P46i_forms_part_of</text>
+</g>
+</g>
+</svg>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="decisions" aria-labelledby="h-decisions">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">2.4</span><div><span class="sec-head__k">Choices and reasons</span><h2 id="h-decisions">Modelling decisions</h2></div></div>
+  <div class="table-wrap table-wrap--feature">
+    <table>
+      <thead><tr><th>Modelling case</th><th>Choice</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr><td data-label="Modelling case">Manuscript corpus</td><td data-label="Choice"><code>crm:E18_Physical_Thing</code>; bought or moved groups as <code>crm:E19_Physical_Object</code></td><td data-label="Rationale">The dispersed corpus is treated as a broad physical thing, not an <code>E78_Curated_Holding</code>, since no single actor curates it; E19 is kept for the identifiable groups of manuscripts.</td></tr>
+        <tr><td data-label="Modelling case">Discovery</td><td data-label="Choice"><code>crmsci:S19_Encounter_Event</code></td><td data-label="Rationale">Finding the cave is the first encounter with something that already existed.</td></tr>
+        <tr><td data-label="Modelling case">Purchase</td><td data-label="Choice"><code>crm:E96_Purchase</code></td><td data-label="Rationale">A sale links a seller, a buyer, an object and a time, which a direct relation between two people cannot hold.</td></tr>
+        <tr><td data-label="Modelling case">Transfer to Beijing</td><td data-label="Choice"><code>crm:E9_Move</code> of an E19 subset</td><td data-label="Rationale"><code>P25_moved</code> applies to physical objects, and the source says only the remaining Chinese manuscripts were moved.</td></tr>
+        <tr><td data-label="Modelling case">Digitization</td><td data-label="Choice"><code>crmdig:D2_Digitization_Process</code></td><td data-label="Rationale">The digital surrogate is kept separate from the dispersed manuscripts it copies.</td></tr>
+        <tr><td data-label="Modelling case">Diamond Sutra, part of the corpus (R17)</td><td data-label="Choice"><code>crm:P46i_forms_part_of</code> the corpus</td><td data-label="Rationale">A historical physical part-whole relation: the IDP records the scroll among the bundles of Cave 17, and the corpus is the physical aggregate sealed there. In CIDOC CRM 7.1.3, P46 “does not specify when and for how long a component element resided in the respective whole”: the triple does not say that the corpus is still kept together, nor when the scroll left it. It is not a classification; what the texts are about is given by <code>dcterms:subject</code>.</td></tr>
+        <tr><td data-label="Modelling case">Diamond Sutra, bought by Stein (R18)</td><td data-label="Choice"><code>crm:P24_transferred_title_of</code> from the existing purchase by Stein</td><td data-label="Rationale">Based on the IDP's research on Stein's acquisition of 1907 (the bundles handed over between 21 May and 6 June 1907), not on an item-by-item list of the transaction. It records the transfer as these sources describe it, and makes no judgement on the legitimacy of the transaction.</td></tr>
+        <tr><td data-label="Modelling case">Diamond Sutra, British Library (R19)</td><td data-label="Choice"><code>crm:P50_has_current_keeper</code></td><td data-label="Rationale">Custody, not ownership (ownership would be <code>crm:P52_has_current_owner</code>, which is not used).</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="ontologies" aria-labelledby="h-ontologies">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">2.5</span><div><span class="sec-head__k">Vocabularies</span><h2 id="h-ontologies">Ontologies used</h2></div></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th class="nowrap">Prefix</th><th>Vocabulary</th><th>Used in this project for</th></tr></thead>
+      <tbody>
+        <tr><td data-label="Prefix" class="nowrap"><code>crm:</code></td><td data-label="Vocabulary"><a href="http://www.cidoc-crm.org/cidoc-crm/7.1.3/">CIDOC CRM 7.1.3</a></td><td data-label="Used in this project for">People, places, institutions, physical things and the events of the story.</td></tr>
+        <tr><td data-label="Prefix" class="nowrap"><code>crmsci:</code></td><td data-label="Vocabulary"><a href="http://www.cidoc-crm.org/extensions/crmsci/3.2/">CRMsci 3.2</a></td><td data-label="Used in this project for">The discovery, as an encounter event.</td></tr>
+        <tr><td data-label="Prefix" class="nowrap"><code>crmdig:</code></td><td data-label="Vocabulary"><a href="https://cidoc-crm.org/crmdig/ModelVersion/crmdig-v5.0">CRMdig 5.0</a></td><td data-label="Used in this project for">The digitization and the digital surrogate.</td></tr>
+        <tr><td data-label="Prefix" class="nowrap"><code>skos:</code></td><td data-label="Vocabulary">SKOS</td><td data-label="Used in this project for">The religious traditions as a concept scheme matched to Wikidata and LCSH.</td></tr>
+        <tr><td data-label="Prefix" class="nowrap"><code>dcterms:</code></td><td data-label="Vocabulary">DCMI Metadata Terms</td><td data-label="Used in this project for">Subjects, the publisher of the digital surrogate, and the provenance and sources of statements.</td></tr>
+        <tr><td data-label="Prefix" class="nowrap"><code>owl:</code> <code>rdfs:</code></td><td data-label="Vocabulary">OWL, RDFS</td><td data-label="Used in this project for">Links to external authorities and the definition of project properties.</td></tr>
+        <tr><td data-label="Prefix" class="nowrap"><code>dm:</code></td><td data-label="Vocabulary">Project namespace</td><td data-label="Used in this project for">Three properties for relations no existing property expresses.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="properties" aria-labelledby="h-properties">
+  <div class="sec-head"><span class="sec-head__n" aria-hidden="true">2.6</span><div><span class="sec-head__k">Project namespace</span><h2 id="h-properties">Project properties</h2></div></div>
+  <p>Defined in <a href="final_report_files/ontology/dm-ontology.ttl">dm-ontology.ttl</a>.</p>
+  <div class="table-wrap"><table><thead><tr><th>Property</th><th>Definition</th><th>Domain → range</th></tr></thead><tbody><tr><td data-label="Property" class="nowrap"><code>dm:locatedNear</code></td><td data-label="Definition">Relates two places that are close to each other without sharing a boundary or one containing the other.</td><td data-label="Domain → range"><code>crm:E53_Place</code> → <code>crm:E53_Place</code></td></tr><tr><td data-label="Property" class="nowrap"><code>dm:partOfNetwork</code></td><td data-label="Definition">Relates a place to a larger historical network of routes of which it was a node.</td><td data-label="Domain → range"><code>crm:E53_Place</code> → <code>crm:E53_Place</code></td></tr><tr><td data-label="Property" class="nowrap"><code>dm:virtuallyBringsTogether</code></td><td data-label="Definition">Relates an actor to a dispersed physical corpus whose parts it reunites in a shared digital environment.</td><td data-label="Domain → range"><code>crm:E39_Actor</code> → <code>crm:E18_Physical_Thing</code></td></tr></tbody></table></div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <nav class="pager" aria-label="Previous and next page">
+      <a class="pager__prev" href="domain.html"><span class="pager__dir">Previous</span><span class="pager__name">Domain</span></a>
+      <a class="pager__next" href="tei.html"><span class="pager__dir">Next</span><span class="pager__name">TEI</span></a>
+    </nav>
+    <p class="site-footer__meta"><img src="assets/ornaments/mark.svg" alt="" width="36" height="36">
+      <span>HAOPU YIN · A project for Information Science and Cultural Heritage, University of Bologna, 2025–2026. Source: English Wikipedia, “Dunhuang manuscripts”, revision 1347007263.</span></p>
+  </div>
+</footer>
+<script src="assets/js/prism.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

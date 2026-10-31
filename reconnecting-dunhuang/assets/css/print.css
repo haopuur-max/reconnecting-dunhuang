@@ -1,0 +1,24 @@
+/* Reconnecting Dunhuang - print stylesheet (Final Specification 13.10) */
+@media print {
+  @page { margin: 18mm 16mm; }
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .site-header, .site-nav, .nav-toggle, .skip-link, .figure__enlarge, .lightbox, .pager, .page-toc { display: none !important; }
+  .page { padding: 0; max-width: none; }
+  .page > *, .section > *, .decision, .code-card, .table-wrap, details { max-width: none !important; }
+  .section { border-top: 1px solid #999; }
+  .figure, .decision, .code-card, table, tr { break-inside: avoid; }
+  .figure__panel, .decision, pre[class*="language-"] { background: #fff !important; }
+  details > *:not(summary) { display: block !important; }
+  summary::before { display: none; }
+  pre[class*="language-"], code[class*="language-"] { white-space: pre-wrap !important; word-break: break-word; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; color: #444; word-break: break-all; }
+  .line-highlight { background: #eee !important; }
+  .tabs__list { display: none !important; }
+  .tabs__panel[hidden] { display: block !important; }
+  .tabs__fallback { display: block !important; }
+  .section > .figure--model { width: auto; left: 0; transform: none; }
+  .figure--model .figure__scroll { overflow: visible; }
+  .figure--model .figure__scroll img { min-width: 0 !important; width: auto; max-width: 100%; max-height: 240mm; margin: 0 auto; }
+  .figure--model .figure__panel { break-inside: avoid; }
+  .figure__tools, .figure__hint { display: none !important; }
+}

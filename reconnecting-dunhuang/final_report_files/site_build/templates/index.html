@@ -1,0 +1,137 @@
+<!-- index.html is maintained by hand (FROZEN in build_site_snippets.py); this file keeps a copy of its main content for reference. -->
+<section class="cover bleed grain" aria-labelledby="h-home">
+  <div class="cover__block" aria-hidden="true"></div>
+  <img class="frag frag--a" src="assets/img/fragments/fragment_2.png" alt="" aria-hidden="true">
+  <img class="frag frag--b" src="assets/img/fragments/fragment_5.png" alt="" aria-hidden="true">
+  <img class="frag frag--c" src="assets/img/fragments/fragment_3.png" alt="" aria-hidden="true">
+  <div class="cover__grid">
+    <div class="cover__text">
+      <p class="kicker">LODLAM project · Information Science and Cultural Heritage</p>
+      <h1 id="h-home">Reconnecting<br>Dunhuang</h1>
+      <p class="slab"><span class="slab__label">Research question</span><span class="slab__q">How can a dispersed manuscript corpus be reconnected through structured and linked data?</span></p>
+      <p class="cover__answer">The project reads one Wikipedia article as a network of <strong>people, places, institutions, manuscripts and events</strong>, encodes it in <strong>TEI</strong>, models it with <strong>CIDOC CRM</strong> and publishes it as <strong>RDF</strong>.</p>
+      <p class="cover__actions"><a class="btn btn--solid" href="domain.html">Start with the story</a><a class="btn btn--line" href="models.html">Go to the models</a></p>
+      <p class="cover__source">Source: English Wikipedia, “Dunhuang manuscripts”, <a href="https://en.wikipedia.org/w/index.php?title=Dunhuang_manuscripts&amp;oldid=1347007263">revision 1347007263</a>, frozen for this project.</p>
+    </div>
+    <figure class="print print--layered">
+      <img src="assets/img/hero_cave16_manuscripts.jpg" width="550" height="386"
+           alt="Cave 16 at the Mogao Caves in 1907: Buddhist statues and painted walls, with bundles of manuscript scrolls stacked on the floor near the entrance to the Library Cave (a composite: the piles were added from another negative).">
+      <figcaption><b>Cave 16, Mogao, 1907.</b> Photograph by Aurel Stein; the doorway on the right leads to the Library Cave. According to the article, the piles of manuscripts near the doorway were added from another negative. Wikimedia Commons, public domain (US).</figcaption>
+    </figure>
+  </div>
+  <p class="cover__credit">Fragments cut from Pelliot chinois 2778, Bibliothèque nationale de France. Wikimedia Commons, public domain.</p>
+</section>
+
+<section class="chapter chapter--sand bleed grain" aria-labelledby="h-context">
+  <div class="bleed__inner">
+    <div class="chapter__head"><span class="numeral" aria-hidden="true">01</span><div><p class="kicker">The problem</p><h2 id="h-context">One library, sealed in a cave, now scattered across the world</h2></div></div>
+    <div class="context">
+      <div>
+        <p>Most of the Dunhuang manuscripts come from a cache sealed in the Library Cave of the Mogao Caves, near Dunhuang. Wang Yuanlu found it in 1900. From 1907 much of the cache was sold to Aurel Stein, Paul Pelliot, Ōtani Kōzui and others, and in 1910 most of the remaining Chinese manuscripts were taken to Beijing.</p>
+        <p>Today the manuscripts are held in several countries, and the International Dunhuang Project is reuniting them in digital form.</p>
+        <div class="why">
+          <span class="why__label">Why this topic</span>
+          <p>I chose the Dunhuang manuscripts because their history presents a compelling challenge for knowledge representation. Originally preserved together, these materials were later dispersed across different institutions and countries. This project explores how TEI encoding, ontology-based modelling and RDF can make their historical relationships explicit and reconnect information about the dispersed corpus.</p>
+        </div>
+      </div>
+      <figure class="print">
+        <img src="assets/img/history_pelliot_cave17.jpg" width="520" height="720"
+             alt="Paul Pelliot, seated by candlelight in the Library Cave, examining manuscripts stacked around him on the shelves.">
+        <figcaption><b>Paul Pelliot in Cave 17, 1908.</b> Photograph by Charles Nouette. Wikimedia Commons, public domain.</figcaption>
+      </figure>
+    </div>
+    <ol class="story" aria-label="The five narrative layers of the theoretical model">
+      <li style="--c:var(--azurite)"><span class="story__head"><span class="story__n">I</span><span class="story__verb">Together</span></span><span class="story__body"><span class="story__name">Original context</span><span class="story__when">early 11th century</span><span class="story__text">The manuscripts are sealed in the Library Cave, at the Mogao Caves near Dunhuang, on the Silk Road.</span></span></li>
+      <li style="--c:var(--gold);--on:var(--night);--c-ink:var(--gold-ink)"><span class="story__head"><span class="story__n">II</span><span class="story__verb">Discovered</span></span><span class="story__body"><span class="story__name">Discovery</span><span class="story__when">1900</span><span class="story__text">Wang Yuanlu finds the sealed cave and its manuscripts.</span></span></li>
+      <li style="--c:var(--cinnabar)"><span class="story__head"><span class="story__n">III</span><span class="story__verb">Dispersed</span></span><span class="story__body"><span class="story__name">Dispersal</span><span class="story__when">from 1907</span><span class="story__text">Manuscripts are sold to Aurel Stein and Paul Pelliot; hundreds more go to Ōtani Kōzui and others (no date in the source).</span></span></li>
+      <li style="--c:var(--malachite)"><span class="story__head"><span class="story__n">IV</span><span class="story__verb">Institutionally separated</span></span><span class="story__body"><span class="story__name">Collections</span><span class="story__when">1910 to today</span><span class="story__text">The remaining Chinese manuscripts go to Beijing; today the manuscripts are held by several institutions.</span></span></li>
+      <li style="--c:#5E4B8B"><span class="story__head"><span class="story__n">V</span><span class="story__verb">Digitally reconnected</span></span><span class="story__body"><span class="story__name">Digital reconnection</span><span class="story__when">today</span><span class="story__text">The International Dunhuang Project brings the collections together online.</span></span></li>
+    </ol>
+    <p class="story-note">These five layers organise the <a href="models.html#theoretical">theoretical model</a>; the events and their dates are on the <a href="domain.html#story">Domain</a> page.</p>
+  </div>
+</section>
+
+<section class="chapter chapter--night bleed on-night" aria-labelledby="h-method">
+  <div class="bleed__inner">
+    <div class="chapter__head"><span class="numeral" aria-hidden="true">02</span><div><p class="kicker">The method</p><h2 id="h-method">Five questions, one page each</h2></div></div>
+    <p class="chapter__intro">Read the report in order, or go straight to the question you need.</p>
+    <ol class="route">
+      <li><a href="domain.html"><span class="route__dot">1</span><span class="route__page">Domain</span><span class="route__q">What is the project about?</span><span class="route__a">One Wikipedia article and the people, places, institutions and manuscripts it names.</span></a></li>
+      <li><a href="models.html"><span class="route__dot">2</span><span class="route__page">Models</span><span class="route__q">Why this model?</span><span class="route__a">From natural-language relations to CIDOC CRM events.</span></a></li>
+      <li><a href="tei.html"><span class="route__dot">3</span><span class="route__page">TEI</span><span class="route__q">How is it encoded?</span><span class="route__a">The article encoded in TEI P5, with a standOff model layer.</span></a></li>
+      <li><a href="transformations.html"><span class="route__dot">4</span><span class="route__page">Transformations</span><span class="route__q">How were the outputs produced?</span><span class="route__a">One TEI file, two outputs: HTML with XSLT, RDF with Python.</span></a></li>
+      <li><a href="rdf.html"><span class="route__dot">5</span><span class="route__page">RDF</span><span class="route__q">What does the data say?</span><span class="route__a">The conceptual model expressed as RDF triples and linked to external authorities.</span></a></li>
+    </ol>
+    <p class="route-more">Also: the <a href="wiki-view.html">Wiki View</a>, the TEI file rendered as an article, and <a href="files.html">all project files and checks</a>, with image and font credits.</p>
+  </div>
+</section>
+
+<section class="chapter chapter--paper bleed" aria-labelledby="h-results">
+  <div class="bleed__inner">
+    <div class="chapter__head"><span class="numeral" aria-hidden="true">03</span><div><p class="kicker">The results</p><h2 id="h-results">From an article to a linked-data graph</h2></div></div>
+    <ol class="stages" aria-label="Four stages of the project">
+      <li class="stage" style="--c:var(--ink)"><span class="stage__head"><span class="stage__n">Stage 1</span><span class="stage__name">Wikipedia article</span></span>
+        <span class="stage__body"><span class="stage__what">“Dunhuang manuscripts”, English Wikipedia, frozen at one revision.</span>
+          <span class="stat"><span class="stat__n">1</span><span class="stat__u">frozen revision<small>1347007263</small></span></span></span></li>
+      <li class="stage" style="--c:var(--azurite)"><span class="stage__head"><span class="stage__n">Stage 2</span><span class="stage__name">TEI encoding</span></span>
+        <span class="stage__body"><span class="stage__what">Names are marked in the text; each entity is described once in the standOff.</span>
+          <span class="stat"><span class="stat__n">65</span><span class="stat__u">entity annotations in the text<small>persName, placeName, orgName, objectName</small></span></span>
+          <span class="stat"><span class="stat__n">28</span><span class="stat__u">standOff entity records<small>5 persons · 5 places · 5 organisations · 6 objects · 7 events</small></span></span></span></li>
+      <li class="stage" style="--c:var(--cinnabar)"><span class="stage__head"><span class="stage__n">Stage 3</span><span class="stage__name">Theoretical &amp; conceptual modelling</span></span>
+        <span class="stage__body"><span class="stage__what">The story in natural language, then in CIDOC CRM and its extensions.</span>
+          <span class="stat"><span class="stat__n">16</span><span class="stat__u">entities in the theoretical model</span></span>
+          <span class="stat"><span class="stat__n">19</span><span class="stat__u">relations in the theoretical model<small>R1–R19</small></span></span>
+          <span class="stat"><span class="stat__n">38</span><span class="stat__u">conceptual relations<small>CIDOC CRM, CRMsci, CRMdig, DCTerms, dm:</small></span></span></span></li>
+      <li class="stage" style="--c:var(--gold);--on:var(--night)"><span class="stage__head"><span class="stage__n">Stage 4</span><span class="stage__name">RDF generation</span></span>
+        <span class="stage__body"><span class="stage__what">Generated from the TEI file by Python and rdflib, as Turtle and RDF/XML.</span>
+          <span class="stat"><span class="stat__n">683</span><span class="stat__u">triples in the final graph<small>checks V1–V7 pass</small></span></span></span></li>
+    </ol>
+    <p class="stages-note"><b>Each stage counts something different.</b> Annotations are not records; the 16 entities of the theoretical model are among the 28 standOff records; and the 683 triples also hold labels, identifiers, time-spans and the provenance of each statement, not only the modelled relations.</p>
+
+    <div class="case">
+      <div class="case__head">
+        <div><p class="kicker">One relation, followed through</p><h3>R6 · Wang Yuanlu <em>sold manuscripts to</em> Aurel Stein</h3></div>
+        <a class="case__more" href="transformations.html">How the transformations work →</a>
+      </div>
+      <ol class="case__steps">
+        <li class="case__step"><p class="case__label"><span><b>The article</b> · English Wikipedia, revision 1347007263</span></p>
+          <p class="case__quote">“From 1907 onwards, <mark>Wang</mark> began to sell them to Western explorers, notably <mark>Aurel Stein</mark> and Paul Pelliot.”</p>
+          <p class="case__src">Encoded in the TEI text with <code>persName</code> pointing to the standOff records (<a href="final_report_files/tei_xml/reconnecting_dunhuang.xml">reconnecting_dunhuang.xml</a>, line 406).</p></li>
+        <li class="case__step"><p class="case__label"><span><b>Theoretical model</b> · relation R6, Direct evidence · TEI line 321</span></p>
+          <pre class="line-numbers language-markup code-wrap" data-start="321" data-line-offset="320"><code class="language-markup">      &lt;relation xml:id=&quot;r6&quot; name=&quot;sold_manuscripts_to&quot; active=&quot;#wang-yuanlu&quot; passive=&quot;#aurel-stein&quot; ana=&quot;#evidence-direct&quot;/&gt;</code></pre></li>
+        <li class="case__step"><p class="case__label"><span><b>Conceptual model</b> · the sale becomes a purchase event (E96), linked back to R6 · TEI line 346</span></p>
+          <pre class="line-numbers language-markup code-wrap" data-start="346" data-line-offset="345"><code class="language-markup">      &lt;relation xml:id=&quot;cr10&quot; name=&quot;crm:P22_transferred_title_to&quot; ref=&quot;http://www.cidoc-crm.org/cidoc-crm/P22_transferred_title_to&quot; active=&quot;#purchase-stein&quot; passive=&quot;#aurel-stein&quot; corresp=&quot;#r6&quot; ana=&quot;#evidence-direct&quot;/&gt;</code></pre></li>
+        <li class="case__step"><p class="case__label"><span><b>Transformation</b> · <code>transform_tei_to_rdf.py</code> writes one triple for each conceptual and subject relation · line 368</span></p>
+          <pre class="line-numbers language-python code-wrap" data-start="368" data-line-offset="367"><code class="language-python">                self.g.add((RES[s], self.predicate_of(rel), RES[o]))</code></pre></li>
+        <li class="case__step case__step--wide"><p class="case__label"><span><b>RDF</b> · the purchase event in the final graph · reconnecting_dunhuang.ttl, lines 800–806</span></p>
+          <pre class="line-numbers language-turtle code-wrap" data-start="800" data-line-offset="799" data-line="802"><code class="language-turtle">resource:purchase-stein a crm:E96_Purchase ;
+    rdfs:label &quot;Purchase involving Aurel Stein&quot;@en ;
+    crm:P22_transferred_title_to resource:aurel-stein ;
+    crm:P23_transferred_title_from resource:wang-yuanlu ;
+    crm:P24_transferred_title_of resource:diamond-sutra-868,
+        resource:stein-portion ;
+    crm:P4_has_time-span resource:timespan-purchase-stein .</code></pre>
+          <p class="case__src">Line 804 has a second object of P24, <code>diamond-sutra-868</code>: it comes from R18 (Enriched, relation <code>cr39</code>), not from R6.</p></li>
+      </ol>
+    </div>
+    <div class="results">
+      <figure class="hero__figure">
+    <div class="hero__image">
+      <img src="assets/img/hero_cave16_manuscripts.jpg" width="550" height="386"
+           alt="Cave 16 at the Mogao Caves in 1907: Buddhist statues and painted walls, with bundles of manuscript scrolls stacked on the floor near the entrance to the Library Cave (a composite: the piles were added from another negative).">
+      <svg class="hero__overlay" viewBox="0 0 550 386" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><line x1="214.4" y1="286.9" x2="218.5" y2="338.0"/><line x1="222.1" y1="234.4" x2="214.4" y2="286.9"/><line x1="236.1" y1="177.8" x2="222.1" y2="234.4"/><line x1="199.0" y1="116.3" x2="236.1" y2="177.8"/><line x1="363.7" y1="105.4" x2="199.0" y2="116.3"/><line x1="363.7" y1="105.4" x2="420.9" y2="48.0"/><line x1="363.7" y1="105.4" x2="502.0" y2="90.5"/><line x1="363.7" y1="105.4" x2="476.9" y2="141.7"/><line x1="199.0" y1="116.3" x2="137.2" y2="157.5"/><line x1="199.0" y1="116.3" x2="175.9" y2="56.4"/><line x1="199.0" y1="116.3" x2="257.0" y2="74.9"/><line x1="199.0" y1="116.3" x2="48.0" y2="102.6"/><line x1="56.3" y1="138.2" x2="199.0" y2="116.3"/><line x1="93.2" y1="72.0" x2="199.0" y2="116.3"/><line x1="93.2" y1="72.0" x2="199.0" y2="116.3"/><line x1="93.2" y1="72.0" x2="199.0" y2="116.3"/><circle class="hero__node" cx="420.9" cy="48.0" r="4"><title>Aurel Stein</title></circle><circle class="hero__node" cx="175.9" cy="56.4" r="4"><title>Bibliothèque nationale de France</title></circle><circle class="hero__node" cx="137.2" cy="157.5" r="4"><title>British Library</title></circle><circle class="hero__node" cx="214.4" cy="286.9" r="4"><title>Dunhuang</title></circle><circle class="hero__node hero__node--core" cx="199.0" cy="116.3" r="6"><title>Dunhuang Manuscripts</title></circle><circle class="hero__node" cx="93.2" cy="72.0" r="4"><title>International Dunhuang Project</title></circle><circle class="hero__node" cx="236.1" cy="177.8" r="4"><title>Library Cave (Cave 17)</title></circle><circle class="hero__node" cx="56.3" cy="138.2" r="4"><title>Luo Zhenyu</title></circle><circle class="hero__node" cx="222.1" cy="234.4" r="4"><title>Mogao Caves</title></circle><circle class="hero__node" cx="257.0" cy="74.9" r="4"><title>National Library of China</title></circle><circle class="hero__node" cx="476.9" cy="141.7" r="4"><title>Ōtani Kōzui</title></circle><circle class="hero__node" cx="502.0" cy="90.5" r="4"><title>Paul Pelliot</title></circle><circle class="hero__node" cx="218.5" cy="338.0" r="4"><title>Silk Road</title></circle><circle class="hero__node" cx="48.0" cy="102.6" r="4"><title>Tokyo National Museum</title></circle><circle class="hero__node" cx="363.7" cy="105.4" r="4"><title>Wang Yuanlu</title></circle><g class="hero__label"><rect x="120.0" y="126.3" width="158.0" height="20" rx="3"/><text x="199.0" y="140.3" text-anchor="middle">Dunhuang Manuscripts</text></g><g class="hero__label"><rect x="149.9" y="187.8" width="172.4" height="20" rx="3"/><text x="236.1" y="201.8" text-anchor="middle">Library Cave (Cave 17)</text></g><g class="hero__label"><rect x="317.1" y="115.4" width="93.2" height="20" rx="3"/><text x="363.7" y="129.4" text-anchor="middle">Wang Yuanlu</text></g><g class="hero__label"><rect x="374.3" y="58.0" width="93.2" height="20" rx="3"/><text x="420.9" y="72.0" text-anchor="middle">Aurel Stein</text></g><g class="hero__label"><rect x="4.0" y="82.0" width="230.0" height="20" rx="3"/><text x="119.0" y="96.0" text-anchor="middle">International Dunhuang Project</text></g></svg>
+    </div>
+    <figcaption><b>Cave 16, Mogao, 1907.</b> Photograph by Aurel Stein; the piles of manuscripts near the doorway to Cave 17 were added from another negative, according to the article. Wikimedia Commons, public domain (US). The overlay draws the sixteen relations of the original theoretical model (R1–R16), read from the TEI file.</figcaption>
+  </figure>
+      <div class="limits">
+        <h3>Limitations</h3>
+        <ol>
+          <li><strong>One frozen source.</strong> The relations follow one Wikipedia revision. Only the four Enriched relations draw on other sources, each named: R16 is the project’s interpretation of the International Dunhuang Project’s own description, and R17–R19 come from its catalogue and research. Authority identifiers (Wikidata, VIAF, LC, FAST) are links, not sources of relations.</li>
+          <li><strong>R9 and R12 stay in the theory (◇).</strong> The article says the British Library and the Tokyo National Museum hold manuscripts, but not which ones, so no holding triple is asserted in the RDF.</li>
+          <li><strong>URIs not yet dereferenceable.</strong> The project namespace is fixed, but the site is not yet published at that address; all checks are local.</li>
+        </ol>
+        <p class="limits__more"><a href="files.html">All files, checks and credits →</a></p>
+      </div>
+    </div>
+  </div>
+</section>

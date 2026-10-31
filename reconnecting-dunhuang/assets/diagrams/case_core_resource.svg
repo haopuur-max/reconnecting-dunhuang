@@ -1,0 +1,98 @@
+<svg role="img" aria-label="The corpus (E18), its physical subsets (E19), keepers named in the source, and the digital surrogate (D1)"
+ viewBox="0.00 0.00 646.63 385.83" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(14.4 371.43)">
+<g id="node1" class="node">
+<path fill="#fbf8f1" stroke="#5c534a" d="M605.83,-126.5C605.83,-126.5 447.83,-126.5 447.83,-126.5 441.83,-126.5 435.83,-120.5 435.83,-114.5 435.83,-114.5 435.83,-92.5 435.83,-92.5 435.83,-86.5 441.83,-80.5 447.83,-80.5 447.83,-80.5 605.83,-80.5 605.83,-80.5 611.83,-80.5 617.83,-86.5 617.83,-92.5 617.83,-92.5 617.83,-114.5 617.83,-114.5 617.83,-120.5 611.83,-126.5 605.83,-126.5"/>
+<text text-anchor="start" x="445.83" y="-112.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Bibliothèque nationale de</text>
+<text text-anchor="start" x="504.83" y="-99.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">France</text>
+<text text-anchor="start" x="489.83" y="-88.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E74_Group</text>
+</g>
+<g id="node2" class="node">
+<path fill="#ffffff" stroke="#1f4e79" stroke-dasharray="5,2" d="M600.33,-347.5C600.33,-347.5 453.33,-347.5 453.33,-347.5 447.33,-347.5 441.33,-341.5 441.33,-335.5 441.33,-335.5 441.33,-313.5 441.33,-313.5 441.33,-307.5 447.33,-301.5 453.33,-301.5 453.33,-301.5 600.33,-301.5 600.33,-301.5 606.33,-301.5 612.33,-307.5 612.33,-313.5 612.33,-313.5 612.33,-335.5 612.33,-335.5 612.33,-341.5 606.33,-347.5 600.33,-347.5"/>
+<text text-anchor="start" x="452.83" y="-333.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Digital Surrogate of the</text>
+<text text-anchor="start" x="451.33" y="-320.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Dunhuang Manuscripts</text>
+<text text-anchor="start" x="468.33" y="-309.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crmdig:D1_Digital_Object</text>
+</g>
+<g id="node3" class="node">
+<ellipse fill="#e2e9f0" stroke="#1f4e79" cx="120.92" cy="-324.5" rx="120.83" ry="32.55"/>
+<text text-anchor="start" x="63.92" y="-333.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Digitization of the</text>
+<text text-anchor="start" x="45.42" y="-320.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Dunhuang Manuscripts</text>
+<text text-anchor="start" x="45.42" y="-309.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crmdig:D2_Digitization_Process</text>
+</g>
+<g id="edge1" class="edge">
+<path fill="none" stroke="#5c534a" d="M242.01,-324.5C303.45,-324.5 377.05,-324.5 433.91,-324.5"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="434.11,-326.95 441.11,-324.5 434.11,-322.05 434.11,-326.95"/>
+<text text-anchor="middle" x="338.83" y="-327.7" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crmdig:L11_had_output</text>
+</g>
+<g id="node4" class="node">
+<path fill="#f2e6d2" stroke="#8a5a1f" stroke-width="2" d="M600.33,-199.5C600.33,-199.5 453.33,-199.5 453.33,-199.5 447.33,-199.5 441.33,-193.5 441.33,-187.5 441.33,-187.5 441.33,-175.5 441.33,-175.5 441.33,-169.5 447.33,-163.5 453.33,-163.5 453.33,-163.5 600.33,-163.5 600.33,-163.5 606.33,-163.5 612.33,-169.5 612.33,-175.5 612.33,-175.5 612.33,-187.5 612.33,-187.5 612.33,-193.5 606.33,-199.5 600.33,-199.5"/>
+<text text-anchor="start" x="451.33" y="-183.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Dunhuang Manuscripts</text>
+<text text-anchor="start" x="470.33" y="-173" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E18_Physical_Thing</text>
+</g>
+<g id="edge2" class="edge">
+<path fill="none" stroke="#5c534a" d="M213.98,-303.58C272.78,-288.91 350.05,-267.18 415.83,-240.5 441.49,-230.09 468.94,-215.37 490,-203.24"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="491.5,-205.2 496.32,-199.57 489.04,-200.97 491.5,-205.2"/>
+<text text-anchor="middle" x="338.83" y="-292.7" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crmdig:L1_digitized</text>
+</g>
+<g id="node5" class="node">
+<path fill="#fbf8f1" stroke="#5c534a" d="M604.33,-43.5C604.33,-43.5 449.33,-43.5 449.33,-43.5 443.33,-43.5 437.33,-37.5 437.33,-31.5 437.33,-31.5 437.33,-19.5 437.33,-19.5 437.33,-13.5 443.33,-7.5 449.33,-7.5 449.33,-7.5 604.33,-7.5 604.33,-7.5 610.33,-7.5 616.33,-13.5 616.33,-19.5 616.33,-19.5 616.33,-31.5 616.33,-31.5 616.33,-37.5 610.33,-43.5 604.33,-43.5"/>
+<text text-anchor="start" x="447.33" y="-27.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">National Library of China</text>
+<text text-anchor="start" x="489.83" y="-17" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E74_Group</text>
+</g>
+<g id="node6" class="node">
+<path fill="#f8f0e2" stroke="#8a5a1f" d="M200.92,-201.5C200.92,-201.5 40.92,-201.5 40.92,-201.5 34.92,-201.5 28.92,-195.5 28.92,-189.5 28.92,-189.5 28.92,-167.5 28.92,-167.5 28.92,-161.5 34.92,-155.5 40.92,-155.5 40.92,-155.5 200.92,-155.5 200.92,-155.5 206.92,-155.5 212.92,-161.5 212.92,-167.5 212.92,-167.5 212.92,-189.5 212.92,-189.5 212.92,-195.5 206.92,-201.5 200.92,-201.5"/>
+<text text-anchor="start" x="38.92" y="-187.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Manuscripts sold to Ōtani</text>
+<text text-anchor="start" x="102.42" y="-174.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Kōzui</text>
+<text text-anchor="start" x="61.92" y="-163.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E19_Physical_Object</text>
+</g>
+<g id="edge3" class="edge">
+<path fill="none" stroke="#5c534a" d="M213.07,-179.18C279.07,-179.67 367.94,-180.33 434.08,-180.82"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="434.2,-183.27 441.22,-180.87 434.23,-178.37 434.2,-183.27"/>
+<text text-anchor="middle" x="338.83" y="-183.7" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P46i_forms_part_of</text>
+</g>
+<g id="node7" class="node">
+<path fill="#f8f0e2" stroke="#8a5a1f" d="M198.42,-128.5C198.42,-128.5 43.42,-128.5 43.42,-128.5 37.42,-128.5 31.42,-122.5 31.42,-116.5 31.42,-116.5 31.42,-94.5 31.42,-94.5 31.42,-88.5 37.42,-82.5 43.42,-82.5 43.42,-82.5 198.42,-82.5 198.42,-82.5 204.42,-82.5 210.42,-88.5 210.42,-94.5 210.42,-94.5 210.42,-116.5 210.42,-116.5 210.42,-122.5 204.42,-128.5 198.42,-128.5"/>
+<text text-anchor="start" x="41.42" y="-114.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Manuscripts acquired by</text>
+<text text-anchor="start" x="85.42" y="-101.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Paul Pelliot</text>
+<text text-anchor="start" x="61.92" y="-90.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E19_Physical_Object</text>
+</g>
+<g id="edge5" class="edge">
+<path fill="none" stroke="#5c534a" d="M210.73,-104.04C227.7,-103.81 245.31,-103.62 261.83,-103.5 316.98,-103.11 378.61,-103.08 428.45,-103.17"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="428.71,-105.62 435.72,-103.18 428.72,-100.72 428.71,-105.62"/>
+<text text-anchor="middle" x="338.83" y="-106.7" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P50_has_current_keeper</text>
+</g>
+<g id="edge4" class="edge">
+<path fill="none" stroke="#5c534a" d="M210.56,-122.18C276.77,-134.64 367,-151.61 433.97,-164.22"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="433.87,-166.69 441.2,-165.58 434.77,-161.87 433.87,-166.69"/>
+<text text-anchor="middle" x="338.83" y="-162.7" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P46i_forms_part_of</text>
+</g>
+<g id="node8" class="node">
+<path fill="#f8f0e2" stroke="#8a5a1f" d="M189.92,-59C189.92,-59 51.92,-59 51.92,-59 45.92,-59 39.92,-53 39.92,-47 39.92,-47 39.92,-12 39.92,-12 39.92,-6 45.92,0 51.92,0 51.92,0 189.92,0 189.92,0 195.92,0 201.92,-6 201.92,-12 201.92,-12 201.92,-47 201.92,-47 201.92,-53 195.92,-59 189.92,-59"/>
+<text text-anchor="start" x="58.92" y="-44.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Remaining Chinese</text>
+<text text-anchor="start" x="49.92" y="-31.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">manuscripts moved to</text>
+<text text-anchor="start" x="98.92" y="-18.6" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Beijing</text>
+<text text-anchor="start" x="61.92" y="-8" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E19_Physical_Object</text>
+</g>
+<g id="edge6" class="edge">
+<path fill="none" stroke="#5c534a" d="M202.14,-36.39C277.72,-44.38 383.97,-59.98 415.83,-86.5 434.54,-102.08 419.33,-119.6 435.83,-137.5 444.21,-146.59 454.87,-154.02 465.9,-160.01"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="465.08,-162.35 472.42,-163.38 467.33,-157.99 465.08,-162.35"/>
+<text text-anchor="middle" x="338.83" y="-89.7" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P46i_forms_part_of</text>
+</g>
+<g id="edge7" class="edge">
+<path fill="none" stroke="#5c534a" d="M202.18,-26.81C221.7,-26.27 242.51,-25.78 261.83,-25.5 317.52,-24.7 379.83,-24.66 429.92,-24.84"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="430.21,-27.29 437.22,-24.87 430.23,-22.39 430.21,-27.29"/>
+<text text-anchor="middle" x="338.83" y="-28.7" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P50_has_current_keeper</text>
+</g>
+<g id="node9" class="node">
+<path fill="#f8f0e2" stroke="#8a5a1f" d="M198.42,-269.5C198.42,-269.5 43.42,-269.5 43.42,-269.5 37.42,-269.5 31.42,-263.5 31.42,-257.5 31.42,-257.5 31.42,-235.5 31.42,-235.5 31.42,-229.5 37.42,-223.5 43.42,-223.5 43.42,-223.5 198.42,-223.5 198.42,-223.5 204.42,-223.5 210.42,-229.5 210.42,-235.5 210.42,-235.5 210.42,-257.5 210.42,-257.5 210.42,-263.5 204.42,-269.5 198.42,-269.5"/>
+<text text-anchor="start" x="41.42" y="-255.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Manuscripts acquired by</text>
+<text text-anchor="start" x="85.92" y="-242.1" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-weight="bold" font-size="13.00" fill="#2b2622">Aurel Stein</text>
+<text text-anchor="start" x="61.92" y="-231.5" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="10.00" fill="#5c534a">crm:E19_Physical_Object</text>
+</g>
+<g id="edge8" class="edge">
+<path fill="none" stroke="#5c534a" d="M210.56,-232.24C276.77,-221.58 367,-207.06 433.97,-196.28"/>
+<polygon fill="#5c534a" stroke="#5c534a" points="434.68,-198.65 441.2,-195.12 433.9,-193.81 434.68,-198.65"/>
+<text text-anchor="middle" x="338.83" y="-226.7" font-family="'Source Sans 3', 'Helvetica Neue', Arial, sans-serif" font-size="11.00" fill="#5c534a">crm:P46i_forms_part_of</text>
+</g>
+</g>
+</svg>
