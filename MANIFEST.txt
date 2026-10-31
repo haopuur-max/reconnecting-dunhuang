@@ -3,7 +3,7 @@ path | bytes | sha256 (first 16)
 
 CHANGELOG_FINAL.md | 6545 | 5c28f68a9639f3ae
 QA_REPORT.md | 35445 | 801836e1aa2d9e5d
-README.md | 16857 | 13873d0092a65584
+README.md | 16858 | 156acab292e5d21a
 reconnecting-dunhuang/README.md | 3378 | 85acc45d0e74c187
 reconnecting-dunhuang/assets/css/fonts.css | 5362 | ecf2cc8c154d7cfb
 reconnecting-dunhuang/assets/css/print.css | 1551 | 6b45ce948cab8f8f

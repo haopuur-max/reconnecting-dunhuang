@@ -2,7 +2,7 @@
 
 **A dispersed manuscript corpus, reconnected through data.**
 
-HAOPU YIN · Digital Humanities and Digital Knowledge (DHDK), University of Bologna
+HAOPU YIN · Digital Humanities and Digital Knowledge (DHDK), University of Bologna\
 Final LODLAM project for *Information Science and Cultural Heritage*, a.y. 2025–2026
 
 > ### ▶ [Open the project website](https://haopuur-max.github.io/reconnecting-dunhuang/)
